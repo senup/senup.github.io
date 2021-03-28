@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/home.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/home.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xYfyORg7NRaZ710bOerpWDuZ6ftibqls5bOt3eiFSoM">
+  <meta name="baidu-site-verification" content="FhQkF9o54P">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="白盒测试设计方法学习笔记白盒测试设计方法最简单的区别如下：  语句覆盖：所有的“语句”都要覆盖一遍  判定覆盖：包含语句覆盖，每个判断T、F各一次  条件覆盖：包含语句覆盖，每个条件T、F各一次  判定条件覆盖：包含判定覆盖、条件覆盖  条件组合覆盖：每个条件的每种组合  路径覆盖：所有执行路径">
+<meta name="keywords" content="测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="白盒测试设计方法学习笔记">
+<meta property="og:url" content="https://www.senup.cn/p/6c79.html">
+<meta property="og:site_name" content="Senup">
+<meta property="og:description" content="白盒测试设计方法学习笔记白盒测试设计方法最简单的区别如下：  语句覆盖：所有的“语句”都要覆盖一遍  判定覆盖：包含语句覆盖，每个判断T、F各一次  条件覆盖：包含语句覆盖，每个条件T、F各一次  判定条件覆盖：包含判定覆盖、条件覆盖  条件组合覆盖：每个条件的每种组合  路径覆盖：所有执行路径">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/sAcwDJfqSoS4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/mzknuVIWH6ti.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/8ds0Y530SYCy.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/61E6ORNomhim.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/H0AcUlubCeI4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/AgNfeXX9Q8Uc.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/tPzTnrOdYUDQ.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/0IHfwBvAOtRE.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/sbu1eUgJqOrS.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/NvudweW4jxA4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/5HnRVAdTDRMd.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/UQIK0rHpMqvl.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/3Fa7T9URDYsC.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/9LFc6YXmigCu.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/sdpC7itQIH7J.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/ybm37SMFp4yY.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/n436fhheh0vT.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/PH925rlLGqoV.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/Rn1qfiSlaCex.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/BY0nM6cd1tNc.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/jCPNVS4TFn2w.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/8uebXk40TmgL.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/E0ah1zcgetFb.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/VGruYCfOL6we.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/uc89FngxdHTJ.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/TbDr1qCJOTpB.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/oWfnoxHlaUtt.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/B9KbqSk5b7m3.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/k4cWCECb2va5.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/hyh3k1KtBdXv.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200413/21WWCK3IGO3O.png?imageslim">
+<meta property="og:updated_time" content="2021-03-28T13:13:26.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="白盒测试设计方法学习笔记">
+<meta name="twitter:description" content="白盒测试设计方法学习笔记白盒测试设计方法最简单的区别如下：  语句覆盖：所有的“语句”都要覆盖一遍  判定覆盖：包含语句覆盖，每个判断T、F各一次  条件覆盖：包含语句覆盖，每个条件T、F各一次  判定条件覆盖：包含判定覆盖、条件覆盖  条件组合覆盖：每个条件的每种组合  路径覆盖：所有执行路径">
+<meta name="twitter:image" content="https://img.senup.cn/blog/20200413/sAcwDJfqSoS4.png?imageslim">
+
+<link rel="canonical" href="https://www.senup.cn/p/6c79.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>白盒测试设计方法学习笔记 | Senup</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Senup</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">走在风中 今天阳光 突然好温柔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/生活" rel="section"><i class="fa fa-heartbeat fa-fw"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/categories/技术" rel="section"><i class="fa fa-calendar fa-fw"></i>技术</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar">
+
+    <a href="/categories/吉他" rel="section"><i class="fa fa-tags fa-fw"></i>吉他</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/senup" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6c79.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="卷发星人/程序猿/指弹菜鸟/社恐阿宅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          白盒测试设计方法学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-13 10:55:17" itemprop="dateCreated datePublished" datetime="2020-04-13T10:55:17+08:00">2020-04-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/6c79.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/6c79.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="白盒测试设计方法学习笔记"><a href="#白盒测试设计方法学习笔记" class="headerlink" title="白盒测试设计方法学习笔记"></a>白盒测试设计方法学习笔记</h1><p>白盒测试设计方法最简单的区别如下：</p>
+<ul>
+<li><p>语句覆盖：所有的“语句”都要覆盖一遍</p>
+</li>
+<li><p>判定覆盖：包含语句覆盖，每个判断T、F各一次</p>
+</li>
+<li><p>条件覆盖：包含语句覆盖，每个条件T、F各一次</p>
+</li>
+<li><p>判定条件覆盖：包含判定覆盖、条件覆盖</p>
+</li>
+<li><p>条件组合覆盖：每个条件的每种组合</p>
+</li>
+<li><p>路径覆盖：所有执行路径</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<blockquote>
+<p>以下是通过黑马的教学视频做的笔记，方便日后复习。（视频附在最下方）</p>
+</blockquote>
+<h3 id="什么是白盒测试？"><a href="#什么是白盒测试？" class="headerlink" title="什么是白盒测试？"></a>什么是白盒测试？</h3><p>白盒<strong>测试</strong>作为测试人员常用的一种测试<strong>方法</strong>，越来越受到测试工程师的重视。白盒测试并不是简单的按照<strong>代码**</strong>设计<strong>用例，而是需要根据不同的测试</strong>需求<strong>，结合不同的测试对象，</strong>使用**适合的方法进行测试。因为对于不同复杂度的代码逻辑，可以衍生出许多种执行路径，只有适当的测试方法，才能帮助我们从代码的迷雾森林中找到正确的方向。本文介绍六种白盒子测试方法：语句覆盖、判定覆盖、条件覆盖、判定条件覆盖、条件组合覆盖、路径覆盖。</p>
+<h3 id="白盒测试的特点"><a href="#白盒测试的特点" class="headerlink" title="白盒测试的特点"></a>白盒测试的特点</h3><p>优点</p>
+<ul>
+<li>代码覆盖率高</li>
+</ul>
+<p>缺点</p>
+<ol>
+<li>覆盖所有代码路径难度大，特别是遇到循环语句</li>
+<li>业务功能可能覆盖不全</li>
+<li>测试开销大</li>
+</ol>
+<p>因此实际项目中，白盒测试主要针对重点模块进行测试，同时，黑盒测试也不可缺少。</p>
+<p><img src="https://img.senup.cn/blog/20200413/sAcwDJfqSoS4.png?imageslim" alt="优缺点"></p>
+<h3 id="白盒测试设计方法"><a href="#白盒测试设计方法" class="headerlink" title="白盒测试设计方法"></a>白盒测试设计方法</h3><p>主要有动静两种方法。</p>
+<p>静态方法：</p>
+<ul>
+<li>桌面检查：A写完代码给B检查，遵守开发规范</li>
+<li>代码审查：不再一个人审查，而是开会，作者讲解，项目会员审查，侧重关注总体结构</li>
+<li>代码走查：开会，会议上项目会员提前熟悉并准备好测试数据，验证代码实现情况，侧重关注功能实现</li>
+<li>代码扫描工具：自定义规则，若代码 不匹配则自动报错，减少检查编码规范的时间，效果弱于上面三种。</li>
+</ul>
+<p>动态方法：</p>
+<ul>
+<li><p>语句覆盖：所有的“语句”都要覆盖一遍</p>
+</li>
+<li><p>判定覆盖：包含语句覆盖，每个判断T、F各一次</p>
+</li>
+<li><p>条件覆盖：包含语句覆盖，每个条件T、F各一次</p>
+</li>
+<li><p>判定条件覆盖：包含判定覆盖、条件覆盖</p>
+</li>
+<li><p>条件组合覆盖：每个条件的每种组合</p>
+</li>
+<li><p>路径覆盖：所有执行路径</p>
+</li>
+</ul>
+<p>总之，静态不执行程序，动态则是执行程序，实战中使用中动静结合，即先静态再动态。</p>
+<p><img src="https://img.senup.cn/blog/20200413/mzknuVIWH6ti.png?imageslim" alt="设计方法"></p>
+<h3 id="测试设计方法——逻辑覆盖法"><a href="#测试设计方法——逻辑覆盖法" class="headerlink" title="测试设计方法——逻辑覆盖法"></a>测试设计方法——逻辑覆盖法</h3><p>逻辑覆盖法：是通过对程序逻辑结构的遍历实现程序的覆盖。</p>
+<p>覆盖率：用来<code>度量</code>测试完整性的一个手段。</p>
+<p><img src="https://img.senup.cn/blog/20200413/8ds0Y530SYCy.png?imageslim" alt></p>
+<p>一般先将代码转换为程序流程图，再对流程图进行分析。</p>
+<h3 id="语句覆盖"><a href="#语句覆盖" class="headerlink" title="语句覆盖"></a>语句覆盖</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>语句覆盖要求设计足够多的测试用例，使得程序中每条语句至少被执行一次。</p>
+<ul>
+<li><p>优点：可以很直观地从源代码得到测试用例，无须细分每条判定表达式。</p>
+</li>
+<li><p>缺点：由于这种测试方法仅仅针对程序逻辑中显式存在的语句，但对于隐藏的条件和可能到达的隐式逻辑分支，是无法测试的。在if结构中若源代码没有给出else后面的执行分支，那么语句覆盖测试就不会考虑这种情况。但是我们不能排除这种以外的分支不会被执行，而往往这种错误会经常出现。再如，在Do-While结构中，语句覆盖执行其中某一个条件分支。那么显然，语句覆盖对于多分支的逻辑运算是无法全面反映的，它只在乎运行一次，而不考虑其他情况。</p>
+</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/61E6ORNomhim.png?imageslim" alt></p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>根据定义，每条语句至少被执行一次，则设计以下两条测试用例就满足要求了。</p>
+<blockquote>
+<p>注意：分辨语句、条件以及判定的相关概念</p>
+</blockquote>
+<p><img src="https://img.senup.cn/blog/20200413/H0AcUlubCeI4.png?imageslim" alt="mark"></p>
+<p>测试用例：</p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>执行语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x=3 ,y=1,magic=2</td>
+<td>1、4</td>
+</tr>
+<tr>
+<td>x=3 ,y=1,magic=2</td>
+<td>2、3、4</td>
+</tr>
+</tbody></table>
+<p>可以看到，两条测试用例覆盖总共覆盖到语句1~4，因此语句覆盖100%。</p>
+<h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><p>语句覆盖标准最弱。</p>
+<p>举个例子：若测试条件<code>x&gt;0&amp;&amp;y&gt;0</code>被程序人员写错成<code>x&gt;0||y&gt;0</code>，你可以发现执行完上述的两条测试用例后，得到的执行结果跟之前完全一致，无法发现出代码的错误，因此，语句覆盖不能准确判断运算中的逻辑关系错误。</p>
+<p><img src="https://img.senup.cn/blog/20200413/AgNfeXX9Q8Uc.png?imageslim" alt></p>
+<h3 id="判定覆盖"><a href="#判定覆盖" class="headerlink" title="判定覆盖"></a>判定覆盖</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>判定覆盖又称为分支覆盖，它要求设计足够多的测试用例，使得程序中每个判定至少有一次为真值，有一次为假值，即：程序中的每个分支至少执行一次。每个判断的取真、取假至少执行一次。</p>
+<ul>
+<li><p>优点：判定覆盖比语句覆盖要多几乎一倍的测试路径，当然也就具有比语句覆盖更强的测试能力。同样判定覆盖也具有和语句覆盖一样的简单性，无须细分每个判定就可以得到测试用例。</p>
+</li>
+<li><p>缺点：往往大部分的判定语句是由多个逻辑条件组合而成（如，判定语句中包含AND、OR、CASE），若仅仅判断其整个最终结果，而忽略每个条件的取值情况，必然会遗漏部分测试路径。</p>
+</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/tPzTnrOdYUDQ.png?imageslim" alt="mark"></p>
+<h4 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h4><p>针对下图，判定覆盖针对的是整个条件的真假值判断，为求简化将两个条件定义为P1、P2，</p>
+<p>P1整个条件有真假，P2整个条件有真假，</p>
+<p>因此设计的两条测试用例都有覆盖到，判定覆盖率100%。</p>
+<blockquote>
+<p>可以看到真真，假假这两种情况并没有涉及。</p>
+</blockquote>
+<p><img src="https://img.senup.cn/blog/20200413/0IHfwBvAOtRE.png?imageslim" alt="mark"></p>
+<h4 id="局限性-1"><a href="#局限性-1" class="headerlink" title="局限性"></a>局限性</h4><ul>
+<li>判定覆盖强于语句覆盖。</li>
+<li>判定覆盖代码出错照样无法检测，参照下图例子</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/sbu1eUgJqOrS.png?imageslim" alt></p>
+<h3 id="条件覆盖"><a href="#条件覆盖" class="headerlink" title="条件覆盖"></a>条件覆盖</h3><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h4><p>条件覆盖要求设计足够多的测试用例，使得判定中的每个条件获得各种可能的结果，即每个条件至少有一次为真值，有一次为假值。</p>
+<ul>
+<li>优点：显然条件覆盖比判定覆盖，增加了对符合判定情况的测试，增加了测试路径。</li>
+<li>缺点：要达到条件覆盖，需要足够多的测试用例，但条件覆盖并不能保证判定覆盖。条件覆盖只能保证每个条件至少有一次为真，而不考虑所有的判定结果。</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/NvudweW4jxA4.png?imageslim" alt></p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="https://img.senup.cn/blog/20200413/5HnRVAdTDRMd.png?imageslim" alt="mark"></p>
+<p>可以看到条件覆盖侧重于C1 C2 C3单个条件的真假。</p>
+<p><img src="https://img.senup.cn/blog/20200413/UQIK0rHpMqvl.png?imageslim" alt></p>
+<h4 id="局限性-2"><a href="#局限性-2" class="headerlink" title="局限性"></a>局限性</h4><p>看到这里可能有疑惑：既然条件覆盖比判定覆盖更细致，那么条件覆盖是不是就包含了判定覆盖呢？</p>
+<p>下图中，c1 c2 c3三个条件分别有真假两种情况，这是条件覆盖。但是我们可以看到P1这个综合条件却只有假这一种情况，P1为真并没有被覆盖到，不符合判定覆盖，因此结论是条件覆盖不包含判定覆盖。</p>
+<p><img src="https://img.senup.cn/blog/20200413/3Fa7T9URDYsC.png?imageslim" alt="mark"></p>
+<h3 id="判定覆盖-与-条件覆盖-的区别"><a href="#判定覆盖-与-条件覆盖-的区别" class="headerlink" title="判定覆盖 与 条件覆盖 的区别"></a>判定覆盖 与 条件覆盖 的区别</h3><p> 判定覆盖只关心判定表达式的值（真/假），而条件覆盖涉及到判定表达式的每个条件的值（真/假）。</p>
+<blockquote>
+<p>举个最简单的例子，方便理解：</p>
+<p>  判定表达式：a&gt;1 or b&gt;1</p>
+<p>   用判定覆盖设计的测试数据：</p>
+<p>​     a＝5 （判定表达式的值为“真”）</p>
+<p>​     a＝0 （判定表达式的值为“假”）</p>
+<p>​     这里不需要管b的取值，就已经满足判定覆盖的条件了。</p>
+<p>   用条件覆盖设计的测试数据：</p>
+<p>​      a＝5 （条件a&gt;1的值为“真”）</p>
+<p>​      a＝0（条件a&gt;1的值为“假”）</p>
+<p>​      b＝5 （条件b&gt;1的值为“真”）</p>
+<p>​     b＝0 （条件b&gt;1的值为“假”）</p>
+<p>​     这里不考虑 a&gt;1 or b&gt;1 这个表达式的取值的情况，但必须把a&gt;1 和 b&gt;1 这两个条件的取值考虑全。</p>
+</blockquote>
+<h3 id="判定条件覆盖"><a href="#判定条件覆盖" class="headerlink" title="判定条件覆盖"></a>判定条件覆盖</h3><h4 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h4><p>设计足够多的测试用例，使得判定中每个条件的所有可能结果至少出现一次，每个判定本身所有可能结果也至少出现一次</p>
+<ul>
+<li>优点：判定/条件覆盖满足判定覆盖准则和条件覆盖准则，弥补了二者的不足。</li>
+<li>缺点：判定/条件覆盖准则的缺点是未考虑条件的组合情况。</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/9LFc6YXmigCu.png?imageslim" alt="mark"></p>
+<h4 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h4><p><img src="https://img.senup.cn/blog/20200413/sdpC7itQIH7J.png?imageslim" alt="mark"></p>
+<p>由上图可知，先根据条件+判定都满足划分情况，再设计测试数据。</p>
+<h4 id="局限性-3"><a href="#局限性-3" class="headerlink" title="局限性"></a>局限性</h4><p><img src="https://img.senup.cn/blog/20200413/ybm37SMFp4yY.png?imageslim" alt></p>
+<h3 id="条件组合覆盖"><a href="#条件组合覆盖" class="headerlink" title="条件组合覆盖"></a>条件组合覆盖</h3><h4 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h4><p>要求设计足够多的测试用例，使得每个判定中条件结果的所有可能组合至少出现一次。</p>
+<ul>
+<li>优点：多重条件覆盖准则满足判定覆盖、条件覆盖和判定/条件覆盖准则。更改的判定/条件覆盖要求设计足够多的测试用例，使得判定中每个条件的所有可能结果至少出现一次，每个判定本身的所有可能结果也至少出现一次。并且每个条件都显示能单独影响判定结果。</li>
+<li>缺点：线性地增加了测试用例的数量。</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/n436fhheh0vT.png?imageslim" alt="mark"></p>
+<h4 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h4><p><img src="https://img.senup.cn/blog/20200413/PH925rlLGqoV.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/Rn1qfiSlaCex.png?imageslim" alt="mark"></p>
+<p>由上图红框可知，判定1里面有C1&amp;&amp;C2两个条件，组合有2*2=4种情况，C3有两种情况，针对C3这一列前两行满足C3的条件，后两行其实无所谓。</p>
+<p>条件组合，字面意思是穷举各条件的组合，再设计测试用例。</p>
+<h4 id="局限性-4"><a href="#局限性-4" class="headerlink" title="局限性"></a>局限性</h4><p><img src="https://img.senup.cn/blog/20200413/BY0nM6cd1tNc.png?imageslim" alt="mark"></p>
+<h3 id="路径覆盖"><a href="#路径覆盖" class="headerlink" title="路径覆盖"></a>路径覆盖</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><p>设计足够的测试用例，覆盖程序中所有可能的路径。</p>
+<ul>
+<li><p>优点：这种测试方法可以对程序进行彻底的测试，比前面五种的覆盖面都广。</p>
+</li>
+<li><p>缺点：由于路径覆盖需要对所有可能的路径进行测试（包括循环、条件组合、分支选择等），那么需要设计大量、复杂的测试用例，使得工作量呈指数级增长。而在有些情况下，一些执行路径是不可能被执行的，如：<br>　　If （!A）B++；<br>　　If （!A）D–；</p>
+<p>　　这两个语句实际只包括了2条执行路径，即A为真或假时候对B和D的处理，真或假不可能都存在，而路径覆盖测试则认为是包含了真与假的4条执行路径。这样不仅降低了测试效率，而且大量的测试结果的累积，也为排错带来麻烦。</p>
+</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200413/jCPNVS4TFn2w.png?imageslim" alt="mark"></p>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><p>穷举出各条路径，再设计测试数据。</p>
+<p><img src="https://img.senup.cn/blog/20200413/8uebXk40TmgL.png?imageslim" alt="mark"></p>
+<h4 id="局限性-5"><a href="#局限性-5" class="headerlink" title="局限性"></a>局限性</h4><p>下图中，各路径都满足了，但是C2这一列不满足条件覆盖。</p>
+<p><img src="https://img.senup.cn/blog/20200413/E0ah1zcgetFb.png?imageslim" alt="mark"></p>
+<p>路径覆盖遇到循环，则工作量变得巨大，人力成本巨大。</p>
+<p><img src="https://img.senup.cn/blog/20200413/VGruYCfOL6we.png?imageslim" alt="mark"></p>
+<p>于是有了以下的方法。</p>
+<h3 id="基本路径测试法"><a href="#基本路径测试法" class="headerlink" title="基本路径测试法"></a>基本路径测试法</h3><p><img src="https://img.senup.cn/blog/20200413/uc89FngxdHTJ.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/TbDr1qCJOTpB.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/oWfnoxHlaUtt.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/B9KbqSk5b7m3.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/k4cWCECb2va5.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200413/hyh3k1KtBdXv.png?imageslim" alt="mark"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>白盒测试是一种被广泛使用的逻辑测试方法，是由程序内部逻辑驱动的一种单元测试方法。只有对程序内部十分了解才能进行适度有效的白盒测试。但是贯穿在程序内部的逻辑存在着不确定性和无穷性，尤其对于大规模复杂软件。因此我们不能穷举所有的逻辑路径，即使穷举也未必会带来好运（穷举不能查出程序逻辑规则错误，不能查出数据相关错误，不能查出程序遗漏的路径）。</p>
+<p>　　那么正确使用白盒测试，就要先从代码分析入手，根据不同的代码逻辑规则、语句执行情况，选用适合的覆盖方法。任何一个高效的测试用例，都是针对具体测试场景的。逻辑测试不是片面的测试正确的结果或是测试错误的结果，而是尽可能全面地覆盖每一个逻辑路径。</p>
+<p><img src="https://img.senup.cn/blog/20200413/21WWCK3IGO3O.png?imageslim" alt="mark"></p>
+<h3 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h3><p>教程出自<a href="http://yun.itheima.com/course/620.html" target="_blank" rel="noopener">http://yun.itheima.com/course/620.html</a> </p>
+<p>课程亮点 ：</p>
+<p>1、多种白盒测试用例方法的学习，让用例设计更加全面。</p>
+<p> 2、每种白盒测试用例丰富的局限性说明，更好的理解应用每种方法。 </p>
+<p>3、多角度的案例实践，深入掌握每种设计方法。</p>
+<iframe src="//player.bilibili.com/player.html?aid=80843726&bvid=BV1XJ411Y7UJ&cid=138365773&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/测试/" rel="tag"><i class="fa fa-tag"></i> 测试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/5f72.html" rel="prev" title="指弹谱-butter-fly">
+      <i class="fa fa-chevron-left"></i> 指弹谱-butter-fly
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/e0dc.html" rel="next" title="Coding更新记">
+      Coding更新记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#白盒测试设计方法学习笔记"><span class="nav-number">1.</span> <span class="nav-text">白盒测试设计方法学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是白盒测试？"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是白盒测试？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白盒测试的特点"><span class="nav-number">1.0.2.</span> <span class="nav-text">白盒测试的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白盒测试设计方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">白盒测试设计方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试设计方法——逻辑覆盖法"><span class="nav-number">1.0.4.</span> <span class="nav-text">测试设计方法——逻辑覆盖法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语句覆盖"><span class="nav-number">1.0.5.</span> <span class="nav-text">语句覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定覆盖"><span class="nav-number">1.0.6.</span> <span class="nav-text">判定覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-1"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-1"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性-1"><span class="nav-number">1.0.6.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件覆盖"><span class="nav-number">1.0.7.</span> <span class="nav-text">条件覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-2"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性-2"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定覆盖-与-条件覆盖-的区别"><span class="nav-number">1.0.8.</span> <span class="nav-text">判定覆盖 与 条件覆盖 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判定条件覆盖"><span class="nav-number">1.0.9.</span> <span class="nav-text">判定条件覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-3"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-2"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性-3"><span class="nav-number">1.0.9.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件组合覆盖"><span class="nav-number">1.0.10.</span> <span class="nav-text">条件组合覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-4"><span class="nav-number">1.0.10.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子-3"><span class="nav-number">1.0.10.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性-4"><span class="nav-number">1.0.10.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径覆盖"><span class="nav-number">1.0.11.</span> <span class="nav-text">路径覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念-5"><span class="nav-number">1.0.11.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例-1"><span class="nav-number">1.0.11.2.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局限性-5"><span class="nav-number">1.0.11.3.</span> <span class="nav-text">局限性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本路径测试法"><span class="nav-number">1.0.12.</span> <span class="nav-text">基本路径测试法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.13.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考视频"><span class="nav-number">1.0.14.</span> <span class="nav-text">参考视频</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="高等游民"
+      src="/images/1.jpeg">
+  <p class="site-author-name" itemprop="name">高等游民</p>
+  <div class="site-description" itemprop="description">卷发星人/程序猿/指弹菜鸟/社恐阿宅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/senup?tab=stars" title="GitHub → https://github.com/senup?tab=stars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://snailclimb.gitee.io/javaguide/#/" title="Guide → https://snailclimb.gitee.io/javaguide/#/" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Guide</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/senup/" title="cnblog → https://www.cnblogs.com/senup/" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat_channel.jpg" title="WeChat → /images/wechat_channel.jpg"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      DaLao
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.justzht.com" title="https://www.justzht.com" rel="noopener" target="_blank">justzht</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://199508.com/" title="https://199508.com/" rel="noopener" target="_blank">大雄</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.fueis.com/" title="https://blog.fueis.com/" rel="noopener" target="_blank">当下</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qqiyu.cn/" title="https://blog.qqiyu.cn/" rel="noopener" target="_blank">七云</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://noheart.cn/" title="https://noheart.cn/" rel="noopener" target="_blank">今今今生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.juroku.net/" title="https://www.juroku.net/" rel="noopener" target="_blank">致郁系</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://co5.me/" title="https://co5.me/" rel="noopener" target="_blank">少女癌</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://allenmistake.top/" title="https://allenmistake.top/" rel="noopener" target="_blank">AllenMistake</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lruihao.cn/" title="https://lruihao.cn/" rel="noopener" target="_blank">李瑞豪</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leflacon.top/" title="https://leflacon.top/" rel="noopener" target="_blank">LeFlacon</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+		<div style="display:inline-block;">
+		<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style=""> 
+			<img src="/images/yun.png" style="height:30px">
+		</a>
+		</div>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19119668号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高等游民</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:54</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+	  
+
+		
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'lFV1Gj6XzpRCC1xA9YskKGKv-gzGzoHsz',
+      appKey     : 'rCbCQxrpkNpdqAf7NNTJg42D',
+      placeholder: "吐槽一波，嗯？",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+  
+  <script type="text/javascript" src="/js/firework.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false,"scale":0.8},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

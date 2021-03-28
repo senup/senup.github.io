@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/home.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/home.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xYfyORg7NRaZ710bOerpWDuZ6ftibqls5bOt3eiFSoM">
+  <meta name="baidu-site-verification" content="FhQkF9o54P">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Java8 新增了非常多的特性，我们主要讨论以下几个：  Lambda 表达式 − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。 方法引用 − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。 默认方法 − 默认方法就是一个在接口里面有了一个实现的方法。 新工">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发效率-杂七杂八">
+<meta property="og:url" content="https://www.senup.cn/p/ee3e.html">
+<meta property="og:site_name" content="Senup">
+<meta property="og:description" content="Java8 新增了非常多的特性，我们主要讨论以下几个：  Lambda 表达式 − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。 方法引用 − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。 默认方法 − 默认方法就是一个在接口里面有了一个实现的方法。 新工">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123131711660.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123131733627.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132121889.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123131950168.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132604396.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132845149.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132300612.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132421433.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132746106.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123132919631.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123133133608.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123133416809.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123133548193.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123133802817.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123135814629.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123135518659.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123134439031.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123140944964.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123140959474.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123135903404.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123141413763.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123141620070.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123142029897.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123142049620.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123141939287.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123142110223.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123142651304.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123143459718.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123143435311.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123143604642.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123143730704.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123145557954.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123143759518.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123150503988.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123144535602.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123150737373.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123150418135.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123150223473.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123190853423.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123191125898.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123191246442.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123191344443.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123192010888.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123191715725.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123192030203.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123201418354.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123201715303.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123202143043.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123191704588.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123202114378.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123203631693.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123203656424.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123131216561.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123131746932.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123134242289.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123134004512.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210123150030727.png">
+<meta property="og:updated_time" content="2021-03-28T13:13:26.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java开发效率-杂七杂八">
+<meta name="twitter:description" content="Java8 新增了非常多的特性，我们主要讨论以下几个：  Lambda 表达式 − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。 方法引用 − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。 默认方法 − 默认方法就是一个在接口里面有了一个实现的方法。 新工">
+<meta name="twitter:image" content="https://img.senup.cn/blog/image-20210123131711660.png">
+
+<link rel="canonical" href="https://www.senup.cn/p/ee3e.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java开发效率-杂七杂八 | Senup</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Senup</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">走在风中 今天阳光 突然好温柔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/生活" rel="section"><i class="fa fa-heartbeat fa-fw"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/categories/技术" rel="section"><i class="fa fa-calendar fa-fw"></i>技术</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar">
+
+    <a href="/categories/吉他" rel="section"><i class="fa fa-tags fa-fw"></i>吉他</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/senup" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ee3e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="卷发星人/程序猿/指弹菜鸟/社恐阿宅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java开发效率-杂七杂八
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-27 22:14:29" itemprop="dateCreated datePublished" datetime="2021-01-27T22:14:29+08:00">2021-01-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/ee3e.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/ee3e.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Java8 新增了非常多的特性，我们主要讨论以下几个：</p>
+<ul>
+<li><strong>Lambda 表达式</strong> − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。</li>
+<li><strong>方法引用</strong> − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。</li>
+<li><strong>默认方法</strong> − 默认方法就是一个在接口里面有了一个实现的方法。</li>
+<li><strong>新工具</strong> − 新的编译工具，如：Nashorn引擎 jjs、 类依赖分析器jdeps。</li>
+<li><strong>Stream API</strong> −新添加的Stream API（java.util.stream） 把真正的函数式编程风格引入到Java中。</li>
+<li><strong>Date Time API</strong> − 加强对日期与时间的处理。</li>
+<li><strong>Optional 类</strong> − Optional 类已经成为 Java 8 类库的一部分，用来解决空指针异常。</li>
+<li><strong>Nashorn, JavaScript 引擎</strong> − Java 8提供了一个新的Nashorn javascript引擎，它允许我们在JVM上运行特定的javascript应用。</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="购物车案例"><a href="#购物车案例" class="headerlink" title="购物车案例"></a>购物车案例</h1><ul>
+<li>创建sku类</li>
+<li>创建购物车服务类</li>
+<li>创建sku类别枚举类</li>
+</ul>
+<p><strong>new ArrayList&lt;&gt;{ {add()}}</strong>，这个add方法</p>
+<p><img src="https://img.senup.cn/blog/image-20210123131711660.png" alt="image-20210123131216561"></p>
+<h1 id="硬编码业务逻辑"><a href="#硬编码业务逻辑" class="headerlink" title="硬编码业务逻辑"></a>硬编码业务逻辑</h1><ul>
+<li>找出购物车所有电子产品</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/image-20210123131733627.png" alt="image-20210123131711660"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123132121889.png" alt="image-20210123131733627"></p>
+<p>效果如图所示</p>
+<p><img src="https://img.senup.cn/blog/image-20210123131950168.png" alt="image-20210123131746932"></p>
+<h1 id="单一维度条件参数化"><a href="#单一维度条件参数化" class="headerlink" title="单一维度条件参数化"></a>单一维度条件参数化</h1><ul>
+<li>根据传入的商品类型参数，找出购物车中同种商品类型的商品列表</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/image-20210123132604396.png" alt="image-20210123131950168"></p>
+<h1 id="实战：多维度条件参数化"><a href="#实战：多维度条件参数化" class="headerlink" title="实战：多维度条件参数化"></a>实战：多维度条件参数化</h1><p><img src="https://img.senup.cn/blog/image-20210123132845149.png" alt="image-20210123132121889"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123132300612.png" alt="image-20210123132300612"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123132421433.png" alt="image-20210123132421433"></p>
+<p>缺点：属性过多方法参数过于冗余</p>
+<h1 id="判断逻辑参数化-实体类"><a href="#判断逻辑参数化-实体类" class="headerlink" title="判断逻辑参数化-实体类"></a>判断逻辑参数化-实体类</h1><p>使用了设计模式的策略模式</p>
+<p><img src="https://img.senup.cn/blog/image-20210123132746106.png" alt="image-20210123132604396"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123132919631.png" alt="image-20210123132746106"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123133133608.png" alt="image-20210123132845149"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123133416809.png" alt="image-20210123132919631"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123133548193.png" alt="image-20210123133133608"></p>
+<h1 id="判断逻辑参数化-匿名类"><a href="#判断逻辑参数化-匿名类" class="headerlink" title="判断逻辑参数化-匿名类"></a>判断逻辑参数化-匿名类</h1><p>删除多余的实现子类，而是结合匿名类来实现接口的逻辑</p>
+<p><img src="https://img.senup.cn/blog/image-20210123133802817.png" alt="image-20210123133416809"></p>
+<h1 id="判断逻辑参数化-Lamda表达式"><a href="#判断逻辑参数化-Lamda表达式" class="headerlink" title="判断逻辑参数化-Lamda表达式"></a>判断逻辑参数化-Lamda表达式</h1><p>将原来的业务逻辑进行简写</p>
+<p><img src="https://img.senup.cn/blog/image-20210123135814629.png" alt="image-20210123133548193"></p>
+<h1 id="自定义函数式接口"><a href="#自定义函数式接口" class="headerlink" title="自定义函数式接口"></a>自定义函数式接口</h1><p><img src="https://img.senup.cn/blog/image-20210123135518659.png" alt="image-20210123133802817"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123134439031.png" alt="image-20210123134004512"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123140944964.png" alt="image-20210123134242289"></p>
+<h1 id="传统方式处理业务逻辑"><a href="#传统方式处理业务逻辑" class="headerlink" title="传统方式处理业务逻辑"></a>传统方式处理业务逻辑</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="https://img.senup.cn/blog/image-20210123140959474.png" alt="image-20210123134439031"></p>
+<h2 id="以原始集合操作实现需求-太长不写"><a href="#以原始集合操作实现需求-太长不写" class="headerlink" title="以原始集合操作实现需求(太长不写)"></a>以原始集合操作实现需求(太长不写)</h2><h2 id="compare-接口怎么重写？"><a href="#compare-接口怎么重写？" class="headerlink" title="compare()接口怎么重写？"></a>compare()接口怎么重写？</h2><h2 id="以stream-流方式实现需求"><a href="#以stream-流方式实现需求" class="headerlink" title="以stream 流方式实现需求"></a>以stream 流方式实现需求</h2><p>Atomic原子引用来包装变量，多线程安全</p>
+<h1 id="实战案例归纳总结"><a href="#实战案例归纳总结" class="headerlink" title="实战案例归纳总结"></a>实战案例归纳总结</h1><p>方便。</p>
+<h1 id="流的初体验"><a href="#流的初体验" class="headerlink" title="流的初体验"></a>流的初体验</h1><p><img src="https://img.senup.cn/blog/image-20210123135903404.png" alt="image-20210123135518659"></p>
+<h2 id="流与集合的区别"><a href="#流与集合的区别" class="headerlink" title="流与集合的区别"></a>流与集合的区别</h2><p>时间与空间（采用DVD播放与流媒体类比整体与局部）</p>
+<ul>
+<li>流面向计算，集合面向存储</li>
+</ul>
+<p>只能遍历一次</p>
+<p>集合外部迭代、流可以内部迭代</p>
+<h1 id="流操作分类"><a href="#流操作分类" class="headerlink" title="流操作分类"></a>流操作分类</h1><p><img src="https://img.senup.cn/blog/image-20210123141413763.png" alt="image-20210123135814629"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123141620070.png" alt="image-20210123135903404"></p>
+<p>有状态：就是单个数据就能处理，不需要整体数据一起处理</p>
+<p>非短路操作：每个数据都要执行一遍操作</p>
+<h1 id="常用中间操作演示-过滤映射扁平化遍历排序"><a href="#常用中间操作演示-过滤映射扁平化遍历排序" class="headerlink" title="常用中间操作演示-过滤映射扁平化遍历排序"></a>常用中间操作演示-过滤映射扁平化遍历排序</h1><p>过滤操作：符合条件保留</p>
+<p>扁平化：将流变成另一个流</p>
+<p><img src="https://img.senup.cn/blog/image-20210123142029897.png" alt="image-20210123140944964"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123142049620.png" alt="image-20210123140959474"></p>
+<p>peek操作和foreach效果一致，区别是中间操作操作完流还是可用的，而foreach是终端操作，操作完不可用</p>
+<p><img src="https://img.senup.cn/blog/image-20210123141939287.png" alt="image-20210123141413763"></p>
+<p>peek和foreach并行执行，出现的现象就是打印结果是交错的</p>
+<p><img src="https://img.senup.cn/blog/image-20210123142110223.png" alt="image-20210123141620070"></p>
+<p>上图加入了sorted这个有状态的操作，所以peek无状态操作完才会执行后面的sorted、foreach操作</p>
+<p>可以说，无状态操作可能会和下面其他状态一起执行</p>
+<p>但是有状态的操作就不会了</p>
+<p>有状态操作-去重跳过截断排序</p>
+<p><img src="https://img.senup.cn/blog/image-20210123142651304.png" alt="image-20210123141939287"></p>
+<p>skip跳过前三天数据</p>
+<p><img src="https://img.senup.cn/blog/image-20210123143459718.png" alt="image-20210123142029897"></p>
+<p>limit只取前三条</p>
+<p><img src="https://img.senup.cn/blog/image-20210123143435311.png" alt="image-20210123142049620"></p>
+<p>两者结合的话可以实现分页的效果，即跳过前几条，取几条</p>
+<p><img src="https://img.senup.cn/blog/image-20210123143604642.png" alt="image-20210123142110223"></p>
+<h1 id="终端操作演示之匹配查找最大最小计数"><a href="#终端操作演示之匹配查找最大最小计数" class="headerlink" title="终端操作演示之匹配查找最大最小计数"></a>终端操作演示之匹配查找最大最小计数</h1><p>如果不匹配，则停止</p>
+<p><img src="https://img.senup.cn/blog/image-20210123143730704.png" alt="image-20210123142651304"></p>
+<h1 id="四种构建流的方式"><a href="#四种构建流的方式" class="headerlink" title="四种构建流的方式"></a>四种构建流的方式</h1><p><img src="https://img.senup.cn/blog/image-20210123145557954.png" alt="image-20210123143435311"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123143759518.png" alt="image-20210123143459718"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123150503988.png" alt="image-20210123143604642"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123144535602.png" alt="image-20210123143730704"></p>
+<h1 id="文件拷贝初始版"><a href="#文件拷贝初始版" class="headerlink" title="文件拷贝初始版"></a>文件拷贝初始版</h1><p><img src="https://img.senup.cn/blog/image-20210123150737373.png" alt="image-20210123143759518"></p>
+<p>改进之后</p>
+<p><img src="https://img.senup.cn/blog/image-20210123150418135.png" alt="image-20210123144535602"></p>
+<h1 id="option的使用"><a href="#option的使用" class="headerlink" title="option的使用"></a>option的使用</h1><p><img src="https://img.senup.cn/blog/image-20210123150223473.png" alt="image-20210123145557954"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123190853423.png" alt="image-20210123150030727"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123191125898.png" alt="image-20210123150223473"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123191246442.png" alt="image-20210123150418135"></p>
+<h1 id="不可变集合"><a href="#不可变集合" class="headerlink" title="不可变集合"></a>不可变集合</h1><h2 id="不可变对象的优点"><a href="#不可变对象的优点" class="headerlink" title="不可变对象的优点"></a>不可变对象的优点</h2><p><img src="https://img.senup.cn/blog/image-20210123191344443.png" alt="image-20210123150503988"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123192010888.png" alt="image-20210123150737373"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123191715725.png" alt="image-20210123190853423"></p>
+<h1 id="新集合类型multiSet"><a href="#新集合类型multiSet" class="headerlink" title="新集合类型multiSet"></a>新集合类型multiSet</h1><p><img src="https://img.senup.cn/blog/image-20210123192030203.png" alt="image-20210123191125898"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123201418354.png" alt="image-20210123191246442"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123201715303.png" alt="image-20210123191344443"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123202143043.png" alt="image-20210123191704588"></p>
+<h1 id="Guava工具类"><a href="#Guava工具类" class="headerlink" title="Guava工具类"></a>Guava工具类</h1><p><img src="https://img.senup.cn/blog/image-20210123191704588.png" alt="image-20210123191715725"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123202114378.png" alt="image-20210123192010888"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123203631693.png" alt="image-20210123192030203"></p>
+<p> <img src="https://img.senup.cn/blog/image-20210123203656424.png" alt="image-20210123201418354"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123131216561.png" alt="image-20210123201715303"></p>
+<h1 id="实战I-o流"><a href="#实战I-o流" class="headerlink" title="实战I/o流"></a>实战I/o流</h1><p><img src="https://img.senup.cn/blog/image-20210123131746932.png" alt="image-20210123202114378"></p>
+<p><img src="https://img.senup.cn/blog/image-20210123134242289.png" alt="image-20210123202143043"></p>
+<h1 id="log4j"><a href="#log4j" class="headerlink" title="@log4j"></a>@log4j</h1><p><img src="https://img.senup.cn/blog/image-20210123134004512.png" alt="image-20210123203631693"></p>
+<p>日志实现</p>
+<p><img src="https://img.senup.cn/blog/image-20210123150030727.png" alt="image-20210123203656424"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/c2e0.html" rel="prev" title="王大大乐理课-随记">
+      <i class="fa fa-chevron-left"></i> 王大大乐理课-随记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/fb3f.html" rel="next" title="常见Http错误状态码及其解决方案">
+      常见Http错误状态码及其解决方案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#购物车案例"><span class="nav-number">1.</span> <span class="nav-text">购物车案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬编码业务逻辑"><span class="nav-number">2.</span> <span class="nav-text">硬编码业务逻辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单一维度条件参数化"><span class="nav-number">3.</span> <span class="nav-text">单一维度条件参数化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战：多维度条件参数化"><span class="nav-number">4.</span> <span class="nav-text">实战：多维度条件参数化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断逻辑参数化-实体类"><span class="nav-number">5.</span> <span class="nav-text">判断逻辑参数化-实体类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断逻辑参数化-匿名类"><span class="nav-number">6.</span> <span class="nav-text">判断逻辑参数化-匿名类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断逻辑参数化-Lamda表达式"><span class="nav-number">7.</span> <span class="nav-text">判断逻辑参数化-Lamda表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义函数式接口"><span class="nav-number">8.</span> <span class="nav-text">自定义函数式接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#传统方式处理业务逻辑"><span class="nav-number">9.</span> <span class="nav-text">传统方式处理业务逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">9.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以原始集合操作实现需求-太长不写"><span class="nav-number">9.2.</span> <span class="nav-text">以原始集合操作实现需求(太长不写)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compare-接口怎么重写？"><span class="nav-number">9.3.</span> <span class="nav-text">compare()接口怎么重写？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以stream-流方式实现需求"><span class="nav-number">9.4.</span> <span class="nav-text">以stream 流方式实现需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战案例归纳总结"><span class="nav-number">10.</span> <span class="nav-text">实战案例归纳总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流的初体验"><span class="nav-number">11.</span> <span class="nav-text">流的初体验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流与集合的区别"><span class="nav-number">11.1.</span> <span class="nav-text">流与集合的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流操作分类"><span class="nav-number">12.</span> <span class="nav-text">流操作分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用中间操作演示-过滤映射扁平化遍历排序"><span class="nav-number">13.</span> <span class="nav-text">常用中间操作演示-过滤映射扁平化遍历排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#终端操作演示之匹配查找最大最小计数"><span class="nav-number">14.</span> <span class="nav-text">终端操作演示之匹配查找最大最小计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四种构建流的方式"><span class="nav-number">15.</span> <span class="nav-text">四种构建流的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件拷贝初始版"><span class="nav-number">16.</span> <span class="nav-text">文件拷贝初始版</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#option的使用"><span class="nav-number">17.</span> <span class="nav-text">option的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不可变集合"><span class="nav-number">18.</span> <span class="nav-text">不可变集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变对象的优点"><span class="nav-number">18.1.</span> <span class="nav-text">不可变对象的优点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新集合类型multiSet"><span class="nav-number">19.</span> <span class="nav-text">新集合类型multiSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Guava工具类"><span class="nav-number">20.</span> <span class="nav-text">Guava工具类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战I-o流"><span class="nav-number">21.</span> <span class="nav-text">实战I/o流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#log4j"><span class="nav-number">22.</span> <span class="nav-text">@log4j</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="高等游民"
+      src="/images/1.jpeg">
+  <p class="site-author-name" itemprop="name">高等游民</p>
+  <div class="site-description" itemprop="description">卷发星人/程序猿/指弹菜鸟/社恐阿宅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/senup?tab=stars" title="GitHub → https://github.com/senup?tab=stars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://snailclimb.gitee.io/javaguide/#/" title="Guide → https://snailclimb.gitee.io/javaguide/#/" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Guide</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/senup/" title="cnblog → https://www.cnblogs.com/senup/" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat_channel.jpg" title="WeChat → /images/wechat_channel.jpg"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      DaLao
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.justzht.com" title="https://www.justzht.com" rel="noopener" target="_blank">justzht</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://199508.com/" title="https://199508.com/" rel="noopener" target="_blank">大雄</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.fueis.com/" title="https://blog.fueis.com/" rel="noopener" target="_blank">当下</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qqiyu.cn/" title="https://blog.qqiyu.cn/" rel="noopener" target="_blank">七云</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://noheart.cn/" title="https://noheart.cn/" rel="noopener" target="_blank">今今今生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.juroku.net/" title="https://www.juroku.net/" rel="noopener" target="_blank">致郁系</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://co5.me/" title="https://co5.me/" rel="noopener" target="_blank">少女癌</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://allenmistake.top/" title="https://allenmistake.top/" rel="noopener" target="_blank">AllenMistake</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lruihao.cn/" title="https://lruihao.cn/" rel="noopener" target="_blank">李瑞豪</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leflacon.top/" title="https://leflacon.top/" rel="noopener" target="_blank">LeFlacon</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+		<div style="display:inline-block;">
+		<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style=""> 
+			<img src="/images/yun.png" style="height:30px">
+		</a>
+		</div>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19119668号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高等游民</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:54</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+	  
+
+		
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'lFV1Gj6XzpRCC1xA9YskKGKv-gzGzoHsz',
+      appKey     : 'rCbCQxrpkNpdqAf7NNTJg42D',
+      placeholder: "吐槽一波，嗯？",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+  
+  <script type="text/javascript" src="/js/firework.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false,"scale":0.8},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

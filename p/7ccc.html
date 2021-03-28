@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/home.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/home.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xYfyORg7NRaZ710bOerpWDuZ6ftibqls5bOt3eiFSoM">
+  <meta name="baidu-site-verification" content="FhQkF9o54P">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：  若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值； 若任意节点的右子树不空，则右子树上所有节点的值均大于或等于它的根节点的值； 任意节点的左、右子树也分别为二">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构学习笔记-二叉查找树">
+<meta property="og:url" content="https://www.senup.cn/p/7ccc.html">
+<meta property="og:site_name" content="Senup">
+<meta property="og:description" content="二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：  若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值； 若任意节点的右子树不空，则右子树上所有节点的值均大于或等于它的根节点的值； 任意节点的左、右子树也分别为二">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.senup.cn/blog/20200424/kI359rBdJSNN.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/oD1ALzvkUVfN.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/2nSPxo7BqrV7.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/OesHgXa3eVV4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/vR3fXhCE9zDX.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/VWQDI01QsHEh.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/KYRGaFnLl4Ha.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/mbdGpAsodyF0.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/YhwQmyK3VXfy.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/rjJTYdpR3T8A.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/1eX1O6ctWXVz.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/b3pEG5axhWHI.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/Qc6XCWgVUwG3.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/7Yg7BXv2fVi9.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/sHdOmmHpnysV.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/NITEfmF53DHz.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/2QINuKRteYPH.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/qH4lidH7pFNX.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/QdHfKSS6cqzK.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/EiYoGUCu3gyI.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/rr0HflItKdHS.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/8emxAblrBVFO.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/IeTPaufOaY3L.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/kTPnk7o4MOrt.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200428/hh2mzBw379o5.png?imageslim">
+<meta property="og:updated_time" content="2021-03-28T13:13:26.555Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构学习笔记-二叉查找树">
+<meta name="twitter:description" content="二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：  若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值； 若任意节点的右子树不空，则右子树上所有节点的值均大于或等于它的根节点的值； 任意节点的左、右子树也分别为二">
+<meta name="twitter:image" content="https://img.senup.cn/blog/20200424/kI359rBdJSNN.png?imageslim">
+
+<link rel="canonical" href="https://www.senup.cn/p/7ccc.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构学习笔记-二叉查找树 | Senup</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Senup</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">走在风中 今天阳光 突然好温柔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/生活" rel="section"><i class="fa fa-heartbeat fa-fw"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/categories/技术" rel="section"><i class="fa fa-calendar fa-fw"></i>技术</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar">
+
+    <a href="/categories/吉他" rel="section"><i class="fa fa-tags fa-fw"></i>吉他</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/senup" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/7ccc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="卷发星人/程序猿/指弹菜鸟/社恐阿宅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构学习笔记-二叉查找树
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-24 20:49:00" itemprop="dateCreated datePublished" datetime="2019-04-24T20:49:00+08:00">2019-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/7ccc.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/7ccc.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>二叉查找树</strong>（英语：Binary Search Tree），也称为<strong>二叉搜索树</strong>、<strong>有序二叉树</strong>（ordered binary tree）或<strong>排序二叉树</strong>（sorted binary tree），是指一棵空树或者具有下列性质的<a href="https://zh.wikipedia.org/wiki/二叉树" target="_blank" rel="noopener">二叉树</a>：</p>
+<ol>
+<li>若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；</li>
+<li>若任意节点的右子树不空，则右子树上所有节点的值均大于或等于它的根节点的值；</li>
+<li>任意节点的左、右子树也分别为二叉查找树；</li>
+</ol>
+<p><img src="https://img.senup.cn/blog/20200424/kI359rBdJSNN.png?imageslim" alt="二叉查找树"></p>
+<a id="more"></a>
+
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>二叉树可以有左孩子或者右孩子，二叉树不一定是满的，一个节点也可以是二叉树。</p>
+<p><img src="https://img.senup.cn/blog/20200428/oD1ALzvkUVfN.png?imageslim" alt="二叉树"></p>
+<h1 id="二分搜索树"><a href="#二分搜索树" class="headerlink" title="二分搜索树"></a>二分搜索树</h1><ol>
+<li>二分搜索树是二叉树</li>
+<li>二分搜索树的每个节点的值：<ul>
+<li>大于其左子树的所有节点的值</li>
+<li>小于其右子树的所有节点的值</li>
+</ul>
+</li>
+<li>每一棵子树也是二分搜索树</li>
+<li>存储的元素必须有可比较性（如果比较学生类，可以比较学号、成绩等可比较的数据）</li>
+</ol>
+<p><img src="https://img.senup.cn/blog/20200428/2nSPxo7BqrV7.png?imageslim" alt></p>
+<h1 id="向二分搜索树中添加元素"><a href="#向二分搜索树中添加元素" class="headerlink" title="向二分搜索树中添加元素"></a>向二分搜索树中添加元素</h1><p>无非是判断节点的值，若比当前节点小，则往左；反之往右。</p>
+<p>同时，如果节点的值与当前节点的值相同，则不做改变；</p>
+<p>因为我们的二分搜索树不包含重复元素。</p>
+<ul>
+<li>如果想包含重复元素的话，只需要定义：</li>
+<li>左子树小于等于节点；或者右子树大于节点；</li>
+<li>注意：我们之前讲的数组和链表，可以有重复元素</li>
+<li>二分搜索树添加元素的非递归写法和链表很像</li>
+</ul>
+<p><img src="https://img.senup.cn/blog/20200428/OesHgXa3eVV4.png?imageslim" alt></p>
+<p>递归具有更高的开销，最坏的情况下二分搜索树可能成为链表。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//泛型必须可比较</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BST</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> E e;</span><br><span class="line">        <span class="keyword">public</span> Node left, right;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.e = e;</span><br><span class="line">            left = <span class="keyword">null</span>;</span><br><span class="line">            right = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node root;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        root = <span class="keyword">null</span>;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    //向二分搜索树中添加新的元素e</span></span><br><span class="line"><span class="comment">//    public void add(E e) &#123;</span></span><br><span class="line"><span class="comment">//        //根节点为空的情况下</span></span><br><span class="line"><span class="comment">//        if (root == null) &#123;</span></span><br><span class="line"><span class="comment">//            root = new Node(e);</span></span><br><span class="line"><span class="comment">//            size++;</span></span><br><span class="line"><span class="comment">//        &#125; else &#123;</span></span><br><span class="line"><span class="comment">//            //对用户屏蔽细节，调用真正的add函数</span></span><br><span class="line"><span class="comment">//            add(root, e);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//    //向以node为根的二分搜索树中插入元素E，使用递归算法</span></span><br><span class="line"><span class="comment">//    private void add(Node node, E e) &#123;</span></span><br><span class="line"><span class="comment">//        //第一部分：递归终止的条件</span></span><br><span class="line"><span class="comment">//        //检查要插入的e是否等于元素的e</span></span><br><span class="line"><span class="comment">//        if (e.equals(node.e)) &#123;</span></span><br><span class="line"><span class="comment">//            return;</span></span><br><span class="line"><span class="comment">//        &#125; else if (e.compareTo(node.e) &lt; 0 &amp;&amp; node.left == null) &#123;</span></span><br><span class="line"><span class="comment">//            //插入左子树</span></span><br><span class="line"><span class="comment">//            node.left = new Node(e);</span></span><br><span class="line"><span class="comment">//            size++;</span></span><br><span class="line"><span class="comment">//            return;</span></span><br><span class="line"><span class="comment">//        &#125; else if (e.compareTo(node.e) &lt; 0 &amp;&amp; node.left == null) &#123;</span></span><br><span class="line"><span class="comment">//            node.right = new Node(e);</span></span><br><span class="line"><span class="comment">//            size++;</span></span><br><span class="line"><span class="comment">//            return;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        //第二部分 递归调用</span></span><br><span class="line"><span class="comment">//        if (e.compareTo(node.e) &lt; 0)</span></span><br><span class="line"><span class="comment">//            add(node.left, e);</span></span><br><span class="line"><span class="comment">//            //等于的情况在上面已经被排除</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            add(node.right, e);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 上面添加操作存在冗余：</span></span><br><span class="line"><span class="comment">* 用户调用的时候根节点为空插入新元素</span></span><br><span class="line"><span class="comment">* 而真实的添加操作同样使用了插入操作</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 进行两轮比较</span></span><br><span class="line"><span class="comment">* 不仅判断node的大小 同时比较其左右节点是否为空</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 条件臃肿</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 空——本身也为一棵二叉树</span></span><br><span class="line"><span class="comment">* 插入到空 本身也为一个位置节点</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="改进添加操作：深入理解递归终止条件"><a href="#改进添加操作：深入理解递归终止条件" class="headerlink" title="改进添加操作：深入理解递归终止条件"></a>改进添加操作：深入理解递归终止条件</h1><figure class="highlight java"><figcaption><span>改进添加操作 使用递归</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向二分搜索树中添加新的元素e</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    root = add(root,e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//向以node为根的二分搜索树中插入元素E，使用递归算法</span></span><br><span class="line"><span class="comment">//返回插入新节点后二叉搜索树的根root</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">add</span><span class="params">(Node node, E e)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//第一部分：递归终止的条件</span></span><br><span class="line">    <span class="comment">//检查要插入的e是否等于元素的e</span></span><br><span class="line">    <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">        size++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Node(e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//第二部分 递归调用</span></span><br><span class="line">    <span class="keyword">if</span> (e.compareTo(node.e) &lt; <span class="number">0</span>)</span><br><span class="line">        node.left=add(node.left, e);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (e.compareTo(node.e) &gt; <span class="number">0</span>)</span><br><span class="line">        node.right=add(node.right, e);</span><br><span class="line">    <span class="comment">//不处理相等的逻辑</span></span><br><span class="line">    <span class="comment">//node还是原来的node</span></span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二分搜索树的查询操作"><a href="#二分搜索树的查询操作" class="headerlink" title="二分搜索树的查询操作"></a>二分搜索树的查询操作</h1><figure class="highlight java"><figcaption><span>查询操作</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查询是否包含元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> contains(root,e)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询以node 为根的树中是否包含元素e 使用递归算法</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Node node,E e)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.compareTo(node.e)==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.compareTo(node.e)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> contains(node.left,e);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> contains(node.right,e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于二分搜索树没有索引的概念，因此不涉及其他查询操作；</p>
+<h1 id="二分搜索树的前序遍历"><a href="#二分搜索树的前序遍历" class="headerlink" title="二分搜索树的前序遍历"></a>二分搜索树的前序遍历</h1><h2 id="什么是遍历操作"><a href="#什么是遍历操作" class="headerlink" title="什么是遍历操作"></a>什么是遍历操作</h2><ol>
+<li>把所有节点都访问一遍（比如查询学生成绩）</li>
+<li>访问的原因和业务相关</li>
+<li>在线性结构中，遍历是极其容易的</li>
+<li>在树结构下，也不是很难</li>
+</ol>
+<h2 id="二分搜索树的递归操作"><a href="#二分搜索树的递归操作" class="headerlink" title="二分搜索树的递归操作"></a>二分搜索树的递归操作</h2><p><img src="https://img.senup.cn/blog/20200428/vR3fXhCE9zDX.png?imageslim" alt="伪代码"></p>
+<h1 id="二分搜索树的前序遍历-1"><a href="#二分搜索树的前序遍历-1" class="headerlink" title="二分搜索树的前序遍历"></a>二分搜索树的前序遍历</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//前序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        preOrder(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//以node为根的前序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line"><span class="comment">//        if(node==null)&#123;</span></span><br><span class="line"><span class="comment">//            return;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        System.out.println(node.e);</span></span><br><span class="line"><span class="comment">//        preOrder(node.left);</span></span><br><span class="line"><span class="comment">//        preOrder(node.right);</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.println(node.e);</span><br><span class="line">            preOrder(node.left);</span><br><span class="line">            preOrder(node.right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>测试</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day06_BST;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BST&lt;Integer&gt; bst = <span class="keyword">new</span> BST&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> nums[] = &#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num:nums</span><br><span class="line">             ) &#123;</span><br><span class="line">            bst.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        bst.preOrder();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.senup.cn/blog/20200428/VWQDI01QsHEh.png?imageslim" alt="结果"></p>
+<h2 id="生成描述二叉树深度的字符串"><a href="#生成描述二叉树深度的字符串" class="headerlink" title="生成描述二叉树深度的字符串"></a>生成描述二叉树深度的字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">     StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">     <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 第一个参数为节点</span></span><br><span class="line"><span class="comment">     * 第二个参数为树的深度也就是层数，第一层为0，第二层为1，以此类推</span></span><br><span class="line"><span class="comment">     * 第三个参数为传入的字符串拼接对象*/</span></span><br><span class="line">     generateBSTString(root,<span class="number">0</span>,res);</span><br><span class="line">     <span class="keyword">return</span> res.toString();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//生成描述二叉树的字符串</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">generateBSTString</span><span class="params">(Node node, <span class="keyword">int</span> depth, StringBuilder res)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">         res.append(generateDepthString(depth)+<span class="string">"null\n"</span>);</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     res.append(generateDepthString(depth)+node.e+<span class="string">"\n"</span>);</span><br><span class="line">     generateBSTString(node.left,depth+<span class="number">1</span>,res);</span><br><span class="line">     generateBSTString(node.right,depth+<span class="number">1</span>,res);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> String <span class="title">generateDepthString</span><span class="params">(<span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">     StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;depth;i++ )&#123;</span><br><span class="line">         res.append(<span class="string">"--"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> res.toString();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BST&lt;Integer&gt; bst = <span class="keyword">new</span> BST&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> nums[] = &#123;<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num:nums) &#123;</span><br><span class="line">            bst.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        bst.preOrder();</span><br><span class="line">        System.out.println(<span class="string">"=================================================="</span>);</span><br><span class="line">        System.out.println(bst);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="打印结果"><a href="#打印结果" class="headerlink" title="打印结果"></a>打印结果</h3><p>从深度来看，层数：536248</p>
+<p>前序遍历：532468 满足前面的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line">--<span class="number">3</span></span><br><span class="line">----<span class="number">2</span></span><br><span class="line">------<span class="keyword">null</span></span><br><span class="line">------<span class="keyword">null</span></span><br><span class="line">----<span class="number">4</span></span><br><span class="line">------<span class="keyword">null</span></span><br><span class="line">------<span class="keyword">null</span></span><br><span class="line">--<span class="number">6</span></span><br><span class="line">----<span class="keyword">null</span></span><br><span class="line">----<span class="number">8</span></span><br><span class="line">------<span class="keyword">null</span></span><br><span class="line">------<span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+
+<p>综上，前序遍历最常用，最自然，方式为</p>
+<ol>
+<li>访问该节点</li>
+<li>其左结点</li>
+<li>其右节点</li>
+</ol>
+<p>也就是直接看访问该节点的位置的顺序</p>
+<h1 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h1><p>综上，中序遍历的方式为</p>
+<ol>
+<li>其左结点</li>
+<li>访问该节点</li>
+<li>其右节点</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//中序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    inOrder(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//以node为根的中序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        preOrder(node.left);</span><br><span class="line">        System.out.println(node.e);</span><br><span class="line">        preOrder(node.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>数据由小到大，实现了升序排序。</p>
+<h1 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    afterOrder(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//以node为根的后序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">afterOrder</span><span class="params">(Node node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        preOrder(node.left);</span><br><span class="line">        preOrder(node.right);</span><br><span class="line">        System.out.println(node.e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li>为二分搜索树释放内存</li>
+</ul>
+<p>意思就是先释放孩子节点，再释放父节点</p>
+<p>当然，java有垃圾回收机制，就不需要。而类似C++就需要这种手动控制内存。</p>
+<h1 id="深入理解遍历"><a href="#深入理解遍历" class="headerlink" title="深入理解遍历"></a>深入理解遍历</h1><p>对于每个节点，会遍历三次。</p>
+<p>拿前序遍历来说，第一次访问该节点即打印结果在右边。</p>
+<p>28 16 13 22 30 29 42</p>
+<p><img src="https://img.senup.cn/blog/20200428/KYRGaFnLl4Ha.png?imageslim" alt></p>
+<p>拿中序遍历来说，第二次访问该节点即打印结果在右边。</p>
+<p>13 16 22 28 29 30 42</p>
+<p><img src="https://img.senup.cn/blog/20200428/mbdGpAsodyF0.png?imageslim" alt="mark"></p>
+<p>后序遍历</p>
+<p>13 22 16 29 42 30 28</p>
+<p><img src="https://img.senup.cn/blog/20200428/YhwQmyK3VXfy.png?imageslim" alt="mark"></p>
+<h1 id="前序遍历的非递归写法"><a href="#前序遍历的非递归写法" class="headerlink" title="前序遍历的非递归写法"></a>前序遍历的非递归写法</h1><p><img src="https://img.senup.cn/blog/20200428/rjJTYdpR3T8A.png?imageslim" alt="示例"></p>
+<p>使用栈的结构，首先将28压入栈，弹出，出栈即打印，<code>打印28</code>；</p>
+<p>接着压入两个子节点，先压入右孩子30，再压入左孩子16，这样的话后入先出，左孩子先出来，<code>打印16</code>。</p>
+<p>接着对16压入右孩子22，再压入左孩子13，出栈<code>打印13</code>；</p>
+<p>这时13的左右孩子为空，因此 不压入。</p>
+<p>接着对栈顶的22，出栈弹出，<code>打印22</code>；</p>
+<p>这时22的左右孩子为空，因此 不压入。</p>
+<p>此时栈顶为30，出栈<code>打印30</code>；</p>
+<p>压入30的右孩子42，再压入左孩子29，<code>依次打印出29,42.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//preOrderNR no recursion非递归写法 前序遍历</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrderNR</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    stack.push(root);</span><br><span class="line">    <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">        Node cur = stack.pop();</span><br><span class="line">        System.out.println(cur.e);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cur.right != <span class="keyword">null</span>)</span><br><span class="line">            stack.push(cur.right);</span><br><span class="line">        <span class="keyword">if</span> (cur.left != <span class="keyword">null</span>)</span><br><span class="line">            stack.push(cur.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结：需要使用一种数据结构——栈来辅助，因此非递归的方法更复杂！</p>
+<p>以上讲的是深度优先遍历。</p>
+<h1 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h1><p>广度优先遍历</p>
+<p><img src="https://img.senup.cn/blog/20200428/1eX1O6ctWXVz.png?imageslim" alt></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>不使用递归，而是使用到队列。</p>
+<ol>
+<li>28从队尾到队首，出队，<code>打印28</code>；</li>
+<li>队列先到先得，16,30依次入队，16出队，<code>打印16</code>；</li>
+<li>此时16的左孩子12，右孩子22入队；</li>
+<li>此时保证了顶层元素处于队首，30出队，<code>打印30</code>；</li>
+<li>此时30的左孩子29，右孩子42入队；</li>
+<li>此时队首的13，出队，<code>打印13</code>；</li>
+<li>由于13没有左右孩子，因此不操作；</li>
+<li>接下来打印<code>22 29 42</code></li>
+</ol>
+<p><img src="https://img.senup.cn/blog/20200428/b3pEG5axhWHI.png?imageslim" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层序遍历（广度优先遍历）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">levelOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//内置的queue是一个接口，这里选择使用链表来实现</span></span><br><span class="line">    Queue&lt;Node&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    q.add(root);</span><br><span class="line">    <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">        Node cur = q.remove();</span><br><span class="line">        System.out.println(cur.e);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(cur.left!=<span class="keyword">null</span>)</span><br><span class="line">            q.add(cur.left);</span><br><span class="line">        <span class="keyword">if</span>(cur.right!=<span class="keyword">null</span>)</span><br><span class="line">            q.add(cur.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="广度优先遍历的意义"><a href="#广度优先遍历的意义" class="headerlink" title="广度优先遍历的意义"></a>广度优先遍历的意义</h2><p>可以更快查找到目标元素，用于搜索策略上；</p>
+<ol>
+<li>更快的找到问题的解</li>
+<li>常用于算法设计中-最短路径</li>
+<li>图中的深度优先遍历和广度优先遍历</li>
+</ol>
+<h1 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h1><h2 id="删除最大值与最小值"><a href="#删除最大值与最小值" class="headerlink" title="删除最大值与最小值"></a>删除最大值与最小值</h2><p>最小值：在二分搜索树中顺着左边走到末端，即可找到。</p>
+<p>最大值：在二分搜索树中顺着右边走到末端，即可找到。</p>
+<p><img src="https://img.senup.cn/blog/20200428/Qc6XCWgVUwG3.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200428/7Yg7BXv2fVi9.png?imageslim" alt></p>
+<figure class="highlight java"><figcaption><span>查找元素</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寻找二分搜索树的最小元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">minimum</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"bst is empty!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minimum(root).e;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">minimum</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.left==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    <span class="keyword">return</span> minimum(node.left);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//寻找二分搜索树的最大元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">maxmum</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"bst is empty!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxmum(root).e;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">maxmum</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.right==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    <span class="keyword">return</span> maxmum(node.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>删除元素</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除最小值所在节点，返回最小值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">removeMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    E ret= minimum();</span><br><span class="line">    <span class="comment">//根节点更新</span></span><br><span class="line">    root=removeMin(root);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除以node为根的二分搜索树中的最小节点</span></span><br><span class="line"><span class="comment">//返回删除节点后新的二分搜索树的根</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">removeMin</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">        Node rightNode = node.right;</span><br><span class="line">        node.right=<span class="keyword">null</span>;</span><br><span class="line">        size--;</span><br><span class="line">        <span class="comment">//删除原来的最小值，现在接上来的是右子树作为新的根节点</span></span><br><span class="line">        <span class="keyword">return</span> rightNode;</span><br><span class="line">    &#125;</span><br><span class="line">    node.left = removeMin(node.left);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回当前的node</span></span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除最大值所在节点，返回最大值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">removeMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    E ret= maxmum();</span><br><span class="line">    <span class="comment">//根节点更新</span></span><br><span class="line">    root=removeMax(root);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除以node为根的二分搜索树中的最大节点</span></span><br><span class="line"><span class="comment">//返回删除节点后新的二分搜索树的根</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">removeMax</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.right==<span class="keyword">null</span>)&#123;</span><br><span class="line">        Node leftNode = node.left;</span><br><span class="line">        node.left=<span class="keyword">null</span>;</span><br><span class="line">        size--;</span><br><span class="line">        <span class="comment">//删除原来的最大值，现在接上来的是左子树作为新的根节点</span></span><br><span class="line">        <span class="keyword">return</span> leftNode;</span><br><span class="line">    &#125;</span><br><span class="line">    node.right = removeMax(node.right);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回当前的node</span></span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><figcaption><span>测试</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BST&lt;Integer&gt; bst = <span class="keyword">new</span> BST&lt;&gt;();</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">1000</span>;</span><br><span class="line">Random random = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    bst.add(random.nextInt(<span class="number">10000</span>));</span><br><span class="line">&#125;</span><br><span class="line">ArrayList&lt;Integer&gt; nums = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">while</span> (!bst.isEmpty()) &#123;</span><br><span class="line">    nums.add(bst.removeMin());</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(nums);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.get(i-<span class="number">1</span>)&gt;nums.get(i))&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"error!!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"removeMin is completed!"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><figcaption><span>结果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">16</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">58</span>, <span class="number">59</span>, <span class="number">117</span>, <span class="number">128</span>, <span class="number">134</span>, <span class="number">139</span>, <span class="number">142</span>, <span class="number">145</span>, <span class="number">147</span>, <span class="number">151</span>, <span class="number">157</span>, <span class="number">158</span>, <span class="number">159</span>, <span class="number">163</span>, <span class="number">171</span>, <span class="number">174</span>, <span class="number">187</span>, <span class="number">188</span>, <span class="number">192</span>, <span class="number">199</span>, <span class="number">201</span>, <span class="number">212</span>, <span class="number">224</span>, <span class="number">227</span>, <span class="number">235</span>, <span class="number">240</span>, <span class="number">252</span>, <span class="number">270</span>, <span class="number">275</span>, <span class="number">289</span>, <span class="number">290</span>, <span class="number">293</span>, <span class="number">304</span>, <span class="number">313</span>, <span class="number">345</span>, <span class="number">360</span>, <span class="number">361</span>, <span class="number">369</span>, <span class="number">370</span>, <span class="number">374</span>, <span class="number">380</span>, <span class="number">405</span>, <span class="number">406</span>, <span class="number">421</span>, <span class="number">441</span>, <span class="number">444</span>, <span class="number">450</span>, <span class="number">457</span>, <span class="number">459</span>, <span class="number">473</span>, <span class="number">484</span>, <span class="number">491</span>, <span class="number">518</span>, <span class="number">565</span>, <span class="number">574</span>, <span class="number">587</span>, <span class="number">588</span>, <span class="number">596</span>, <span class="number">602</span>, <span class="number">609</span>, <span class="number">634</span>, <span class="number">647</span>, <span class="number">654</span>, <span class="number">673</span>, <span class="number">677</span>, <span class="number">681</span>, <span class="number">719</span>, <span class="number">752</span>, <span class="number">760</span>, <span class="number">765</span>, <span class="number">770</span>, <span class="number">774</span>, <span class="number">782</span>, <span class="number">798</span>, <span class="number">809</span>, <span class="number">861</span>, <span class="number">871</span>, <span class="number">885</span>, <span class="number">889</span>, <span class="number">894</span>, <span class="number">908</span>, <span class="number">929</span>, <span class="number">932</span>, <span class="number">969</span>, <span class="number">976</span>, <span class="number">986</span>, <span class="number">987</span>, <span class="number">990</span>, <span class="number">997</span>, <span class="number">1014</span>, <span class="number">1026</span>, <span class="number">1032</span>, <span class="number">1039</span>, <span class="number">1048</span>, <span class="number">1050</span>, <span class="number">1058</span>, <span class="number">1064</span>, <span class="number">1066</span>, <span class="number">1088</span>, <span class="number">1097</span>, <span class="number">1098</span>, <span class="number">1114</span>, <span class="number">1117</span>, <span class="number">1123</span>, <span class="number">1130</span>, <span class="number">1147</span>, <span class="number">1173</span>, <span class="number">1180</span>, <span class="number">1187</span>, <span class="number">1198</span>, <span class="number">1204</span>, <span class="number">1210</span>, <span class="number">1233</span>, <span class="number">1234</span>, <span class="number">1236</span>, <span class="number">1237</span>, <span class="number">1239</span>, <span class="number">1243</span>, <span class="number">1254</span>, <span class="number">1255</span>, <span class="number">1262</span>, <span class="number">1270</span>, <span class="number">1277</span>, <span class="number">1291</span>, <span class="number">1299</span>, <span class="number">1309</span>, <span class="number">1323</span>, <span class="number">1333</span>, <span class="number">1339</span>, <span class="number">1345</span>, <span class="number">1348</span>, <span class="number">1356</span>, <span class="number">1358</span>, <span class="number">1371</span>, <span class="number">1393</span>, <span class="number">1423</span>, <span class="number">1430</span>, <span class="number">1438</span>, <span class="number">1446</span>, <span class="number">1478</span>, <span class="number">1504</span>, <span class="number">1505</span>, <span class="number">1514</span>, <span class="number">1540</span>, <span class="number">1544</span>, <span class="number">1559</span>, <span class="number">1566</span>, <span class="number">1578</span>, <span class="number">1590</span>, <span class="number">1593</span>, <span class="number">1598</span>, <span class="number">1631</span>, <span class="number">1634</span>, <span class="number">1643</span>, <span class="number">1648</span>, <span class="number">1649</span>, <span class="number">1664</span>, <span class="number">1670</span>, <span class="number">1699</span>, <span class="number">1702</span>, <span class="number">1704</span>, <span class="number">1743</span>, <span class="number">1774</span>, <span class="number">1776</span>, <span class="number">1806</span>, <span class="number">1821</span>, <span class="number">1822</span>, <span class="number">1826</span>, <span class="number">1848</span>, <span class="number">1854</span>, <span class="number">1858</span>, <span class="number">1863</span>, <span class="number">1876</span>, <span class="number">1881</span>, <span class="number">1882</span>, <span class="number">1914</span>, <span class="number">1922</span>, <span class="number">1933</span>, <span class="number">1937</span>, <span class="number">1957</span>, <span class="number">1971</span>, <span class="number">1974</span>, <span class="number">1980</span>, <span class="number">1987</span>, <span class="number">2005</span>, <span class="number">2014</span>, <span class="number">2034</span>, <span class="number">2049</span>, <span class="number">2050</span>, <span class="number">2070</span>, <span class="number">2084</span>, <span class="number">2098</span>, <span class="number">2116</span>, <span class="number">2135</span>, <span class="number">2136</span>, <span class="number">2137</span>, <span class="number">2142</span>, <span class="number">2159</span>, <span class="number">2170</span>, <span class="number">2183</span>, <span class="number">2190</span>, <span class="number">2196</span>, <span class="number">2208</span>, <span class="number">2212</span>, <span class="number">2219</span>, <span class="number">2228</span>, <span class="number">2287</span>, <span class="number">2290</span>, <span class="number">2292</span>, <span class="number">2311</span>, <span class="number">2317</span>, <span class="number">2324</span>, <span class="number">2325</span>, <span class="number">2327</span>, <span class="number">2331</span>, <span class="number">2332</span>, <span class="number">2336</span>, <span class="number">2337</span>, <span class="number">2350</span>, <span class="number">2395</span>, <span class="number">2412</span>, <span class="number">2426</span>, <span class="number">2428</span>, <span class="number">2430</span>, <span class="number">2448</span>, <span class="number">2453</span>, <span class="number">2457</span>, <span class="number">2464</span>, <span class="number">2473</span>, <span class="number">2503</span>, <span class="number">2512</span>, <span class="number">2517</span>, <span class="number">2524</span>, <span class="number">2546</span>, <span class="number">2566</span>, <span class="number">2569</span>, <span class="number">2580</span>, <span class="number">2585</span>, <span class="number">2619</span>, <span class="number">2640</span>, <span class="number">2642</span>, <span class="number">2663</span>, <span class="number">2665</span>, <span class="number">2671</span>, <span class="number">2690</span>, <span class="number">2691</span>, <span class="number">2700</span>, <span class="number">2704</span>, <span class="number">2722</span>, <span class="number">2725</span>, <span class="number">2738</span>, <span class="number">2751</span>, <span class="number">2755</span>, <span class="number">2785</span>, <span class="number">2791</span>, <span class="number">2792</span>, <span class="number">2794</span>, <span class="number">2799</span>, <span class="number">2807</span>, <span class="number">2830</span>, <span class="number">2838</span>, <span class="number">2848</span>, <span class="number">2881</span>, <span class="number">2884</span>, <span class="number">2894</span>, <span class="number">2907</span>, <span class="number">2930</span>, <span class="number">2950</span>, <span class="number">2952</span>, <span class="number">2964</span>, <span class="number">2966</span>, <span class="number">2969</span>, <span class="number">2975</span>, <span class="number">2979</span>, <span class="number">2981</span>, <span class="number">2982</span>, <span class="number">2984</span>, <span class="number">3033</span>, <span class="number">3035</span>, <span class="number">3045</span>, <span class="number">3050</span>, <span class="number">3061</span>, <span class="number">3067</span>, <span class="number">3081</span>, <span class="number">3092</span>, <span class="number">3096</span>, <span class="number">3097</span>, <span class="number">3099</span>, <span class="number">3103</span>, <span class="number">3107</span>, <span class="number">3109</span>, <span class="number">3113</span>, <span class="number">3117</span>, <span class="number">3140</span>, <span class="number">3142</span>, <span class="number">3156</span>, <span class="number">3165</span>, <span class="number">3168</span>, <span class="number">3176</span>, <span class="number">3177</span>, <span class="number">3178</span>, <span class="number">3186</span>, <span class="number">3217</span>, <span class="number">3232</span>, <span class="number">3244</span>, <span class="number">3246</span>, <span class="number">3275</span>, <span class="number">3297</span>, <span class="number">3308</span>, <span class="number">3333</span>, <span class="number">3359</span>, <span class="number">3385</span>, <span class="number">3412</span>, <span class="number">3413</span>, <span class="number">3414</span>, <span class="number">3416</span>, <span class="number">3441</span>, <span class="number">3493</span>, <span class="number">3503</span>, <span class="number">3518</span>, <span class="number">3519</span>, <span class="number">3520</span>, <span class="number">3522</span>, <span class="number">3525</span>, <span class="number">3548</span>, <span class="number">3551</span>, <span class="number">3554</span>, <span class="number">3580</span>, <span class="number">3581</span>, <span class="number">3604</span>, <span class="number">3606</span>, <span class="number">3608</span>, <span class="number">3617</span>, <span class="number">3639</span>, <span class="number">3643</span>, <span class="number">3644</span>, <span class="number">3668</span>, <span class="number">3670</span>, <span class="number">3687</span>, <span class="number">3709</span>, <span class="number">3721</span>, <span class="number">3735</span>, <span class="number">3745</span>, <span class="number">3747</span>, <span class="number">3763</span>, <span class="number">3780</span>, <span class="number">3793</span>, <span class="number">3794</span>, <span class="number">3799</span>, <span class="number">3801</span>, <span class="number">3812</span>, <span class="number">3823</span>, <span class="number">3833</span>, <span class="number">3842</span>, <span class="number">3855</span>, <span class="number">3886</span>, <span class="number">3899</span>, <span class="number">3904</span>, <span class="number">3907</span>, <span class="number">3916</span>, <span class="number">3920</span>, <span class="number">3941</span>, <span class="number">3942</span>, <span class="number">3961</span>, <span class="number">3963</span>, <span class="number">3967</span>, <span class="number">3985</span>, <span class="number">3988</span>, <span class="number">3991</span>, <span class="number">4011</span>, <span class="number">4024</span>, <span class="number">4036</span>, <span class="number">4050</span>, <span class="number">4051</span>, <span class="number">4055</span>, <span class="number">4057</span>, <span class="number">4058</span>, <span class="number">4080</span>, <span class="number">4098</span>, <span class="number">4143</span>, <span class="number">4171</span>, <span class="number">4174</span>, <span class="number">4175</span>, <span class="number">4197</span>, <span class="number">4198</span>, <span class="number">4211</span>, <span class="number">4212</span>, <span class="number">4213</span>, <span class="number">4222</span>, <span class="number">4223</span>, <span class="number">4232</span>, <span class="number">4257</span>, <span class="number">4260</span>, <span class="number">4268</span>, <span class="number">4275</span>, <span class="number">4286</span>, <span class="number">4292</span>, <span class="number">4319</span>, <span class="number">4331</span>, <span class="number">4332</span>, <span class="number">4350</span>, <span class="number">4387</span>, <span class="number">4390</span>, <span class="number">4407</span>, <span class="number">4410</span>, <span class="number">4412</span>, <span class="number">4457</span>, <span class="number">4467</span>, <span class="number">4488</span>, <span class="number">4499</span>, <span class="number">4520</span>, <span class="number">4521</span>, <span class="number">4523</span>, <span class="number">4525</span>, <span class="number">4527</span>, <span class="number">4530</span>, <span class="number">4538</span>, <span class="number">4566</span>, <span class="number">4577</span>, <span class="number">4587</span>, <span class="number">4590</span>, <span class="number">4592</span>, <span class="number">4602</span>, <span class="number">4615</span>, <span class="number">4618</span>, <span class="number">4624</span>, <span class="number">4631</span>, <span class="number">4653</span>, <span class="number">4695</span>, <span class="number">4709</span>, <span class="number">4714</span>, <span class="number">4727</span>, <span class="number">4729</span>, <span class="number">4737</span>, <span class="number">4740</span>, <span class="number">4747</span>, <span class="number">4748</span>, <span class="number">4754</span>, <span class="number">4759</span>, <span class="number">4772</span>, <span class="number">4782</span>, <span class="number">4784</span>, <span class="number">4785</span>, <span class="number">4788</span>, <span class="number">4816</span>, <span class="number">4818</span>, <span class="number">4835</span>, <span class="number">4836</span>, <span class="number">4849</span>, <span class="number">4857</span>, <span class="number">4866</span>, <span class="number">4873</span>, <span class="number">4893</span>, <span class="number">4923</span>, <span class="number">4940</span>, <span class="number">4941</span>, <span class="number">4944</span>, <span class="number">4953</span>, <span class="number">4975</span>, <span class="number">4981</span>, <span class="number">4991</span>, <span class="number">4994</span>, <span class="number">4997</span>, <span class="number">5001</span>, <span class="number">5006</span>, <span class="number">5047</span>, <span class="number">5060</span>, <span class="number">5062</span>, <span class="number">5072</span>, <span class="number">5084</span>, <span class="number">5088</span>, <span class="number">5095</span>, <span class="number">5098</span>, <span class="number">5101</span>, <span class="number">5116</span>, <span class="number">5124</span>, <span class="number">5151</span>, <span class="number">5152</span>, <span class="number">5165</span>, <span class="number">5170</span>, <span class="number">5183</span>, <span class="number">5184</span>, <span class="number">5189</span>, <span class="number">5196</span>, <span class="number">5211</span>, <span class="number">5225</span>, <span class="number">5242</span>, <span class="number">5244</span>, <span class="number">5245</span>, <span class="number">5255</span>, <span class="number">5260</span>, <span class="number">5280</span>, <span class="number">5281</span>, <span class="number">5292</span>, <span class="number">5301</span>, <span class="number">5324</span>, <span class="number">5343</span>, <span class="number">5345</span>, <span class="number">5349</span>, <span class="number">5371</span>, <span class="number">5373</span>, <span class="number">5405</span>, <span class="number">5410</span>, <span class="number">5445</span>, <span class="number">5471</span>, <span class="number">5491</span>, <span class="number">5496</span>, <span class="number">5507</span>, <span class="number">5514</span>, <span class="number">5517</span>, <span class="number">5531</span>, <span class="number">5533</span>, <span class="number">5545</span>, <span class="number">5553</span>, <span class="number">5556</span>, <span class="number">5560</span>, <span class="number">5564</span>, <span class="number">5568</span>, <span class="number">5577</span>, <span class="number">5582</span>, <span class="number">5583</span>, <span class="number">5604</span>, <span class="number">5608</span>, <span class="number">5614</span>, <span class="number">5618</span>, <span class="number">5620</span>, <span class="number">5627</span>, <span class="number">5639</span>, <span class="number">5652</span>, <span class="number">5654</span>, <span class="number">5661</span>, <span class="number">5681</span>, <span class="number">5684</span>, <span class="number">5688</span>, <span class="number">5699</span>, <span class="number">5731</span>, <span class="number">5746</span>, <span class="number">5778</span>, <span class="number">5785</span>, <span class="number">5812</span>, <span class="number">5818</span>, <span class="number">5819</span>, <span class="number">5828</span>, <span class="number">5838</span>, <span class="number">5841</span>, <span class="number">5842</span>, <span class="number">5844</span>, <span class="number">5866</span>, <span class="number">5891</span>, <span class="number">5895</span>, <span class="number">5898</span>, <span class="number">5901</span>, <span class="number">5933</span>, <span class="number">5934</span>, <span class="number">5984</span>, <span class="number">5993</span>, <span class="number">5994</span>, <span class="number">6001</span>, <span class="number">6002</span>, <span class="number">6006</span>, <span class="number">6038</span>, <span class="number">6053</span>, <span class="number">6061</span>, <span class="number">6081</span>, <span class="number">6084</span>, <span class="number">6097</span>, <span class="number">6100</span>, <span class="number">6117</span>, <span class="number">6139</span>, <span class="number">6172</span>, <span class="number">6189</span>, <span class="number">6191</span>, <span class="number">6219</span>, <span class="number">6249</span>, <span class="number">6251</span>, <span class="number">6254</span>, <span class="number">6268</span>, <span class="number">6299</span>, <span class="number">6316</span>, <span class="number">6317</span>, <span class="number">6325</span>, <span class="number">6326</span>, <span class="number">6342</span>, <span class="number">6344</span>, <span class="number">6350</span>, <span class="number">6359</span>, <span class="number">6374</span>, <span class="number">6384</span>, <span class="number">6392</span>, <span class="number">6393</span>, <span class="number">6397</span>, <span class="number">6413</span>, <span class="number">6416</span>, <span class="number">6425</span>, <span class="number">6431</span>, <span class="number">6434</span>, <span class="number">6454</span>, <span class="number">6459</span>, <span class="number">6471</span>, <span class="number">6485</span>, <span class="number">6491</span>, <span class="number">6508</span>, <span class="number">6522</span>, <span class="number">6531</span>, <span class="number">6543</span>, <span class="number">6558</span>, <span class="number">6568</span>, <span class="number">6570</span>, <span class="number">6591</span>, <span class="number">6610</span>, <span class="number">6613</span>, <span class="number">6618</span>, <span class="number">6629</span>, <span class="number">6636</span>, <span class="number">6657</span>, <span class="number">6660</span>, <span class="number">6667</span>, <span class="number">6668</span>, <span class="number">6674</span>, <span class="number">6687</span>, <span class="number">6693</span>, <span class="number">6709</span>, <span class="number">6718</span>, <span class="number">6728</span>, <span class="number">6740</span>, <span class="number">6742</span>, <span class="number">6777</span>, <span class="number">6795</span>, <span class="number">6801</span>, <span class="number">6807</span>, <span class="number">6808</span>, <span class="number">6822</span>, <span class="number">6823</span>, <span class="number">6829</span>, <span class="number">6830</span>, <span class="number">6834</span>, <span class="number">6835</span>, <span class="number">6853</span>, <span class="number">6916</span>, <span class="number">6931</span>, <span class="number">6934</span>, <span class="number">6940</span>, <span class="number">6947</span>, <span class="number">6959</span>, <span class="number">6963</span>, <span class="number">7023</span>, <span class="number">7068</span>, <span class="number">7073</span>, <span class="number">7074</span>, <span class="number">7076</span>, <span class="number">7078</span>, <span class="number">7079</span>, <span class="number">7081</span>, <span class="number">7085</span>, <span class="number">7095</span>, <span class="number">7098</span>, <span class="number">7108</span>, <span class="number">7111</span>, <span class="number">7113</span>, <span class="number">7120</span>, <span class="number">7130</span>, <span class="number">7132</span>, <span class="number">7134</span>, <span class="number">7141</span>, <span class="number">7156</span>, <span class="number">7158</span>, <span class="number">7169</span>, <span class="number">7176</span>, <span class="number">7198</span>, <span class="number">7211</span>, <span class="number">7215</span>, <span class="number">7237</span>, <span class="number">7244</span>, <span class="number">7252</span>, <span class="number">7279</span>, <span class="number">7306</span>, <span class="number">7311</span>, <span class="number">7319</span>, <span class="number">7341</span>, <span class="number">7343</span>, <span class="number">7367</span>, <span class="number">7376</span>, <span class="number">7384</span>, <span class="number">7391</span>, <span class="number">7398</span>, <span class="number">7430</span>, <span class="number">7445</span>, <span class="number">7447</span>, <span class="number">7469</span>, <span class="number">7470</span>, <span class="number">7498</span>, <span class="number">7501</span>, <span class="number">7505</span>, <span class="number">7510</span>, <span class="number">7521</span>, <span class="number">7528</span>, <span class="number">7531</span>, <span class="number">7533</span>, <span class="number">7543</span>, <span class="number">7546</span>, <span class="number">7549</span>, <span class="number">7559</span>, <span class="number">7569</span>, <span class="number">7585</span>, <span class="number">7588</span>, <span class="number">7596</span>, <span class="number">7600</span>, <span class="number">7634</span>, <span class="number">7647</span>, <span class="number">7663</span>, <span class="number">7667</span>, <span class="number">7674</span>, <span class="number">7681</span>, <span class="number">7691</span>, <span class="number">7695</span>, <span class="number">7705</span>, <span class="number">7741</span>, <span class="number">7744</span>, <span class="number">7749</span>, <span class="number">7755</span>, <span class="number">7756</span>, <span class="number">7761</span>, <span class="number">7769</span>, <span class="number">7770</span>, <span class="number">7772</span>, <span class="number">7773</span>, <span class="number">7783</span>, <span class="number">7793</span>, <span class="number">7813</span>, <span class="number">7816</span>, <span class="number">7863</span>, <span class="number">7872</span>, <span class="number">7883</span>, <span class="number">7886</span>, <span class="number">7897</span>, <span class="number">7902</span>, <span class="number">7919</span>, <span class="number">7933</span>, <span class="number">7938</span>, <span class="number">7944</span>, <span class="number">7950</span>, <span class="number">7956</span>, <span class="number">7967</span>, <span class="number">7997</span>, <span class="number">8012</span>, <span class="number">8018</span>, <span class="number">8019</span>, <span class="number">8047</span>, <span class="number">8060</span>, <span class="number">8061</span>, <span class="number">8063</span>, <span class="number">8089</span>, <span class="number">8091</span>, <span class="number">8106</span>, <span class="number">8111</span>, <span class="number">8115</span>, <span class="number">8120</span>, <span class="number">8128</span>, <span class="number">8130</span>, <span class="number">8152</span>, <span class="number">8159</span>, <span class="number">8169</span>, <span class="number">8180</span>, <span class="number">8181</span>, <span class="number">8196</span>, <span class="number">8206</span>, <span class="number">8208</span>, <span class="number">8213</span>, <span class="number">8218</span>, <span class="number">8226</span>, <span class="number">8229</span>, <span class="number">8264</span>, <span class="number">8271</span>, <span class="number">8290</span>, <span class="number">8292</span>, <span class="number">8293</span>, <span class="number">8317</span>, <span class="number">8318</span>, <span class="number">8319</span>, <span class="number">8325</span>, <span class="number">8332</span>, <span class="number">8340</span>, <span class="number">8346</span>, <span class="number">8356</span>, <span class="number">8361</span>, <span class="number">8362</span>, <span class="number">8374</span>, <span class="number">8382</span>, <span class="number">8390</span>, <span class="number">8397</span>, <span class="number">8401</span>, <span class="number">8433</span>, <span class="number">8454</span>, <span class="number">8459</span>, <span class="number">8469</span>, <span class="number">8471</span>, <span class="number">8474</span>, <span class="number">8484</span>, <span class="number">8487</span>, <span class="number">8515</span>, <span class="number">8526</span>, <span class="number">8538</span>, <span class="number">8585</span>, <span class="number">8604</span>, <span class="number">8619</span>, <span class="number">8632</span>, <span class="number">8638</span>, <span class="number">8647</span>, <span class="number">8652</span>, <span class="number">8656</span>, <span class="number">8658</span>, <span class="number">8669</span>, <span class="number">8678</span>, <span class="number">8684</span>, <span class="number">8686</span>, <span class="number">8687</span>, <span class="number">8697</span>, <span class="number">8702</span>, <span class="number">8705</span>, <span class="number">8708</span>, <span class="number">8712</span>, <span class="number">8721</span>, <span class="number">8732</span>, <span class="number">8744</span>, <span class="number">8748</span>, <span class="number">8758</span>, <span class="number">8764</span>, <span class="number">8766</span>, <span class="number">8768</span>, <span class="number">8782</span>, <span class="number">8789</span>, <span class="number">8794</span>, <span class="number">8811</span>, <span class="number">8813</span>, <span class="number">8835</span>, <span class="number">8847</span>, <span class="number">8873</span>, <span class="number">8886</span>, <span class="number">8891</span>, <span class="number">8907</span>, <span class="number">8926</span>, <span class="number">8931</span>, <span class="number">8939</span>, <span class="number">8947</span>, <span class="number">8951</span>, <span class="number">8958</span>, <span class="number">8959</span>, <span class="number">8962</span>, <span class="number">8964</span>, <span class="number">8966</span>, <span class="number">8967</span>, <span class="number">8978</span>, <span class="number">8990</span>, <span class="number">9001</span>, <span class="number">9004</span>, <span class="number">9006</span>, <span class="number">9035</span>, <span class="number">9036</span>, <span class="number">9051</span>, <span class="number">9058</span>, <span class="number">9073</span>, <span class="number">9078</span>, <span class="number">9079</span>, <span class="number">9082</span>, <span class="number">9085</span>, <span class="number">9086</span>, <span class="number">9098</span>, <span class="number">9104</span>, <span class="number">9113</span>, <span class="number">9115</span>, <span class="number">9118</span>, <span class="number">9127</span>, <span class="number">9149</span>, <span class="number">9163</span>, <span class="number">9164</span>, <span class="number">9166</span>, <span class="number">9175</span>, <span class="number">9186</span>, <span class="number">9222</span>, <span class="number">9225</span>, <span class="number">9227</span>, <span class="number">9241</span>, <span class="number">9258</span>, <span class="number">9269</span>, <span class="number">9272</span>, <span class="number">9281</span>, <span class="number">9290</span>, <span class="number">9291</span>, <span class="number">9328</span>, <span class="number">9331</span>, <span class="number">9346</span>, <span class="number">9352</span>, <span class="number">9367</span>, <span class="number">9416</span>, <span class="number">9418</span>, <span class="number">9433</span>, <span class="number">9454</span>, <span class="number">9459</span>, <span class="number">9477</span>, <span class="number">9483</span>, <span class="number">9486</span>, <span class="number">9490</span>, <span class="number">9495</span>, <span class="number">9512</span>, <span class="number">9513</span>, <span class="number">9520</span>, <span class="number">9536</span>, <span class="number">9544</span>, <span class="number">9552</span>, <span class="number">9557</span>, <span class="number">9565</span>, <span class="number">9585</span>, <span class="number">9613</span>, <span class="number">9636</span>, <span class="number">9641</span>, <span class="number">9642</span>, <span class="number">9643</span>, <span class="number">9655</span>, <span class="number">9659</span>, <span class="number">9677</span>, <span class="number">9681</span>, <span class="number">9682</span>, <span class="number">9691</span>, <span class="number">9697</span>, <span class="number">9706</span>, <span class="number">9707</span>, <span class="number">9724</span>, <span class="number">9736</span>, <span class="number">9757</span>, <span class="number">9761</span>, <span class="number">9770</span>, <span class="number">9777</span>, <span class="number">9782</span>, <span class="number">9786</span>, <span class="number">9796</span>, <span class="number">9799</span>, <span class="number">9814</span>, <span class="number">9817</span>, <span class="number">9820</span>, <span class="number">9822</span>, <span class="number">9835</span>, <span class="number">9845</span>, <span class="number">9847</span>, <span class="number">9874</span>, <span class="number">9904</span>, <span class="number">9912</span>, <span class="number">9913</span>, <span class="number">9915</span>, <span class="number">9924</span>, <span class="number">9925</span>, <span class="number">9945</span>, <span class="number">9950</span>, <span class="number">9955</span>, <span class="number">9957</span>, <span class="number">9968</span>, <span class="number">9971</span>, <span class="number">9986</span>, <span class="number">9993</span>, <span class="number">9994</span>, <span class="number">9998</span>]</span><br><span class="line">removeMin is completed!</span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="删除任意元素"><a href="#删除任意元素" class="headerlink" title="删除任意元素"></a>删除任意元素</h1><p><img src="https://img.senup.cn/blog/20200428/sHdOmmHpnysV.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200428/NITEfmF53DHz.png?imageslim" alt="mark"></p>
+<h2 id="困难点"><a href="#困难点" class="headerlink" title="困难点"></a>困难点</h2><p><img src="https://img.senup.cn/blog/20200428/2QINuKRteYPH.png?imageslim" alt="mark"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>找到比58大同时距离最近的元素，也就是59；</p>
+<p>59处于58的右子树的底端左结点。</p>
+<p>59是58的后继</p>
+<p>现在的操作是，移动59到58（分成四步：删除59，让58的右孩子成为59的右孩子，58更新成59，41的右孩子变成59），二叉树左小右大得以保留。厉害~</p>
+<p><img src="https://img.senup.cn/blog/20200428/qH4lidH7pFNX.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200428/QdHfKSS6cqzK.png?imageslim" alt="mark"></p>
+<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//从二分搜索树中删除元素为e的节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(E e)</span></span>&#123;</span><br><span class="line">        remove(root,e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除以node为根的二分搜索树中值为e的节点，使用递归</span></span><br><span class="line">    <span class="comment">//返回删除节点后新的二分搜索树的根</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Node <span class="title">remove</span><span class="params">(Node node, E e)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//递归到底的情况</span></span><br><span class="line">        <span class="comment">//也就是没找到要删除的元素</span></span><br><span class="line">        <span class="keyword">if</span>(node==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(e.compareTo(node.e)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            node.left=remove(node.left,e);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(e.compareTo(node.e)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            node.right=remove(node.right,e);</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//e==node.e</span></span><br><span class="line">            <span class="comment">//左子树为空</span></span><br><span class="line">            <span class="keyword">if</span>(node.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">                Node rightNode = node.right;</span><br><span class="line">                node.right=<span class="keyword">null</span>;</span><br><span class="line">                size--;</span><br><span class="line">                <span class="keyword">return</span> rightNode;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//右子树为空</span></span><br><span class="line">            <span class="keyword">if</span>(node.right==<span class="keyword">null</span>)&#123;</span><br><span class="line">                Node leftNode = node.left;</span><br><span class="line">                node.left=<span class="keyword">null</span>;</span><br><span class="line">                size--;</span><br><span class="line">                <span class="keyword">return</span> leftNode;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//左右子树都不为空</span></span><br><span class="line">            <span class="comment">//找到比待删除节点大的最小节点，即待删除节点右子树的最小节点</span></span><br><span class="line">            <span class="comment">//用这个节点顶替待删除节点的位置</span></span><br><span class="line">            Node successor= minimum(node.right);</span><br><span class="line"><span class="comment">//            size++;</span></span><br><span class="line">            <span class="comment">//拼装后继节点，即删除最小节点</span></span><br><span class="line">            successor.right=removeMin(node.right);</span><br><span class="line">            successor.left=node.left;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//回收</span></span><br><span class="line">            node.left=node.right=<span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//            size--;</span></span><br><span class="line">            <span class="keyword">return</span> successor;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//陷阱：要不要维护size,size--?</span></span><br><span class="line">            <span class="comment">//removeMin中的元素并没有被删除，但是内部size--;</span></span><br><span class="line">            <span class="comment">//同时多了successor,size++</span></span><br><span class="line">            <span class="comment">//同时最后删除了目标节点，因此size--;</span></span><br><span class="line">            <span class="comment">//size++ size-- 互相抵消</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样也可以使用前驱节点来替代删除目标节点的位置。</p>
+<h1 id="关于二分搜索树"><a href="#关于二分搜索树" class="headerlink" title="关于二分搜索树"></a>关于二分搜索树</h1><h2 id="顺序性"><a href="#顺序性" class="headerlink" title="顺序性"></a>顺序性</h2><p>二分搜索树整体是有序的，因此可以拿到最大最小值。</p>
+<p>floor:比45大的最小元素</p>
+<p>ceil:比45小的最大元素</p>
+<p><img src="https://img.senup.cn/blog/20200428/EiYoGUCu3gyI.png?imageslim" alt="mark"></p>
+<p>rank: 第10个元素的排名是什么？</p>
+<p>select:排名第10的元素是谁？</p>
+<p><img src="https://img.senup.cn/blog/20200428/rr0HflItKdHS.png?imageslim" alt="mark"></p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>添加size的含义：</p>
+<p>以41为根，总共11个节点</p>
+<p>以22为根，总共有5个节点</p>
+<p>……</p>
+<p><img src="https://img.senup.cn/blog/20200428/8emxAblrBVFO.png?imageslim" alt="mark"></p>
+<p>深度</p>
+<p><img src="https://img.senup.cn/blog/20200428/IeTPaufOaY3L.png?imageslim" alt="mark"></p>
+<p>重复</p>
+<p><img src="https://img.senup.cn/blog/20200428/kTPnk7o4MOrt.png?imageslim" alt="mark"></p>
+<p>重复个数count</p>
+<p>找到相同元素的时候,维护count，count++</p>
+<p><img src="https://img.senup.cn/blog/20200428/hh2mzBw379o5.png?imageslim" alt="mark"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/b6ac.html" rel="prev" title="数据结构学习笔记-链表">
+      <i class="fa fa-chevron-left"></i> 数据结构学习笔记-链表
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/3c88.html" rel="next" title="数据结构学习笔记-集合">
+      数据结构学习笔记-集合 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树"><span class="nav-number">1.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索树"><span class="nav-number">2.</span> <span class="nav-text">二分搜索树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#向二分搜索树中添加元素"><span class="nav-number">3.</span> <span class="nav-text">向二分搜索树中添加元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改进添加操作：深入理解递归终止条件"><span class="nav-number">4.</span> <span class="nav-text">改进添加操作：深入理解递归终止条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索树的查询操作"><span class="nav-number">5.</span> <span class="nav-text">二分搜索树的查询操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索树的前序遍历"><span class="nav-number">6.</span> <span class="nav-text">二分搜索树的前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是遍历操作"><span class="nav-number">6.1.</span> <span class="nav-text">什么是遍历操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分搜索树的递归操作"><span class="nav-number">6.2.</span> <span class="nav-text">二分搜索树的递归操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分搜索树的前序遍历-1"><span class="nav-number">7.</span> <span class="nav-text">二分搜索树的前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成描述二叉树深度的字符串"><span class="nav-number">7.1.</span> <span class="nav-text">生成描述二叉树深度的字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打印结果"><span class="nav-number">7.1.1.</span> <span class="nav-text">打印结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中序遍历"><span class="nav-number">8.</span> <span class="nav-text">中序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">8.1.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后序遍历"><span class="nav-number">9.</span> <span class="nav-text">后序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">9.1.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入理解遍历"><span class="nav-number">10.</span> <span class="nav-text">深入理解遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前序遍历的非递归写法"><span class="nav-number">11.</span> <span class="nav-text">前序遍历的非递归写法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层序遍历"><span class="nav-number">12.</span> <span class="nav-text">层序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">12.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先遍历的意义"><span class="nav-number">12.2.</span> <span class="nav-text">广度优先遍历的意义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除节点"><span class="nav-number">13.</span> <span class="nav-text">删除节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除最大值与最小值"><span class="nav-number">13.1.</span> <span class="nav-text">删除最大值与最小值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除任意元素"><span class="nav-number">14.</span> <span class="nav-text">删除任意元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#困难点"><span class="nav-number">14.1.</span> <span class="nav-text">困难点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">14.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-1"><span class="nav-number">14.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于二分搜索树"><span class="nav-number">15.</span> <span class="nav-text">关于二分搜索树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序性"><span class="nav-number">15.1.</span> <span class="nav-text">顺序性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现思路"><span class="nav-number">15.1.1.</span> <span class="nav-text">实现思路</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="高等游民"
+      src="/images/1.jpeg">
+  <p class="site-author-name" itemprop="name">高等游民</p>
+  <div class="site-description" itemprop="description">卷发星人/程序猿/指弹菜鸟/社恐阿宅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/senup?tab=stars" title="GitHub → https://github.com/senup?tab=stars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://snailclimb.gitee.io/javaguide/#/" title="Guide → https://snailclimb.gitee.io/javaguide/#/" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Guide</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/senup/" title="cnblog → https://www.cnblogs.com/senup/" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat_channel.jpg" title="WeChat → /images/wechat_channel.jpg"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      DaLao
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.justzht.com" title="https://www.justzht.com" rel="noopener" target="_blank">justzht</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://199508.com/" title="https://199508.com/" rel="noopener" target="_blank">大雄</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.fueis.com/" title="https://blog.fueis.com/" rel="noopener" target="_blank">当下</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qqiyu.cn/" title="https://blog.qqiyu.cn/" rel="noopener" target="_blank">七云</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://noheart.cn/" title="https://noheart.cn/" rel="noopener" target="_blank">今今今生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.juroku.net/" title="https://www.juroku.net/" rel="noopener" target="_blank">致郁系</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://co5.me/" title="https://co5.me/" rel="noopener" target="_blank">少女癌</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://allenmistake.top/" title="https://allenmistake.top/" rel="noopener" target="_blank">AllenMistake</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lruihao.cn/" title="https://lruihao.cn/" rel="noopener" target="_blank">李瑞豪</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leflacon.top/" title="https://leflacon.top/" rel="noopener" target="_blank">LeFlacon</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+		<div style="display:inline-block;">
+		<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style=""> 
+			<img src="/images/yun.png" style="height:30px">
+		</a>
+		</div>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19119668号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高等游民</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:54</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+	  
+
+		
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'lFV1Gj6XzpRCC1xA9YskKGKv-gzGzoHsz',
+      appKey     : 'rCbCQxrpkNpdqAf7NNTJg42D',
+      placeholder: "吐槽一波，嗯？",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+  
+  <script type="text/javascript" src="/js/firework.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false,"scale":0.8},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

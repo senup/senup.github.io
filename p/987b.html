@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/home.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/home.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xYfyORg7NRaZ710bOerpWDuZ6ftibqls5bOt3eiFSoM">
+  <meta name="baidu-site-verification" content="FhQkF9o54P">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis从入门到摔门-其他功能">
+<meta property="og:url" content="https://www.senup.cn/p/987b.html">
+<meta property="og:site_name" content="Senup">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/tgCp1W8u1sfx.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/c2vlKYd9hrmW.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/OmiXKRGEQUz7.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/VKeyXyH0CSo4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/aKCVJ8Vl4Xxz.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/R0niivep8HUp.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/DruIebmIeVz5.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/dlSWsxFbv6gj.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/SJL1Wkt9eSyB.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/i0VW8zlFARPo.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/37GTjJsa3ky2.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/EjcBUgDpNUMB.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/shiSUGR5Inll.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/sviucP4ic1NV.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/oWgSR6L4Yvj4.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/fPVtbNLjIr85.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/zIFAgw0NFT8Q.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/a1Mn4gp57Qiu.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/pnogY0wqxlXD.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/yyTkyJTfIRMX.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/Ht6olxPUqNLu.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/hLB9R73hHRx5.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/VvSRA6G4BWr1.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/D45rrq6PX5qV.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/OvhFjDLzwvJJ.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/IMiNV5aBhhka.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/g5BiyECvFIM7.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/igNex8NhMAvq.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/dmwfyd1nf7PV.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/19MOUzFqRPQ1.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/0wBtUXGTHNME.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/gAI3XVRPEIuf.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/mWDfXvylksmL.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/TLv844PgGW6n.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/DTAhDFCBGJuk.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/UcQtsgMPRCI9.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/3BwlgJ7NOOyM.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/aiFxgO7FySHz.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/L45gPKGabeKO.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/i4UgN0UMEUQ3.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/HD1Yi64GMJ9i.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/rgiD7A3rqbo2.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/S866PhpBKPUN.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/QhLixJlXPOlw.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/AEJLEsiVHy1U.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/aX7M4jOco0pk.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/dqJOGQTlQFn6.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/ek1fzzpSrUYk.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/h05Y06cuB7It.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/pBoUM1H1MM43.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/q4eV7ulogpie.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/JikkzKL4phRd.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/F4iOIoNz6cSw.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/ILfz6o7fFDgf.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/YxMmvhBvD1nP.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/1hOgMmb056PJ.png?imageslim">
+<meta property="og:image" content="https://img.senup.cn/blog/20200429/6Wma8D3TltPz.png?imageslim">
+<meta property="og:updated_time" content="2021-03-28T13:13:26.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis从入门到摔门-其他功能">
+<meta name="twitter:image" content="https://img.senup.cn/blog/20200429/tgCp1W8u1sfx.png?imageslim">
+
+<link rel="canonical" href="https://www.senup.cn/p/987b.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>redis从入门到摔门-其他功能 | Senup</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Senup</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">走在风中 今天阳光 突然好温柔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/生活" rel="section"><i class="fa fa-heartbeat fa-fw"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/categories/技术" rel="section"><i class="fa fa-calendar fa-fw"></i>技术</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar">
+
+    <a href="/categories/吉他" rel="section"><i class="fa fa-tags fa-fw"></i>吉他</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/senup" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/987b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="卷发星人/程序猿/指弹菜鸟/社恐阿宅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          redis从入门到摔门-其他功能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-29 21:43:22" itemprop="dateCreated datePublished" datetime="2020-01-29T21:43:22+08:00">2020-01-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/987b.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/987b.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://img.senup.cn/blog/20200429/tgCp1W8u1sfx.png?imageslim" alt="mark"></p>
+<a id="more"></a>
+
+<h1 id="Jedis（java客户端）"><a href="#Jedis（java客户端）" class="headerlink" title="Jedis（java客户端）"></a>Jedis（java客户端）</h1><p><img src="https://img.senup.cn/blog/20200429/c2vlKYd9hrmW.png?imageslim" alt="mark"></p>
+<h2 id="获取jedis"><a href="#获取jedis" class="headerlink" title="获取jedis"></a>获取jedis</h2><p><img src="https://img.senup.cn/blog/20200429/OmiXKRGEQUz7.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/VKeyXyH0CSo4.png?imageslim" alt="mark"></p>
+<h2 id="jedis基本使用"><a href="#jedis基本使用" class="headerlink" title="jedis基本使用"></a>jedis基本使用</h2><p><img src="https://img.senup.cn/blog/20200429/aKCVJ8Vl4Xxz.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/R0niivep8HUp.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/DruIebmIeVz5.png?imageslim" alt="mark"></p>
+<h2 id="jedis连接池使用"><a href="#jedis连接池使用" class="headerlink" title="jedis连接池使用"></a>jedis连接池使用</h2><h3 id="jedis直连"><a href="#jedis直连" class="headerlink" title="jedis直连"></a>jedis直连</h3><p><img src="https://img.senup.cn/blog/20200429/dlSWsxFbv6gj.png?imageslim" alt="mark"></p>
+<h3 id="jedis连接池"><a href="#jedis连接池" class="headerlink" title="jedis连接池"></a>jedis连接池</h3><p><img src="https://img.senup.cn/blog/20200429/SJL1Wkt9eSyB.png?imageslim" alt="mark"></p>
+<h3 id="方案对比"><a href="#方案对比" class="headerlink" title="方案对比"></a>方案对比</h3><p><img src="https://img.senup.cn/blog/20200429/i0VW8zlFARPo.png?imageslim" alt="mark"></p>
+<h3 id="jedisPool使用"><a href="#jedisPool使用" class="headerlink" title="jedisPool使用"></a>jedisPool使用</h3><p><img src="https://img.senup.cn/blog/20200429/37GTjJsa3ky2.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/EjcBUgDpNUMB.png?imageslim" alt="mark"></p>
+<h1 id="慢查询：记录命令"><a href="#慢查询：记录命令" class="headerlink" title="慢查询：记录命令"></a>慢查询：记录命令</h1><p>许多存储系统（例如MySQL）提供慢查询日志帮助开发和运维人员定位系统存在的慢操作。</p>
+<p>所谓<strong>慢查询日志就是系统在命令执行前后计算每条命令的执行时间，当超过预设阈值，</strong></p>
+<p><strong>就将这条命令的相关信息（例如：发生时间、耗时、命令的详细信息）记录下来</strong>，Redis也提供了类似的功能。</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="https://img.senup.cn/blog/20200429/shiSUGR5Inll.png?imageslim" alt="mark"></p>
+<h2 id="两个配置"><a href="#两个配置" class="headerlink" title="两个配置"></a>两个配置</h2><h3 id="slowlog-max-len"><a href="#slowlog-max-len" class="headerlink" title="slowlog-max-len"></a>slowlog-max-len</h3><ol>
+<li>慢查询是一个先进先出的队列</li>
+<li>队列长度固定</li>
+<li>保存在内存中，也就是重启即消失</li>
+</ol>
+<p>从下图可以看出，超过10毫秒就将它加入慢查询队列中</p>
+<p><img src="https://img.senup.cn/blog/20200429/sviucP4ic1NV.png?imageslim" alt="mark"></p>
+<h3 id="slowlog-log-slower-than"><a href="#slowlog-log-slower-than" class="headerlink" title="slowlog-log-slower-than"></a>slowlog-log-slower-than</h3><ol>
+<li>慢查询阈值（单位：微秒）</li>
+<li><code>slowlog-log-slower-than=0</code> 设置为0记录所有命令</li>
+<li><code>slowlog-log-slower-than&lt;0</code> 设置为小于0，不记录所有命令</li>
+</ol>
+<h3 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h3><ol>
+<li>默认值</li>
+</ol>
+<p><code>config get slowlog-max-len = 128</code></p>
+<p><code>config get slowlog-log-slower-than = 10000</code></p>
+<ol start="2">
+<li><p>修改配置文件重启</p>
+</li>
+<li><p>动态配置</p>
+</li>
+</ol>
+<p><code>config set slowlog-max-len 1000</code></p>
+<p><code>config set slowlog-log-slower-than 10000</code></p>
+<h3 id="三个命令"><a href="#三个命令" class="headerlink" title="三个命令"></a>三个命令</h3><ol>
+<li><code>slowlog get [n]</code> : 获取慢查询队列</li>
+<li><code>slowlog len</code>: 获取慢查询队列长度</li>
+<li><code>slowlog reset</code>: 清空慢查询队列</li>
+</ol>
+<h3 id="运维经验"><a href="#运维经验" class="headerlink" title="运维经验"></a>运维经验</h3><ol>
+<li><code>slowlog-max-len</code>不要设置过大，默认10ms,通常设置1ms。因为实战中大概处在1ms左右，设置过大不会触发慢查询；</li>
+<li><code>slowlog-log-slower-than</code> 不要设置过小，通常设置在1000左右；</li>
+<li>理解命令生命周期，通过各种因素分析可能出现的超时的原因。</li>
+<li>定期持久化慢查询。因为慢查询在内存中，可以定期持久化到mysql中，可以查到慢查询的历史操作，查看关键数据。</li>
+</ol>
+<h1 id="Pipeline：提高客户端效率"><a href="#Pipeline：提高客户端效率" class="headerlink" title="Pipeline：提高客户端效率"></a>Pipeline：提高客户端效率</h1><h2 id="什么是流水线"><a href="#什么是流水线" class="headerlink" title="什么是流水线"></a>什么是流水线</h2><h3 id="1次网络命令通信模型"><a href="#1次网络命令通信模型" class="headerlink" title="1次网络命令通信模型"></a>1次网络命令通信模型</h3><p><img src="https://img.senup.cn/blog/20200429/oWgSR6L4Yvj4.png?imageslim" alt="mark"></p>
+<p>如果有多条命令？</p>
+<h3 id="批量网络命令通信模型"><a href="#批量网络命令通信模型" class="headerlink" title="批量网络命令通信模型"></a>批量网络命令通信模型</h3><p><img src="https://img.senup.cn/blog/20200429/fPVtbNLjIr85.png?imageslim" alt="mark"></p>
+<p>其中，命令时间非常快。</p>
+<h3 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h3><p><img src="https://img.senup.cn/blog/20200429/zIFAgw0NFT8Q.png?imageslim" alt="mark"></p>
+<h3 id="流水线的作用"><a href="#流水线的作用" class="headerlink" title="流水线的作用"></a>流水线的作用</h3><p><img src="https://img.senup.cn/blog/20200429/a1Mn4gp57Qiu.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/pnogY0wqxlXD.png?imageslim" alt="mark"></p>
+<p>在redis中执行一条命令可能只要几微秒，但是网络传输的话需要13毫秒。</p>
+<h2 id="客户端实现"><a href="#客户端实现" class="headerlink" title="客户端实现"></a>客户端实现</h2><p><img src="https://img.senup.cn/blog/20200429/yyTkyJTfIRMX.png?imageslim" alt="mark"></p>
+<h3 id="没有pipeline的情况下"><a href="#没有pipeline的情况下" class="headerlink" title="没有pipeline的情况下"></a>没有pipeline的情况下</h3><p><img src="https://img.senup.cn/blog/20200429/Ht6olxPUqNLu.png?imageslim" alt="mark"></p>
+<h3 id="使用pipeline的情况下"><a href="#使用pipeline的情况下" class="headerlink" title="使用pipeline的情况下"></a>使用pipeline的情况下</h3><p><img src="https://img.senup.cn/blog/20200429/hLB9R73hHRx5.png?imageslim" alt="mark"></p>
+<h2 id="与原生操作对比"><a href="#与原生操作对比" class="headerlink" title="与原生操作对比"></a>与原生操作对比</h2><h3 id="原生操作"><a href="#原生操作" class="headerlink" title="原生操作"></a>原生操作</h3><p><img src="https://img.senup.cn/blog/20200429/VvSRA6G4BWr1.png?imageslim" alt="mark"></p>
+<h3 id="pipeline-操作拆分"><a href="#pipeline-操作拆分" class="headerlink" title="pipeline:操作拆分"></a>pipeline:操作拆分</h3><p><img src="https://img.senup.cn/blog/20200429/D45rrq6PX5qV.png?imageslim" alt="mark"></p>
+<h2 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h2><ol>
+<li>注意每次pipeline携带的数据量</li>
+<li>pipeline每次只能作用在一个redis节点上</li>
+<li>M操作与pipeline的区别：整体传输与拆分传输</li>
+</ol>
+<h1 id="发布订阅：实战功能"><a href="#发布订阅：实战功能" class="headerlink" title="发布订阅：实战功能"></a>发布订阅：实战功能</h1><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><ol>
+<li>publisher 发布者</li>
+<li>channel 频道</li>
+<li>subscriber 订阅者</li>
+</ol>
+<p>类似生产者消费者模型</p>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p><img src="https://img.senup.cn/blog/20200429/OvhFjDLzwvJJ.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/IMiNV5aBhhka.png?imageslim" alt="mark"></p>
+<h3 id="多个订阅"><a href="#多个订阅" class="headerlink" title="多个订阅"></a>多个订阅</h3><p><img src="https://img.senup.cn/blog/20200429/g5BiyECvFIM7.png?imageslim" alt="mark"></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
+<li>publish</li>
+<li>subscribe</li>
+<li>unsubscribe</li>
+<li>other…</li>
+</ol>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p><img src="https://img.senup.cn/blog/20200429/igNex8NhMAvq.png?imageslim" alt="mark"></p>
+<h3 id="订阅"><a href="#订阅" class="headerlink" title="订阅"></a>订阅</h3><p><img src="https://img.senup.cn/blog/20200429/dmwfyd1nf7PV.png?imageslim" alt="mark"></p>
+<h3 id="取消订阅"><a href="#取消订阅" class="headerlink" title="取消订阅"></a>取消订阅</h3><p><img src="https://img.senup.cn/blog/20200429/19MOUzFqRPQ1.png?imageslim" alt="mark"></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><img src="https://img.senup.cn/blog/20200429/0wBtUXGTHNME.png?imageslim" alt="mark"></p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p><img src="https://img.senup.cn/blog/20200429/gAI3XVRPEIuf.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/mWDfXvylksmL.png?imageslim" alt="mark"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>发布订阅模式的角色</li>
+<li>重要的API</li>
+<li>消息队列和发布订阅</li>
+</ol>
+<h1 id="Bitmap-内存方案"><a href="#Bitmap-内存方案" class="headerlink" title="Bitmap: 内存方案"></a>Bitmap: 内存方案</h1><h2 id="位图是什么？"><a href="#位图是什么？" class="headerlink" title="位图是什么？"></a>位图是什么？</h2><p><img src="https://img.senup.cn/blog/20200429/TLv844PgGW6n.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/DTAhDFCBGJuk.png?imageslim" alt="mark"></p>
+<p>redis可以直接操纵位。</p>
+<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="setbit"><a href="#setbit" class="headerlink" title="setbit"></a>setbit</h3><p><img src="https://img.senup.cn/blog/20200429/UcQtsgMPRCI9.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/3BwlgJ7NOOyM.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/aiFxgO7FySHz.png?imageslim" alt="mark"></p>
+<h3 id="getbit"><a href="#getbit" class="headerlink" title="getbit"></a>getbit</h3><p><img src="https://img.senup.cn/blog/20200429/L45gPKGabeKO.png?imageslim" alt="mark"></p>
+<h3 id="bitcount"><a href="#bitcount" class="headerlink" title="bitcount"></a>bitcount</h3><p><img src="https://img.senup.cn/blog/20200429/i4UgN0UMEUQ3.png?imageslim" alt="mark"></p>
+<h3 id="bitop"><a href="#bitop" class="headerlink" title="bitop"></a>bitop</h3><p><img src="https://img.senup.cn/blog/20200429/HD1Yi64GMJ9i.png?imageslim" alt="mark"></p>
+<h3 id="bitpos"><a href="#bitpos" class="headerlink" title="bitpos"></a>bitpos</h3><p><img src="https://img.senup.cn/blog/20200429/rgiD7A3rqbo2.png?imageslim" alt="mark"></p>
+<h2 id="实战：独立用户统计"><a href="#实战：独立用户统计" class="headerlink" title="实战：独立用户统计"></a>实战：独立用户统计</h2><p>网站有1亿用户，每天有5000万独立访问</p>
+<p><img src="https://img.senup.cn/blog/20200429/S866PhpBKPUN.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/QhLixJlXPOlw.png?imageslim" alt="mark"></p>
+<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><ol>
+<li><p>位图的类型为string,最大为512mb;数据过大可以进行拆分</p>
+</li>
+<li><p>注意setbit时的偏移量，可能有较大耗时</p>
+</li>
+<li><p>位图是单线程模型，不是绝对好</p>
+</li>
+</ol>
+<h1 id="HyperLogLog：极端节省内存的方案"><a href="#HyperLogLog：极端节省内存的方案" class="headerlink" title="HyperLogLog：极端节省内存的方案"></a>HyperLogLog：极端节省内存的方案</h1><h2 id="新的数据结构？"><a href="#新的数据结构？" class="headerlink" title="新的数据结构？"></a>新的数据结构？</h2><ol>
+<li>基于HyperLogLog算法：极小空间完成独立数据统计。</li>
+<li>本质还是字符串。</li>
+</ol>
+<h2 id="内存消耗（百万独立用户）"><a href="#内存消耗（百万独立用户）" class="headerlink" title="内存消耗（百万独立用户）"></a>内存消耗（百万独立用户）</h2><p>内存消耗非常小</p>
+<p><img src="https://img.senup.cn/blog/20200429/AEJLEsiVHy1U.png?imageslim" alt="mark"></p>
+<h2 id="三个命令-1"><a href="#三个命令-1" class="headerlink" title="三个命令"></a>三个命令</h2><p><img src="https://img.senup.cn/blog/20200429/aX7M4jOco0pk.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/dqJOGQTlQFn6.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/ek1fzzpSrUYk.png?imageslim" alt="mark"></p>
+<h2 id="使用经验-1"><a href="#使用经验-1" class="headerlink" title="使用经验"></a>使用经验</h2><p><img src="https://img.senup.cn/blog/20200429/h05Y06cuB7It.png?imageslim" alt="mark"></p>
+<h1 id="GEO-定位功能"><a href="#GEO-定位功能" class="headerlink" title="GEO: 定位功能"></a>GEO: 定位功能</h1><h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p><img src="https://img.senup.cn/blog/20200429/pBoUM1H1MM43.png?imageslim" alt="mark"></p>
+<p>应用：微信摇一摇</p>
+<h2 id="5个城市经纬度"><a href="#5个城市经纬度" class="headerlink" title="5个城市经纬度"></a>5个城市经纬度</h2><p><img src="https://img.senup.cn/blog/20200429/q4eV7ulogpie.png?imageslim" alt="mark"></p>
+<h2 id="相关命令-1"><a href="#相关命令-1" class="headerlink" title="相关命令"></a>相关命令</h2><h3 id="geoadd"><a href="#geoadd" class="headerlink" title="geoadd"></a>geoadd</h3><p><img src="https://img.senup.cn/blog/20200429/JikkzKL4phRd.png?imageslim" alt="mark"></p>
+<h3 id="geopos"><a href="#geopos" class="headerlink" title="geopos"></a>geopos</h3><p><img src="https://img.senup.cn/blog/20200429/F4iOIoNz6cSw.png?imageslim" alt="mark"></p>
+<h3 id="geodist"><a href="#geodist" class="headerlink" title="geodist"></a>geodist</h3><p><img src="https://img.senup.cn/blog/20200429/ILfz6o7fFDgf.png?imageslim" alt="mark"></p>
+<h3 id="georadius"><a href="#georadius" class="headerlink" title="georadius"></a>georadius</h3><p><img src="https://img.senup.cn/blog/20200429/YxMmvhBvD1nP.png?imageslim" alt="mark"></p>
+<p><img src="https://img.senup.cn/blog/20200429/1hOgMmb056PJ.png?imageslim" alt="mark"></p>
+<h2 id="相关说明"><a href="#相关说明" class="headerlink" title="相关说明"></a>相关说明</h2><p><img src="https://img.senup.cn/blog/20200429/6Wma8D3TltPz.png?imageslim" alt="mark"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/redis/" rel="tag"><i class="fa fa-tag"></i> redis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/57f1.html" rel="prev" title="redis从入门到摔门-API的理解和使用">
+      <i class="fa fa-chevron-left"></i> redis从入门到摔门-API的理解和使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/1c0e.html" rel="next" title="redis从入门到摔门-持久化的取舍和选择">
+      redis从入门到摔门-持久化的取舍和选择 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jedis（java客户端）"><span class="nav-number">1.</span> <span class="nav-text">Jedis（java客户端）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取jedis"><span class="nav-number">1.1.</span> <span class="nav-text">获取jedis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jedis基本使用"><span class="nav-number">1.2.</span> <span class="nav-text">jedis基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jedis连接池使用"><span class="nav-number">1.3.</span> <span class="nav-text">jedis连接池使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jedis直连"><span class="nav-number">1.3.1.</span> <span class="nav-text">jedis直连</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jedis连接池"><span class="nav-number">1.3.2.</span> <span class="nav-text">jedis连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案对比"><span class="nav-number">1.3.3.</span> <span class="nav-text">方案对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jedisPool使用"><span class="nav-number">1.3.4.</span> <span class="nav-text">jedisPool使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慢查询：记录命令"><span class="nav-number">2.</span> <span class="nav-text">慢查询：记录命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个配置"><span class="nav-number">2.2.</span> <span class="nav-text">两个配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#slowlog-max-len"><span class="nav-number">2.2.1.</span> <span class="nav-text">slowlog-max-len</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slowlog-log-slower-than"><span class="nav-number">2.2.2.</span> <span class="nav-text">slowlog-log-slower-than</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置方法"><span class="nav-number">2.2.3.</span> <span class="nav-text">配置方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三个命令"><span class="nav-number">2.2.4.</span> <span class="nav-text">三个命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运维经验"><span class="nav-number">2.2.5.</span> <span class="nav-text">运维经验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pipeline：提高客户端效率"><span class="nav-number">3.</span> <span class="nav-text">Pipeline：提高客户端效率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是流水线"><span class="nav-number">3.1.</span> <span class="nav-text">什么是流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1次网络命令通信模型"><span class="nav-number">3.1.1.</span> <span class="nav-text">1次网络命令通信模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量网络命令通信模型"><span class="nav-number">3.1.2.</span> <span class="nav-text">批量网络命令通信模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线"><span class="nav-number">3.1.3.</span> <span class="nav-text">流水线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流水线的作用"><span class="nav-number">3.1.4.</span> <span class="nav-text">流水线的作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端实现"><span class="nav-number">3.2.</span> <span class="nav-text">客户端实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有pipeline的情况下"><span class="nav-number">3.2.1.</span> <span class="nav-text">没有pipeline的情况下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用pipeline的情况下"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用pipeline的情况下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与原生操作对比"><span class="nav-number">3.3.</span> <span class="nav-text">与原生操作对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原生操作"><span class="nav-number">3.3.1.</span> <span class="nav-text">原生操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pipeline-操作拆分"><span class="nav-number">3.3.2.</span> <span class="nav-text">pipeline:操作拆分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用建议"><span class="nav-number">3.4.</span> <span class="nav-text">使用建议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布订阅：实战功能"><span class="nav-number">4.</span> <span class="nav-text">发布订阅：实战功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#角色"><span class="nav-number">4.1.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">4.2.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多个订阅"><span class="nav-number">4.2.1.</span> <span class="nav-text">多个订阅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">4.3.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">4.3.1.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订阅"><span class="nav-number">4.3.2.</span> <span class="nav-text">订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消订阅"><span class="nav-number">4.3.3.</span> <span class="nav-text">取消订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">4.3.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息队列"><span class="nav-number">4.4.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bitmap-内存方案"><span class="nav-number">5.</span> <span class="nav-text">Bitmap: 内存方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#位图是什么？"><span class="nav-number">5.1.</span> <span class="nav-text">位图是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关命令"><span class="nav-number">5.2.</span> <span class="nav-text">相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setbit"><span class="nav-number">5.2.1.</span> <span class="nav-text">setbit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getbit"><span class="nav-number">5.2.2.</span> <span class="nav-text">getbit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitcount"><span class="nav-number">5.2.3.</span> <span class="nav-text">bitcount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitop"><span class="nav-number">5.2.4.</span> <span class="nav-text">bitop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitpos"><span class="nav-number">5.2.5.</span> <span class="nav-text">bitpos</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战：独立用户统计"><span class="nav-number">5.3.</span> <span class="nav-text">实战：独立用户统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用经验"><span class="nav-number">5.4.</span> <span class="nav-text">使用经验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HyperLogLog：极端节省内存的方案"><span class="nav-number">6.</span> <span class="nav-text">HyperLogLog：极端节省内存的方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新的数据结构？"><span class="nav-number">6.1.</span> <span class="nav-text">新的数据结构？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存消耗（百万独立用户）"><span class="nav-number">6.2.</span> <span class="nav-text">内存消耗（百万独立用户）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三个命令-1"><span class="nav-number">6.3.</span> <span class="nav-text">三个命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用经验-1"><span class="nav-number">6.4.</span> <span class="nav-text">使用经验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GEO-定位功能"><span class="nav-number">7.</span> <span class="nav-text">GEO: 定位功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么？"><span class="nav-number">7.1.</span> <span class="nav-text">是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5个城市经纬度"><span class="nav-number">7.2.</span> <span class="nav-text">5个城市经纬度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关命令-1"><span class="nav-number">7.3.</span> <span class="nav-text">相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#geoadd"><span class="nav-number">7.3.1.</span> <span class="nav-text">geoadd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geopos"><span class="nav-number">7.3.2.</span> <span class="nav-text">geopos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geodist"><span class="nav-number">7.3.3.</span> <span class="nav-text">geodist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#georadius"><span class="nav-number">7.3.4.</span> <span class="nav-text">georadius</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关说明"><span class="nav-number">7.4.</span> <span class="nav-text">相关说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="高等游民"
+      src="/images/1.jpeg">
+  <p class="site-author-name" itemprop="name">高等游民</p>
+  <div class="site-description" itemprop="description">卷发星人/程序猿/指弹菜鸟/社恐阿宅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/senup?tab=stars" title="GitHub → https://github.com/senup?tab=stars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://snailclimb.gitee.io/javaguide/#/" title="Guide → https://snailclimb.gitee.io/javaguide/#/" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Guide</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/senup/" title="cnblog → https://www.cnblogs.com/senup/" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat_channel.jpg" title="WeChat → /images/wechat_channel.jpg"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      DaLao
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.justzht.com" title="https://www.justzht.com" rel="noopener" target="_blank">justzht</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://199508.com/" title="https://199508.com/" rel="noopener" target="_blank">大雄</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.fueis.com/" title="https://blog.fueis.com/" rel="noopener" target="_blank">当下</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qqiyu.cn/" title="https://blog.qqiyu.cn/" rel="noopener" target="_blank">七云</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://noheart.cn/" title="https://noheart.cn/" rel="noopener" target="_blank">今今今生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.juroku.net/" title="https://www.juroku.net/" rel="noopener" target="_blank">致郁系</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://co5.me/" title="https://co5.me/" rel="noopener" target="_blank">少女癌</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://allenmistake.top/" title="https://allenmistake.top/" rel="noopener" target="_blank">AllenMistake</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lruihao.cn/" title="https://lruihao.cn/" rel="noopener" target="_blank">李瑞豪</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leflacon.top/" title="https://leflacon.top/" rel="noopener" target="_blank">LeFlacon</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+		<div style="display:inline-block;">
+		<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style=""> 
+			<img src="/images/yun.png" style="height:30px">
+		</a>
+		</div>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19119668号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高等游民</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:54</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+	  
+
+		
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'lFV1Gj6XzpRCC1xA9YskKGKv-gzGzoHsz',
+      appKey     : 'rCbCQxrpkNpdqAf7NNTJg42D',
+      placeholder: "吐槽一波，嗯？",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+  
+  <script type="text/javascript" src="/js/firework.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false,"scale":0.8},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/home.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/home.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="xYfyORg7NRaZ710bOerpWDuZ6ftibqls5bOt3eiFSoM">
+  <meta name="baidu-site-verification" content="FhQkF9o54P">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="NIO是以块的方式处理数据，但是IO是以最基础的字节流的形式去写入和读出的。所以在效率上的话，肯定是NIO效率比IO效率会高出很多。 NIO不在是和IO一样用OutputStream和InputStream 输入流的形式来进行处理数据的，但是又是基于这种流的形式，而是采用了通道和缓冲区的形式来进行处理数据的。 还有一点就是NIO的通道是可以双向的，但是IO中的流只能是单向的。 还有就是NIO的缓">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IO和NIO的区别">
+<meta property="og:url" content="https://www.senup.cn/p/92dc.html">
+<meta property="og:site_name" content="Senup">
+<meta property="og:description" content="NIO是以块的方式处理数据，但是IO是以最基础的字节流的形式去写入和读出的。所以在效率上的话，肯定是NIO效率比IO效率会高出很多。 NIO不在是和IO一样用OutputStream和InputStream 输入流的形式来进行处理数据的，但是又是基于这种流的形式，而是采用了通道和缓冲区的形式来进行处理数据的。 还有一点就是NIO的通道是可以双向的，但是IO中的流只能是单向的。 还有就是NIO的缓">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-28T13:13:26.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IO和NIO的区别">
+<meta name="twitter:description" content="NIO是以块的方式处理数据，但是IO是以最基础的字节流的形式去写入和读出的。所以在效率上的话，肯定是NIO效率比IO效率会高出很多。 NIO不在是和IO一样用OutputStream和InputStream 输入流的形式来进行处理数据的，但是又是基于这种流的形式，而是采用了通道和缓冲区的形式来进行处理数据的。 还有一点就是NIO的通道是可以双向的，但是IO中的流只能是单向的。 还有就是NIO的缓">
+
+<link rel="canonical" href="https://www.senup.cn/p/92dc.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>IO和NIO的区别 | Senup</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Senup</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">走在风中 今天阳光 突然好温柔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/生活" rel="section"><i class="fa fa-heartbeat fa-fw"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-technology">
+
+    <a href="/categories/技术" rel="section"><i class="fa fa-calendar fa-fw"></i>技术</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar">
+
+    <a href="/categories/吉他" rel="section"><i class="fa fa-tags fa-fw"></i>吉他</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-book fa-fw"></i>读书</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-film fa-fw"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-comment fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/senup" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/92dc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="卷发星人/程序猿/指弹菜鸟/社恐阿宅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IO和NIO的区别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-12 19:36:20" itemprop="dateCreated datePublished" datetime="2020-08-12T19:36:20+08:00">2020-08-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/92dc.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/92dc.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li>NIO是以块的方式处理数据，但是IO是以最基础的字节流的形式去写入和读出的。所以在<strong>效率</strong>上的话，肯定是NIO效率比IO效率会高出很多。</li>
+<li>NIO不在是和IO一样用OutputStream和InputStream 输入<strong>流的形式</strong>来进行处理数据的，但是又是基于这种流的形式，而是采用了<strong>通道和缓冲区</strong>的形式来进行处理数据的。</li>
+<li>还有一点就是NIO的通道是可以<strong>双向</strong>的，但是IO中的流只能是单向的。</li>
+<li>还有就是NIO的缓冲区（其实也就是一个字节数组）还可以进行分片，可以建立只读缓冲区、直接缓冲区和间接缓冲区，只读缓冲区很明显就是字面意思，直接缓冲区是为加快 I/O 速度，而以一种特殊的方式分配其内存的缓冲区。</li>
+<li>补充一点：NIO比传统的BIO核心区别就是，NIO采用的是<strong>多路复用的IO模型</strong>，普通的IO用的是<strong>阻塞的IO模型</strong>，两个之间的效率肯定是多路复用效率更高</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="什么是多路复用？"><a href="#什么是多路复用？" class="headerlink" title="什么是多路复用？"></a>什么是多路复用？</h3><p>I/O多路复用就通过一种机制，可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
+<blockquote>
+<p>但select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的，而异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间。</p>
+</blockquote>
+<h3 id="为什么要有Selector"><a href="#为什么要有Selector" class="headerlink" title="为什么要有Selector"></a>为什么要有Selector</h3><p>要理解为什么要有Selector？这个问题，我们首先得知道在UNIX系统中有五种I/O模型：同步阻塞I/O、同步非阻塞I/O、I/O多路复用、信号驱动I/O和异步I/O。这个几个I/O模型都是什么意思呢，大概比喻一下。</p>
+<ul>
+<li>阻塞式I/O模型：一个人在钓鱼，当没鱼上钩时，就坐在岸边一直等。</li>
+<li>非阻塞式I/O模型：边钓鱼边玩手机，隔会再看看有没有鱼上钩，有的话就迅速拉杆。</li>
+<li>I/O复用模型：放了一堆鱼竿，在岸边一直守着这堆鱼竿，没鱼上钩就玩手机。</li>
+<li>信号驱动式I/O模型：鱼竿上系了个铃铛，当铃铛响，就知道鱼上钩，然后可以专心玩手机。</li>
+<li>异步I/O模型：雇佣一个人来给我钓鱼，钓上来以后给我送到住处，我该干嘛干嘛去。</li>
+</ul>
+<p><strong>Selector的作用就是用来轮询每个注册的Channel，一旦发现Channel有注册的事件发生，便获取事件然后进行处理。</strong></p>
+<h3 id="通道是个什么意思？"><a href="#通道是个什么意思？" class="headerlink" title="通道是个什么意思？"></a>通道是个什么意思？</h3><p>通道是对原 I/O 包中的流的模拟。到任何目的地(或来自任何地方)的所有数据都必须通过一个 Channel 对象（通道）。</p>
+<p>一个 Buffer 实质上是一个容器对象。发送给一个通道的所有对象都必须首先放到缓冲区中；同样地，从通道中读取的任何数据都要读到缓冲区中。Channel是一个对象，可以通过它读取和写入数据。拿 NIO 与原来的 I/O 做个比较，通道就像是流。</p>
+<p>正如前面提到的，所有数据都通过 Buffer 对象来处理。您永远不会将字节直接写入通道中，相反，您是将数据写入包含一个或者多个字节的缓冲区。同样，您不会直接从通道中读取字节，而是将数据从通道读入缓冲区，再从缓冲区获取这个字节。</p>
+<p>我们知道NIO中的Channel分为四种类型</p>
+<ul>
+<li><code>FileChannel</code>:文件通道</li>
+<li><code>DatagramChannel</code>:通过UDP读取网络中的数据</li>
+<li><code>SocketChannel</code>:通过TCP读取网络中的数据</li>
+<li><code>ServerSocketChannel</code>:可以监听进来的连接，对于每个进来的连接都会创建一个<code>SocketChannel</code></li>
+</ul>
+<p>在这四个通道中有一个不能和<code>Selector</code>配合使用，因为<code>Selector</code>是不断的轮询注册在<code>Selector</code>中的每个通道的状态，不能阻塞在其中一个通道，即每个通道必须是非阻塞状态的，但是<code>FileChannel</code>的通道是阻塞状态且不能更改，所以<code>FileChannel</code>不能和<code>Selector</code>配合使用。</p>
+<h3 id="缓冲区是什么意思："><a href="#缓冲区是什么意思：" class="headerlink" title="缓冲区是什么意思："></a>缓冲区是什么意思：</h3><ul>
+<li>Buffer 是一个对象， 它包含一些要写入或者刚读出的数据。在 NIO 中加入 Buffer 对象，体现了新库与原 I/O 的一个重要区别。在面向流的 I/O 中，您将数据直接写入或者将数据直接读到 Stream 对象中</li>
+<li>在 NIO 库中，所有数据都是用缓冲区处理的。在读取数据时，它是直接读到缓冲区中的。在写入数据时，它是写入到缓冲区中的。任何时候访问 NIO 中的数据，您都是将它放到缓冲区中。</li>
+<li>缓冲区实质上是一个数组。通常它是一个字节数组，但是也可以使用其他种类的数组。但是一个缓冲区不 仅仅 是一个数组。缓冲区提供了对数据的结构化访问，而且还可以跟踪系统的读/写进程</li>
+</ul>
+<h3 id="缓冲区的类型："><a href="#缓冲区的类型：" class="headerlink" title="缓冲区的类型："></a>缓冲区的类型：</h3><blockquote>
+<p>ByteBuffer<br>CharBuffer<br>ShortBuffer<br>IntBuffer<br>LongBuffer<br>FloatBuffer<br>DoubleBuffer</p>
+</blockquote>
+<h3 id="NIO的底层工作原理"><a href="#NIO的底层工作原理" class="headerlink" title="NIO的底层工作原理"></a>NIO的底层工作原理</h3><h3 id="先来了解一下buffer的工作机制："><a href="#先来了解一下buffer的工作机制：" class="headerlink" title="先来了解一下buffer的工作机制："></a>先来了解一下buffer的工作机制：</h3><ul>
+<li>capacity 缓冲区数组的总长度</li>
+<li>position 下一个要操作的数据元素的位置</li>
+<li>limit 缓冲区数组中不可操作的下一个元素的位置，limit&lt;=capacity</li>
+<li>mark 用于记录当前 position 的前一个位置或者默认是 0</li>
+</ul>
+<p>1.这一步其实是当我们刚开始初始化这个buffer数组的时候，开始默认是这样的</p>
+<p>2、但是当你往buffer数组中开始写入的时候几个字节的时候就会变成下面的图，position会移动你数据的结束的下一个位置，这个时候你需要把buffer中的数据写到channel管道中，所以此时我们就需要用这个<code>buffer.flip()</code>方法，</p>
+<p>3、当你调用完2中的方法时，这个时候就会变成下面的图了，这样的话其实就可以知道你刚刚写到buffer中的数据是在position—-&gt;limit之间，然后下一步调用<code>clear（）</code></p>
+<p>4、这时底层操作系统就可以从缓冲区中正确读取这 5 个字节数据发送出去了。在下一次写数据之前我们在调一下 clear() 方法。缓冲区的索引状态又回到初始位置。（其实这一步有点像IO中的把转运字节数组<code>char[] buf = new char[1024]</code>不足1024字节的部分给强制刷新出去的意思）</p>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>1、这里还要说明一下 mark，当我们调用<code>mark()</code>时，它将记录当前 position 的前一个位置，当我们调用 reset 时，position 将恢复 mark 记录下来的值</p>
+<p>2.clear()方法会：清空整个缓冲区。position将被设回0，limit被设置成 capacity的值（这个个人的理解就是当你在flip（）方法的基础上已经记住你写入了多少字节数据，直接把position到limit之间的也就是你写入已经记住的数据给“复制”到管道中）</p>
+<p>3.当你把缓冲区的数局写入到管道中的时候，你需要调用flip()方法将Buffer从写模式切换到读模式，调用flip()方法会将position设回0，并将limit设置成之前position的值。buf.flip();（其实我个人理解的就相当于先记住缓冲区缓冲了多少数据）</p>
+<blockquote>
+<p>推荐阅读：<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247488064&idx=2&sn=56b6f87cb4e99107737c73f7ed1e5e8e&chksm=eb539776dc241e60f88f7185da4b7fb46bf41f10a66a53898ca672e8942e8b6a8d47ec7d3d3d&scene=21#wechat_redirect" target="_blank" rel="noopener">详解 Java 中 4 种 I/O 模型</a></p>
+</blockquote>
+<h2 id="NIO-工作代码示例"><a href="#NIO-工作代码示例" class="headerlink" title="NIO 工作代码示例"></a>NIO 工作代码示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selector</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;  </span><br><span class="line"><span class="comment">//先给缓冲区申请内存空间  </span></span><br><span class="line">        ByteBuffer buffer = ByteBuffer.allocate(<span class="number">1024</span>);  </span><br><span class="line">     <span class="comment">//打开Selector为了它可以轮询每个 Channel 的状态  </span></span><br><span class="line">        Selector selector = Selector.open();  </span><br><span class="line">        ServerSocketChannel ssc = ServerSocketChannel.open();  </span><br><span class="line">        ssc.configureBlocking(<span class="keyword">false</span>);<span class="comment">//设置为非阻塞方式  </span></span><br><span class="line">        ssc.socket().bind(<span class="keyword">new</span> InetSocketAddress(<span class="number">8080</span>));  </span><br><span class="line">        ssc.register(selector, SelectionKey.OP_ACCEPT);<span class="comment">//注册监听的事件  </span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;  </span><br><span class="line">            Set selectedKeys = selector.selectedKeys();<span class="comment">//取得所有key集合  </span></span><br><span class="line">            Iterator it = selectedKeys.iterator();  </span><br><span class="line">            <span class="keyword">while</span> (it.hasNext()) &#123;  </span><br><span class="line">                SelectionKey key = (SelectionKey) it.next();  </span><br><span class="line">                <span class="keyword">if</span> ((key.readyOps() &amp; SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT) &#123;  </span><br><span class="line">                    ServerSocketChannel ssChannel = (ServerSocketChannel) key.channel();  </span><br><span class="line">                 SocketChannel sc = ssChannel.accept();<span class="comment">//接受到服务端的请求  </span></span><br><span class="line">                    sc.configureBlocking(<span class="keyword">false</span>);  </span><br><span class="line">                    sc.register(selector, SelectionKey.OP_READ);  </span><br><span class="line">                    it.remove();  </span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>   </span><br><span class="line">                ((key.readyOps() &amp; SelectionKey.OP_READ) == SelectionKey.OP_READ) &#123;  </span><br><span class="line">                    SocketChannel sc = (SocketChannel) key.channel();  </span><br><span class="line">                    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;  </span><br><span class="line">                        buffer.clear();  </span><br><span class="line">                        <span class="keyword">int</span> n = sc.read(buffer);<span class="comment">//读取数据  </span></span><br><span class="line">                        <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;  </span><br><span class="line">                            <span class="keyword">break</span>;  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        buffer.flip();  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    it.remove();  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/11f6.html" rel="prev" title="通过反射获取泛型">
+      <i class="fa fa-chevron-left"></i> 通过反射获取泛型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/31f8.html" rel="next" title="innodb没有设置主键的时候怎么办？">
+      innodb没有设置主键的时候怎么办？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是多路复用？"><span class="nav-number">1.</span> <span class="nav-text">什么是多路复用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要有Selector"><span class="nav-number">2.</span> <span class="nav-text">为什么要有Selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通道是个什么意思？"><span class="nav-number">3.</span> <span class="nav-text">通道是个什么意思？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区是什么意思："><span class="nav-number">4.</span> <span class="nav-text">缓冲区是什么意思：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲区的类型："><span class="nav-number">5.</span> <span class="nav-text">缓冲区的类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NIO的底层工作原理"><span class="nav-number">6.</span> <span class="nav-text">NIO的底层工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先来了解一下buffer的工作机制："><span class="nav-number">7.</span> <span class="nav-text">先来了解一下buffer的工作机制：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充："><span class="nav-number">8.</span> <span class="nav-text">补充：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NIO-工作代码示例"><span class="nav-number"></span> <span class="nav-text">NIO 工作代码示例</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="高等游民"
+      src="/images/1.jpeg">
+  <p class="site-author-name" itemprop="name">高等游民</p>
+  <div class="site-description" itemprop="description">卷发星人/程序猿/指弹菜鸟/社恐阿宅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/senup?tab=stars" title="GitHub → https://github.com/senup?tab=stars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://snailclimb.gitee.io/javaguide/#/" title="Guide → https://snailclimb.gitee.io/javaguide/#/" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i>Guide</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.cnblogs.com/senup/" title="cnblog → https://www.cnblogs.com/senup/" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>cnblog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat_channel.jpg" title="WeChat → /images/wechat_channel.jpg"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      DaLao
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.justzht.com" title="https://www.justzht.com" rel="noopener" target="_blank">justzht</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://199508.com/" title="https://199508.com/" rel="noopener" target="_blank">大雄</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.fueis.com/" title="https://blog.fueis.com/" rel="noopener" target="_blank">当下</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qqiyu.cn/" title="https://blog.qqiyu.cn/" rel="noopener" target="_blank">七云</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://noheart.cn/" title="https://noheart.cn/" rel="noopener" target="_blank">今今今生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.juroku.net/" title="https://www.juroku.net/" rel="noopener" target="_blank">致郁系</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://co5.me/" title="https://co5.me/" rel="noopener" target="_blank">少女癌</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://allenmistake.top/" title="https://allenmistake.top/" rel="noopener" target="_blank">AllenMistake</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lruihao.cn/" title="https://lruihao.cn/" rel="noopener" target="_blank">李瑞豪</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leflacon.top/" title="https://leflacon.top/" rel="noopener" target="_blank">LeFlacon</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+		<div style="display:inline-block;">
+		<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style=""> 
+			<img src="/images/yun.png" style="height:30px">
+		</a>
+		</div>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备19119668号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高等游民</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">258k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:54</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+	  
+
+		
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.9/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'lFV1Gj6XzpRCC1xA9YskKGKv-gzGzoHsz',
+      appKey     : 'rCbCQxrpkNpdqAf7NNTJg42D',
+      placeholder: "吐槽一波，嗯？",
+      avatar     : 'retro',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+  
+  <script type="text/javascript" src="/js/firework.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false,"scale":0.8},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

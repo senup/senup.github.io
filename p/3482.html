@@ -31,7 +31,7 @@
 <meta property="og:description" content="离线模式 offline所谓离线模式offline，就是gradle在解析依赖的时候采用本地的依赖库（如 GRADLE_USER_HOME指定的路径），而不是依据项目build.gradle文件中设置的仓库地址进行解析。这样就可以很快速的完成解析工作，而不至于花大量时间连接依赖仓库。但是采用这种模式有一个前提：项目所有的依赖都已经存在本地依赖库中。所以，若是项目中有新增或者修改依赖，则不能采用of">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210426015528088.png">
-<meta property="og:updated_time" content="2021-04-25T18:03:51.536Z">
+<meta property="og:updated_time" content="2021-04-25T18:07:05.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新版IDEA中gradle Build速度慢的解决方案">
 <meta name="twitter:description" content="离线模式 offline所谓离线模式offline，就是gradle在解析依赖的时候采用本地的依赖库（如 GRADLE_USER_HOME指定的路径），而不是依据项目build.gradle文件中设置的仓库地址进行解析。这样就可以很快速的完成解析工作，而不至于花大量时间连接依赖仓库。但是采用这种模式有一个前提：项目所有的依赖都已经存在本地依赖库中。所以，若是项目中有新增或者修改依赖，则不能采用of">
@@ -276,7 +276,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>727</span>
+              <span>753</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -295,7 +295,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="离线模式-offline"><a href="#离线模式-offline" class="headerlink" title="离线模式 offline"></a>离线模式 offline</h3><p>所谓离线模式offline，就是gradle在解析依赖的时候采用本地的依赖库（如 GRADLE_USER_HOME指定的路径），而不是依据项目build.gradle文件中设置的仓库地址进行解析。这样就可以很快速的完成解析工作，而不至于花大量时间连接依赖仓库。但是采用这种模式有一个前提：项目所有的依赖都已经存在本地依赖库中。所以，若是项目中有新增或者修改依赖，则不能采用offline模式因为此时本地仓库中可能不存在项目需要的依赖。总之，只要明确本地仓库中已经拥有项目的所有依赖，即可以采用离线模式进行编译项目等操作。<br><strong>两种用法（任选一种）：</strong><br><strong>（1）在terminal中输入：gradlew build –offlline</strong><br><strong>（2）若是采用IDE执行gradle，可以在IDE上对gradle 进行设置，如图intellij idea 工具中点亮这个按钮</strong></p>
+        <h3 id="离线模式-offline"><a href="#离线模式-offline" class="headerlink" title="离线模式 offline"></a>离线模式 offline</h3><p>所谓离线模式offline，就是gradle在解析依赖的时候采用本地的依赖库（如 GRADLE_USER_HOME指定的路径），而不是依据项目build.gradle文件中设置的仓库地址进行解析。这样就可以很快速的完成解析工作，而不至于花大量时间连接依赖仓库。但是采用这种模式有一个前提：项目所有的依赖都已经存在本地依赖库中。所以，若是项目中有新增或者修改依赖，则不能采用offline模式因为此时本地仓库中可能不存在项目需要的依赖。总之，只要明确本地仓库中已经拥有项目的所有依赖，即可以采用离线模式进行编译项目等操作。<br><strong>两种用法（任选一种）：</strong><br><strong>（1）terminal里直接输入命令: <code>gradlew build</code>就是在线模式, <code>gradlew build --offline</code>就是离线</strong><br><strong>（2）若是采用IDE执行gradle，可以在IDE上对gradle 进行设置，如图intellij idea 工具中点亮这个按钮</strong></p>
 <p><img src="https://img.senup.cn/blog/image-20210426015528088.png" alt="image-20210426015528088"></p>
 <a id="more"></a>
 

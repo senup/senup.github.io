@@ -217,6 +217,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/3482.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Senup">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/3482.html" class="post-title-link" itemprop="url">新版IDEA中gradle Build速度慢的解决方案</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-26 01:53:38" itemprop="dateCreated datePublished" datetime="2021-04-26T01:53:38+08:00">2021-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/3482.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/3482.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>727</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="离线模式-offline"><a href="#离线模式-offline" class="headerlink" title="离线模式 offline"></a>离线模式 offline</h3><p>所谓离线模式offline，就是gradle在解析依赖的时候采用本地的依赖库（如 GRADLE_USER_HOME指定的路径），而不是依据项目build.gradle文件中设置的仓库地址进行解析。这样就可以很快速的完成解析工作，而不至于花大量时间连接依赖仓库。但是采用这种模式有一个前提：项目所有的依赖都已经存在本地依赖库中。所以，若是项目中有新增或者修改依赖，则不能采用offline模式因为此时本地仓库中可能不存在项目需要的依赖。总之，只要明确本地仓库中已经拥有项目的所有依赖，即可以采用离线模式进行编译项目等操作。<br><strong>两种用法（任选一种）：</strong><br><strong>（1）在terminal中输入：gradlew build –offlline</strong><br><strong>（2）若是采用IDE执行gradle，可以在IDE上对gradle 进行设置，如图intellij idea 工具中点亮这个按钮</strong></p>
+<p><img src="https://img.senup.cn/blog/image-20210426015528088.png" alt="image-20210426015528088"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/3482.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/479.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1171,108 +1274,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/fb3f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Senup">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/fb3f.html" class="post-title-link" itemprop="url">常见Http错误状态码及其解决方案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-20 17:25:12" itemprop="dateCreated datePublished" datetime="2021-02-20T17:25:12+08:00">2021-02-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/fb3f.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/fb3f.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="什么是http状态码"><a href="#什么是http状态码" class="headerlink" title="什么是http状态码"></a>什么是http状态码</h1><p>http状态码是用来表示web服务器响应http请求状态的的数字代码. 每当web客户端向服务器发送一个http请求时, web服务器都会返回一个状态响应代码. 这个状态码是一个3位数字代码, 作用是告知web客户端此次的请求是否成功, 或是采取其他的动作方式. </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/fb3f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1343,7 +1344,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1444,7 +1445,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:02</span>
+    <span title="站点阅读时长">4:03</span>
 </div>
 
         

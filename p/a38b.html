@@ -43,10 +43,11 @@
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210424033022793.png">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210424033037569.png">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210424031537305.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210429064037757.png">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210427065733252.png">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210427065815751.png">
 <meta property="og:image" content="https://img.senup.cn/blog/image-20210427065835337.png">
-<meta property="og:updated_time" content="2021-04-26T23:05:52.440Z">
+<meta property="og:updated_time" content="2021-04-28T22:42:50.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2021-04 碎碎念">
 <meta name="twitter:description" content="1日这大概就算是提前步入养老生活了吧。">
@@ -291,7 +292,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.6k</span>
+              <span>8.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -399,11 +400,14 @@
 <p>顺带一提，前台小姐姐每次笑起来总让人觉得如沐春风。她笑起来就像是眼睛里有梨涡，而且说话也好温柔。这是我第一次觉得有”存在如此美好的女性”的感觉，导致我每天早上上班路过的时候都会下意识看一眼。</p>
 <p>漫无目的的游荡在城市街头，意外碰到街演。主唱唱了我喜欢的《晴天》《轨迹》等，讲了这是她第一次街演，抖音号叫甜泡芙，可以帮忙点赞之类的….但我手机并没有这个软件，所以这也是白嫖的一次哈哈。</p>
 <p><img src="https://img.senup.cn/blog/image-20210424031537305.png" alt="image-20210424031537305"></p>
-<h1 id="24日"><a href="#24日" class="headerlink" title="24日"></a>24日</h1><p>为什么越矮的女生对另一半身高要求越高呢？以前我单纯认同互补论、女性的虚荣心等等，但是这是流于表象的。而思考为什么要互补呢？我能想到的背后的原因是：由于身高矮，所以在成长过程中受到了来自身高方面的嘲讽，或者将不如意的举动内在归因——身高矮的过错导致的，进而对身高产生了一种执念。得不到的永远都在骚动。</p>
+<h1 id="24日"><a href="#24日" class="headerlink" title="24日"></a>24日</h1><p>为什么越矮的女生对另一半身高要求越高呢？以前我单纯认同互补论、女性的虚荣心等等，但是这是流于表象的。而思考为什么要互补呢？我能想到的背后的原因是：由于身高矮，所以在成长过程中受到了来自身高方面的嘲讽，或者将不如意的举动内在归因——身高矮的过错导致的，进而对身高产生了一种执念。同理，很多问题可以从成长过程分析——得不到的永远都在骚动。</p>
+<h1 id="25日"><a href="#25日" class="headerlink" title="25日"></a>25日</h1><p>夏季到了，买了新的四件套。睡觉的时候能够感受到一种“凉感”?就很舒服 :)</p>
+<p><img src="https://img.senup.cn/blog/image-20210429064037757.png" alt="image-20210429064037757"></p>
 <h1 id="26日"><a href="#26日" class="headerlink" title="26日"></a>26日</h1><p>晚上和达哥、泰源哥去了丽影广场，吃了海底捞。本来觉得可能会排队等很久的，然而刚到那里，门口小哥直接就跟我们讲：有个包间两小时内用完餐可以免包间费。于是…我等三人第一次体验到了海底捞の小包间。</p>
 <p><img src="https://img.senup.cn/blog/image-20210427065733252.png" alt="image-20210427065733252"></p>
 <p><img src="https://img.senup.cn/blog/image-20210427065815751.png" alt="image-20210427065815751"></p>
 <p><img src="https://img.senup.cn/blog/image-20210427065835337.png" alt="image-20210427065835337"></p>
+<h1 id="28日"><a href="#28日" class="headerlink" title="28日"></a>28日</h1><p>今天遇到两个bug。<strong>第一个</strong>是异步导出Excel部分字段丢失，这个问题最后错在model属性字段没有小写开头。问题开始我努力调试自己代码，始终找不到错在哪儿，俊文哥告诉我对错误的地方多修改，比如写死值测试，才能尽快定位错误。后来心里平静下来，有了思路，Google了一下可能的原因，发现是导出组件对不规范属性自动过滤，更深层的原因是我太粗心了。<strong>第二个</strong>bug是一个接口多处调用，校验没有做足，业务逻辑不合理。修复的过程让我明白了“不要侥幸，不要焦躁”。总是想着线上测试，实际上开发环境虽然挂了，但是数据库依旧有数据可供测试，所以模拟开发环境就完事了；其次，找不到问题错在哪，就想着验收测试，但验收需要review，发了四次，实际上只有最后自己在开发环境测试完后的那次才有用，不仅浪费自己时间也浪费了大佬们的时间，所以也很惭愧。总之，下次写东西的时候要抱着“怎么才能把这件事情做好”的心态，才能不那么敷衍，导致后续修改工作战线拉得这么长。</p>
 
     </div>
 
@@ -489,7 +493,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1日"><span class="nav-number">1.</span> <span class="nav-text">1日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2日"><span class="nav-number">2.</span> <span class="nav-text">2日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3日"><span class="nav-number">3.</span> <span class="nav-text">3日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4日"><span class="nav-number">4.</span> <span class="nav-text">4日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5日"><span class="nav-number">5.</span> <span class="nav-text">5日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6日"><span class="nav-number">6.</span> <span class="nav-text">6日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7日"><span class="nav-number">7.</span> <span class="nav-text">7日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8日"><span class="nav-number">8.</span> <span class="nav-text">8日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9日"><span class="nav-number">9.</span> <span class="nav-text">9日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10日"><span class="nav-number">10.</span> <span class="nav-text">10日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11日"><span class="nav-number">11.</span> <span class="nav-text">11日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12日"><span class="nav-number">12.</span> <span class="nav-text">12日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13日"><span class="nav-number">13.</span> <span class="nav-text">13日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14日"><span class="nav-number">14.</span> <span class="nav-text">14日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15日"><span class="nav-number">15.</span> <span class="nav-text">15日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16日"><span class="nav-number">16.</span> <span class="nav-text">16日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17日"><span class="nav-number">17.</span> <span class="nav-text">17日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18日"><span class="nav-number">18.</span> <span class="nav-text">18日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19日"><span class="nav-number">19.</span> <span class="nav-text">19日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20日"><span class="nav-number">20.</span> <span class="nav-text">20日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21日"><span class="nav-number">21.</span> <span class="nav-text">21日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22日"><span class="nav-number">22.</span> <span class="nav-text">22日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23日"><span class="nav-number">23.</span> <span class="nav-text">23日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24日"><span class="nav-number">24.</span> <span class="nav-text">24日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26日"><span class="nav-number">25.</span> <span class="nav-text">26日</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1日"><span class="nav-number">1.</span> <span class="nav-text">1日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2日"><span class="nav-number">2.</span> <span class="nav-text">2日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3日"><span class="nav-number">3.</span> <span class="nav-text">3日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4日"><span class="nav-number">4.</span> <span class="nav-text">4日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5日"><span class="nav-number">5.</span> <span class="nav-text">5日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6日"><span class="nav-number">6.</span> <span class="nav-text">6日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7日"><span class="nav-number">7.</span> <span class="nav-text">7日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8日"><span class="nav-number">8.</span> <span class="nav-text">8日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9日"><span class="nav-number">9.</span> <span class="nav-text">9日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10日"><span class="nav-number">10.</span> <span class="nav-text">10日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11日"><span class="nav-number">11.</span> <span class="nav-text">11日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12日"><span class="nav-number">12.</span> <span class="nav-text">12日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13日"><span class="nav-number">13.</span> <span class="nav-text">13日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#14日"><span class="nav-number">14.</span> <span class="nav-text">14日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15日"><span class="nav-number">15.</span> <span class="nav-text">15日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16日"><span class="nav-number">16.</span> <span class="nav-text">16日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#17日"><span class="nav-number">17.</span> <span class="nav-text">17日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#18日"><span class="nav-number">18.</span> <span class="nav-text">18日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#19日"><span class="nav-number">19.</span> <span class="nav-text">19日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#20日"><span class="nav-number">20.</span> <span class="nav-text">20日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#21日"><span class="nav-number">21.</span> <span class="nav-text">21日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#22日"><span class="nav-number">22.</span> <span class="nav-text">22日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#23日"><span class="nav-number">23.</span> <span class="nav-text">23日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#24日"><span class="nav-number">24.</span> <span class="nav-text">24日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#25日"><span class="nav-number">25.</span> <span class="nav-text">25日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#26日"><span class="nav-number">26.</span> <span class="nav-text">26日</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#28日"><span class="nav-number">27.</span> <span class="nav-text">28日</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -600,12 +604,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">267k</span>
+    <span title="站点总字数">268k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:03</span>
+    <span title="站点阅读时长">4:04</span>
 </div>
 
         

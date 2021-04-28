@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.senup.cn/p/a38b.html</loc>
     
-    <lastmod>2021-04-26T23:05:52.440Z</lastmod>
+    <lastmod>2021-04-28T22:42:50.525Z</lastmod>
     
   </url>
   
@@ -58,13 +58,6 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/tags/index.html</loc>
-    
-    <lastmod>2021-03-28T13:13:26.567Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.senup.cn/technology/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.567Z</lastmod>
@@ -72,14 +65,21 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/notes/index.html</loc>
+    <loc>https://www.senup.cn/tags/index.html</loc>
+    
+    <lastmod>2021-03-28T13:13:26.567Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.senup.cn/life/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.566Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.senup.cn/life/index.html</loc>
+    <loc>https://www.senup.cn/notes/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.566Z</lastmod>
     
@@ -100,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/friends/index.html</loc>
-    
-    <lastmod>2021-03-28T13:13:26.564Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.senup.cn/categories/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.564Z</lastmod>
@@ -114,14 +107,21 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/about/index.html</loc>
+    <loc>https://www.senup.cn/friends/index.html</loc>
+    
+    <lastmod>2021-03-28T13:13:26.564Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.senup.cn/archives/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.563Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.senup.cn/archives/index.html</loc>
+    <loc>https://www.senup.cn/about/index.html</loc>
     
     <lastmod>2021-03-28T13:13:26.563Z</lastmod>
     

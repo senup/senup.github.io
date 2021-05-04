@@ -22,20 +22,29 @@
     var CONFIG = {"hostname":"www.senup.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":30,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="重写方法的目的是为了多态，或者说：重写是实现多态的前提，即重写是发生在继承中且是针对非static方法的。语法上子类允许出现和父类只有方法体不一样其他都一模一样的static方法，但是在父类引用指向子类对象时，通过父类引用调用的依然是父类的static方法，而不是子类的static方法。即：重写是为了多态，而语法上static支持重写，但是运行效果上达不到多态目的。">
-<meta name="keywords" content="技术">
+  <meta name="description" content="有时候人在冲动的情况下会做出不理智的消费行为，比如买了很多会员服务。但是这种虚拟产物总是会在不经意间慢慢耗尽自己的钱财，又没有发挥的余地。所以怎么才能物尽其用呢？于是…也就有了如下的一篇反思向的水文。">
+<meta name="keywords" content="生活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="static能不能被重写？">
-<meta property="og:url" content="https://www.senup.cn/p/4ecd.html">
+<meta property="og:title" content="买过的一些会员">
+<meta property="og:url" content="https://www.senup.cn/p/920e.html">
 <meta property="og:site_name" content="Senup">
-<meta property="og:description" content="重写方法的目的是为了多态，或者说：重写是实现多态的前提，即重写是发生在继承中且是针对非static方法的。语法上子类允许出现和父类只有方法体不一样其他都一模一样的static方法，但是在父类引用指向子类对象时，通过父类引用调用的依然是父类的static方法，而不是子类的static方法。即：重写是为了多态，而语法上static支持重写，但是运行效果上达不到多态目的。">
+<meta property="og:description" content="有时候人在冲动的情况下会做出不理智的消费行为，比如买了很多会员服务。但是这种虚拟产物总是会在不经意间慢慢耗尽自己的钱财，又没有发挥的余地。所以怎么才能物尽其用呢？于是…也就有了如下的一篇反思向的水文。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-28T13:13:26.536Z">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154354204.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154406565.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154427441.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504155030936.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154501931.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154446976.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504155002367.png">
+<meta property="og:image" content="https://img.senup.cn/blog/image-20210504154951219.png">
+<meta property="og:updated_time" content="2021-05-04T08:17:38.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="static能不能被重写？">
-<meta name="twitter:description" content="重写方法的目的是为了多态，或者说：重写是实现多态的前提，即重写是发生在继承中且是针对非static方法的。语法上子类允许出现和父类只有方法体不一样其他都一模一样的static方法，但是在父类引用指向子类对象时，通过父类引用调用的依然是父类的static方法，而不是子类的static方法。即：重写是为了多态，而语法上static支持重写，但是运行效果上达不到多态目的。">
+<meta name="twitter:title" content="买过的一些会员">
+<meta name="twitter:description" content="有时候人在冲动的情况下会做出不理智的消费行为，比如买了很多会员服务。但是这种虚拟产物总是会在不经意间慢慢耗尽自己的钱财，又没有发挥的余地。所以怎么才能物尽其用呢？于是…也就有了如下的一篇反思向的水文。">
+<meta name="twitter:image" content="https://img.senup.cn/blog/image-20210504154354204.png">
 
-<link rel="canonical" href="https://www.senup.cn/p/4ecd.html">
+<link rel="canonical" href="https://www.senup.cn/p/920e.html">
 
 
 <script id="page-configurations">
@@ -48,7 +57,7 @@
   };
 </script>
 
-  <title>static能不能被重写？ | Senup</title>
+  <title>买过的一些会员 | Senup</title>
   
 
 
@@ -219,7 +228,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/4ecd.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/920e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -232,7 +241,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          static能不能被重写？
+          买过的一些会员
         </h1>
 
         <div class="post-meta">
@@ -242,7 +251,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-08 15:11:11" itemprop="dateCreated datePublished" datetime="2020-08-08T15:11:11+08:00">2020-08-08</time>
+              <time title="创建时间：2021-05-04 15:17:51" itemprop="dateCreated datePublished" datetime="2021-05-04T15:17:51+08:00">2021-05-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,7 +259,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
                 </span>
             </span>
 
@@ -263,8 +272,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/4ecd.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/4ecd.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/920e.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/920e.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -274,7 +283,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>184</span>
+              <span>788</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,7 +302,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>重写方法的目的是为了多态，或者说：重写是实现多态的前提，即重写是发生在继承中且是针对非static方法的。<br>语法上子类允许出现和父类只有方法体不一样其他都一模一样的static方法，但是在父类引用指向子类对象时，通过父类引用调用的依然是父类的static方法，而不是子类的static方法。<br>即：重写是为了多态，而语法上static支持重写，但是运行效果上达不到多态目的。</p>
+        <p>有时候人在冲动的情况下会做出不理智的消费行为，比如买了很多会员服务。但是这种虚拟产物总是会在不经意间慢慢耗尽自己的钱财，又没有发挥的余地。所以怎么才能物尽其用呢？于是…也就有了如下的一篇反思向的水文。</p>
+<a id="more"></a>
+
+<h2 id="京东PLUS会员"><a href="#京东PLUS会员" class="headerlink" title="京东PLUS会员"></a>京东PLUS会员</h2><p>还有一年半的时间才到期。说起来除了购买数码产品，京东几乎没有怎么购买东西。剩下的每个月的六张运费券和100元券包没有好好使用到。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154354204.png" alt="image-20210504154354204"></p>
+<h2 id="哔哩哔哩年度大会员"><a href="#哔哩哔哩年度大会员" class="headerlink" title="哔哩哔哩年度大会员"></a>哔哩哔哩年度大会员</h2><p>还有一年时间才到期。说起来，一开始我觉得买了后很降智——没什么用。后来四月小破站有了《银魂》的版权，总归还是不亏的。但是大会员的4K分辨率几乎没有体验到，要是不看动漫的话不建议买。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154406565.png" alt="image-20210504154406565"></p>
+<h2 id="Keep会员"><a href="#Keep会员" class="headerlink" title="Keep会员"></a>Keep会员</h2><p>还有三年半的时间才到期。买之前信誓旦旦，买后几乎没有使用到会员的地方，因为自己已经知道怎么创建计划了，所以就很鸡肋啊，这该怎么办？</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154427441.png" alt="image-20210504154427441"></p>
+<h2 id="百度云SVIP超级会员"><a href="#百度云SVIP超级会员" class="headerlink" title="百度云SVIP超级会员"></a>百度云SVIP超级会员</h2><p>还有半年时间才到期。百度云会员应该是最值得买的会员服务了，毕竟现在什么东西都需要云服务传输，而它又是其中的佼佼者。资源多到不得不选择的程度。有时候为了不浪费时间还是直接买吧。同时，OneDrive的2T空间账号被突然封停的经历让我再一次感慨数据的重要性，所以不出意外，后面便宜的时候还是得接着续费。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504155030936.png" alt="image-20210504155030936"></p>
+<h2 id="拼多多省钱月卡"><a href="#拼多多省钱月卡" class="headerlink" title="拼多多省钱月卡"></a>拼多多省钱月卡</h2><p>还有一年时间才到期。这个东西很烦的地方在于领取优惠券后必须一天内消费，而且每天只能领取一张。所以，按照每周使用两张的频率计算，需要有周期性地记得消费，消费在小物件上。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154501931.png" alt="image-20210504154501931"></p>
+<h2 id="美团外卖月卡"><a href="#美团外卖月卡" class="headerlink" title="美团外卖月卡"></a>美团外卖月卡</h2><p>还有一年时间到期。每周发放六张红包，平均下来每周用掉两种优惠券，每周点两次外卖。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154446976.png" alt="image-20210504154446976"></p>
+<h2 id="饿了么超级吃货卡"><a href="#饿了么超级吃货卡" class="headerlink" title="饿了么超级吃货卡"></a>饿了么超级吃货卡</h2><p>还有一年时间才到期。每周四张优惠券，平均下来每周用掉一张优惠券。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504155002367.png" alt="image-20210504155002367"></p>
+<h2 id="青桔单车月卡"><a href="#青桔单车月卡" class="headerlink" title="青桔单车月卡"></a>青桔单车月卡</h2><p>需要的时候才买。总之，骑单车之前记得检查下月卡有没有过期，不然相当坑。</p>
+<h2 id="小飞机年卡"><a href="#小飞机年卡" class="headerlink" title="小飞机年卡"></a>小飞机年卡</h2><p>职业技能必备翻墙技能，每年开支59元，不解释。</p>
+<h2 id="微信读书会员"><a href="#微信读书会员" class="headerlink" title="微信读书会员"></a>微信读书会员</h2><p>后来我越来越喜欢看书了。但是送的无限卡还没到期，计划后面还是要买的吧。</p>
+<p><img src="https://img.senup.cn/blog/image-20210504154951219.png" alt="image-20210504154951219"></p>
 
     </div>
 
@@ -304,7 +333,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+              <a href="/tags/生活/" rel="tag"><i class="fa fa-tag"></i> 生活</a>
           </div>
 
         
@@ -313,13 +342,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/p/b2cd.html" rel="prev" title="一个空的Object占多大内存空间？">
-      <i class="fa fa-chevron-left"></i> 一个空的Object占多大内存空间？
+    <a href="/p/caa4.html" rel="prev" title="五一 吃吃喝喝篇">
+      <i class="fa fa-chevron-left"></i> 五一 吃吃喝喝篇
     </a></div>
-      <div class="post-nav-item">
-    <a href="/p/6d4b.html" rel="next" title="Spring依赖注入三种方式的实现">
-      Spring依赖注入三种方式的实现 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -379,6 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#京东PLUS会员"><span class="nav-number">1.</span> <span class="nav-text">京东PLUS会员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哔哩哔哩年度大会员"><span class="nav-number">2.</span> <span class="nav-text">哔哩哔哩年度大会员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keep会员"><span class="nav-number">3.</span> <span class="nav-text">Keep会员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百度云SVIP超级会员"><span class="nav-number">4.</span> <span class="nav-text">百度云SVIP超级会员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拼多多省钱月卡"><span class="nav-number">5.</span> <span class="nav-text">拼多多省钱月卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#美团外卖月卡"><span class="nav-number">6.</span> <span class="nav-text">美团外卖月卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饿了么超级吃货卡"><span class="nav-number">7.</span> <span class="nav-text">饿了么超级吃货卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#青桔单车月卡"><span class="nav-number">8.</span> <span class="nav-text">青桔单车月卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小飞机年卡"><span class="nav-number">9.</span> <span class="nav-text">小飞机年卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信读书会员"><span class="nav-number">10.</span> <span class="nav-text">微信读书会员</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

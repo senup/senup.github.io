@@ -1,882 +1,1090 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>2023年12周的复盘总结</title>
-      <link href="/p/e276.html"/>
-      <url>/p/e276.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>事项：上周16号做了新增公告同步方式的需求，同事觉得之前设计不够合理，遂让我进行大改：迁表+逻辑整合重构，这让本周的我感到疲惫不堪，不仅工作量增加，且需要让测试调整排期，测试范围增大。</p><p>教训：时间不够的情况，一定要重新调整资源。工作范围内增加工作量并不能提升自提需求数。</p><p>事项：17号东哥对我疲于完成他的调研做了批评。</p><p>教训：遇到代码意外的工作，能沟通提单走流程就提单完成，确认好排期，DDL前才能按时完成。</p><p>事项：在前部门用心做了消息公告模块，最后被推翻重做，同时新部门工作期间屡次被前部门的售后工作打扰，这让我感觉很疲惫，而且来自前产品同事的反复催促让我对人际关系产生了失望的想法。</p><p>教训：业务代码编写是没有意义的，重要的是提升自己的技术力；不要对同事产生交际很好的错觉，这可能只是单方面讨好型人格的弱点。</p><p>事项：因为更换手机双卡槽而伤到屏幕花费三百多，耗电巨大以为是电池老化，维修电池花了三百多还是没能解决根本问题。</p><p>教训：没能意识到可能存在的风险，导致额外开销巨大。</p><p>事项：练车+自提没有做，较多事情遗忘。</p><p>教训：任务拆解+GTD去分工</p><hr><p>事项：B站上浏览【code1v5】大佬的视频。</p><p>体会：让我明白了程序员就得去多了解金融知识，就得去提升技术水平，就得去了解最前沿的东西来提升自己的技术敏感度，就得去学习英文去扩展自己的视野。</p><p>事项：使用策略模式+模板方法模式+工厂模式重构了公告的同步方式。</p><p>体会：对于新知识的熟练程度增加，成就感增加，有学习到新知识的感觉，感觉很棒。</p><p>事项：使用postfix+live template对常用代码的语法糖做了极大的增强，重复代码片段抽取出来，</p><p>体会：编写代码更加流畅，提高了工作的效率，以后也要经常精简重复性工作。</p><a id="more"></a><p>下周输出一篇分享。</p><p>完成三个自提需求：使用jprofiler排查dump文件</p><p>高德定位优化：</p><p>增加GPC分类日志方便排查：</p><p>修复群上问题：</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>2023年12周的复盘总结</title>
+    <url>/p/e276.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>事项：上周16号做了新增公告同步方式的需求，同事觉得之前设计不够合理，遂让我进行大改：迁表+逻辑整合重构，这让本周的我感到疲惫不堪，不仅工作量增加，且需要让测试调整排期，测试范围增大。</p>
+<p>教训：时间不够的情况，一定要重新调整资源。工作范围内增加工作量并不能提升自提需求数。</p>
+<p>事项：17号东哥对我疲于完成他的调研做了批评。</p>
+<p>教训：遇到代码意外的工作，能沟通提单走流程就提单完成，确认好排期，DDL前才能按时完成。</p>
+<p>事项：在前部门用心做了消息公告模块，最后被推翻重做，同时新部门工作期间屡次被前部门的售后工作打扰，这让我感觉很疲惫，而且来自前产品同事的反复催促让我对人际关系产生了失望的想法。</p>
+<p>教训：业务代码编写是没有意义的，重要的是提升自己的技术力；不要对同事产生交际很好的错觉，这可能只是单方面讨好型人格的弱点。</p>
+<p>事项：因为更换手机双卡槽而伤到屏幕花费三百多，耗电巨大以为是电池老化，维修电池花了三百多还是没能解决根本问题。</p>
+<p>教训：没能意识到可能存在的风险，导致额外开销巨大。</p>
+<p>事项：练车+自提没有做，较多事情遗忘。</p>
+<p>教训：任务拆解+GTD去分工</p>
+<hr>
+<p>事项：B站上浏览【code1v5】大佬的视频。</p>
+<p>体会：让我明白了程序员就得去多了解金融知识，就得去提升技术水平，就得去了解最前沿的东西来提升自己的技术敏感度，就得去学习英文去扩展自己的视野。</p>
+<p>事项：使用策略模式+模板方法模式+工厂模式重构了公告的同步方式。</p>
+<p>体会：对于新知识的熟练程度增加，成就感增加，有学习到新知识的感觉，感觉很棒。</p>
+<p>事项：使用postfix+live template对常用代码的语法糖做了极大的增强，重复代码片段抽取出来，</p>
+<p>体会：编写代码更加流畅，提高了工作的效率，以后也要经常精简重复性工作。</p>
+<a id="more"></a>
+
+<p>下周输出一篇分享。</p>
+<p>完成三个自提需求：使用jprofiler排查dump文件</p>
+<p>高德定位优化：</p>
+<p>增加GPC分类日志方便排查：</p>
+<p>修复群上问题：</p>
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>idea使用liveTemplate提高效率</title>
-      <link href="/p/7ee8.html"/>
-      <url>/p/7ee8.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">            <i class="fa fa-quote-left"></i>            <p>接到一个需求进行开发的时候，有什么会比较重复的操作呢？</p><ol><li>枚举类</li><li>出入参实体类</li></ol>            <i class="fa fa-quote-right"></i>          </blockquote><h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> FrameworkContractTemplateStatusEnum &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 启用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ENABLE(<span class="number">1</span>, <span class="string">"启用"</span>),</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 停用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DISABLE(<span class="number">2</span>, <span class="string">"停用"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Integer value;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String desc;</span><br><span class="line"></span><br><span class="line">    FrameworkContractTemplateStatusEnum(Integer value, String desc) &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDescByValue</span><span class="params">(Integer value)</span> </span>&#123;</span><br><span class="line">        String desc = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value.intValue() == frameworkContractTemplateStatusEnum.getValue().intValue()) &#123;</span><br><span class="line">                desc = frameworkContractTemplateStatusEnum.getDesc();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FrameworkContractTemplateStatusEnum <span class="title">fromValue</span><span class="params">(Integer value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values())&#123;</span><br><span class="line">            <span class="keyword">if</span>(frameworkContractTemplateStatusEnum.value.equals(value))&#123;</span><br><span class="line">                <span class="keyword">return</span> frameworkContractTemplateStatusEnum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h1><h1 id="字段生成"><a href="#字段生成" class="headerlink" title="字段生成"></a>字段生成</h1><a id="more"></a><h2 id="idea快速添加打印日志语句"><a href="#idea快速添加打印日志语句" class="headerlink" title="idea快速添加打印日志语句"></a>idea快速添加打印日志语句</h2><iframe data-id="pianshen.com_750x200_responsive_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" data-rendered="true" style="box-sizing: border-box;"></iframe><p>神器虽好，logger的插件却比较难找，网上找了个替代方案是通过live template，快速插入日志打印语句。</p><p>目前能做到的是：</p><p>1，声明logger变量；</p><p>2，在方法入口处打印方法名和变量。</p><p>实现1：</p><p>在live template中新增名为logs的template group，然后新增live template，abbreviation填入自己喜欢的缩写，我这里是logf。Applicable context选择statement&amp;expression&amp;declaration，Template text输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger($CLASS_NAME$.class);</span><br></pre></td></tr></table></figure><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/734888b86378af695d00bb46214fcd3e.jpeg" alt="img"></p><p>实现2：</p><p>新增一个live template，缩写随意，我稀饭logp。Template text:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOG.debug(&quot;$METHOD_NAME$::$PLACE_HOLDERS$&quot;,$ARGUMENTS$);</span><br><span class="line">点击编辑变量，几个变量的定义如下：</span><br></pre></td></tr></table></figure><p>PLACE_HOLDERS = groovyScript(“_1.collect { it + ‘ = [{}]’}.join(‘, ‘) “, methodParameters())<br>ARGUMENTS = groovyScript(“_1.collect { it }.join(‘, ‘) “, methodParameters())<br>METHOD_NAME = methodName()</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/03c624a8fc44dbd3053a2a907227eb1b.jpeg" alt="img"></p><p> applicable context 选择(Java-&gt; Statment )</p><p> 搞定，收工。</p><h2 id="模板变量表达式含义表"><a href="#模板变量表达式含义表" class="headerlink" title="模板变量表达式含义表"></a>模板变量表达式含义表</h2><p>以下是定义变量时支持的表达式基本含义（当匹配多个结果时结果将出现在待选列表中）：</p><table><thead><tr><th>表达式</th><th>含义</th></tr></thead><tbody><tr><td>annotated(<annotation>)</annotation></td><td>返回具有指定注解的类，方法或字段名</td></tr><tr><td>arrayVariable()</td><td>返回当前范围内数组变量，最近的优先展示</td></tr><tr><td>lineCommentStart()</td><td>返回当前语言指示行注释开始的字符</td></tr><tr><td>blockCommentStart()</td><td>返回当前语言指示块注释开始的字符</td></tr><tr><td>blockCommentEnd()</td><td>返回当前语言指示块注释结束的字符</td></tr><tr><td>commentStart()</td><td>返回当前语言指示注释开始的字符，对有行注释的返回行注释开头</td></tr><tr><td>commentEnd()</td><td>返回当前语言指示注释结束的字符，对有行注释的返回空（行注释通常没有结束字符）</td></tr><tr><td>camelCase(<string>)</string></td><td>将字符串转换为驼峰形式</td></tr><tr><td>snakeCase(<string>)</string></td><td>将字符串转换为下划线分割形式</td></tr><tr><td>spaceSeparated(<string>)</string></td><td>将字符串转换为空格分开形式</td></tr><tr><td>spacesToUnderscores(<string>)</string></td><td>将字符串的空格替换为下划线</td></tr><tr><td>capitalize(<string>)</string></td><td>将字符串首字母设为大写</td></tr><tr><td>capitalizeAndUnderscore(<string>)</string></td><td>将字符串转换为大写并用下划线隔开</td></tr><tr><td>decapitalize(<string>)</string></td><td>将字符串首字母设为小写</td></tr><tr><td>underscoresToCamelCase(<string>)</string></td><td>将下划线形式字符串转换为驼峰形式</td></tr><tr><td>underscoresToSpaces(<string>)</string></td><td>将下划线形式字符串转换为空格隔开形式</td></tr><tr><td>lowercaseAndDash(<string>)</string></td><td>将字符串转为小写并使用中划线分割</td></tr><tr><td>escapeString(<string>)</string></td><td>将字符串中的特殊符号进行转义，便于在java字符串中使用</td></tr><tr><td>substringBefore(<string>, <delimeter>)</delimeter></string></td><td>截取字符串在<delimeter>之前的部分</delimeter></td></tr><tr><td>firstWord(<string>)</string></td><td>返回字符串中的首个单词</td></tr><tr><td>castToLeftSideType()</td><td>获取左侧变量的类型判断是否需要强转</td></tr><tr><td>rightSideType()</td><td>获取右侧表达式的变量类型</td></tr><tr><td>className()</td><td>返回当前所在类（在内部类则返回内部类）类名</td></tr><tr><td>currentPackage()</td><td>返回当前所在包名</td></tr><tr><td>qualifiedClassName()</td><td>返回当前所在类（在内部类则返回内部类）的全限定类名（包+类名）</td></tr><tr><td>classNameComplete()</td><td>触发类名相关的代码补全</td></tr><tr><td>clipboard()</td><td>返回系统剪贴板的内容</td></tr><tr><td>complete()</td><td>调用一次代码补全，相当于调用一次<em>Ctrl+Space</em></td></tr><tr><td>completeSmart()</td><td>调用一次智能代码补全，相当于调用一次<em>Ctrl+Alt+Space</em></td></tr><tr><td>componentTypeOf(<array>)</array></td><td>返回数组类型</td></tr><tr><td>concat(<string>, …)</string></td><td>拼接字符串</td></tr><tr><td>date([format])</td><td>指定格式化方式返回当前系统时间字符串（根据<em>SimpleDateFormat</em>格式）</td></tr><tr><td>time([format])</td><td>指定格式化方式返回当前系统时间字符串（无日期，根据<em>SimpleDateFormat</em>格式）</td></tr><tr><td>descendantClassesEnum(<string>)</string></td><td>返回指定类的子类</td></tr><tr><td>lineNumber()</td><td>返回当前行行号</td></tr><tr><td>enum(<string>, …)</string></td><td>返回建议的字符串列表</td></tr><tr><td>expectedType()</td><td>自动识别并返回期望的类型，一般用于赋值，方法参数，返回语句处。</td></tr><tr><td>fileName()</td><td>返回当前文件名（带拓展名）</td></tr><tr><td>fileNameWithoutExtension()</td><td>返回当前文件名（不带拓展名）</td></tr><tr><td>filePath()</td><td>返回当前文件路径（带拓展名）</td></tr><tr><td>fileRelativePath()</td><td>返回当前文件相对当前项目的路径（带拓展名）</td></tr><tr><td>groovyScript(<string>, [arg, …])</string></td><td>执行作为字符串形式传递的<em>groovy</em>脚本</td></tr><tr><td>guessElementType(<collection>)</collection></td><td>返回集合中元素的类型</td></tr><tr><td>iterableComponentType(<iterable>)</iterable></td><td>返回可迭代对象的类型</td></tr><tr><td>iterableVariable()</td><td>返回当前范围内可迭代类型对象，最近的优先展示</td></tr><tr><td>methodName()</td><td>返回当前所在方法名</td></tr><tr><td>methodParameters()</td><td>返回当前所在方法的所有参数名</td></tr><tr><td>methodReturnType()</td><td>返回当前所在方法的返回类型</td></tr><tr><td>regularExpression(<string>, <pattern>, <replacement>)</replacement></pattern></string></td><td>查找字符串中满足<pattern>的所有部分并替换为<replacement></replacement></pattern></td></tr><tr><td>typeOfVariable(<string>)</string></td><td>返回变量的类型</td></tr><tr><td>variableOfType(<string>)</string></td><td>返回当前范围内满足类型条件的变量，最近的优先展示</td></tr><tr><td>suggestFirstVariableName(<string>)</string></td><td>返回当前范围内满足类型条件的部分变量，最近的优先展示和<em>variableOfType</em>类似但不推荐true，false，this，和super</td></tr><tr><td>subtypes(<string>)</string></td><td>返回指定类型的子类型</td></tr><tr><td>suggestIndexName()</td><td>返回当前范围中未使用的第一个常用迭代下标变量名（i，j，k等）</td></tr><tr><td>suggestVariableName()</td><td>根据变量命名规则的代码风格设置返回建议的变量名</td></tr><tr><td>suggestShortVariableName()</td><td>建议的变量名精简版</td></tr><tr><td>user()</td><td>返回当前系统的用户名称</td></tr></tbody></table><p>使用方式</p><p>在代码中输入前面设置的 Abbreviation 中设置的模板名称并按 Tab 即可。</p><h1 id="监控查询时间"><a href="#监控查询时间" class="headerlink" title="监控查询时间"></a>监控查询时间</h1><p><a href="https://www.cnblogs.com/fengzheng/p/17039274.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengzheng/p/17039274.html</a></p><p>自定义postfix</p><p><a href="https://blog.csdn.net/DATANGguanjunhou/article/details/106174772/" target="_blank" rel="noopener">https://blog.csdn.net/DATANGguanjunhou/article/details/106174772/</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AMQP shutdown问题</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Shutdown Signal: channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - delivery acknowledgement on channel 1774 timed out. Timeout value used: 1800000 ms. This timeout value can be configured, see consumers doc guide to learn more, class-id=0, method-id=0)</span><br></pre></td></tr></table></figure>
+
+<p>问题原因：改漏了个地方忘了ack，消息还在队列里面</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230210112548264.png" alt="image-20230210112548264"></p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> idea </category>
-          
+        <category>rabbitmq</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> idea </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>多个唯一索引失效导致on-duplicate-key-update失效</title>
-      <link href="/p/e05.html"/>
-      <url>/p/e05.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>on duplicate key update的作用是，如果表中存在unique或者primary key索引，那么当唯一索引字段的值存在的时候，会进行更新，如果不存在，那么进行插入，比如以下语句：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (a,b,c) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> c=c+<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>其中a是唯一索引字段，那么他等同于</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>有一点不同的是，使用这个方法id总是自增，但是update是不会导致id自增的。上面的insert语句中如果b也是唯一索引字段，那么等同于下面sql：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>如果a=1 or b=2 匹配了多条数据，那么只会更新一行。所以我们需要避免在多个唯一索引里面使用on duplicate key update语法。</p><p>mysql英文地址：<a href="https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html</a></p><p>所以是因为唯一索引失效导致on duplicate key update语法失效。</p><p>加餐：<a href="https://blog.csdn.net/LS7011846/article/details/124548283" target="_blank" rel="noopener">可能导致死锁的问题</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT语句有可能导致死锁。当两个事务分别插入主键或者唯一索引相同的数据时，它们在竞争同一把X(互斥)锁，但是同时它们会先加上S锁，此时如果这把锁当时的主事务把这行记录删了，那一开始的两个事务就形成了死锁。</span><br></pre></td></tr></table></figure><a id="more"></a><p><a href="http://www.chaiguanxin.com/articles/2021/12/27/1640610482975.html" target="_blank" rel="noopener">转载来源</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>rabbitmq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DataIntegrityViolationException异常引起的惨案</title>
+    <url>/p/c3f0.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>报错提示：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">16</span>df60e1 - method cn.dotfashion.soa.sdps.sdps.controller.StoreReviewController.result <span class="keyword">return</span> with response:  org.springframework.dao.DataIntegrityViolationException: Error attempting to get column <span class="string">'store_code'</span> from result set.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLDataException: <span class="string">'9.991334309E9'</span> in column <span class="string">'1'</span> is outside valid range <span class="keyword">for</span> the datatype INTEGER.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310180827849.png" alt="image-20230310180827849"></p>
+<p>这个异常直接提示问题出在88行</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310181212149.png" alt="image-20230310181212149"></p>
+<p>但我一直以为是入参出现了问题，比如91行，甚至开始怀疑mybatis映射有问题导致精度丢失。</p>
+<p>结论：单纯就是88行的响应体中storeCode为Integer，而数据库返回的数值过大导致超过范围。</p>
+<p>解决方案：将响应体中storeCode改为Long</p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> MySQL </category>
-          
+        <category>mybatis</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java锁事</title>
-      <link href="/p/860c.html"/>
-      <url>/p/860c.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">文章地址</a></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 业务开发常见错误 100 例</title>
+    <url>/p/c534.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310093309527.png" alt="image-20230310093309527"></p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>解决Jrebel插件无法自动编译</title>
-      <link href="/p/1b85.html"/>
-      <url>/p/1b85.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">            <i class="fa fa-quote-left"></i>            <ol><li>找到setting-&gt;build,Excution-&gt;Compiler,并勾选Build project automatically。</li><li>然后找到setting-&gt;Advanced Setting，勾选Compiler中的Allow auto-make to start even if developed application is currently running</li></ol>            <i class="fa fa-quote-right"></i>          </blockquote><p><a href="https://www.jb51.net/article/276318.htm" target="_blank" rel="noopener">文章地址</a></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac终端缩写</title>
+    <url>/p/7ec4.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.进入hexo目录并发布</p>
+<p>2.进入hexo目录并新建markdown文件</p>
+<p>3.打开shell配置</p>
+<p>4.保存shell配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">alias hd='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo deploy'</span><br><span class="line">alias hn='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo new '</span><br><span class="line"></span><br><span class="line">alias openConfig='open ~/.bash_profile'</span><br><span class="line">alias saveConfig='source ~/.bash_profile'</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>Mac</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Mac终端缩写</title>
-      <link href="/p/7ec4.html"/>
-      <url>/p/7ec4.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.进入hexo目录并发布</p><p>2.进入hexo目录并新建markdown文件</p><p>3.打开shell配置</p><p>4.保存shell配置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alias hd='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo deploy'</span><br><span class="line">alias hn='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo new '</span><br><span class="line"></span><br><span class="line">alias openConfig='open ~/.bash_profile'</span><br><span class="line">alias saveConfig='source ~/.bash_profile'</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>QPS与机器数的换算关系</title>
+    <url>/p/380c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我们通过一个实例来把上面几个概念串起来理解。按二八定律来看，如果每天 80% 的访问集中在 20% 的时间里，这 20% 时间就叫做峰值时间。</p>
+<ul>
+<li>公式：( 总PV数 * 80% ) / ( 每天秒数 * 20% ) = 峰值时间每秒请求数(QPS)</li>
+<li>机器：峰值时间每秒QPS / 单台机器的QPS = 需要的机器</li>
+</ul>
+<p><strong>1、每天300w PV 的在单台机器上，这台机器需要多少QPS？</strong><br>( 3000000 * 0.8 ) / (86400 * 0.2 ) = 139 (QPS)</p>
+<p><strong>2、如果一台机器的QPS是58，需要几台机器来支持？</strong><br>139 / 58 = 3</p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Mac </category>
-          
+        <category>java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Mac </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>macOS下快速复制文件或文件夹路径</title>
-      <link href="/p/6a4c.html"/>
-      <url>/p/6a4c.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、打开访达-显示-显示路径栏</p><p>2、在Finder中选择文件或是文件夹，然后按下快捷键command+Option+C，即可复制文件的全路径。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java锁事</title>
+    <url>/p/860c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">文章地址</a></p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Mac </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Mac </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>gitIgnore忽略文件</title>
-      <link href="/p/b2a9.html"/>
-      <url>/p/b2a9.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>背景：使用mybatis-generator生成代码的时候会带很多jar包，但我又不想上传到Git。</p><p>解决：先在根目录的.ignore文件里面加个想要忽略的路径，比如/mybayis/。</p><p>PS:只有.ignore文件commit后才能忽略文件。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-fork流程</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">git remote add 远程仓库名称 git地址</span><br><span class="line"></span><br><span class="line">git fetch 远程仓库名称</span><br></pre></td></tr></table></figure>
+
+<p>SRM git fork 提交流程</p>
+<p>1、从SRM主库fork到自己代码库，生成一个一模一样的SRM仓库。</p>
+<p>2、从自己的SRM仓库git clone到自己本地仓库，master添加SRM主库远程地址，并将master跟踪改为主库master。具体查看git fork同步主库操作步骤。</p>
+<p>3、从SRM主库更新最新代码到master，从master创建分支，分支名为对应jira编码，如SPGY-23915。</p>
+<p>4、代码编写完毕后提交代码，注释为分支名+冒号+提交内容，推送到自己的SRM仓库的同名分支。</p>
+<p>5、提交该分支合并到主SRM库的请求，目标分支是对应上线日期的分支名。</p>
+<p>6、提交合并请求后将链接发到研发群，让同事review代码。</p>
+<p>7、代码review有问题，可以在gitlab进行解释或者回复，如果确实是代码有问题，则在本地修改代码，完成后同样注释分支名+冒号+修改内容进行提交。</p>
+<p>8、如果是code review阶段出现的问题并进行代码修复，不需要重新发起合并请求，会直接在原来的合并请求中有所体现，因为合并请求本质上就是一个分支对另一个分支的合并，所以当分支出现变化，便会体现在合并请求中。</p>
+<p>9、如果是发布测试或者验收环境后出现的问题，则在修复完成后，提交代码并发起新的合并请求。</p>
+<p>PS：有时候发布后发现代码有问题，报错甚至跑不起来，可能是没有合并最新master分支的问题，因为采用的是git fork工作流模式，所以从研发到上线的流程相对复杂一些。主要的过程是，研发在确定上线日期后会在主库从master新建一个对应日期的上线分支，如feature_20211111，即2021年双十一上线的分支，那么在研发完成后都会合并到这个分支，这时候有另一个需求是2021年11月13日上线的，也从当前的master创建了新的分支，这时候feature_20211111和feature_20211113从理论上来说是平行的两个分支，如果业务上没有交叉，在上线前都是互不干扰，没有问题。在feature_20211111上线后，有些环境配置改变了，代码也会合并到master，master就是当前稳定运行的版本。这时候因为环境变了，feature_20211113这个版本中落后master很多，导致不能适应新的配置环境，这时候就需要合并最新master到feature_20211113，并处理好其中的冲突，提交到gitlab发起合并请求。具体的合并操作，可以将主库的feature_20211113分支拉到本地，master更新最新主库的代码，然后切换到feature_20211113分支，将master合并到feature_20211113，完成后推送到自己的fork仓库，然后发起合并请求即可。</p>
+<a id="more"></a>
+
+]]></content>
       <categories>
-          
-          <category> Git </category>
-          
+        <category>git</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>mysql索引区分度判断</title>
-      <link href="/p/7875.html"/>
-      <url>/p/7875.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">            <i class="fa fa-quote-left"></i>            <p>1.如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p><p>2.explain分析执行顺序以及查询情况，比如行数索引</p><p>3.union会去重，适合原来需要distinct的情况；union all不会去重。这两个可以用来优化or相同where条件的SQL。</p><p>4.可以判断区分度的SQL：select count(*),列名 from 表名 group by 列名；</p>            <i class="fa fa-quote-right"></i>          </blockquote><h1 id="判断区分度"><a href="#判断区分度" class="headerlink" title="判断区分度"></a>判断区分度</h1><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230315100035371.png" alt="image-20230315100035371"></p><h2 id="建索引的几大原则"><a href="#建索引的几大原则" class="headerlink" title="建索引的几大原则"></a>建索引的几大原则</h2><p>1.最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p><p>2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。</p><p>3.尽量选择区分度高的列作为索引，区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录。</p><p>4.索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。</p><p>5.尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</p><h1 id="如何看表"><a href="#如何看表" class="headerlink" title="如何看表"></a>如何看表</h1><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230315095946033.png" alt="image-20230315095946033"></p><a id="more"></a><p><a href="https://tech.meituan.com/2014/06/30/mysql-index.html" target="_blank" rel="noopener">文章地址</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitIgnore忽略文件</title>
+    <url>/p/b2a9.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>背景：使用mybatis-generator生成代码的时候会带很多jar包，但我又不想上传到Git。</p>
+<p>解决：先在根目录的.ignore文件里面加个想要忽略的路径，比如/mybayis/。</p>
+<p>PS:只有.ignore文件commit后才能忽略文件。</p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> MySQL </category>
-          
+        <category>Git</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>last_update_time不自动更新的场景</title>
-      <link href="/p/71da.html"/>
-      <url>/p/71da.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>同事疑惑DDL中时间戳顺序不一样，是不是效果不一样。因为他在跑定时任务刷数据批量的时候发现不会更新，但是看到同个方法被mq服务调用却会更新该字段。</p><p>遂问：</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230313171101217.png" alt="image-20230313171101217"></p><p>理论上两句肯定是一样的。最后发现使用的是batchUpdate方法，在更新完所有数据后才会统一提交更新last_update_time字段。</p><p>比如这样：</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_ce4a6f81-cca4-49a7-ae30-8d3c2c5efcbd.png" alt="企业微信截图_ce4a6f81-cca4-49a7-ae30-8d3c2c5efcbd"></p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_232962ce-0c7e-4126-a7d0-5e2f452f7b24.png" alt="企业微信截图_232962ce-0c7e-4126-a7d0-5e2f452f7b24"></p><p>如果对上了，大批量的数据只在定时任务统一处理完成才更新【最后更新时间】。</p><p>PS:还有种情况不会更新 ：如果更新记录的所有其他字段都没有变化</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>last_update_time不自动更新的场景</title>
+    <url>/p/71da.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>同事疑惑DDL中时间戳顺序不一样，是不是效果不一样。因为他在跑定时任务刷数据批量的时候发现不会更新，但是看到同个方法被mq服务调用却会更新该字段。</p>
+<p>遂问：</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230313171101217.png" alt="image-20230313171101217"></p>
+<p>理论上两句肯定是一样的。最后发现使用的是batchUpdate方法，在更新完所有数据后才会统一提交更新last_update_time字段。</p>
+<p>比如这样：</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_ce4a6f81-cca4-49a7-ae30-8d3c2c5efcbd.png" alt="企业微信截图_ce4a6f81-cca4-49a7-ae30-8d3c2c5efcbd"></p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_232962ce-0c7e-4126-a7d0-5e2f452f7b24.png" alt="企业微信截图_232962ce-0c7e-4126-a7d0-5e2f452f7b24"></p>
+<p>如果对上了，大批量的数据只在定时任务统一处理完成才更新【最后更新时间】。</p>
+<p>PS:还有种情况不会更新 ：如果更新记录的所有其他字段都没有变化</p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> MySQL </category>
-          
+        <category>MySQL</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> MySQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>娜娜の生活经验</title>
-      <link href="/p/87a6.html"/>
-      <url>/p/87a6.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="地铁如何避免摔倒？"><a href="#地铁如何避免摔倒？" class="headerlink" title="地铁如何避免摔倒？"></a>地铁如何避免摔倒？</h2><p>侧着身子保持和列车的前进方法一致即可。</p><h2 id="账单日和还款日有何区别？"><a href="#账单日和还款日有何区别？" class="headerlink" title="账单日和还款日有何区别？"></a>账单日和还款日有何区别？</h2><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>macOS Big Sur - 您应该推出磁盘映像</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
+
+<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
+<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
+
+<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
+<p>比如Sketch的命令是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
+
+<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
+<a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>Mac</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>排查线上OOM</title>
-      <link href="/p/87a6.html"/>
-      <url>/p/87a6.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>周六发现凌晨03:11 SRM系统有重启，随后03:23 OOM。</p><p>过程：使用Jprofiler分析dump文件，判断最大对象居然有330M，点开到最后一层使用指定对象，按照图表展示，以此往左边点开，发现堆栈信息指向一个查询数据库的方法，几乎是查全表的数据量，有82万。</p><p>19年的代码，问题一直没被发现，直到业务量持续增长系统炸了。</p><p>确认了该业务确实执行完成，数据没有异常，然而时间点和OOM的时间点有出入。所以最后得出结论是，当时有大对象存在，进入了老年代；同时日志采用正则匹配导致CPU飙升，成为了压垮系统的最后一根稻草。</p><p>解决：后续改造成mq消费，避免任务集中。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>macOS下快速复制文件或文件夹路径</title>
+    <url>/p/6a4c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、打开访达-显示-显示路径栏</p>
+<p>2、在Finder中选择文件或是文件夹，然后按下快捷键command+Option+C，即可复制文件的全路径。</p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>Mac</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>DataIntegrityViolationException异常引起的惨案</title>
-      <link href="/p/c3f0.html"/>
-      <url>/p/c3f0.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>报错提示：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">16</span>df60e1 - method cn.dotfashion.soa.sdps.sdps.controller.StoreReviewController.result <span class="keyword">return</span> with response:  org.springframework.dao.DataIntegrityViolationException: Error attempting to get column <span class="string">'store_code'</span> from result set.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLDataException: <span class="string">'9.991334309E9'</span> in column <span class="string">'1'</span> is outside valid range <span class="keyword">for</span> the datatype INTEGER.</span><br></pre></td></tr></table></figure><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310180827849.png" alt="image-20230310180827849"></p><p>这个异常直接提示问题出在88行</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310181212149.png" alt="image-20230310181212149"></p><p>但我一直以为是入参出现了问题，比如91行，甚至开始怀疑mybatis映射有问题导致精度丢失。</p><p>结论：单纯就是88行的响应体中storeCode为Integer，而数据库返回的数值过大导致超过范围。</p><p>解决方案：将响应体中storeCode改为Long</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac切换jdk版本</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>export JAVA_HOME=<code>/usr/libexec/java_home -v 1.8.0_211</code></p>
+]]></content>
       <categories>
-          
-          <category> mybatis </category>
-          
+        <category>java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> mybatis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java 业务开发常见错误 100 例</title>
-      <link href="/p/c534.html"/>
-      <url>/p/c534.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230310093309527.png" alt="image-20230310093309527"></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql索引区分度判断</title>
+    <url>/p/7875.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <p>1.如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p>
+<p>2.explain分析执行顺序以及查询情况，比如行数索引</p>
+<p>3.union会去重，适合原来需要distinct的情况；union all不会去重。这两个可以用来优化or相同where条件的SQL。</p>
+<p>4.可以判断区分度的SQL：select count(*),列名 from 表名 group by 列名；</p>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+
+
+<h1 id="判断区分度"><a href="#判断区分度" class="headerlink" title="判断区分度"></a>判断区分度</h1><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230315100035371.png" alt="image-20230315100035371"></p>
+<h2 id="建索引的几大原则"><a href="#建索引的几大原则" class="headerlink" title="建索引的几大原则"></a>建索引的几大原则</h2><p>1.最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p>
+<p>2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。</p>
+<p>3.尽量选择区分度高的列作为索引，区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录。</p>
+<p>4.索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。</p>
+<p>5.尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</p>
+<h1 id="如何看表"><a href="#如何看表" class="headerlink" title="如何看表"></a>如何看表</h1><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230315095946033.png" alt="image-20230315095946033"></p>
+<a id="more"></a>
+
+<p><a href="https://tech.meituan.com/2014/06/30/mysql-index.html" target="_blank" rel="noopener">文章地址</a></p>
+]]></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>MySQL</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>QPS与机器数的换算关系</title>
-      <link href="/p/380c.html"/>
-      <url>/p/380c.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我们通过一个实例来把上面几个概念串起来理解。按二八定律来看，如果每天 80% 的访问集中在 20% 的时间里，这 20% 时间就叫做峰值时间。</p><ul><li>公式：( 总PV数 * 80% ) / ( 每天秒数 * 20% ) = 峰值时间每秒请求数(QPS)</li><li>机器：峰值时间每秒QPS / 单台机器的QPS = 需要的机器</li></ul><p><strong>1、每天300w PV 的在单台机器上，这台机器需要多少QPS？</strong><br>( 3000000 * 0.8 ) / (86400 * 0.2 ) = 139 (QPS)</p><p><strong>2、如果一台机器的QPS是58，需要几台机器来支持？</strong><br>139 / 58 = 3</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>peek和map的区别</title>
+    <url>/p/ab2c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>peek调试打印流中某操作后的每个元素：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>技术</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>排查线上CPU飙升至75</title>
-      <link href="/p/87a6.html"/>
-      <url>/p/87a6.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>某天接到一个任务：排查企微机器人告警CPU飙升到75。</p><p>首先告警次数比较不规律，从企微机器人告警记录频率来看。</p><p>排查Arthas观察到最忙的进程是一个日志进程：</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_ea446b0d-ceae-437a-be58-6741416023d0.png" alt="截图_ea446b0d-ceae-437a-be58-6741416023d0"></p><p>定位到65行有一个日志加密的方法。</p><p>最终排查出来，之前的开发实现了一个拓展方法，使用正则去匹配并替换敏感词。</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230309132104918.png" alt="image-20230309132104918"></p><p>match方法默认走同步，如果单条日志匹配一百次，同时正则采用贪婪进行回溯，性能是很差的。</p><p>后续日志量增大，将服务整崩也是指日可待呀！</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230309132033500.png" alt="image-20230309132033500"></p><p>解决办法：使用唯品会开源的vtools的脱敏工具进行替换。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多个唯一索引失效导致on-duplicate-key-update失效</title>
+    <url>/p/e05.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>on duplicate key update的作用是，如果表中存在unique或者primary key索引，那么当唯一索引字段的值存在的时候，会进行更新，如果不存在，那么进行插入，比如以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (a,b,c) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> c=c+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中a是唯一索引字段，那么他等同于</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>有一点不同的是，使用这个方法id总是自增，但是update是不会导致id自增的。上面的insert语句中如果b也是唯一索引字段，那么等同于下面sql：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果a=1 or b=2 匹配了多条数据，那么只会更新一行。所以我们需要避免在多个唯一索引里面使用on duplicate key update语法。</p>
+<p>mysql英文地址：<a href="https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html</a></p>
+<p>所以是因为唯一索引失效导致on duplicate key update语法失效。</p>
+<p>加餐：<a href="https://blog.csdn.net/LS7011846/article/details/124548283" target="_blank" rel="noopener">可能导致死锁的问题</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">INSERT语句有可能导致死锁。当两个事务分别插入主键或者唯一索引相同的数据时，它们在竞争同一把X(互斥)锁，但是同时它们会先加上S锁，此时如果这把锁当时的主事务把这行记录删了，那一开始的两个事务就形成了死锁。</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+
+
+<p><a href="http://www.chaiguanxin.com/articles/2021/12/27/1640610482975.html" target="_blank" rel="noopener">转载来源</a></p>
+]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>MySQL</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>搭建博客遇到的问题</title>
-      <link href="/p/6b28.html"/>
-      <url>/p/6b28.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Mac终端输入命令提示权限不足"><a href="#Mac终端输入命令提示权限不足" class="headerlink" title="Mac终端输入命令提示权限不足"></a>Mac终端输入命令提示权限不足</h1><p>背景：想要将hexo源文件放在iCloud同步，结果提示没权限</p><p>给整个文件夹加上权限</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo/"</span><br></pre></td></tr></table></figure><h1 id="Mac下hexo创建文章自动打开typora"><a href="#Mac下hexo创建文章自动打开typora" class="headerlink" title="Mac下hexo创建文章自动打开typora"></a>Mac下hexo创建文章自动打开typora</h1><p>问题：一开始执行完命令发现只创建了文章并没有打开typora，于是手动执行了下open命令发现路径不能打开，因为Mac终端不能识别路径带空格的那种格式</p><p>解决：用字符串圈起来就好了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    exec(<span class="string">'open "'</span> + data.path +<span class="string">'"'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h1 id="Mac下打开终端自动切换自定义路径"><a href="#Mac下打开终端自动切换自定义路径" class="headerlink" title="Mac下打开终端自动切换自定义路径"></a>Mac下打开终端自动切换自定义路径</h1><p>问题描述:<br>每次打开mac 终端后,都需要到hexo的一个路径进行文章生成，比较麻烦，想要实现打开终端自动切换到hexo的主目录。<br>解决方案：打开配置文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure><p>在最后一行加入</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo"</span><br></pre></td></tr></table></figure><h1 id="hexo提示报错"><a href="#hexo提示报错" class="headerlink" title="hexo提示报错"></a><a href="https://tree.moe/deal-with-gyp-err-caused-by-node-sass/" target="_blank" rel="noopener">hexo提示报错</a></h1><p>主要原因: <a href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020" target="_blank" rel="noopener">node</a>-sass下载版本出错以及sass-loader</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! gyp ERR! node -v v18<span class="number">.14</span><span class="number">.2</span></span><br><span class="line">npm ERR! gyp ERR! node-gyp -v v3<span class="number">.8</span><span class="number">.0</span></span><br><span class="line">npm ERR! gyp ERR! not ok</span><br></pre></td></tr></table></figure><p>提示：Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/node-sass’</p><p>解决权限问题</p><p>最后的方式：直接安装<a href="https://nodejs.org/download/release/v12.22.12/" target="_blank" rel="noopener">node 12的版本</a></p><h1 id="deploy报错"><a href="#deploy报错" class="headerlink" title="deploy报错"></a>deploy报错</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/butcher/Desktop/blog/node_modules/hexo-util/lib/spawn.js:<span class="number">52</span>:<span class="number">19</span>)</span><br><span class="line">    at ChildProcess.emit (events.js:<span class="number">314</span>:<span class="number">20</span>)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:<span class="number">276</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure><p>没有配置Git ssh</p><p>使用命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh &amp;&amp; cat id_rsa.pub</span><br></pre></td></tr></table></figure><p>设置在github即可</p><h1 id="Hexo设置命令别名快捷命令"><a href="#Hexo设置命令别名快捷命令" class="headerlink" title="Hexo设置命令别名快捷命令"></a>Hexo设置命令别名快捷命令</h1><p>解决方案：打开配置文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure><p>添加别名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias hs=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&apos;</span><br><span class="line">alias hd=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d&apos;</span><br><span class="line">alias gp=&apos;git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure><p>保存</p><h1 id="hexo渲染报错：template-render-error-unknown-path"><a href="#hexo渲染报错：template-render-error-unknown-path" class="headerlink" title="hexo渲染报错：template render error (unknown path)"></a>hexo渲染报错：template render error (unknown path)</h1><p>因为有个文章里面标题用了%号，所以渲染失败，去掉即可正常渲染</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>idea使用liveTemplate提高效率</title>
+    <url>/p/7ee8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <p>接到一个需求进行开发的时候，有什么会比较重复的操作呢？</p>
+<ol>
+<li>枚举类</li>
+<li>出入参实体类</li>
+</ol>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+
+
+
+
+<h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> FrameworkContractTemplateStatusEnum &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 启用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ENABLE(<span class="number">1</span>, <span class="string">"启用"</span>),</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 停用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DISABLE(<span class="number">2</span>, <span class="string">"停用"</span>);</span><br><span class="line"></span><br><span class="line">  	<span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Integer value;</span><br><span class="line"></span><br><span class="line">  	<span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String desc;</span><br><span class="line"></span><br><span class="line">    FrameworkContractTemplateStatusEnum(Integer value, String desc) &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDescByValue</span><span class="params">(Integer value)</span> </span>&#123;</span><br><span class="line">        String desc = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value.intValue() == frameworkContractTemplateStatusEnum.getValue().intValue()) &#123;</span><br><span class="line">                desc = frameworkContractTemplateStatusEnum.getDesc();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FrameworkContractTemplateStatusEnum <span class="title">fromValue</span><span class="params">(Integer value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values())&#123;</span><br><span class="line">            <span class="keyword">if</span>(frameworkContractTemplateStatusEnum.value.equals(value))&#123;</span><br><span class="line">                <span class="keyword">return</span> frameworkContractTemplateStatusEnum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h1><h1 id="字段生成"><a href="#字段生成" class="headerlink" title="字段生成"></a>字段生成</h1><a id="more"></a>
+
+
+
+
+
+<h2 id="idea快速添加打印日志语句"><a href="#idea快速添加打印日志语句" class="headerlink" title="idea快速添加打印日志语句"></a>idea快速添加打印日志语句</h2><iframe data-id="pianshen.com_750x200_responsive_DFP" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" width="1" height="1" data-rendered="true" style="box-sizing: border-box;"></iframe>
+
+<p>神器虽好，logger的插件却比较难找，网上找了个替代方案是通过live template，快速插入日志打印语句。</p>
+<p>目前能做到的是：</p>
+<p>1，声明logger变量；</p>
+<p>2，在方法入口处打印方法名和变量。</p>
+<p>实现1：</p>
+<p>在live template中新增名为logs的template group，然后新增live template，abbreviation填入自己喜欢的缩写，我这里是logf。Applicable context选择statement&amp;expression&amp;declaration，Template text输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger($CLASS_NAME$.class);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/734888b86378af695d00bb46214fcd3e.jpeg" alt="img"></p>
+<p>实现2：</p>
+<p>新增一个live template，缩写随意，我稀饭logp。Template text:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOG.debug(&quot;$METHOD_NAME$::$PLACE_HOLDERS$&quot;,$ARGUMENTS$);</span><br><span class="line">点击编辑变量，几个变量的定义如下：</span><br></pre></td></tr></table></figure>
+
+<p>PLACE_HOLDERS = groovyScript(“_1.collect { it + ‘ = [{}]’}.join(‘, ‘) “, methodParameters())<br>ARGUMENTS = groovyScript(“_1.collect { it }.join(‘, ‘) “, methodParameters())<br>METHOD_NAME = methodName()</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/03c624a8fc44dbd3053a2a907227eb1b.jpeg" alt="img"></p>
+<p> applicable context 选择(Java-&gt; Statment )</p>
+<p> 搞定，收工。</p>
+<h2 id="模板变量表达式含义表"><a href="#模板变量表达式含义表" class="headerlink" title="模板变量表达式含义表"></a>模板变量表达式含义表</h2><p>以下是定义变量时支持的表达式基本含义（当匹配多个结果时结果将出现在待选列表中）：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>annotated(<annotation>)</annotation></td>
+<td>返回具有指定注解的类，方法或字段名</td>
+</tr>
+<tr>
+<td>arrayVariable()</td>
+<td>返回当前范围内数组变量，最近的优先展示</td>
+</tr>
+<tr>
+<td>lineCommentStart()</td>
+<td>返回当前语言指示行注释开始的字符</td>
+</tr>
+<tr>
+<td>blockCommentStart()</td>
+<td>返回当前语言指示块注释开始的字符</td>
+</tr>
+<tr>
+<td>blockCommentEnd()</td>
+<td>返回当前语言指示块注释结束的字符</td>
+</tr>
+<tr>
+<td>commentStart()</td>
+<td>返回当前语言指示注释开始的字符，对有行注释的返回行注释开头</td>
+</tr>
+<tr>
+<td>commentEnd()</td>
+<td>返回当前语言指示注释结束的字符，对有行注释的返回空（行注释通常没有结束字符）</td>
+</tr>
+<tr>
+<td>camelCase(<string>)</string></td>
+<td>将字符串转换为驼峰形式</td>
+</tr>
+<tr>
+<td>snakeCase(<string>)</string></td>
+<td>将字符串转换为下划线分割形式</td>
+</tr>
+<tr>
+<td>spaceSeparated(<string>)</string></td>
+<td>将字符串转换为空格分开形式</td>
+</tr>
+<tr>
+<td>spacesToUnderscores(<string>)</string></td>
+<td>将字符串的空格替换为下划线</td>
+</tr>
+<tr>
+<td>capitalize(<string>)</string></td>
+<td>将字符串首字母设为大写</td>
+</tr>
+<tr>
+<td>capitalizeAndUnderscore(<string>)</string></td>
+<td>将字符串转换为大写并用下划线隔开</td>
+</tr>
+<tr>
+<td>decapitalize(<string>)</string></td>
+<td>将字符串首字母设为小写</td>
+</tr>
+<tr>
+<td>underscoresToCamelCase(<string>)</string></td>
+<td>将下划线形式字符串转换为驼峰形式</td>
+</tr>
+<tr>
+<td>underscoresToSpaces(<string>)</string></td>
+<td>将下划线形式字符串转换为空格隔开形式</td>
+</tr>
+<tr>
+<td>lowercaseAndDash(<string>)</string></td>
+<td>将字符串转为小写并使用中划线分割</td>
+</tr>
+<tr>
+<td>escapeString(<string>)</string></td>
+<td>将字符串中的特殊符号进行转义，便于在java字符串中使用</td>
+</tr>
+<tr>
+<td>substringBefore(<string>, <delimeter>)</delimeter></string></td>
+<td>截取字符串在<delimeter>之前的部分</delimeter></td>
+</tr>
+<tr>
+<td>firstWord(<string>)</string></td>
+<td>返回字符串中的首个单词</td>
+</tr>
+<tr>
+<td>castToLeftSideType()</td>
+<td>获取左侧变量的类型判断是否需要强转</td>
+</tr>
+<tr>
+<td>rightSideType()</td>
+<td>获取右侧表达式的变量类型</td>
+</tr>
+<tr>
+<td>className()</td>
+<td>返回当前所在类（在内部类则返回内部类）类名</td>
+</tr>
+<tr>
+<td>currentPackage()</td>
+<td>返回当前所在包名</td>
+</tr>
+<tr>
+<td>qualifiedClassName()</td>
+<td>返回当前所在类（在内部类则返回内部类）的全限定类名（包+类名）</td>
+</tr>
+<tr>
+<td>classNameComplete()</td>
+<td>触发类名相关的代码补全</td>
+</tr>
+<tr>
+<td>clipboard()</td>
+<td>返回系统剪贴板的内容</td>
+</tr>
+<tr>
+<td>complete()</td>
+<td>调用一次代码补全，相当于调用一次<em>Ctrl+Space</em></td>
+</tr>
+<tr>
+<td>completeSmart()</td>
+<td>调用一次智能代码补全，相当于调用一次<em>Ctrl+Alt+Space</em></td>
+</tr>
+<tr>
+<td>componentTypeOf(<array>)</array></td>
+<td>返回数组类型</td>
+</tr>
+<tr>
+<td>concat(<string>, …)</string></td>
+<td>拼接字符串</td>
+</tr>
+<tr>
+<td>date([format])</td>
+<td>指定格式化方式返回当前系统时间字符串（根据<em>SimpleDateFormat</em>格式）</td>
+</tr>
+<tr>
+<td>time([format])</td>
+<td>指定格式化方式返回当前系统时间字符串（无日期，根据<em>SimpleDateFormat</em>格式）</td>
+</tr>
+<tr>
+<td>descendantClassesEnum(<string>)</string></td>
+<td>返回指定类的子类</td>
+</tr>
+<tr>
+<td>lineNumber()</td>
+<td>返回当前行行号</td>
+</tr>
+<tr>
+<td>enum(<string>, …)</string></td>
+<td>返回建议的字符串列表</td>
+</tr>
+<tr>
+<td>expectedType()</td>
+<td>自动识别并返回期望的类型，一般用于赋值，方法参数，返回语句处。</td>
+</tr>
+<tr>
+<td>fileName()</td>
+<td>返回当前文件名（带拓展名）</td>
+</tr>
+<tr>
+<td>fileNameWithoutExtension()</td>
+<td>返回当前文件名（不带拓展名）</td>
+</tr>
+<tr>
+<td>filePath()</td>
+<td>返回当前文件路径（带拓展名）</td>
+</tr>
+<tr>
+<td>fileRelativePath()</td>
+<td>返回当前文件相对当前项目的路径（带拓展名）</td>
+</tr>
+<tr>
+<td>groovyScript(<string>, [arg, …])</string></td>
+<td>执行作为字符串形式传递的<em>groovy</em>脚本</td>
+</tr>
+<tr>
+<td>guessElementType(<collection>)</collection></td>
+<td>返回集合中元素的类型</td>
+</tr>
+<tr>
+<td>iterableComponentType(<iterable>)</iterable></td>
+<td>返回可迭代对象的类型</td>
+</tr>
+<tr>
+<td>iterableVariable()</td>
+<td>返回当前范围内可迭代类型对象，最近的优先展示</td>
+</tr>
+<tr>
+<td>methodName()</td>
+<td>返回当前所在方法名</td>
+</tr>
+<tr>
+<td>methodParameters()</td>
+<td>返回当前所在方法的所有参数名</td>
+</tr>
+<tr>
+<td>methodReturnType()</td>
+<td>返回当前所在方法的返回类型</td>
+</tr>
+<tr>
+<td>regularExpression(<string>, <pattern>, <replacement>)</replacement></pattern></string></td>
+<td>查找字符串中满足<pattern>的所有部分并替换为<replacement></replacement></pattern></td>
+</tr>
+<tr>
+<td>typeOfVariable(<string>)</string></td>
+<td>返回变量的类型</td>
+</tr>
+<tr>
+<td>variableOfType(<string>)</string></td>
+<td>返回当前范围内满足类型条件的变量，最近的优先展示</td>
+</tr>
+<tr>
+<td>suggestFirstVariableName(<string>)</string></td>
+<td>返回当前范围内满足类型条件的部分变量，最近的优先展示和<em>variableOfType</em>类似但不推荐true，false，this，和super</td>
+</tr>
+<tr>
+<td>subtypes(<string>)</string></td>
+<td>返回指定类型的子类型</td>
+</tr>
+<tr>
+<td>suggestIndexName()</td>
+<td>返回当前范围中未使用的第一个常用迭代下标变量名（i，j，k等）</td>
+</tr>
+<tr>
+<td>suggestVariableName()</td>
+<td>根据变量命名规则的代码风格设置返回建议的变量名</td>
+</tr>
+<tr>
+<td>suggestShortVariableName()</td>
+<td>建议的变量名精简版</td>
+</tr>
+<tr>
+<td>user()</td>
+<td>返回当前系统的用户名称</td>
+</tr>
+</tbody></table>
+<p>使用方式</p>
+<p>在代码中输入前面设置的 Abbreviation 中设置的模板名称并按 Tab 即可。</p>
+<h1 id="监控查询时间"><a href="#监控查询时间" class="headerlink" title="监控查询时间"></a>监控查询时间</h1><p><a href="https://www.cnblogs.com/fengzheng/p/17039274.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengzheng/p/17039274.html</a></p>
+<p>自定义postfix</p>
+<p><a href="https://blog.csdn.net/DATANGguanjunhou/article/details/106174772/" target="_blank" rel="noopener">https://blog.csdn.net/DATANGguanjunhou/article/details/106174772/</a></p>
+]]></content>
       <categories>
-          
-          <category> 博客 </category>
-          
+        <category>idea</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>peek和map的区别</title>
-      <link href="/p/ab2c.html"/>
-      <url>/p/ab2c.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>peek调试打印流中某操作后的每个元素：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">.map(String::toUpperCase) </span><br><span class="line">.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure><p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">.map(String::toUpperCase)</span><br><span class="line">.collect(Collectors.toList());</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>十年之约</title>
+    <url>/p/c661.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>刚刚收到【<a href="https://www.foreverblog.cn/blogs.html" target="_blank" rel="noopener">十年之约</a>】的邮件，没想到随手投递的申请居然过了！本社恐居然有点高兴又有点害怕(摊手</p>
+<blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <p>【十年之约】亲爱的十年之约成员：很高兴通知您，您的申请已通过审核，欢迎加入十年之约！从今日起，您就是十年之约的正式成员！您收到本邮件之时，您博客的十年之约正式生效，请认真对待这个约定！</p>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+<a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> 技术 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>循环依赖小记</title>
-      <link href="/p/ab2c.html"/>
-      <url>/p/ab2c.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring为什么要使用三级缓存来解决循环依赖"><a href="#spring为什么要使用三级缓存来解决循环依赖" class="headerlink" title="spring为什么要使用三级缓存来解决循环依赖?"></a>spring为什么要使用三级缓存来解决循环依赖?</h1><p><a href="https://www.zhihu.com/question/514541616" target="_blank" rel="noopener">https://www.zhihu.com/question/514541616</a></p><p><a href="https://juejin.cn/post/6985337310472568839" target="_blank" rel="noopener">https://juejin.cn/post/6985337310472568839</a></p><p><a href="https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html" target="_blank" rel="noopener">https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html</a></p><p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p><p><a href="https://segmentfault.com/a/1190000039134606" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039134606</a></p><p><a href="https://blog.csdn.net/sonycong/article/details/124635532" target="_blank" rel="noopener">https://blog.csdn.net/sonycong/article/details/124635532</a></p><p>bean：</p><p><a href="https://segmentfault.com/q/1010000022285218" target="_blank" rel="noopener">https://segmentfault.com/q/1010000022285218</a></p><p>代理对象的循环依赖：</p><p><a href="https://zhuanlan.zhihu.com/p/377878056" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/377878056</a></p><p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p><p>@Lazy为什么能解决？</p><p><a href="https://blog.51cto.com/knifeedge/5479446" target="_blank" rel="noopener">https://blog.51cto.com/knifeedge/5479446</a></p><ol><li>怎么实现的解决方式？用了缓存，也就是中间商</li><li>第几级缓存就可以实现？第二级缓存</li><li>为什么用到第三级缓存？因为要看返回的是原对象还是代理对象</li><li>@Async加了之后为什么不行？因为切面并没有被spring管理</li><li>为什么不能全是构造器模式？因为构造器模式需要new完才能被发现，不能满足提前暴露的前提</li><li>为什么不能是原型模式，而是单例模式才行？因为单例才能保证循环依赖的是之前的对象，不然会有无数个对象</li><li>bean和对象有什么区别？bean也是一种对象，我们称被spring管理的对象叫做bean</li><li>bean的生命周期是什么？</li><li>三级缓存分别是什么？一级是成品对象，二级是半成品对象，三级是正在初始化的对象。默认从一级成品对象的map中优先获取</li><li>造成循环依赖有哪几种方式？构造器注入，setter注入，属性注入</li><li>有的注解可以解决代理对象循环依赖有的不行，为什么？因为@Transtion注解的增强器实现了getEarlyBeanReference方法，而@Async没有</li><li>Srping中bean为什么设计成为单例？</li></ol><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230302111706622.png" alt="image-20230302111706622"></p><h1 id="假设去掉二级缓存"><a href="#假设去掉二级缓存" class="headerlink" title="假设去掉二级缓存"></a>假设去掉二级缓存</h1><p>如果去掉了二级缓存，则需要直接在 <code>singletonFactory.getObject()</code> 阶段初始化完毕，并放到一级缓存中。</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-916ab0c36104ad2b3296b6bf79cd9318_1440w.webp" alt="img"></p><p>那有这么一种场景，B 和 C 都依赖了 A。</p><p>要知道在有代理的情况下 <code>singletonFactory.getObject()</code> 获取的是代理对象。</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-47f3598ea9efb09abf5ed79251ecfdcf_1440w.webp" alt="img"></p><p>而多次调用 <code>singletonFactory.getObject()</code> 返回的代理对象是不同的，就会导致 B 和 C 依赖了不同的 A。</p><p>那如果获取 B 到之后直接放到一级缓存，然后 C 再获取呢？</p><p>……</p><p>一级缓存放的是已经初始化完毕的 Bean，要知道 A 依赖了 B 和 C ，A 这时候还没有初始化完毕。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小程序完工</title>
+    <url>/p/f926.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>现在是2020-05-24 00:24:18，终于把小程序客户端，网页端全都写完了哈哈哈。本来计划不会写很多功能的，因为本人实在是太懒了。然而，越写越深入……于是，今天我又鼓捣出来几个功能：网页端加个swagger2接口文档，增加小程序轮播图网页端控制，给做做样子的页面跳转增加了拦截器（为此改了好多静态资源路径）等等。多写一点业务，以后工作的时候应该会更轻松吧，毕竟熟练度在那里，我这么想的。先睡觉，从明天开始，好好学习算法与数据结构  ：）</p>
+<a id="more"></a>
+
+]]></content>
       <categories>
-          
-          <category> spring </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> spring </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>小程序完工</title>
-      <link href="/p/f926.html"/>
-      <url>/p/f926.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>现在是2020-05-24 00:24:18，终于把小程序客户端，网页端全都写完了哈哈哈。本来计划不会写很多功能的，因为本人实在是太懒了。然而，越写越深入……于是，今天我又鼓捣出来几个功能：网页端加个swagger2接口文档，增加小程序轮播图网页端控制，给做做样子的页面跳转增加了拦截器（为此改了好多静态资源路径）等等。多写一点业务，以后工作的时候应该会更轻松吧，毕竟熟练度在那里，我这么想的。先睡觉，从明天开始，好好学习算法与数据结构  ：）</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>娜娜の生活经验</title>
+    <url>/p/87a6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="地铁如何避免摔倒？"><a href="#地铁如何避免摔倒？" class="headerlink" title="地铁如何避免摔倒？"></a>地铁如何避免摔倒？</h2><p>侧着身子保持和列车的前进方法一致即可。</p>
+<h2 id="账单日和还款日有何区别？"><a href="#账单日和还款日有何区别？" class="headerlink" title="账单日和还款日有何区别？"></a>账单日和还款日有何区别？</h2><a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>一点感悟</title>
-      <link href="/p/ce4f.html"/>
-      <url>/p/ce4f.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>写博客并不是一件浪费时间的事情。功利时代下大家都渴望花时间做最有用的事情，“我要是把时间都花在XX上那我早就很强了”。然而很多看似没有的东西其实不一定没用。就拿写博客来说，本质上无聊且枯燥还花时间，但是其实是在回顾自己学过的知识点，依据费曼学习法来说，输出有时候比输入更重要。写作是和自己的一次交谈。</li><li>JAVA的三个特性：多态继承封装，对应是产品里面的美学，程序猿崇尚的优雅。以前不明白为什么简简单单可以实现的功能，要分好几个文件来写？现在幡然醒悟。除去灵活拓展，将粒度合适划分，代码是可以写的很优雅的，自己的程序要花心思写好。</li><li>遇到不懂的地方不能急着求成而将代码简化。很多时候人是具有惰性的，碰到困难就想回头。这个时候换个思路想想，这又何尝不是一个进步的机会呢？最近反编译了一个项目，为了追求表面的功能实现而把封装好的代码组装在一起，极大地增加了耦合度，反而是弄懂为什么之后又改回去了。</li><li>谦虚向学。直到今天，才发现育毅师兄曾经说过API加上版本号的意义，直到大三的我碰到之后才明白师兄们懂得多得多，自己不过是个菜狗。回想起来，周敏师兄手撸教材一周就能用socket帮他人写好项目，学习能力超强了。不止，这些天碰到优秀的教程和开源项目，感慨后悔自己浪费的日子，如果早点这样会怎么样？</li></ol><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为什么建议使用sl4j，不建议使用log4j</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
+<li>不用字符串连接带来的性能消耗，使用占位符更节省资源</li>
+<li>使用门面模式，兼容多种具体实现</li>
+<li>少的暂时的字符串意味着垃圾回收器（Garbage Collector）需要做更好的工作，这意味着你的应用程序有为更好的吞吐量和性能。</li>
+<li>通过使用SLF4J的日志方法，你可以延迟构建日志信息（Srting）的开销，直到你真正需要，这对于内存和CPU都是高效的。</li>
+</ol>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>十年之约</title>
-      <link href="/p/c661.html"/>
-      <url>/p/c661.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>刚刚收到【<a href="https://www.foreverblog.cn/blogs.html" target="_blank" rel="noopener">十年之约</a>】的邮件，没想到随手投递的申请居然过了！本社恐居然有点高兴又有点害怕(摊手</p><blockquote class="blockquote-center">            <i class="fa fa-quote-left"></i>            <p>【十年之约】亲爱的十年之约成员：很高兴通知您，您的申请已通过审核，欢迎加入十年之约！从今日起，您就是十年之约的正式成员！您收到本邮件之时，您博客的十年之约正式生效，请认真对待这个约定！</p>            <i class="fa fa-quote-right"></i>          </blockquote><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一点感悟</title>
+    <url>/p/ce4f.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
+<li>写博客并不是一件浪费时间的事情。功利时代下大家都渴望花时间做最有用的事情，“我要是把时间都花在XX上那我早就很强了”。然而很多看似没有的东西其实不一定没用。就拿写博客来说，本质上无聊且枯燥还花时间，但是其实是在回顾自己学过的知识点，依据费曼学习法来说，输出有时候比输入更重要。写作是和自己的一次交谈。</li>
+<li>JAVA的三个特性：多态继承封装，对应是产品里面的美学，程序猿崇尚的优雅。以前不明白为什么简简单单可以实现的功能，要分好几个文件来写？现在幡然醒悟。除去灵活拓展，将粒度合适划分，代码是可以写的很优雅的，自己的程序要花心思写好。</li>
+<li>遇到不懂的地方不能急着求成而将代码简化。很多时候人是具有惰性的，碰到困难就想回头。这个时候换个思路想想，这又何尝不是一个进步的机会呢？最近反编译了一个项目，为了追求表面的功能实现而把封装好的代码组装在一起，极大地增加了耦合度，反而是弄懂为什么之后又改回去了。</li>
+<li>谦虚向学。直到今天，才发现育毅师兄曾经说过API加上版本号的意义，直到大三的我碰到之后才明白师兄们懂得多得多，自己不过是个菜狗。回想起来，周敏师兄手撸教材一周就能用socket帮他人写好项目，学习能力超强了。不止，这些天碰到优秀的教程和开源项目，感慨后悔自己浪费的日子，如果早点这样会怎么样？</li>
+</ol>
+<a id="more"></a>
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>自然卷自救历程</title>
-      <link href="/p/ba27.html"/>
-      <url>/p/ba27.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>自然卷卷的并不自然。</p><p>自然卷并不像人工卷出来的卷发那么好看，甚至是难看，这种难看也就伴随了自己二十多年。以前觉得无所谓，毕竟自己是看不到自己的头发的，除非照镜子。最近觉得过于邋遢也不好，遂开始想想怎么调理。得出的结论就是：自然卷在头发潮湿度过高的时候卷发的弯曲度更大，更容易卷的让自己像头疯狗一样…所以，办法就是洗完头之后，用干毛巾轻轻压在头发上尽可能吸收水分，然后使用负离子/水离子吹风机，冷风大风，顺着一边吹过去，一缕一缕吹干，顺便把头皮也吹干，这样的话看起来头发不塌，整体感觉会好很多。然而，发质差表现出来的粗、硬、无光泽似乎还是存在。跟阿铭说起这个，意外发现高中时候我们差不多的头发，现在他的发质好了很多。据他说是用了日本进口的洗发水（reveur紫+护发素），看起来也不贵，一百多出头，改天可以试试。顺带一提，自己用的是韩国进口的BALLVIC ,居然要一千多，之前植发医院的医生说养护效果很好，实际上还行吧，除了头屑少了很多以及掉发少了，发质还是那个发质…花了很多钱感觉自己像个憨憨。总之，既然已经是自然卷了，那就要接受这个事实，要花比常人多点心思保养好头发。（预感到自己以后可能会有个卷发宝宝…竟不知道要用什么表情应对..囧？</p>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的大学生活</title>
+    <url>/p/415b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我啊，一个软件工程的学生，在一个很普通的本科大学读书。</p>
+<p>说起来我的大学生活真的蛮失败的。没参加过多少比赛，也没得过什么牛逼的奖。别人女朋友都换了好几个，而我大学都没谈过恋爱，也没有女生喜欢，朋友也没认识几个，就连旅游也没去过几个地方，虽然在大学的城市生活了两年了，但是一点也不熟悉。</p>
+<a id="more"></a>
+
+<p>高考粗心填报志愿导致误入信息与计算科学，一个听上去像计算机专业的数学专业。迷迷糊糊学了一年数学，始终是学不懂数学分析这种证明类的玩意儿。让我感到欣慰的是转专业成功，换了专业，换了校区，换了室友。</p>
+<p>也曾追过一个女孩子，喜提了好人卡。那也是大学里为数不多的一次心动，刚认识她的那段时间是我生命中很快乐的一段时光，让我做了很多新的尝试，不过最后也是归于平静，做回自己。也是这个时候，看了很多书，心理学的书，慢慢开导自己，在人际关系中读懂了很多潜台词，尊重他人。</p>
+<p>大学里我不太喜欢学习专业知识，我也不喜欢打游戏和刷综艺，所以为了打发时间去学了吉他。弹的水平一般，唱歌也很一般。人比较难接受的就是发现自己的缺点——跑调，所以中途有放弃的念头。我跟我的吉他老师说，那我学吉他弹给自己听就行了。他说：我们学吉他要学会分享，分享给我们身边的朋友。吉他不只是只有弹唱，还可以有指弹。所以也就慢慢坚持了下来，努力变得更好。</p>
+<p>十一月的时候，遇到一个女孩儿。在我很难过的时候，她嘻嘻哈哈追问道：朋友间就应该说出烦恼啊，不要憋在心里，然后她开始说自己的事情巴拉巴拉…看着她，这是我第一次感受到有人愿意倾听自己的不开心，有人愿意接纳自己，我很幸运，有这么一个朋友。</p>
+<p>大学的圈子很小。我有很棒的室友们，班上也有几个不错的死党，女生朋友也慢慢认识了一些。虽然有些人因为失去交集没怎么联系了，不过开心的是偶尔还能听到她们的消息，希望大家都过得好。</p>
+<p>虽然我并不喜欢学习枯燥的专业知识，但是我并不讨厌软件工程这个专业。这是我自己的选择，我自己会花时间学点小技术，一个人慢慢沉浸其中，做着自己认为很酷的东西，殊途同归。其实写代码的时光也是快乐的，有点像一个工匠，一雕一刻，慢慢完善自己的作品，我很喜欢这种创造性的工作。对了，后来我也成为了计算机人工智能实验室的一员，有自己的小隔间去安静写代码。</p>
+<p>以后要做什么呢？我想了很久，我想给自己喜欢的人带来幸福。我会因为别人的幸福而感到幸福。为此，我会慢慢努力成为一个Java研发工程师。只有自己有足够的经济能力之后才能满足自己，同时关心他人。爱人先爱己，现阶段，不断充实自己。</p>
+<p>未来的日子里，好好学习，找一份好工作。</p>
+<p>最后，这个博客是我一时兴起搭建而成的，我思考后，决定记录一些自己学习的东西以及生活琐事。由于是给自己看的，因此写的不会过于细致，只是记录罢了。</p>
+<blockquote>
+<p>我会努力过得好，希望你也是。</p>
+</blockquote>
+<hr>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=41462193&auto=1&height=66"></iframe>
+
+
+
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>AMQP shutdown问题</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shutdown Signal: channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - delivery acknowledgement on channel 1774 timed out. Timeout value used: 1800000 ms. This timeout value can be configured, see consumers doc guide to learn more, class-id=0, method-id=0)</span><br></pre></td></tr></table></figure><p>问题原因：改漏了个地方忘了ack，消息还在队列里面</p><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230210112548264.png" alt="image-20230210112548264"></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排查线上OOM</title>
+    <url>/p/87a6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>周六发现凌晨03:11 SRM系统有重启，随后03:23 OOM。</p>
+<p>过程：使用Jprofiler分析dump文件，判断最大对象居然有330M，点开到最后一层使用指定对象，按照图表展示，以此往左边点开，发现堆栈信息指向一个查询数据库的方法，几乎是查全表的数据量，有82万。</p>
+<p>19年的代码，问题一直没被发现，直到业务量持续增长系统炸了。</p>
+<p>确认了该业务确实执行完成，数据没有异常，然而时间点和OOM的时间点有出入。所以最后得出结论是，当时有大对象存在，进入了老年代；同时日志采用正则匹配导致CPU飙升，成为了压垮系统的最后一根稻草。</p>
+<p>解决：后续改造成mq消费，避免任务集中。</p>
+<a id="more"></a>
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> rabbitmq </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> rabbitmq </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>git-fork流程</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">git remote add 远程仓库名称 git地址</span><br><span class="line"></span><br><span class="line">git fetch 远程仓库名称</span><br></pre></td></tr></table></figure><p>SRM git fork 提交流程</p><p>1、从SRM主库fork到自己代码库，生成一个一模一样的SRM仓库。</p><p>2、从自己的SRM仓库git clone到自己本地仓库，master添加SRM主库远程地址，并将master跟踪改为主库master。具体查看git fork同步主库操作步骤。</p><p>3、从SRM主库更新最新代码到master，从master创建分支，分支名为对应jira编码，如SPGY-23915。</p><p>4、代码编写完毕后提交代码，注释为分支名+冒号+提交内容，推送到自己的SRM仓库的同名分支。</p><p>5、提交该分支合并到主SRM库的请求，目标分支是对应上线日期的分支名。</p><p>6、提交合并请求后将链接发到研发群，让同事review代码。</p><p>7、代码review有问题，可以在gitlab进行解释或者回复，如果确实是代码有问题，则在本地修改代码，完成后同样注释分支名+冒号+修改内容进行提交。</p><p>8、如果是code review阶段出现的问题并进行代码修复，不需要重新发起合并请求，会直接在原来的合并请求中有所体现，因为合并请求本质上就是一个分支对另一个分支的合并，所以当分支出现变化，便会体现在合并请求中。</p><p>9、如果是发布测试或者验收环境后出现的问题，则在修复完成后，提交代码并发起新的合并请求。</p><p>PS：有时候发布后发现代码有问题，报错甚至跑不起来，可能是没有合并最新master分支的问题，因为采用的是git fork工作流模式，所以从研发到上线的流程相对复杂一些。主要的过程是，研发在确定上线日期后会在主库从master新建一个对应日期的上线分支，如feature_20211111，即2021年双十一上线的分支，那么在研发完成后都会合并到这个分支，这时候有另一个需求是2021年11月13日上线的，也从当前的master创建了新的分支，这时候feature_20211111和feature_20211113从理论上来说是平行的两个分支，如果业务上没有交叉，在上线前都是互不干扰，没有问题。在feature_20211111上线后，有些环境配置改变了，代码也会合并到master，master就是当前稳定运行的版本。这时候因为环境变了，feature_20211113这个版本中落后master很多，导致不能适应新的配置环境，这时候就需要合并最新master到feature_20211113，并处理好其中的冲突，提交到gitlab发起合并请求。具体的合并操作，可以将主库的feature_20211113分支拉到本地，master更新最新主库的代码，然后切换到feature_20211113分支，将master合并到feature_20211113，完成后推送到自己的fork仓库，然后发起合并请求即可。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>循环依赖小记</title>
+    <url>/p/ab2c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring为什么要使用三级缓存来解决循环依赖"><a href="#spring为什么要使用三级缓存来解决循环依赖" class="headerlink" title="spring为什么要使用三级缓存来解决循环依赖?"></a>spring为什么要使用三级缓存来解决循环依赖?</h1><p><a href="https://www.zhihu.com/question/514541616" target="_blank" rel="noopener">https://www.zhihu.com/question/514541616</a></p>
+<p><a href="https://juejin.cn/post/6985337310472568839" target="_blank" rel="noopener">https://juejin.cn/post/6985337310472568839</a></p>
+<p><a href="https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html" target="_blank" rel="noopener">https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html</a></p>
+<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
+<p><a href="https://segmentfault.com/a/1190000039134606" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039134606</a></p>
+<p><a href="https://blog.csdn.net/sonycong/article/details/124635532" target="_blank" rel="noopener">https://blog.csdn.net/sonycong/article/details/124635532</a></p>
+<p>bean：</p>
+<p><a href="https://segmentfault.com/q/1010000022285218" target="_blank" rel="noopener">https://segmentfault.com/q/1010000022285218</a></p>
+<p>代理对象的循环依赖：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/377878056" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/377878056</a></p>
+<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
+<p>@Lazy为什么能解决？</p>
+<p><a href="https://blog.51cto.com/knifeedge/5479446" target="_blank" rel="noopener">https://blog.51cto.com/knifeedge/5479446</a></p>
+<ol>
+<li>怎么实现的解决方式？用了缓存，也就是中间商</li>
+<li>第几级缓存就可以实现？第二级缓存</li>
+<li>为什么用到第三级缓存？因为要看返回的是原对象还是代理对象</li>
+<li>@Async加了之后为什么不行？因为切面并没有被spring管理</li>
+<li>为什么不能全是构造器模式？因为构造器模式需要new完才能被发现，不能满足提前暴露的前提</li>
+<li>为什么不能是原型模式，而是单例模式才行？因为单例才能保证循环依赖的是之前的对象，不然会有无数个对象</li>
+<li>bean和对象有什么区别？bean也是一种对象，我们称被spring管理的对象叫做bean</li>
+<li>bean的生命周期是什么？</li>
+<li>三级缓存分别是什么？一级是成品对象，二级是半成品对象，三级是正在初始化的对象。默认从一级成品对象的map中优先获取</li>
+<li>造成循环依赖有哪几种方式？构造器注入，setter注入，属性注入</li>
+<li>有的注解可以解决代理对象循环依赖有的不行，为什么？因为@Transtion注解的增强器实现了getEarlyBeanReference方法，而@Async没有</li>
+<li>Srping中bean为什么设计成为单例？</li>
+</ol>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230302111706622.png" alt="image-20230302111706622"></p>
+<h1 id="假设去掉二级缓存"><a href="#假设去掉二级缓存" class="headerlink" title="假设去掉二级缓存"></a>假设去掉二级缓存</h1><p>如果去掉了二级缓存，则需要直接在 <code>singletonFactory.getObject()</code> 阶段初始化完毕，并放到一级缓存中。</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-916ab0c36104ad2b3296b6bf79cd9318_1440w.webp" alt="img"></p>
+<p>那有这么一种场景，B 和 C 都依赖了 A。</p>
+<p>要知道在有代理的情况下 <code>singletonFactory.getObject()</code> 获取的是代理对象。</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-47f3598ea9efb09abf5ed79251ecfdcf_1440w.webp" alt="img"></p>
+<p>而多次调用 <code>singletonFactory.getObject()</code> 返回的代理对象是不同的，就会导致 B 和 C 依赖了不同的 A。</p>
+<p>那如果获取 B 到之后直接放到一级缓存，然后 C 再获取呢？</p>
+<p>……</p>
+<p>一级缓存放的是已经初始化完毕的 Bean，要知道 A 依赖了 B 和 C ，A 这时候还没有初始化完毕。</p>
+<a id="more"></a>
+
+]]></content>
       <categories>
-          
-          <category> git </category>
-          
+        <category>spring</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>macOS Big Sur - 您应该推出磁盘映像</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure><p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p><p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure><p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p><p>比如Sketch的命令是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure><p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排查线上CPU飙升至75</title>
+    <url>/p/87a6.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>某天接到一个任务：排查企微机器人告警CPU飙升到75。</p>
+<p>首先告警次数比较不规律，从企微机器人告警记录频率来看。</p>
+<p>排查Arthas观察到最忙的进程是一个日志进程：</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_ea446b0d-ceae-437a-be58-6741416023d0.png" alt="截图_ea446b0d-ceae-437a-be58-6741416023d0"></p>
+<p>定位到65行有一个日志加密的方法。</p>
+<p>最终排查出来，之前的开发实现了一个拓展方法，使用正则去匹配并替换敏感词。</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230309132104918.png" alt="image-20230309132104918"></p>
+<p>match方法默认走同步，如果单条日志匹配一百次，同时正则采用贪婪进行回溯，性能是很差的。</p>
+<p>后续日志量增大，将服务整崩也是指日可待呀！</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230309132033500.png" alt="image-20230309132033500"></p>
+<p>解决办法：使用唯品会开源的vtools的脱敏工具进行替换。</p>
+<a id="more"></a>
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> Mac </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Mac </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>mac切换jdk版本</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>export JAVA_HOME=<code>/usr/libexec/java_home -v 1.8.0_211</code></p>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>广州之行</title>
+    <url>/p/9e5b.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>从结果上看，虽然这次系统架构师的考试考的相当不顺利，但是年轻多尝试一些总是没错的哈哈哈哈哈（强行安慰自己）。</p>
+<p><img src="http://img.senup.cn/blog/20191202/rohrhrYp5Ir3.jpg" alt="广技师的图书馆外复习"></p>
+<a id="more"></a>
+
+<p>一开始拖拖拉拉被林哥赶鸭子上架似的报了软考高级的考试，交了三科快两百块的考试费。本着一种“来都来了”“钱都交了”的心态佛系复习，在最后两个星期里面，不听课看资料然后就到了广州，考点在广技师。值得一提的是，论文这个很让人头疼的东西。我居然等到只剩下三天的时候才开始写，要知道2个小时写三千字的论文可太难为我了，高考作文八百字我都要憋一个小时才写，所以难度相当大。疯狂找资料，在那大概十个题目里面选了三个，分别是SOA服务的应用，架构风格的选择，设计模式等等。那个下午，看到论文的题目，头都大了。考的是设计方法，架构评估，数据池什么鬼的…挑了个设计方法，因为其他完全不知道是什么，只能瞎写了，因为从小到大他们都说有写总比不写好，对吧？洋洋洒洒把设计模式+分层准备的东西写了进去，写到最后快五分钟交卷的时候才写完，手都是发麻的。考完后，林哥跟我讲设计方法是类似于面向对象的知识点，哦豁，离题十万八千里，及格再见。</p>
+<p><img src="http://img.senup.cn/blog/20191202/fwte5XpHN75u.jpg" alt="考场"></p>
+<p>接下来的晚上我们到处瞎逛，终于可以换个舒缓点的心情来欣赏广州这座城市了。但是！广州发展好快，快速公交让我碰了几次壁。一条道上开辟了好几条快速公交的通道，站在广技师外面的立交桥上面，居然不知道走哪一条，这里要批评一下百度地图，瞎几把导航，就不能让人省心点。做错了一次又要回头去另外一条，觉得此时的自己就是个憨憨。好不容易上了车。有一说一，城市化真的很棒啊！平时在学校呆久了，出来一次真的很感慨！</p>
+<p><img src="http://img.senup.cn/blog/20191202/v6LWdbccYUIU.jpg" alt="立交桥"></p>
+<p>在广技师的时候，我想起来我初中很喜欢的那个姑娘，她考到这里来了。当时，还不知道喜欢是什么感觉，就是想和她同一个班，抱着这么一个信念，初中拼命学习，后来两年里面挤进了实验班，和她一起。每天看到她在隔壁的桌子上就很安心，觉得那时候真的很美好。阳光和煦地拍在桌子上，下课和基友在栏杆旁打打闹闹，上课的时候可以瞥见自己喜欢的姑娘，偶尔看到她笑逐颜开的时候觉得世界都亮了，但是我不会和她说很多话。她真的是太好了，好到我觉得是自己无法触及的美好，我看着也很满足。后来升高中的时候少了五分，没能考上和她同一所中学。如果可以的话，我应该会和她表白了吧，人生是另外一条轨迹了，这也是后话了。再到后面，混日子，复读，现在的我，也应该知道她不在这里了。唉，有点遗憾。平行时空里面的那个我啊，会不会当时多多争气和她在一起呢？</p>
+<p>聊点来广州做的事情吧。因为学校那边也要上课，所以行程蛮紧的。</p>
+<p>我们在大学城里面各种公交地铁徘徊，因为说真的没啥目标哈哈哈。去了暨南大学，中山大学，广技师，路过星海音乐学院…对于别人的大学，除了酸还是酸。是我垃圾了~此外，就是吃吃吃。吃自助的时候，林哥这小身板居然大吃特吃的同时还吃了六块牛排，属实难顶，当时很好笑的是，“老板看你这样，不得哭着花钱请你走，招架不住”</p>
+<p><img src="http://img.senup.cn/blog/20191202/TtAX0YG0wdIT.jpg" alt="自助餐"></p>
+<p>总之软考之行就这样了。还是要继续努力啊，外面的世界很棒，值得我为之奋斗。</p>
+]]></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>为什么建议使用sl4j，不建议使用log4j</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>不用字符串连接带来的性能消耗，使用占位符更节省资源</li><li>使用门面模式，兼容多种具体实现</li><li>少的暂时的字符串意味着垃圾回收器（Garbage Collector）需要做更好的工作，这意味着你的应用程序有为更好的吞吐量和性能。</li><li>通过使用SLF4J的日志方法，你可以延迟构建日志信息（Srting）的开销，直到你真正需要，这对于内存和CPU都是高效的。</li></ol><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建博客遇到的问题</title>
+    <url>/p/6b28.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Mac终端输入命令提示权限不足"><a href="#Mac终端输入命令提示权限不足" class="headerlink" title="Mac终端输入命令提示权限不足"></a>Mac终端输入命令提示权限不足</h1><p>背景：想要将hexo源文件放在iCloud同步，结果提示没权限</p>
+<p>给整个文件夹加上权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo chmod -R 777 "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo/"</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mac下hexo创建文章自动打开typora"><a href="#Mac下hexo创建文章自动打开typora" class="headerlink" title="Mac下hexo创建文章自动打开typora"></a>Mac下hexo创建文章自动打开typora</h1><p>问题：一开始执行完命令发现只创建了文章并没有打开typora，于是手动执行了下open命令发现路径不能打开，因为Mac终端不能识别路径带空格的那种格式</p>
+<p>解决：用字符串圈起来就好了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    exec(<span class="string">'open "'</span> + data.path +<span class="string">'"'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mac下打开终端自动切换自定义路径"><a href="#Mac下打开终端自动切换自定义路径" class="headerlink" title="Mac下打开终端自动切换自定义路径"></a>Mac下打开终端自动切换自定义路径</h1><p>问题描述:<br>每次打开mac 终端后,都需要到hexo的一个路径进行文章生成，比较麻烦，想要实现打开终端自动切换到hexo的主目录。<br>解决方案：打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>在最后一行加入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo"</span><br></pre></td></tr></table></figure>
+
+<h1 id="hexo提示报错"><a href="#hexo提示报错" class="headerlink" title="hexo提示报错"></a><a href="https://tree.moe/deal-with-gyp-err-caused-by-node-sass/" target="_blank" rel="noopener">hexo提示报错</a></h1><p>主要原因: <a href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020" target="_blank" rel="noopener">node</a>-sass下载版本出错以及sass-loader</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">npm ERR! gyp ERR! node -v v18<span class="number">.14</span><span class="number">.2</span></span><br><span class="line">npm ERR! gyp ERR! node-gyp -v v3<span class="number">.8</span><span class="number">.0</span></span><br><span class="line">npm ERR! gyp ERR! not ok</span><br></pre></td></tr></table></figure>
+
+<p>提示：Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/node-sass’</p>
+<p>解决权限问题</p>
+<p>最后的方式：直接安装<a href="https://nodejs.org/download/release/v12.22.12/" target="_blank" rel="noopener">node 12的版本</a></p>
+<h1 id="deploy报错"><a href="#deploy报错" class="headerlink" title="deploy报错"></a>deploy报错</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/butcher/Desktop/blog/node_modules/hexo-util/lib/spawn.js:<span class="number">52</span>:<span class="number">19</span>)</span><br><span class="line">    at ChildProcess.emit (events.js:<span class="number">314</span>:<span class="number">20</span>)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:<span class="number">276</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p>没有配置Git ssh</p>
+<p>使用命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh &amp;&amp; cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>设置在github即可</p>
+<h1 id="Hexo设置命令别名快捷命令"><a href="#Hexo设置命令别名快捷命令" class="headerlink" title="Hexo设置命令别名快捷命令"></a>Hexo设置命令别名快捷命令</h1><p>解决方案：打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>添加别名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias hs=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&apos;</span><br><span class="line">alias hd=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d&apos;</span><br><span class="line">alias gp=&apos;git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<p>保存</p>
+<h1 id="hexo渲染报错：template-render-error-unknown-path"><a href="#hexo渲染报错：template-render-error-unknown-path" class="headerlink" title="hexo渲染报错：template render error (unknown path)"></a>hexo渲染报错：template render error (unknown path)</h1><p>因为有个文章里面标题用了%号，所以渲染失败，去掉即可正常渲染</p>
+<a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>博客</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>感觉</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天从朋友那里听了一点关于她的消息，心情突然很微妙，一开始只是好像心跳突然骤停了两三秒，然后深深地呼了一口气。眼前会浮现出以前的画面，然后视线回到眼前，时间似乎也已经过了很久。很多种情感交织，复杂地说不上来，大抵是，终于可以放下了。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>postman报了“断路器熔断”</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>postman报了“断路器熔断”，此时不知道怎么办？</p>
+<p>可以猜测服务本身出现了问题。</p>
+<p>服务出问题没有日志中心怎么看？</p>
+<p>可以查看容器的一个运行状态，以及启动日志。启动日志会报出对应的问题。</p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>postman</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>postman报了“断路器熔断”</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>postman报了“断路器熔断”，此时不知道怎么办？</p><p>可以猜测服务本身出现了问题。</p><p>服务出问题没有日志中心怎么看？</p><p>可以查看容器的一个运行状态，以及启动日志。启动日志会报出对应的问题。</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>postman</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树的工具类</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> xxx.core.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.collection.CollUtil;</span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.lang.Pair;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.function.BiConsumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeUtils</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">TreeUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Data</span></span><br><span class="line">	<span class="meta">@AllArgsConstructor</span></span><br><span class="line">	<span class="meta">@NoArgsConstructor</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> String id;</span><br><span class="line">		<span class="keyword">private</span> String parentId;</span><br><span class="line">		<span class="keyword">private</span> T data;</span><br><span class="line">		<span class="keyword">private</span> List&lt;TreeNode&lt;T&gt;&gt; children;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends TreeNode&lt;?&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line">		validateTree(flatNodeList, TreeNode::getId, TreeNode::getParentId, parentId, onAddToTree);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 验证对象列表是否能组成单颗树</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> flatNodeList 对象列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getId        从对象获取id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getParentId  从对象获取父id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> parentId     当前层父id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> onAddToTree  节点有效时的回调</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;          对象类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, Function&lt;T, String&gt; getId, Function&lt;T, String&gt; getParentId, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (flatNodeList.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ArrayList&lt;T&gt; thisLayer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		LinkedList&lt;T&gt; copy = <span class="keyword">new</span> LinkedList&lt;&gt;(flatNodeList);</span><br><span class="line">		Iterator&lt;T&gt; iterator = copy.iterator();</span><br><span class="line">		<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">			T node = iterator.next();</span><br><span class="line">			<span class="keyword">if</span> (parentId.equals(getParentId.apply(node))) &#123;</span><br><span class="line">				thisLayer.add(node);</span><br><span class="line">				onAddToTree.accept(node);</span><br><span class="line">				iterator.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (T node : thisLayer) &#123;</span><br><span class="line">			validateTree(copy, getId, getParentId, getId.apply(node), onAddToTree);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取该节点的所有子节点</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> parent          父节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getId           从对象获取id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getChildrenById 按id获取子节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> setChildren     给对象设置子节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;             对象类型</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 对象所有子节点树状集合</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getChildren</span><span class="params">(T parent, Function&lt;T, String&gt; getId, Function&lt;String, List&lt;T&gt;&gt; getChildrenById, BiConsumer&lt;T, List&lt;T&gt;&gt; setChildren)</span> </span>&#123;</span><br><span class="line">		List&lt;T&gt; childrenList = getChildrenById.apply(getId.apply(parent));</span><br><span class="line">		childrenList.forEach(child -&gt; &#123;</span><br><span class="line">			List&lt;T&gt; nextLevelChildren = getChildren(child, getId, getChildrenById, setChildren);</span><br><span class="line">			setChildren.accept(child, nextLevelChildren);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> childrenList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 平铺化树</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> treeList            树节点列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> copyAndMoveChildren copy节点对象并把节点对象上的children移除并返回</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;                 节点泛型</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 平铺化树</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">flatten</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, Pair&lt;T, List&lt;T&gt;&gt;&gt; copyAndMoveChildren)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line">			<span class="comment">//要求可变类型</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		&#125;</span><br><span class="line">		ArrayList&lt;T&gt; thisLevel = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">			Pair&lt;T, List&lt;T&gt;&gt; apply = copyAndMoveChildren.apply(t);</span><br><span class="line">			T copy = apply.getKey();</span><br><span class="line">			List&lt;T&gt; thisChildren = apply.getValue();</span><br><span class="line">			List&lt;T&gt; allChildren = flatten(thisChildren, copyAndMoveChildren);</span><br><span class="line">			thisLevel.addAll(allChildren);</span><br><span class="line">			thisLevel.add(copy);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> thisLevel;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Data</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NodeInfo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> T node;</span><br><span class="line">		<span class="keyword">private</span> T parentNode;</span><br><span class="line">		<span class="keyword">private</span> List&lt;T&gt; siblingNode;</span><br><span class="line">		<span class="keyword">private</span> Integer currDepth;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">NodeInfo&lt;T&gt; <span class="title">of</span><span class="params">(T node, T parentNode, List&lt;T&gt; siblingNode, Integer currDepth)</span> </span>&#123;</span><br><span class="line">			NodeInfo&lt;T&gt; s = <span class="keyword">new</span> NodeInfo&lt;&gt;();</span><br><span class="line">			s.setNode(node);</span><br><span class="line">			s.setParentNode(parentNode);</span><br><span class="line">			s.setSiblingNode(siblingNode);</span><br><span class="line">			s.setCurrDepth(currDepth);</span><br><span class="line">			<span class="keyword">return</span> s;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 遍历树，广度优先</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> treeList    兄弟节点列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getChildren 获取子节点函数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> onNode      节点操作</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;         节点类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelTreeBFS</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line">		travelBFS(<span class="keyword">null</span>, treeList, getChildren, <span class="number">1</span>, onNode);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelBFS</span><span class="params">(T parent, List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, <span class="keyword">int</span> currLevel, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">			onNode.accept(NodeInfo.of(t, parent, treeList, currLevel));</span><br><span class="line">			travelBFS(t, getChildren.apply(t), getChildren, currLevel + <span class="number">1</span>, onNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getLeafNode</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren)</span> </span>&#123;</span><br><span class="line">		ArrayList&lt;T&gt; leaf = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		travelTreeBFS(treeList, getChildren, ni -&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (CollUtil.isEmpty(getChildren.apply(ni.getNode()))) &#123;</span><br><span class="line">				leaf.add(ni.getNode());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> leaf;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+]]></content>
       <categories>
-          
-          <category> postman </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> postman </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>正则表达式处理数据</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="正则查找不包含某些字符串的行"><a href="#正则查找不包含某些字符串的行" class="headerlink" title="正则查找不包含某些字符串的行"></a>正则查找不包含某些字符串的行</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((?!不想包含的字符串).)*$</span><br></pre></td></tr></table></figure><h1 id="消除空白行-s-n，正则表达式"><a href="#消除空白行-s-n，正则表达式" class="headerlink" title="消除空白行^\s*\n，正则表达式"></a>消除空白行^\s*\n，正则表达式</h1><p>^\s*\n</p><p>^匹配字符串开始</p><p>\s匹配空白字符</p><p>*匹配前面的子表达式零次或多次</p><p>\n匹配换行符</p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>感觉</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天从朋友那里听了一点关于她的消息，心情突然很微妙，一开始只是好像心跳突然骤停了两三秒，然后深深地呼了一口气。眼前会浮现出以前的画面，然后视线回到眼前，时间似乎也已经过了很久。很多种情感交织，复杂地说不上来，大抵是，终于可以放下了。</p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> 正则表达式 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 正则表达式 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>树的工具类</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xxx.core.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.collection.CollUtil;</span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.lang.Pair;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.function.BiConsumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeUtils</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">TreeUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"><span class="keyword">private</span> String id;</span><br><span class="line"><span class="keyword">private</span> String parentId;</span><br><span class="line"><span class="keyword">private</span> T data;</span><br><span class="line"><span class="keyword">private</span> List&lt;TreeNode&lt;T&gt;&gt; children;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends TreeNode&lt;?&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line">validateTree(flatNodeList, TreeNode::getId, TreeNode::getParentId, parentId, onAddToTree);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证对象列表是否能组成单颗树</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> flatNodeList 对象列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> getId        从对象获取id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> getParentId  从对象获取父id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> parentId     当前层父id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> onAddToTree  节点有效时的回调</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;          对象类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, Function&lt;T, String&gt; getId, Function&lt;T, String&gt; getParentId, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (flatNodeList.isEmpty()) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">ArrayList&lt;T&gt; thisLayer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">LinkedList&lt;T&gt; copy = <span class="keyword">new</span> LinkedList&lt;&gt;(flatNodeList);</span><br><span class="line">Iterator&lt;T&gt; iterator = copy.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">T node = iterator.next();</span><br><span class="line"><span class="keyword">if</span> (parentId.equals(getParentId.apply(node))) &#123;</span><br><span class="line">thisLayer.add(node);</span><br><span class="line">onAddToTree.accept(node);</span><br><span class="line">iterator.remove();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (T node : thisLayer) &#123;</span><br><span class="line">validateTree(copy, getId, getParentId, getId.apply(node), onAddToTree);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取该节点的所有子节点</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> parent          父节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> getId           从对象获取id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> getChildrenById 按id获取子节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> setChildren     给对象设置子节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;             对象类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 对象所有子节点树状集合</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getChildren</span><span class="params">(T parent, Function&lt;T, String&gt; getId, Function&lt;String, List&lt;T&gt;&gt; getChildrenById, BiConsumer&lt;T, List&lt;T&gt;&gt; setChildren)</span> </span>&#123;</span><br><span class="line">List&lt;T&gt; childrenList = getChildrenById.apply(getId.apply(parent));</span><br><span class="line">childrenList.forEach(child -&gt; &#123;</span><br><span class="line">List&lt;T&gt; nextLevelChildren = getChildren(child, getId, getChildrenById, setChildren);</span><br><span class="line">setChildren.accept(child, nextLevelChildren);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">return</span> childrenList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 平铺化树</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> treeList            树节点列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> copyAndMoveChildren copy节点对象并把节点对象上的children移除并返回</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;                 节点泛型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 平铺化树</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">flatten</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, Pair&lt;T, List&lt;T&gt;&gt;&gt; copyAndMoveChildren)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line"><span class="comment">//要求可变类型</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">&#125;</span><br><span class="line">ArrayList&lt;T&gt; thisLevel = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">Pair&lt;T, List&lt;T&gt;&gt; apply = copyAndMoveChildren.apply(t);</span><br><span class="line">T copy = apply.getKey();</span><br><span class="line">List&lt;T&gt; thisChildren = apply.getValue();</span><br><span class="line">List&lt;T&gt; allChildren = flatten(thisChildren, copyAndMoveChildren);</span><br><span class="line">thisLevel.addAll(allChildren);</span><br><span class="line">thisLevel.add(copy);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> thisLevel;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NodeInfo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"><span class="keyword">private</span> T node;</span><br><span class="line"><span class="keyword">private</span> T parentNode;</span><br><span class="line"><span class="keyword">private</span> List&lt;T&gt; siblingNode;</span><br><span class="line"><span class="keyword">private</span> Integer currDepth;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">NodeInfo&lt;T&gt; <span class="title">of</span><span class="params">(T node, T parentNode, List&lt;T&gt; siblingNode, Integer currDepth)</span> </span>&#123;</span><br><span class="line">NodeInfo&lt;T&gt; s = <span class="keyword">new</span> NodeInfo&lt;&gt;();</span><br><span class="line">s.setNode(node);</span><br><span class="line">s.setParentNode(parentNode);</span><br><span class="line">s.setSiblingNode(siblingNode);</span><br><span class="line">s.setCurrDepth(currDepth);</span><br><span class="line"><span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 遍历树，广度优先</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> treeList    兄弟节点列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> getChildren 获取子节点函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> onNode      节点操作</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;         节点类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelTreeBFS</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line">travelBFS(<span class="keyword">null</span>, treeList, getChildren, <span class="number">1</span>, onNode);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelBFS</span><span class="params">(T parent, List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, <span class="keyword">int</span> currLevel, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">onNode.accept(NodeInfo.of(t, parent, treeList, currLevel));</span><br><span class="line">travelBFS(t, getChildren.apply(t), getChildren, currLevel + <span class="number">1</span>, onNode);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getLeafNode</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren)</span> </span>&#123;</span><br><span class="line">ArrayList&lt;T&gt; leaf = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">travelTreeBFS(treeList, getChildren, ni -&gt; &#123;</span><br><span class="line"><span class="keyword">if</span> (CollUtil.isEmpty(getChildren.apply(ni.getNode()))) &#123;</span><br><span class="line">leaf.add(ni.getNode());</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">return</span> leaf;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则表达式处理数据</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="正则查找不包含某些字符串的行"><a href="#正则查找不包含某些字符串的行" class="headerlink" title="正则查找不包含某些字符串的行"></a>正则查找不包含某些字符串的行</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">^((?!不想包含的字符串).)*$</span><br></pre></td></tr></table></figure>
+
+<h1 id="消除空白行-s-n，正则表达式"><a href="#消除空白行-s-n，正则表达式" class="headerlink" title="消除空白行^\s*\n，正则表达式"></a>消除空白行^\s*\n，正则表达式</h1><p>^\s*\n</p>
+<p>^匹配字符串开始</p>
+<p>\s匹配空白字符</p>
+<p>*匹配前面的子表达式零次或多次</p>
+<p>\n匹配换行符</p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> Java </category>
-          
+        <category>正则表达式</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>索尼WH-1000XM3使用教程</title>
-      <link href="/p/6dc2.html"/>
-      <url>/p/6dc2.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230216093853567.png" alt="image-20230216093853567"></p><p><strong>右侧可以使用图上的几种功能</strong></p><a id="more"></a>]]></content>
-      
-      
+      <tags>
+        <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决Jrebel插件无法自动编译</title>
+    <url>/p/1b85.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <ol>
+<li>找到setting-&gt;build,Excution-&gt;Compiler,并勾选Build project automatically。</li>
+<li>然后找到setting-&gt;Advanced Setting，勾选Compiler中的Allow auto-make to start even if developed application is currently running</li>
+</ol>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+<p><a href="https://www.jb51.net/article/276318.htm" target="_blank" rel="noopener">文章地址</a></p>
+<a id="more"></a>
+
+
+
+
+
+
+
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>Java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>广州之行</title>
-      <link href="/p/9e5b.html"/>
-      <url>/p/9e5b.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>从结果上看，虽然这次系统架构师的考试考的相当不顺利，但是年轻多尝试一些总是没错的哈哈哈哈哈（强行安慰自己）。</p><p><img src="http://img.senup.cn/blog/20191202/rohrhrYp5Ir3.jpg" alt="广技师的图书馆外复习"></p><a id="more"></a><p>一开始拖拖拉拉被林哥赶鸭子上架似的报了软考高级的考试，交了三科快两百块的考试费。本着一种“来都来了”“钱都交了”的心态佛系复习，在最后两个星期里面，不听课看资料然后就到了广州，考点在广技师。值得一提的是，论文这个很让人头疼的东西。我居然等到只剩下三天的时候才开始写，要知道2个小时写三千字的论文可太难为我了，高考作文八百字我都要憋一个小时才写，所以难度相当大。疯狂找资料，在那大概十个题目里面选了三个，分别是SOA服务的应用，架构风格的选择，设计模式等等。那个下午，看到论文的题目，头都大了。考的是设计方法，架构评估，数据池什么鬼的…挑了个设计方法，因为其他完全不知道是什么，只能瞎写了，因为从小到大他们都说有写总比不写好，对吧？洋洋洒洒把设计模式+分层准备的东西写了进去，写到最后快五分钟交卷的时候才写完，手都是发麻的。考完后，林哥跟我讲设计方法是类似于面向对象的知识点，哦豁，离题十万八千里，及格再见。</p><p><img src="http://img.senup.cn/blog/20191202/fwte5XpHN75u.jpg" alt="考场"></p><p>接下来的晚上我们到处瞎逛，终于可以换个舒缓点的心情来欣赏广州这座城市了。但是！广州发展好快，快速公交让我碰了几次壁。一条道上开辟了好几条快速公交的通道，站在广技师外面的立交桥上面，居然不知道走哪一条，这里要批评一下百度地图，瞎几把导航，就不能让人省心点。做错了一次又要回头去另外一条，觉得此时的自己就是个憨憨。好不容易上了车。有一说一，城市化真的很棒啊！平时在学校呆久了，出来一次真的很感慨！</p><p><img src="http://img.senup.cn/blog/20191202/v6LWdbccYUIU.jpg" alt="立交桥"></p><p>在广技师的时候，我想起来我初中很喜欢的那个姑娘，她考到这里来了。当时，还不知道喜欢是什么感觉，就是想和她同一个班，抱着这么一个信念，初中拼命学习，后来两年里面挤进了实验班，和她一起。每天看到她在隔壁的桌子上就很安心，觉得那时候真的很美好。阳光和煦地拍在桌子上，下课和基友在栏杆旁打打闹闹，上课的时候可以瞥见自己喜欢的姑娘，偶尔看到她笑逐颜开的时候觉得世界都亮了，但是我不会和她说很多话。她真的是太好了，好到我觉得是自己无法触及的美好，我看着也很满足。后来升高中的时候少了五分，没能考上和她同一所中学。如果可以的话，我应该会和她表白了吧，人生是另外一条轨迹了，这也是后话了。再到后面，混日子，复读，现在的我，也应该知道她不在这里了。唉，有点遗憾。平行时空里面的那个我啊，会不会当时多多争气和她在一起呢？</p><p>聊点来广州做的事情吧。因为学校那边也要上课，所以行程蛮紧的。</p><p>我们在大学城里面各种公交地铁徘徊，因为说真的没啥目标哈哈哈。去了暨南大学，中山大学，广技师，路过星海音乐学院…对于别人的大学，除了酸还是酸。是我垃圾了~此外，就是吃吃吃。吃自助的时候，林哥这小身板居然大吃特吃的同时还吃了六块牛排，属实难顶，当时很好笑的是，“老板看你这样，不得哭着花钱请你走，招架不住”</p><p><img src="http://img.senup.cn/blog/20191202/TtAX0YG0wdIT.jpg" alt="自助餐"></p><p>总之软考之行就这样了。还是要继续努力啊，外面的世界很棒，值得我为之奋斗。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自然卷自救历程</title>
+    <url>/p/ba27.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>自然卷卷的并不自然。</p>
+<p>自然卷并不像人工卷出来的卷发那么好看，甚至是难看，这种难看也就伴随了自己二十多年。以前觉得无所谓，毕竟自己是看不到自己的头发的，除非照镜子。最近觉得过于邋遢也不好，遂开始想想怎么调理。得出的结论就是：自然卷在头发潮湿度过高的时候卷发的弯曲度更大，更容易卷的让自己像头疯狗一样…所以，办法就是洗完头之后，用干毛巾轻轻压在头发上尽可能吸收水分，然后使用负离子/水离子吹风机，冷风大风，顺着一边吹过去，一缕一缕吹干，顺便把头皮也吹干，这样的话看起来头发不塌，整体感觉会好很多。然而，发质差表现出来的粗、硬、无光泽似乎还是存在。跟阿铭说起这个，意外发现高中时候我们差不多的头发，现在他的发质好了很多。据他说是用了日本进口的洗发水（reveur紫+护发素），看起来也不贵，一百多出头，改天可以试试。顺带一提，自己用的是韩国进口的BALLVIC ,居然要一千多，之前植发医院的医生说养护效果很好，实际上还行吧，除了头屑少了很多以及掉发少了，发质还是那个发质…花了很多钱感觉自己像个憨憨。总之，既然已经是自然卷了，那就要接受这个事实，要花比常人多点心思保养好头发。（预感到自己以后可能会有个卷发宝宝…竟不知道要用什么表情应对..囧？</p>
+]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>我的大学生活</title>
-      <link href="/p/415b.html"/>
-      <url>/p/415b.html</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我啊，一个软件工程的学生，在一个很普通的本科大学读书。</p><p>说起来我的大学生活真的蛮失败的。没参加过多少比赛，也没得过什么牛逼的奖。别人女朋友都换了好几个，而我大学都没谈过恋爱，也没有女生喜欢，朋友也没认识几个，就连旅游也没去过几个地方，虽然在大学的城市生活了两年了，但是一点也不熟悉。</p><a id="more"></a><p>高考粗心填报志愿导致误入信息与计算科学，一个听上去像计算机专业的数学专业。迷迷糊糊学了一年数学，始终是学不懂数学分析这种证明类的玩意儿。让我感到欣慰的是转专业成功，换了专业，换了校区，换了室友。</p><p>也曾追过一个女孩子，喜提了好人卡。那也是大学里为数不多的一次心动，刚认识她的那段时间是我生命中很快乐的一段时光，让我做了很多新的尝试，不过最后也是归于平静，做回自己。也是这个时候，看了很多书，心理学的书，慢慢开导自己，在人际关系中读懂了很多潜台词，尊重他人。</p><p>大学里我不太喜欢学习专业知识，我也不喜欢打游戏和刷综艺，所以为了打发时间去学了吉他。弹的水平一般，唱歌也很一般。人比较难接受的就是发现自己的缺点——跑调，所以中途有放弃的念头。我跟我的吉他老师说，那我学吉他弹给自己听就行了。他说：我们学吉他要学会分享，分享给我们身边的朋友。吉他不只是只有弹唱，还可以有指弹。所以也就慢慢坚持了下来，努力变得更好。</p><p>十一月的时候，遇到一个女孩儿。在我很难过的时候，她嘻嘻哈哈追问道：朋友间就应该说出烦恼啊，不要憋在心里，然后她开始说自己的事情巴拉巴拉…看着她，这是我第一次感受到有人愿意倾听自己的不开心，有人愿意接纳自己，我很幸运，有这么一个朋友。</p><p>大学的圈子很小。我有很棒的室友们，班上也有几个不错的死党，女生朋友也慢慢认识了一些。虽然有些人因为失去交集没怎么联系了，不过开心的是偶尔还能听到她们的消息，希望大家都过得好。</p><p>虽然我并不喜欢学习枯燥的专业知识，但是我并不讨厌软件工程这个专业。这是我自己的选择，我自己会花时间学点小技术，一个人慢慢沉浸其中，做着自己认为很酷的东西，殊途同归。其实写代码的时光也是快乐的，有点像一个工匠，一雕一刻，慢慢完善自己的作品，我很喜欢这种创造性的工作。对了，后来我也成为了计算机人工智能实验室的一员，有自己的小隔间去安静写代码。</p><p>以后要做什么呢？我想了很久，我想给自己喜欢的人带来幸福。我会因为别人的幸福而感到幸福。为此，我会慢慢努力成为一个Java研发工程师。只有自己有足够的经济能力之后才能满足自己，同时关心他人。爱人先爱己，现阶段，不断充实自己。</p><p>未来的日子里，好好学习，找一份好工作。</p><p>最后，这个博客是我一时兴起搭建而成的，我思考后，决定记录一些自己学习的东西以及生活琐事。由于是给自己看的，因此写的不会过于细致，只是记录罢了。</p><blockquote><p>我会努力过得好，希望你也是。</p></blockquote><hr><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=41462193&auto=1&height=66"></iframe>]]></content>
-      
-      
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>索尼WH-1000XM3使用教程</title>
+    <url>/p/6dc2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230216093853567.png" alt="image-20230216093853567"></p>
+<p><strong>右侧可以使用图上的几种功能</strong></p>
+<a id="more"></a>]]></content>
       <categories>
-          
-          <category> 生活 </category>
-          
+        <category>生活</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 生活 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
 </search>

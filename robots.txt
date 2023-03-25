@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Allow: /site-navigation/ 
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/
+Disallow: /fonts/
+
+Sitemap: https://www.senup.cn/sitemap.xml
+Sitemap: https://www.senup.cn/baidusitemap.xml

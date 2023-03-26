@@ -217,6 +217,251 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6b28.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/6b28.html" class="post-title-link" itemprop="url">搭建博客遇到的问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-09 09:58:26" itemprop="dateCreated datePublished" datetime="2023-03-09T09:58:26+08:00">2023-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/6b28.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/6b28.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Mac终端输入命令提示权限不足"><a href="#Mac终端输入命令提示权限不足" class="headerlink" title="Mac终端输入命令提示权限不足"></a>Mac终端输入命令提示权限不足</h1><p>背景：想要将hexo源文件放在iCloud同步，结果提示没权限</p>
+<p>给整个文件夹加上权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo/"</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mac下hexo创建文章自动打开typora"><a href="#Mac下hexo创建文章自动打开typora" class="headerlink" title="Mac下hexo创建文章自动打开typora"></a>Mac下hexo创建文章自动打开typora</h1><p>问题：一开始执行完命令发现只创建了文章并没有打开typora，于是手动执行了下open命令发现路径不能打开，因为Mac终端不能识别路径带空格的那种格式</p>
+<p>解决：用字符串圈起来就好了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    exec(<span class="string">'open "'</span> + data.path +<span class="string">'"'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mac下打开终端自动切换自定义路径"><a href="#Mac下打开终端自动切换自定义路径" class="headerlink" title="Mac下打开终端自动切换自定义路径"></a>Mac下打开终端自动切换自定义路径</h1><p>问题描述:<br>每次打开mac 终端后,都需要到hexo的一个路径进行文章生成，比较麻烦，想要实现打开终端自动切换到hexo的主目录。<br>解决方案：打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>在最后一行加入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo"</span><br></pre></td></tr></table></figure>
+
+<h1 id="hexo提示报错"><a href="#hexo提示报错" class="headerlink" title="hexo提示报错"></a><a href="https://tree.moe/deal-with-gyp-err-caused-by-node-sass/" target="_blank" rel="noopener">hexo提示报错</a></h1><p>主要原因: <a href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020" target="_blank" rel="noopener">node</a>-sass下载版本出错以及sass-loader</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! gyp ERR! node -v v18<span class="number">.14</span><span class="number">.2</span></span><br><span class="line">npm ERR! gyp ERR! node-gyp -v v3<span class="number">.8</span><span class="number">.0</span></span><br><span class="line">npm ERR! gyp ERR! not ok</span><br></pre></td></tr></table></figure>
+
+<p>提示：Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/node-sass’</p>
+<p>解决权限问题</p>
+<p>最后的方式：直接安装<a href="https://nodejs.org/download/release/v12.22.12/" target="_blank" rel="noopener">node 12的版本</a></p>
+<h1 id="deploy报错"><a href="#deploy报错" class="headerlink" title="deploy报错"></a>deploy报错</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/butcher/Desktop/blog/node_modules/hexo-util/lib/spawn.js:<span class="number">52</span>:<span class="number">19</span>)</span><br><span class="line">    at ChildProcess.emit (events.js:<span class="number">314</span>:<span class="number">20</span>)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:<span class="number">276</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p>没有配置Git ssh</p>
+<p>使用命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh &amp;&amp; cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>设置在github即可</p>
+<h1 id="Hexo设置命令别名快捷命令"><a href="#Hexo设置命令别名快捷命令" class="headerlink" title="Hexo设置命令别名快捷命令"></a>Hexo设置命令别名快捷命令</h1><p>解决方案：打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>添加别名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias hs=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&apos;</span><br><span class="line">alias hd=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d&apos;</span><br><span class="line">alias gp=&apos;git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<p>保存</p>
+<h1 id="hexo渲染报错：template-render-error-unknown-path"><a href="#hexo渲染报错：template-render-error-unknown-path" class="headerlink" title="hexo渲染报错：template render error (unknown path)"></a>hexo渲染报错：template render error (unknown path)</h1><p>因为有个文章里面标题用了%号，所以渲染失败，去掉即可正常渲染</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/6b28.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">peek和map的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>535</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>peek调试打印流中某操作后的每个元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/ab2c.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -329,112 +574,6 @@
 <p>那如果获取 B 到之后直接放到一级缓存，然后 C 再获取呢？</p>
 <p>……</p>
 <p>一级缓存放的是已经初始化完毕的 Bean，要知道 A 依赖了 B 和 C ，A 这时候还没有初始化完毕。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/ab2c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">peek和map的区别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>535</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>peek调试打印流中某操作后的每个元素：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
-
-<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/p/ab2c.html#more" rel="contents">
@@ -993,119 +1132,6 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">macOS Big Sur - 您应该推出磁盘映像</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>355</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
-
-<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
-<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
-
-<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
-<p>比如Sketch的命令是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
-
-<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
             <a href="/p/6dc2.html" class="post-title-link" itemprop="url">git-fork流程</a>
         </h2>
 
@@ -1367,7 +1393,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

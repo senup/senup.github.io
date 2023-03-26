@@ -217,6 +217,352 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">循环依赖小记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="spring为什么要使用三级缓存来解决循环依赖"><a href="#spring为什么要使用三级缓存来解决循环依赖" class="headerlink" title="spring为什么要使用三级缓存来解决循环依赖?"></a>spring为什么要使用三级缓存来解决循环依赖?</h1><p><a href="https://www.zhihu.com/question/514541616" target="_blank" rel="noopener">https://www.zhihu.com/question/514541616</a></p>
+<p><a href="https://juejin.cn/post/6985337310472568839" target="_blank" rel="noopener">https://juejin.cn/post/6985337310472568839</a></p>
+<p><a href="https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html" target="_blank" rel="noopener">https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html</a></p>
+<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
+<p><a href="https://segmentfault.com/a/1190000039134606" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039134606</a></p>
+<p><a href="https://blog.csdn.net/sonycong/article/details/124635532" target="_blank" rel="noopener">https://blog.csdn.net/sonycong/article/details/124635532</a></p>
+<p>bean：</p>
+<p><a href="https://segmentfault.com/q/1010000022285218" target="_blank" rel="noopener">https://segmentfault.com/q/1010000022285218</a></p>
+<p>代理对象的循环依赖：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/377878056" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/377878056</a></p>
+<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
+<p>@Lazy为什么能解决？</p>
+<p><a href="https://blog.51cto.com/knifeedge/5479446" target="_blank" rel="noopener">https://blog.51cto.com/knifeedge/5479446</a></p>
+<ol>
+<li>怎么实现的解决方式？用了缓存，也就是中间商</li>
+<li>第几级缓存就可以实现？第二级缓存</li>
+<li>为什么用到第三级缓存？因为要看返回的是原对象还是代理对象</li>
+<li>@Async加了之后为什么不行？因为切面并没有被spring管理</li>
+<li>为什么不能全是构造器模式？因为构造器模式需要new完才能被发现，不能满足提前暴露的前提</li>
+<li>为什么不能是原型模式，而是单例模式才行？因为单例才能保证循环依赖的是之前的对象，不然会有无数个对象</li>
+<li>bean和对象有什么区别？bean也是一种对象，我们称被spring管理的对象叫做bean</li>
+<li>bean的生命周期是什么？</li>
+<li>三级缓存分别是什么？一级是成品对象，二级是半成品对象，三级是正在初始化的对象。默认从一级成品对象的map中优先获取</li>
+<li>造成循环依赖有哪几种方式？构造器注入，setter注入，属性注入</li>
+<li>有的注解可以解决代理对象循环依赖有的不行，为什么？因为@Transtion注解的增强器实现了getEarlyBeanReference方法，而@Async没有</li>
+<li>Srping中bean为什么设计成为单例？</li>
+</ol>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230302111706622.png" alt="image-20230302111706622"></p>
+<h1 id="假设去掉二级缓存"><a href="#假设去掉二级缓存" class="headerlink" title="假设去掉二级缓存"></a>假设去掉二级缓存</h1><p>如果去掉了二级缓存，则需要直接在 <code>singletonFactory.getObject()</code> 阶段初始化完毕，并放到一级缓存中。</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-916ab0c36104ad2b3296b6bf79cd9318_1440w.webp" alt="img"></p>
+<p>那有这么一种场景，B 和 C 都依赖了 A。</p>
+<p>要知道在有代理的情况下 <code>singletonFactory.getObject()</code> 获取的是代理对象。</p>
+<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-47f3598ea9efb09abf5ed79251ecfdcf_1440w.webp" alt="img"></p>
+<p>而多次调用 <code>singletonFactory.getObject()</code> 返回的代理对象是不同的，就会导致 B 和 C 依赖了不同的 A。</p>
+<p>那如果获取 B 到之后直接放到一级缓存，然后 C 再获取呢？</p>
+<p>……</p>
+<p>一级缓存放的是已经初始化完毕的 Bean，要知道 A 依赖了 B 和 C ，A 这时候还没有初始化完毕。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/ab2c.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">peek和map的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>535</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>peek调试打印流中某操作后的每个元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/ab2c.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/f926.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/f926.html" class="post-title-link" itemprop="url">小程序完工</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-24 00:24:18" itemprop="dateCreated datePublished" datetime="2020-05-24T00:24:18+08:00">2020-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/f926.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/f926.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>219</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>现在是2020-05-24 00:24:18，终于把小程序客户端，网页端全都写完了哈哈哈。本来计划不会写很多功能的，因为本人实在是太懒了。然而，越写越深入……于是，今天我又鼓捣出来几个功能：网页端加个swagger2接口文档，增加小程序轮播图网页端控制，给做做样子的页面跳转增加了拦截器（为此改了好多静态资源路径）等等。多写一点业务，以后工作的时候应该会更轻松吧，毕竟熟练度在那里，我这么想的。先睡觉，从明天开始，好好学习算法与数据结构  ：）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/f926.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ce4f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -647,6 +993,119 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
+            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">macOS Big Sur - 您应该推出磁盘映像</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>355</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
+
+<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
+<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
+
+<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
+<p>比如Sketch的命令是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
+
+<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/6dc2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
             <a href="/p/6dc2.html" class="post-title-link" itemprop="url">git-fork流程</a>
         </h2>
 
@@ -721,119 +1180,6 @@
 <p>8、如果是code review阶段出现的问题并进行代码修复，不需要重新发起合并请求，会直接在原来的合并请求中有所体现，因为合并请求本质上就是一个分支对另一个分支的合并，所以当分支出现变化，便会体现在合并请求中。</p>
 <p>9、如果是发布测试或者验收环境后出现的问题，则在修复完成后，提交代码并发起新的合并请求。</p>
 <p>PS：有时候发布后发现代码有问题，报错甚至跑不起来，可能是没有合并最新master分支的问题，因为采用的是git fork工作流模式，所以从研发到上线的流程相对复杂一些。主要的过程是，研发在确定上线日期后会在主库从master新建一个对应日期的上线分支，如feature_20211111，即2021年双十一上线的分支，那么在研发完成后都会合并到这个分支，这时候有另一个需求是2021年11月13日上线的，也从当前的master创建了新的分支，这时候feature_20211111和feature_20211113从理论上来说是平行的两个分支，如果业务上没有交叉，在上线前都是互不干扰，没有问题。在feature_20211111上线后，有些环境配置改变了，代码也会合并到master，master就是当前稳定运行的版本。这时候因为环境变了，feature_20211113这个版本中落后master很多，导致不能适应新的配置环境，这时候就需要合并最新master到feature_20211113，并处理好其中的冲突，提交到gitlab发起合并请求。具体的合并操作，可以将主库的feature_20211113分支拉到本地，master更新最新主库的代码，然后切换到feature_20211113分支，将master合并到feature_20211113，完成后推送到自己的fork仓库，然后发起合并请求即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">macOS Big Sur - 您应该推出磁盘映像</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>355</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
-
-<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
-<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
-
-<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
-<p>比如Sketch的命令是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
-
-<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/p/6dc2.html#more" rel="contents">
@@ -951,320 +1297,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">为什么建议使用sl4j，不建议使用log4j</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>166</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>不用字符串连接带来的性能消耗，使用占位符更节省资源</li>
-<li>使用门面模式，兼容多种具体实现</li>
-<li>少的暂时的字符串意味着垃圾回收器（Garbage Collector）需要做更好的工作，这意味着你的应用程序有为更好的吞吐量和性能。</li>
-<li>通过使用SLF4J的日志方法，你可以延迟构建日志信息（Srting）的开销，直到你真正需要，这对于内存和CPU都是高效的。</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">postman报了“断路器熔断”</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/postman/" itemprop="url" rel="index"><span itemprop="name">postman</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>89</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>postman报了“断路器熔断”，此时不知道怎么办？</p>
-<p>可以猜测服务本身出现了问题。</p>
-<p>服务出问题没有日志中心怎么看？</p>
-<p>可以查看容器的一个运行状态，以及启动日志。启动日志会报出对应的问题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">树的工具类</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xxx.core.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.collection.CollUtil;</span><br><span class="line"><span class="keyword">import</span> cn.hutool.core.lang.Pair;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.function.BiConsumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Consumer;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeUtils</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">TreeUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Data</span></span><br><span class="line">	<span class="meta">@AllArgsConstructor</span></span><br><span class="line">	<span class="meta">@NoArgsConstructor</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> String id;</span><br><span class="line">		<span class="keyword">private</span> String parentId;</span><br><span class="line">		<span class="keyword">private</span> T data;</span><br><span class="line">		<span class="keyword">private</span> List&lt;TreeNode&lt;T&gt;&gt; children;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends TreeNode&lt;?&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line">		validateTree(flatNodeList, TreeNode::getId, TreeNode::getParentId, parentId, onAddToTree);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 验证对象列表是否能组成单颗树</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> flatNodeList 对象列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getId        从对象获取id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getParentId  从对象获取父id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> parentId     当前层父id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> onAddToTree  节点有效时的回调</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;          对象类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">validateTree</span><span class="params">(List&lt;T&gt; flatNodeList, Function&lt;T, String&gt; getId, Function&lt;T, String&gt; getParentId, String parentId, Consumer&lt;T&gt; onAddToTree)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (flatNodeList.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ArrayList&lt;T&gt; thisLayer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		LinkedList&lt;T&gt; copy = <span class="keyword">new</span> LinkedList&lt;&gt;(flatNodeList);</span><br><span class="line">		Iterator&lt;T&gt; iterator = copy.iterator();</span><br><span class="line">		<span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">			T node = iterator.next();</span><br><span class="line">			<span class="keyword">if</span> (parentId.equals(getParentId.apply(node))) &#123;</span><br><span class="line">				thisLayer.add(node);</span><br><span class="line">				onAddToTree.accept(node);</span><br><span class="line">				iterator.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (T node : thisLayer) &#123;</span><br><span class="line">			validateTree(copy, getId, getParentId, getId.apply(node), onAddToTree);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取该节点的所有子节点</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> parent          父节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getId           从对象获取id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getChildrenById 按id获取子节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> setChildren     给对象设置子节点</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;             对象类型</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 对象所有子节点树状集合</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getChildren</span><span class="params">(T parent, Function&lt;T, String&gt; getId, Function&lt;String, List&lt;T&gt;&gt; getChildrenById, BiConsumer&lt;T, List&lt;T&gt;&gt; setChildren)</span> </span>&#123;</span><br><span class="line">		List&lt;T&gt; childrenList = getChildrenById.apply(getId.apply(parent));</span><br><span class="line">		childrenList.forEach(child -&gt; &#123;</span><br><span class="line">			List&lt;T&gt; nextLevelChildren = getChildren(child, getId, getChildrenById, setChildren);</span><br><span class="line">			setChildren.accept(child, nextLevelChildren);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> childrenList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 平铺化树</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> treeList            树节点列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> copyAndMoveChildren copy节点对象并把节点对象上的children移除并返回</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;                 节点泛型</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 平铺化树</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">flatten</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, Pair&lt;T, List&lt;T&gt;&gt;&gt; copyAndMoveChildren)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line">			<span class="comment">//要求可变类型</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		&#125;</span><br><span class="line">		ArrayList&lt;T&gt; thisLevel = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">			Pair&lt;T, List&lt;T&gt;&gt; apply = copyAndMoveChildren.apply(t);</span><br><span class="line">			T copy = apply.getKey();</span><br><span class="line">			List&lt;T&gt; thisChildren = apply.getValue();</span><br><span class="line">			List&lt;T&gt; allChildren = flatten(thisChildren, copyAndMoveChildren);</span><br><span class="line">			thisLevel.addAll(allChildren);</span><br><span class="line">			thisLevel.add(copy);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> thisLevel;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Data</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NodeInfo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> T node;</span><br><span class="line">		<span class="keyword">private</span> T parentNode;</span><br><span class="line">		<span class="keyword">private</span> List&lt;T&gt; siblingNode;</span><br><span class="line">		<span class="keyword">private</span> Integer currDepth;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">NodeInfo&lt;T&gt; <span class="title">of</span><span class="params">(T node, T parentNode, List&lt;T&gt; siblingNode, Integer currDepth)</span> </span>&#123;</span><br><span class="line">			NodeInfo&lt;T&gt; s = <span class="keyword">new</span> NodeInfo&lt;&gt;();</span><br><span class="line">			s.setNode(node);</span><br><span class="line">			s.setParentNode(parentNode);</span><br><span class="line">			s.setSiblingNode(siblingNode);</span><br><span class="line">			s.setCurrDepth(currDepth);</span><br><span class="line">			<span class="keyword">return</span> s;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 遍历树，广度优先</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> treeList    兄弟节点列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> getChildren 获取子节点函数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> onNode      节点操作</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> &lt;T&gt;         节点类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelTreeBFS</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line">		travelBFS(<span class="keyword">null</span>, treeList, getChildren, <span class="number">1</span>, onNode);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">travelBFS</span><span class="params">(T parent, List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren, <span class="keyword">int</span> currLevel, Consumer&lt;NodeInfo&lt;T&gt;&gt; onNode)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (CollUtil.isEmpty(treeList)) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (T t : treeList) &#123;</span><br><span class="line">			onNode.accept(NodeInfo.of(t, parent, treeList, currLevel));</span><br><span class="line">			travelBFS(t, getChildren.apply(t), getChildren, currLevel + <span class="number">1</span>, onNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">List&lt;T&gt; <span class="title">getLeafNode</span><span class="params">(List&lt;T&gt; treeList, Function&lt;T, List&lt;T&gt;&gt; getChildren)</span> </span>&#123;</span><br><span class="line">		ArrayList&lt;T&gt; leaf = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		travelTreeBFS(treeList, getChildren, ni -&gt; &#123;</span><br><span class="line">			<span class="keyword">if</span> (CollUtil.isEmpty(getChildren.apply(ni.getNode()))) &#123;</span><br><span class="line">				leaf.add(ni.getNode());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> leaf;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1335,18 +1367,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1431,12 +1463,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">23k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
 </div>
 
         

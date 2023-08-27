@@ -830,23 +830,6 @@
       </tags>
   </entry>
   <entry>
-    <title>peek和map的区别</title>
-    <url>/p/ab2c.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>peek调试打印流中某操作后的每个元素：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
-
-<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>循环依赖小记</title>
     <url>/p/ab2c.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="spring为什么要使用三级缓存来解决循环依赖"><a href="#spring为什么要使用三级缓存来解决循环依赖" class="headerlink" title="spring为什么要使用三级缓存来解决循环依赖?"></a>spring为什么要使用三级缓存来解决循环依赖?</h1><p><a href="https://www.zhihu.com/question/514541616" target="_blank" rel="noopener">https://www.zhihu.com/question/514541616</a></p>
@@ -894,6 +877,23 @@
       </categories>
       <tags>
         <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>peek和map的区别</title>
+    <url>/p/ab2c.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>peek调试打印流中某操作后的每个元素：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+
+<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
       </tags>
   </entry>
   <entry>

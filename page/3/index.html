@@ -1246,7 +1246,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">mac切换jdk版本</a>
+            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">macOS Big Sur - 您应该推出磁盘映像</a>
         </h2>
 
         <div class="post-meta">
@@ -1264,7 +1264,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
                 </span>
             </span>
 
@@ -1288,7 +1288,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>49</span>
+              <span>355</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1307,8 +1307,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>export JAVA_HOME=<code>/usr/libexec/java_home -v 1.8.0_211</code></p>
+          <p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
 
+<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
+<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
+
+<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
+<p>比如Sketch的命令是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
+
+<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/6dc2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

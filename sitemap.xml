@@ -51,14 +51,21 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/about/index.html</loc>
+    <loc>https://www.senup.cn/categories/index.html</loc>
     
     <lastmod>2023-03-25T02:52:25.449Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.senup.cn/categories/index.html</loc>
+    <loc>https://www.senup.cn/friends/index.html</loc>
+    
+    <lastmod>2023-03-25T02:52:25.449Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.senup.cn/about/index.html</loc>
     
     <lastmod>2023-03-25T02:52:25.449Z</lastmod>
     
@@ -72,7 +79,7 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/friends/index.html</loc>
+    <loc>https://www.senup.cn/notes/index.html</loc>
     
     <lastmod>2023-03-25T02:52:25.449Z</lastmod>
     
@@ -93,21 +100,14 @@
   </url>
   
   <url>
-    <loc>https://www.senup.cn/life/index.html</loc>
-    
-    <lastmod>2023-03-25T02:52:25.449Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.senup.cn/notes/index.html</loc>
-    
-    <lastmod>2023-03-25T02:52:25.449Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.senup.cn/tags/index.html</loc>
+    
+    <lastmod>2023-03-25T02:52:25.449Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.senup.cn/life/index.html</loc>
     
     <lastmod>2023-03-25T02:52:25.449Z</lastmod>
     

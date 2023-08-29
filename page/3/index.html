@@ -217,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6b28.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/e276.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -231,7 +231,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/6b28.html" class="post-title-link" itemprop="url">搭建博客遇到的问题</a>
+            <a href="/p/e276.html" class="post-title-link" itemprop="url">2023年12周的复盘总结</a>
         </h2>
 
         <div class="post-meta">
@@ -241,390 +241,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-03-09 09:58:26" itemprop="dateCreated datePublished" datetime="2023-03-09T09:58:26+08:00">2023-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/博客/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/6b28.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6b28.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Mac终端输入命令提示权限不足"><a href="#Mac终端输入命令提示权限不足" class="headerlink" title="Mac终端输入命令提示权限不足"></a>Mac终端输入命令提示权限不足</h1><p>背景：想要将hexo源文件放在iCloud同步，结果提示没权限</p>
-<p>给整个文件夹加上权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo/"</span><br></pre></td></tr></table></figure>
-
-<h1 id="Mac下hexo创建文章自动打开typora"><a href="#Mac下hexo创建文章自动打开typora" class="headerlink" title="Mac下hexo创建文章自动打开typora"></a>Mac下hexo创建文章自动打开typora</h1><p>问题：一开始执行完命令发现只创建了文章并没有打开typora，于是手动执行了下open命令发现路径不能打开，因为Mac终端不能识别路径带空格的那种格式</p>
-<p>解决：用字符串圈起来就好了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</span><br><span class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    exec(<span class="string">'open "'</span> + data.path +<span class="string">'"'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Mac下打开终端自动切换自定义路径"><a href="#Mac下打开终端自动切换自定义路径" class="headerlink" title="Mac下打开终端自动切换自定义路径"></a>Mac下打开终端自动切换自定义路径</h1><p>问题描述:<br>每次打开mac 终端后,都需要到hexo的一个路径进行文章生成，比较麻烦，想要实现打开终端自动切换到hexo的主目录。<br>解决方案：打开配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
-
-<p>在最后一行加入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo"</span><br></pre></td></tr></table></figure>
-
-<h1 id="hexo提示报错"><a href="#hexo提示报错" class="headerlink" title="hexo提示报错"></a><a href="https://tree.moe/deal-with-gyp-err-caused-by-node-sass/" target="_blank" rel="noopener">hexo提示报错</a></h1><p>主要原因: <a href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020" target="_blank" rel="noopener">node</a>-sass下载版本出错以及sass-loader</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! gyp ERR! node -v v18<span class="number">.14</span><span class="number">.2</span></span><br><span class="line">npm ERR! gyp ERR! node-gyp -v v3<span class="number">.8</span><span class="number">.0</span></span><br><span class="line">npm ERR! gyp ERR! not ok</span><br></pre></td></tr></table></figure>
-
-<p>提示：Error: EACCES: permission denied, mkdir ‘/usr/local/lib/node_modules/node-sass’</p>
-<p>解决权限问题</p>
-<p>最后的方式：直接安装<a href="https://nodejs.org/download/release/v12.22.12/" target="_blank" rel="noopener">node 12的版本</a></p>
-<h1 id="deploy报错"><a href="#deploy报错" class="headerlink" title="deploy报错"></a>deploy报错</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/butcher/Desktop/blog/node_modules/hexo-util/lib/spawn.js:<span class="number">52</span>:<span class="number">19</span>)</span><br><span class="line">    at ChildProcess.emit (events.js:<span class="number">314</span>:<span class="number">20</span>)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:<span class="number">276</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
-
-<p>没有配置Git ssh</p>
-<p>使用命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh &amp;&amp; cat id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>设置在github即可</p>
-<h1 id="Hexo设置命令别名快捷命令"><a href="#Hexo设置命令别名快捷命令" class="headerlink" title="Hexo设置命令别名快捷命令"></a>Hexo设置命令别名快捷命令</h1><p>解决方案：打开配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.bash_profile</span><br></pre></td></tr></table></figure>
-
-<p>添加别名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias hs=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&apos;</span><br><span class="line">alias hd=&apos;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d&apos;</span><br><span class="line">alias gp=&apos;git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
-
-<p>保存</p>
-<h1 id="hexo渲染报错：template-render-error-unknown-path"><a href="#hexo渲染报错：template-render-error-unknown-path" class="headerlink" title="hexo渲染报错：template render error (unknown path)"></a>hexo渲染报错：template render error (unknown path)</h1><p>因为有个文章里面标题用了%号，所以渲染失败，去掉即可正常渲染</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/6b28.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">循环依赖小记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="spring为什么要使用三级缓存来解决循环依赖"><a href="#spring为什么要使用三级缓存来解决循环依赖" class="headerlink" title="spring为什么要使用三级缓存来解决循环依赖?"></a>spring为什么要使用三级缓存来解决循环依赖?</h1><p><a href="https://www.zhihu.com/question/514541616" target="_blank" rel="noopener">https://www.zhihu.com/question/514541616</a></p>
-<p><a href="https://juejin.cn/post/6985337310472568839" target="_blank" rel="noopener">https://juejin.cn/post/6985337310472568839</a></p>
-<p><a href="https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html" target="_blank" rel="noopener">https://youle.zhipin.com/articles/4d9304547c6c2d91qxB739W8GA~~.html</a></p>
-<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
-<p><a href="https://segmentfault.com/a/1190000039134606" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039134606</a></p>
-<p><a href="https://blog.csdn.net/sonycong/article/details/124635532" target="_blank" rel="noopener">https://blog.csdn.net/sonycong/article/details/124635532</a></p>
-<p>bean：</p>
-<p><a href="https://segmentfault.com/q/1010000022285218" target="_blank" rel="noopener">https://segmentfault.com/q/1010000022285218</a></p>
-<p>代理对象的循环依赖：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/377878056" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/377878056</a></p>
-<p><a href="https://www.51cto.com/article/747437.html" target="_blank" rel="noopener">https://www.51cto.com/article/747437.html</a></p>
-<p>@Lazy为什么能解决？</p>
-<p><a href="https://blog.51cto.com/knifeedge/5479446" target="_blank" rel="noopener">https://blog.51cto.com/knifeedge/5479446</a></p>
-<ol>
-<li>怎么实现的解决方式？用了缓存，也就是中间商</li>
-<li>第几级缓存就可以实现？第二级缓存</li>
-<li>为什么用到第三级缓存？因为要看返回的是原对象还是代理对象</li>
-<li>@Async加了之后为什么不行？因为切面并没有被spring管理</li>
-<li>为什么不能全是构造器模式？因为构造器模式需要new完才能被发现，不能满足提前暴露的前提</li>
-<li>为什么不能是原型模式，而是单例模式才行？因为单例才能保证循环依赖的是之前的对象，不然会有无数个对象</li>
-<li>bean和对象有什么区别？bean也是一种对象，我们称被spring管理的对象叫做bean</li>
-<li>bean的生命周期是什么？</li>
-<li>三级缓存分别是什么？一级是成品对象，二级是半成品对象，三级是正在初始化的对象。默认从一级成品对象的map中优先获取</li>
-<li>造成循环依赖有哪几种方式？构造器注入，setter注入，属性注入</li>
-<li>有的注解可以解决代理对象循环依赖有的不行，为什么？因为@Transtion注解的增强器实现了getEarlyBeanReference方法，而@Async没有</li>
-<li>Srping中bean为什么设计成为单例？</li>
-</ol>
-<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230302111706622.png" alt="image-20230302111706622"></p>
-<h1 id="假设去掉二级缓存"><a href="#假设去掉二级缓存" class="headerlink" title="假设去掉二级缓存"></a>假设去掉二级缓存</h1><p>如果去掉了二级缓存，则需要直接在 <code>singletonFactory.getObject()</code> 阶段初始化完毕，并放到一级缓存中。</p>
-<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-916ab0c36104ad2b3296b6bf79cd9318_1440w.webp" alt="img"></p>
-<p>那有这么一种场景，B 和 C 都依赖了 A。</p>
-<p>要知道在有代理的情况下 <code>singletonFactory.getObject()</code> 获取的是代理对象。</p>
-<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/v2-47f3598ea9efb09abf5ed79251ecfdcf_1440w.webp" alt="img"></p>
-<p>而多次调用 <code>singletonFactory.getObject()</code> 返回的代理对象是不同的，就会导致 B 和 C 依赖了不同的 A。</p>
-<p>那如果获取 B 到之后直接放到一级缓存，然后 C 再获取呢？</p>
-<p>……</p>
-<p>一级缓存放的是已经初始化完毕的 Bean，要知道 A 依赖了 B 和 C ，A 这时候还没有初始化完毕。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/ab2c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ab2c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ab2c.html" class="post-title-link" itemprop="url">peek和map的区别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-09 09:51:13" itemprop="dateCreated datePublished" datetime="2023-03-09T09:51:13+08:00">2023-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/ab2c.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/ab2c.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>535</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>peek调试打印流中某操作后的每个元素：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   Stream.of(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;) </span><br><span class="line">	.filter(e -&gt; e.length() &gt; 3)</span><br><span class="line">    .peek(e -&gt; System.out.println(&quot;Filtered value: &quot; + e)) </span><br><span class="line">	.map(String::toUpperCase) </span><br><span class="line">	.peek(e -&gt; System.out.println(&quot;Mapped value: &quot; + e)) </span><br><span class="line">	.collect(Collectors.toList());  </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
-
-<p>map:它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。常用语使用map将模型转换为其他模型。<br>List元素转成大写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; output = Stream.of(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;) </span><br><span class="line">	.map(String::toUpperCase)</span><br><span class="line">	.collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/ab2c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/f926.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/f926.html" class="post-title-link" itemprop="url">小程序完工</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-24 00:24:18" itemprop="dateCreated datePublished" datetime="2020-05-24T00:24:18+08:00">2020-05-24</time>
+              <time title="创建时间：2023-03-24 09:42:49" itemprop="dateCreated datePublished" datetime="2023-03-24T09:42:49+08:00">2023-03-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -645,8 +262,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/f926.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/f926.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/e276.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/e276.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -656,7 +273,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>219</span>
+              <span>780</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -675,10 +292,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>现在是2020-05-24 00:24:18，终于把小程序客户端，网页端全都写完了哈哈哈。本来计划不会写很多功能的，因为本人实在是太懒了。然而，越写越深入……于是，今天我又鼓捣出来几个功能：网页端加个swagger2接口文档，增加小程序轮播图网页端控制，给做做样子的页面跳转增加了拦截器（为此改了好多静态资源路径）等等。多写一点业务，以后工作的时候应该会更轻松吧，毕竟熟练度在那里，我这么想的。先睡觉，从明天开始，好好学习算法与数据结构  ：）</p>
+          <p>事项：上周16号做了新增公告同步方式的需求，同事觉得之前设计不够合理，遂让我进行大改：迁表+逻辑整合重构，这让本周的我感到疲惫不堪，不仅工作量增加，且需要让测试调整排期，测试范围增大。</p>
+<p>教训：时间不够的情况，一定要重新调整资源。工作范围内增加工作量并不能提升自提需求数。</p>
+<p>事项：17号东哥对我疲于完成他的调研做了批评。</p>
+<p>教训：遇到代码意外的工作，能沟通提单走流程就提单完成，确认好排期，DDL前才能按时完成。</p>
+<p>事项：在前部门用心做了消息公告模块，最后被推翻重做，同时新部门工作期间屡次被前部门的售后工作打扰，这让我感觉很疲惫，而且来自前产品同事的反复催促让我对人际关系产生了失望的想法。</p>
+<p>教训：业务代码编写是没有意义的，重要的是提升自己的技术力；不要对同事产生交际很好的错觉，这可能只是单方面讨好型人格的弱点。</p>
+<p>事项：因为更换手机双卡槽而伤到屏幕花费三百多，耗电巨大以为是电池老化，维修电池花了三百多还是没能解决根本问题。</p>
+<p>教训：没能意识到可能存在的风险，导致额外开销巨大。</p>
+<p>事项：练车+自提没有做，较多事情遗忘。</p>
+<p>教训：任务拆解+GTD去分工</p>
+<hr>
+<p>事项：B站上浏览【code1v5】大佬的视频。</p>
+<p>体会：让我明白了程序员就得去多了解金融知识，就得去提升技术水平，就得去了解最前沿的东西来提升自己的技术敏感度，就得去学习英文去扩展自己的视野。</p>
+<p>事项：使用策略模式+模板方法模式+工厂模式重构了公告的同步方式。</p>
+<p>体会：对于新知识的熟练程度增加，成就感增加，有学习到新知识的感觉，感觉很棒。</p>
+<p>事项：使用postfix+live template对常用代码的语法糖做了极大的增强，重复代码片段抽取出来，</p>
+<p>体会：编写代码更加流畅，提高了工作的效率，以后也要经常精简重复性工作。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/f926.html#more" rel="contents">
+              <a class="btn" href="/p/e276.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -702,7 +335,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ce4f.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/b343.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -716,7 +349,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/ce4f.html" class="post-title-link" itemprop="url">一点感悟</a>
+            <a href="/p/b343.html" class="post-title-link" itemprop="url">线上慢接口排查</a>
         </h2>
 
         <div class="post-meta">
@@ -726,7 +359,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-30 23:45:03" itemprop="dateCreated datePublished" datetime="2020-04-30T23:45:03+08:00">2020-04-30</time>
+              <time title="创建时间：2023-03-23 19:37:08" itemprop="dateCreated datePublished" datetime="2023-03-23T19:37:08+08:00">2023-03-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -734,7 +367,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
                 </span>
             </span>
 
@@ -747,8 +380,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/ce4f.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/ce4f.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/b343.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/b343.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -758,7 +391,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>538</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -777,15 +410,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li>写博客并不是一件浪费时间的事情。功利时代下大家都渴望花时间做最有用的事情，“我要是把时间都花在XX上那我早就很强了”。然而很多看似没有的东西其实不一定没用。就拿写博客来说，本质上无聊且枯燥还花时间，但是其实是在回顾自己学过的知识点，依据费曼学习法来说，输出有时候比输入更重要。写作是和自己的一次交谈。</li>
-<li>JAVA的三个特性：多态继承封装，对应是产品里面的美学，程序猿崇尚的优雅。以前不明白为什么简简单单可以实现的功能，要分好几个文件来写？现在幡然醒悟。除去灵活拓展，将粒度合适划分，代码是可以写的很优雅的，自己的程序要花心思写好。</li>
-<li>遇到不懂的地方不能急着求成而将代码简化。很多时候人是具有惰性的，碰到困难就想回头。这个时候换个思路想想，这又何尝不是一个进步的机会呢？最近反编译了一个项目，为了追求表面的功能实现而把封装好的代码组装在一起，极大地增加了耦合度，反而是弄懂为什么之后又改回去了。</li>
-<li>谦虚向学。直到今天，才发现育毅师兄曾经说过API加上版本号的意义，直到大三的我碰到之后才明白师兄们懂得多得多，自己不过是个菜狗。回想起来，周敏师兄手撸教材一周就能用socket帮他人写好项目，学习能力超强了。不止，这些天碰到优秀的教程和开源项目，感慨后悔自己浪费的日子，如果早点这样会怎么样？</li>
-</ol>
+          <p>背景：23号线上有个详情接口特别慢，观察其他接口并不会慢，问题出现在这个接口上面。</p>
+<p>排查：因为验收环境使用的是上线的分支，上线前也就出现了同样的OOM异常，error日志显示gc频繁，分析dump文件发现出现了四万多个linkedHashmap,大小占据了大概2000m，为最大对象。但是分析单个map时堆栈一直递归，看不到有用的信息，导致排查进度受阻。同组大神直接拉了开发，然后代码一段一段排查，终于排查到开发的那个同事写了一段双重递归的代码出现了问题。</p>
+<p>总结：dump文件多且小的情况下可能无法判断出堆栈出现了什么问题，不如直接动手debug。</p>
+<ul>
+<li>个人感觉Full GC类问题是比较让人头疼的。这些问题并不会想代码语法问题一样，ide会提示我们具体错在哪里，我们只要修改对应地方基本都能解决。造成Full GC频繁的原因也有很多，比如可能是jvm参数设置不合理、Metaspace空间触发、频繁创建对象触发等等。</li>
+<li>如果确定了是频繁创建对象导致，那么接下来的目的就是确定频繁创建对象的对应代码处，这时候可以选择通过dump线上堆栈，然后下载到本地。选择一些可视化分析工具进行分析。最终定位到出问题的代码处，然后解决问题。</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/ce4f.html#more" rel="contents">
+              <a class="btn" href="/p/b343.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -809,7 +443,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/c661.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/1a6b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -823,7 +457,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/c661.html" class="post-title-link" itemprop="url">十年之约</a>
+            <a href="/p/1a6b.html" class="post-title-link" itemprop="url">成功解决zsh命令找不到：command not found</a>
         </h2>
 
         <div class="post-meta">
@@ -833,7 +467,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-04-18 11:05:32" itemprop="dateCreated datePublished" datetime="2020-04-18T11:05:32+08:00">2020-04-18</time>
+              <time title="创建时间：2023-03-20 22:38:08" itemprop="dateCreated datePublished" datetime="2023-03-20T22:38:08+08:00">2023-03-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -841,7 +475,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+                  <a href="/categories/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a>
                 </span>
             </span>
 
@@ -854,8 +488,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/c661.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/c661.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/1a6b.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/1a6b.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -865,7 +499,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>138</span>
+              <span>144</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -884,16 +518,140 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>刚刚收到【<a href="https://www.foreverblog.cn/blogs.html" target="_blank" rel="noopener">十年之约</a>】的邮件，没想到随手投递的申请居然过了！本社恐居然有点高兴又有点害怕(摊手</p>
-<blockquote class="blockquote-center">
+          <p>在终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>第二步</p>
+<p>找到 “# User configuration”</p>
+<p>在其下面添加下面内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>如果没有’# User configuration’，就直接把上面内容添加到 ~/.zshrc 里面</p>
+<p>第三步</p>
+<p>在终端里执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/1a6b.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/7ee8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/7ee8.html" class="post-title-link" itemprop="url">idea使用liveTemplate提高效率</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-20 10:01:22" itemprop="dateCreated datePublished" datetime="2023-03-20T10:01:22+08:00">2023-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/idea/" itemprop="url" rel="index"><span itemprop="name">idea</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/7ee8.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/7ee8.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote class="blockquote-center">
             <i class="fa fa-quote-left"></i>
-            <p>【十年之约】亲爱的十年之约成员：很高兴通知您，您的申请已通过审核，欢迎加入十年之约！从今日起，您就是十年之约的正式成员！您收到本邮件之时，您博客的十年之约正式生效，请认真对待这个约定！</p>
+            <p>接到一个需求进行开发的时候，有什么会比较重复的操作呢？</p>
+<ol>
+<li>枚举类</li>
+<li>出入参实体类</li>
+</ol>
 
             <i class="fa fa-quote-right"></i>
           </blockquote>
+
+
+
+
+
+<h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> FrameworkContractTemplateStatusEnum &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 启用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ENABLE(<span class="number">1</span>, <span class="string">"启用"</span>),</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 停用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DISABLE(<span class="number">2</span>, <span class="string">"停用"</span>);</span><br><span class="line"></span><br><span class="line">  	<span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Integer value;</span><br><span class="line"></span><br><span class="line">  	<span class="meta">@Getter</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String desc;</span><br><span class="line"></span><br><span class="line">    FrameworkContractTemplateStatusEnum(Integer value, String desc) &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDescByValue</span><span class="params">(Integer value)</span> </span>&#123;</span><br><span class="line">        String desc = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (value.intValue() == frameworkContractTemplateStatusEnum.getValue().intValue()) &#123;</span><br><span class="line">                desc = frameworkContractTemplateStatusEnum.getDesc();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FrameworkContractTemplateStatusEnum <span class="title">fromValue</span><span class="params">(Integer value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(FrameworkContractTemplateStatusEnum frameworkContractTemplateStatusEnum : FrameworkContractTemplateStatusEnum.values())&#123;</span><br><span class="line">            <span class="keyword">if</span>(frameworkContractTemplateStatusEnum.value.equals(value))&#123;</span><br><span class="line">                <span class="keyword">return</span> frameworkContractTemplateStatusEnum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h1><h1 id="字段生成"><a href="#字段生成" class="headerlink" title="字段生成"></a>字段生成</h1>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/c661.html#more" rel="contents">
+              <a class="btn" href="/p/7ee8.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -917,7 +675,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/ba27.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/f012.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -931,7 +689,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/ba27.html" class="post-title-link" itemprop="url">自然卷自救历程</a>
+            <a href="/p/f012.html" class="post-title-link" itemprop="url">rabbitMQ按序同步外部系统数据到库</a>
         </h2>
 
         <div class="post-meta">
@@ -941,103 +699,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-12 12:57:40" itemprop="dateCreated datePublished" datetime="2020-02-12T12:57:40+08:00">2020-02-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/p/ba27.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/ba27.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>518</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>自然卷卷的并不自然。</p>
-<p>自然卷并不像人工卷出来的卷发那么好看，甚至是难看，这种难看也就伴随了自己二十多年。以前觉得无所谓，毕竟自己是看不到自己的头发的，除非照镜子。最近觉得过于邋遢也不好，遂开始想想怎么调理。得出的结论就是：自然卷在头发潮湿度过高的时候卷发的弯曲度更大，更容易卷的让自己像头疯狗一样…所以，办法就是洗完头之后，用干毛巾轻轻压在头发上尽可能吸收水分，然后使用负离子/水离子吹风机，冷风大风，顺着一边吹过去，一缕一缕吹干，顺便把头皮也吹干，这样的话看起来头发不塌，整体感觉会好很多。然而，发质差表现出来的粗、硬、无光泽似乎还是存在。跟阿铭说起这个，意外发现高中时候我们差不多的头发，现在他的发质好了很多。据他说是用了日本进口的洗发水（reveur紫+护发素），看起来也不贵，一百多出头，改天可以试试。顺带一提，自己用的是韩国进口的BALLVIC ,居然要一千多，之前植发医院的医生说养护效果很好，实际上还行吧，除了头屑少了很多以及掉发少了，发质还是那个发质…花了很多钱感觉自己像个憨憨。总之，既然已经是自然卷了，那就要接受这个事实，要花比常人多点心思保养好头发。（预感到自己以后可能会有个卷发宝宝…竟不知道要用什么表情应对..囧？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpeg">
-      <meta itemprop="name" content="高等游民">
-      <meta itemprop="description" content="从前从前有个人爱你很久">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="高等游民の个人空间">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">AMQP shutdown问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
+              <time title="创建时间：2023-03-20 00:07:45" itemprop="dateCreated datePublished" datetime="2023-03-20T00:07:45+08:00">2023-03-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1058,8 +720,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/f012.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/f012.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1069,7 +731,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>303</span>
+              <span>228</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1088,13 +750,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shutdown Signal: channel error; protocol method: #method&lt;channel.close&gt;(reply-code=406, reply-text=PRECONDITION_FAILED - delivery acknowledgement on channel 1774 timed out. Timeout value used: 1800000 ms. This timeout value can be configured, see consumers doc guide to learn more, class-id=0, method-id=0)</span><br></pre></td></tr></table></figure>
-
-<p>问题原因：改漏了个地方忘了ack，消息还在队列里面</p>
-<p><img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/pic/image-20230210112548264.png" alt="image-20230210112548264"></p>
+          <p>背景：生产上有个问题，就是数据是落在外部系统上面，同时业务上需要落到本系统上面，外部系统会同步一系列订单的状态过来。某天发现有个单号字段缺失了，从日志上看生产者端顺序推送，但是因为mq没有按序消费。</p>
+<p>生产环境上因为有集群以及多消费者的因素，消费者端无法确保顺序。</p>
+<p>解决办法：上游有同步一个发送时间的字段，将其落表。后续接收逻辑有限判断发送时间字段同数据库中的字段进行比对：如果接收的数据的时间大于数据库的时间则更新，否则不操作。旨在保证最终状态的数据落表即可。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
+              <a class="btn" href="/p/f012.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1118,7 +779,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/e05.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -1132,7 +793,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">git-fork流程</a>
+            <a href="/p/e05.html" class="post-title-link" itemprop="url">多个唯一索引失效导致on-duplicate-key-update失效</a>
         </h2>
 
         <div class="post-meta">
@@ -1142,7 +803,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
+              <time title="创建时间：2023-03-16 11:00:54" itemprop="dateCreated datePublished" datetime="2023-03-16T11:00:54+08:00">2023-03-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1150,7 +811,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
                 </span>
             </span>
 
@@ -1163,8 +824,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/e05.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/e05.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1174,7 +835,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>612</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1193,22 +854,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">git remote add 远程仓库名称 git地址</span><br><span class="line"></span><br><span class="line">git fetch 远程仓库名称</span><br></pre></td></tr></table></figure>
+          <p>on duplicate key update的作用是，如果表中存在unique或者primary key索引，那么当唯一索引字段的值存在的时候，会进行更新，如果不存在，那么进行插入，比如以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (a,b,c) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> c=c+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
-<p>SRM git fork 提交流程</p>
-<p>1、从SRM主库fork到自己代码库，生成一个一模一样的SRM仓库。</p>
-<p>2、从自己的SRM仓库git clone到自己本地仓库，master添加SRM主库远程地址，并将master跟踪改为主库master。具体查看git fork同步主库操作步骤。</p>
-<p>3、从SRM主库更新最新代码到master，从master创建分支，分支名为对应jira编码，如SPGY-23915。</p>
-<p>4、代码编写完毕后提交代码，注释为分支名+冒号+提交内容，推送到自己的SRM仓库的同名分支。</p>
-<p>5、提交该分支合并到主SRM库的请求，目标分支是对应上线日期的分支名。</p>
-<p>6、提交合并请求后将链接发到研发群，让同事review代码。</p>
-<p>7、代码review有问题，可以在gitlab进行解释或者回复，如果确实是代码有问题，则在本地修改代码，完成后同样注释分支名+冒号+修改内容进行提交。</p>
-<p>8、如果是code review阶段出现的问题并进行代码修复，不需要重新发起合并请求，会直接在原来的合并请求中有所体现，因为合并请求本质上就是一个分支对另一个分支的合并，所以当分支出现变化，便会体现在合并请求中。</p>
-<p>9、如果是发布测试或者验收环境后出现的问题，则在修复完成后，提交代码并发起新的合并请求。</p>
-<p>PS：有时候发布后发现代码有问题，报错甚至跑不起来，可能是没有合并最新master分支的问题，因为采用的是git fork工作流模式，所以从研发到上线的流程相对复杂一些。主要的过程是，研发在确定上线日期后会在主库从master新建一个对应日期的上线分支，如feature_20211111，即2021年双十一上线的分支，那么在研发完成后都会合并到这个分支，这时候有另一个需求是2021年11月13日上线的，也从当前的master创建了新的分支，这时候feature_20211111和feature_20211113从理论上来说是平行的两个分支，如果业务上没有交叉，在上线前都是互不干扰，没有问题。在feature_20211111上线后，有些环境配置改变了，代码也会合并到master，master就是当前稳定运行的版本。这时候因为环境变了，feature_20211113这个版本中落后master很多，导致不能适应新的配置环境，这时候就需要合并最新master到feature_20211113，并处理好其中的冲突，提交到gitlab发起合并请求。具体的合并操作，可以将主库的feature_20211113分支拉到本地，master更新最新主库的代码，然后切换到feature_20211113分支，将master合并到feature_20211113，完成后推送到自己的fork仓库，然后发起合并请求即可。</p>
+<p>其中a是唯一索引字段，那么他等同于</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>有一点不同的是，使用这个方法id总是自增，但是update是不会导致id自增的。上面的insert语句中如果b也是唯一索引字段，那么等同于下面sql：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">SET</span> c=c+<span class="number">1</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span> <span class="keyword">LIMIT</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果a=1 or b=2 匹配了多条数据，那么只会更新一行。所以我们需要避免在多个唯一索引里面使用on duplicate key update语法。</p>
+<p>mysql英文地址：<a href="https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/insert-on-duplicate.html</a></p>
+<p>所以是因为唯一索引失效导致on duplicate key update语法失效。</p>
+<p>加餐：<a href="https://blog.csdn.net/LS7011846/article/details/124548283" target="_blank" rel="noopener">可能导致死锁的问题</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT语句有可能导致死锁。当两个事务分别插入主键或者唯一索引相同的数据时，它们在竞争同一把X(互斥)锁，但是同时它们会先加上S锁，此时如果这把锁当时的主事务把这行记录删了，那一开始的两个事务就形成了死锁。</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
+              <a class="btn" href="/p/e05.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1232,7 +894,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6dc2.html">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/860c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpeg">
@@ -1246,7 +908,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/p/6dc2.html" class="post-title-link" itemprop="url">macOS Big Sur - 您应该推出磁盘映像</a>
+            <a href="/p/860c.html" class="post-title-link" itemprop="url">Java锁事</a>
         </h2>
 
         <div class="post-meta">
@@ -1256,7 +918,221 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-01 17:19:57" itemprop="dateCreated datePublished" datetime="2020-01-01T17:19:57+08:00">2020-01-01</time>
+              <time title="创建时间：2023-03-16 10:01:22" itemprop="dateCreated datePublished" datetime="2023-03-16T10:01:22+08:00">2023-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/860c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/860c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">文章地址</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/860c.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/1b85.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/1b85.html" class="post-title-link" itemprop="url">解决Jrebel插件无法自动编译</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-16 10:01:22" itemprop="dateCreated datePublished" datetime="2023-03-16T10:01:22+08:00">2023-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/1b85.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/1b85.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>184</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <ol>
+<li>找到setting-&gt;build,Excution-&gt;Compiler,并勾选Build project automatically。</li>
+<li>然后找到setting-&gt;Advanced Setting，勾选Compiler中的Allow auto-make to start even if developed application is currently running</li>
+</ol>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+
+<p><a href="https://www.jb51.net/article/276318.htm" target="_blank" rel="noopener">文章地址</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/1b85.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/7ec4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/7ec4.html" class="post-title-link" itemprop="url">Mac终端缩写</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-16 09:54:58" itemprop="dateCreated datePublished" datetime="2023-03-16T09:54:58+08:00">2023-03-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1277,8 +1153,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/p/6dc2.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/p/6dc2.html" itemprop="commentCount"></span>
+    <a title="valine" href="/p/7ec4.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/7ec4.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1288,7 +1164,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>355</span>
+              <span>697</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1307,21 +1183,119 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>1、首先确保系统安全设置已经改为任何来源。详见：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F1.html" target="_blank" rel="noopener">《Mac安装软件提示无法打开或文件损坏》</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
+          <p>1.进入hexo目录并发布</p>
+<p>2.进入hexo目录并新建markdown文件</p>
+<p>3.打开shell配置</p>
+<p>4.保存shell配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">bash配置</span></span><br><span class="line">alias hd='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo deploy'</span><br><span class="line">alias hn='cd "/Users/10017802/Library/Mobile Documents/com~apple~CloudDocs/hexo" &amp;&amp; hexo new '</span><br><span class="line"></span><br><span class="line">alias openConfig='open ~/.bash_profile'</span><br><span class="line">alias saveConfig='source ~/.bash_profile'</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">新版zsh设置</span></span><br><span class="line">alias hd='cd "/Users/10017802/Desktop/hexo" &amp;&amp; hexo clean &amp;&amp; hexo g &amp;&amp; hexo deploy &amp;&amp; git add . &amp;&amp; git commit -m update &amp;&amp; git push '</span><br><span class="line">alias hn='git pull &amp;&amp; cd "/Users/10017802/Desktop/hexo" &amp;&amp; hexo new '</span><br><span class="line">alias openconfig='open ~/.zshrc'</span><br><span class="line">alias saveconfig='source ~/.zshrc'</span><br></pre></td></tr></table></figure>
 
-<p>2、打开任何来源后，到应用程序目录中尝试运行软件，如果仍提示损坏，请在应用图标上，鼠标右键，在弹出菜单中点打开。</p>
-<p>3、如果前面两步操作后仍有问题，请打开「终端」，在终端中粘贴下面命令：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">xattr</span> <span class="selector-tag">-r</span> <span class="selector-tag">-d</span> <span class="selector-tag">com</span><span class="selector-class">.apple</span><span class="selector-class">.quarantine</span></span><br></pre></td></tr></table></figure>
-
-<p>然后输入个空格，再将应用程序目录中的软件拖拽到命令后面，按回车后输入密码执行。</p>
-<p>比如Sketch的命令是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udo xattr -r -d com.apple.quarantine /Applications/Sketch.app/</span><br></pre></td></tr></table></figure>
-
-<p>转自:<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.mhero.com%2Fmac-article%2Ftips%2F233.html" target="_blank" rel="noopener">https://www.mhero.com/mac-article/tips/233.html</a></p>
+<p>重启终端后生效！！</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/p/6dc2.html#more" rel="contents">
+              <a class="btn" href="/p/7ec4.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.senup.cn/p/6a4c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpeg">
+      <meta itemprop="name" content="高等游民">
+      <meta itemprop="description" content="从前从前有个人爱你很久">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高等游民の个人空间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/6a4c.html" class="post-title-link" itemprop="url">macOS下快速复制文件或文件夹路径</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-16 09:51:24" itemprop="dateCreated datePublished" datetime="2023-03-16T09:51:24+08:00">2023-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/p/6a4c.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/p/6a4c.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>70</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、打开访达-显示-显示路径栏</p>
+<p>2、在Finder中选择文件或是文件夹，然后按下快捷键command+Option+C，即可复制文件的全路径。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/6a4c.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1344,7 +1318,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1411,18 +1385,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1507,12 +1481,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">44k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">21 分钟</span>
+    <span title="站点阅读时长">40 分钟</span>
 </div>
 
         

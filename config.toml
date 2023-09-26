@@ -1,7 +1,7 @@
 baseURL = 'https://senup.github.io/'
 languageCode = 'zh-CN'
 timeZone = 'Asia/Shanghai'
-title = '夜猫日记'
+title = '高等游民'
 
 # 主题
 theme  =  "hello-friend"

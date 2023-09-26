@@ -1,9 +1,9 @@
-baseURL  =  "https://senup.github.io/"
-languageCode = "zh-CN"
-# DefaultContentLanguage = "zh-CN"
-title  =  "夜狸悠游记"
-subtitle = "不问明天，悠然浪费"
+baseURL = 'https://senup.github.io/'
+languageCode = 'zh-CN'
+timeZone = 'Asia/Shanghai'
+title = '夜猫日记'
 
+# 主题
 theme  =  "hello-friend"
 summaryLength = 140
 hasCJKLanguage = true
@@ -11,56 +11,55 @@ hasCJKLanguage = true
 paginate =  10
 # rss 输出数量
 rssLimit = 5
-timeout = '30s'
-ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
-[permalinks]
-  posts = "/:filename/"
-  tags = "/tags/:slug/"
 
 [menu]
   [[menu.main]]
-  name="哔哔"
-  url="/bbs/"
+  name="读书"
+  url="/posts/reading/"
   weight="1"
   [[menu.main]]
-  name="友圈"
-  url="/friends/"
+  name="Obsidian"
+  url="/posts/obsidian/"
   weight="2"
   [[menu.main]]
-  name="好物"
-  url="/goods/"
+  name="闲聊"
+  url="/posts/chat/"
   weight="3"
   [[menu.main]]
   name="归档"
   url="/archives/"
   weight="4"
   [[menu.main]]
-  name="导航"
-  url="https://edui123.com/"
-  weight="5"
-  [[menu.main]]
-  name="关于"
+  name="关于我"
   url="/about/"
   weight="6"
+  [[menu.main]]
+  name="🔍"
+  url="/search/"
+  weight="6"
+
+
 
 [params]
   # dir name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
   # "light" or "dark"
-  defaultTheme = "dark"
+  defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 6
+  # showMenuItems = 4
   # Enable to show reading time in minutes for posts
-  showReadingTime = false
+  showReadingTime = true
   logoText = "hello friend"
 
   MenuMore = "更多"
-  DateFormatList = "2006-01-02 15:04:05"
-  DateFormatSingle = "2006-01-02 15:04:05"
+  DateFormatList = "2006-01-02"
+  DateFormatSingle = "2006-01-02"
   ReadMore = "阅读全文"
-
-  EditPath = 'https://github.com/lmm214/immmmm/edit/master/content'
+  
+  description = "生命就是反重力的过程"
+	keywords = "博客、app、折腾、生活、阅读、自律"
+ 
 
 [markup]
   [markup.goldmark]
@@ -81,4 +80,5 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
 [params.twikoo]
 	enable = true
-
+  visitor = true
+  

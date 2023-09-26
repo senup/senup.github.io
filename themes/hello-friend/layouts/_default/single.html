@@ -13,7 +13,7 @@
   {{ if eq $PostCate "chat"}}
       {{ .Render "chat"}}
       <div class="post-content">
-        <a href="{{ .Permalink }}" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src="https://cravatar.cn/avatar/ba83fa02fc4b2ba621514941307e21be"></a>
+        <a href="{{ .Permalink }}" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src=https://cravatar.cn/avatar/{{ md5 "ciwiehenfan@sina.com" }}></a>
           {{ .Content }}
       </div>
   {{ else }}
@@ -21,7 +21,7 @@
     <div class="post-meta">
       {{ if .Date | default nil }}
         <span class="post-date">{{ .Date.Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }}</span>
-        {{- if .Site.Params.twikoo.enable -}}
+        {{- if .Site.Params.twikoo.visitor -}}
           <span> / <span id="twikoo_visitors">0</span> 阅读</span>
         {{- end }}
         {{ if eq .Type $contentTypeName }}
@@ -31,13 +31,11 @@
         {{ end }}
       {{ end }}
     </div>
-    {{ if ne $PostCate "weekly"}}
-      {{ if .Params.feature}}
-        {{ if .Params.UseRelativeCover }}
-          <img loading='lazy' decoding="async" src="{{ (printf "%s%s" .Permalink .Params.feature ) }}" class="post-cover" />
-        {{ else }}
-          <img loading='lazy' decoding="async" src="{{ .Params.feature | absURL }}" class="post-cover" />
-        {{ end }}
+    {{ if .Params.feature }}
+      {{ if .Params.UseRelativeCover }}
+        <img loading='lazy' decoding="async" src="{{ (printf "%s%s" .Permalink .Params.feature ) }}" class="post-cover" />
+      {{ else }}
+        <img loading='lazy' decoding="async" src="{{ .Params.feature | absURL }}" class="post-cover" />
       {{ end }}
     {{ end }}
   
@@ -55,10 +53,6 @@
       </span>
     {{ end }}
   {{ end }}
-
-    <script type="module" src="/emaction.js?v=2308072"></script>
-    <emoji-reaction theme="system" class="reaction" endpoint="https://api-emaction.immmmm.com" reacttargetid="immmmm-{{ .File.BaseFileName }}"></emoji-reaction>
-
     <div class="clear"></div>
     
     {{ if eq .Type $.Site.Params.contentTypeName }}
@@ -94,6 +88,7 @@
       {{ end }}
     {{ end }}
 
+    {{ partial "subscribe-form.html" . }}
 
     {{ if not (eq .Params.Comments "false") }}
         {{ partial "comments.html" . }}

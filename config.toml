@@ -1,7 +1,7 @@
-baseURL  =  "https://immmmm.com"
+baseURL  =  "https://senup.github.io/"
 languageCode = "zh-CN"
 # DefaultContentLanguage = "zh-CN"
-title  =  "木木木木木"
+title  =  "夜狸悠游记"
 subtitle = "不问明天，悠然浪费"
 
 theme  =  "hello-friend"

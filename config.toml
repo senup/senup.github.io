@@ -15,7 +15,7 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="读书"
+  name="技术"
   url="/posts/reading/"
   weight="1"
   [[menu.main]]
@@ -23,7 +23,7 @@ rssLimit = 5
   url="/posts/obsidian/"
   weight="2"
   [[menu.main]]
-  name="闲聊"
+  name="碎碎念"
   url="/posts/chat/"
   weight="3"
   [[menu.main]]

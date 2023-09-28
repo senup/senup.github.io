@@ -15,7 +15,7 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="技术"
+  name="随笔"
   url="/posts/tech/"
   weight="1"
   [[menu.main]]

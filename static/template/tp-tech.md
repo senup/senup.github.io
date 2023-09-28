@@ -1,5 +1,5 @@
 ---
-title: '{{NAME:标题是什么？}}'
+title: {{NAME}}
 date: {{DATE:YYYY-MM-DD HH:mm:ss}}
 tags: []
 draft: false

@@ -15,7 +15,7 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="技术"
+  name="读书"
   url="/posts/reading/"
   weight="1"
   [[menu.main]]
@@ -31,7 +31,7 @@ rssLimit = 5
   url="/archives/"
   weight="4"
   [[menu.main]]
-  name="关于我"
+  name="关于"
   url="/about/"
   weight="6"
   [[menu.main]]

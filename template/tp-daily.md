@@ -1,19 +1,19 @@
 ---
 created: <% tp.date.now("YYYY-MM-DD HH:mm") %>
+modified: 
 aliases: [<% tp.file.title %>]
+mood: {{VALUE:😃,😡,😭,😁}}
 weather: "<% tp.user.天氣_台北市() %>"
 tags: [ daily ]
 ---
 # <% tp.file.title %> 
-
-Modified:: <%+ tp.file.last_modified_date() %>
 
 ← [[<% tp.date.yesterday("YYYY-MM-DD_ddd") %>]] | [[<% tp.date.tomorrow("YYYY-MM-DD_ddd")%>]] →
 
 <!--% tp.web.random_picture("1600x900", tp.file.title) %-->
 
 ## 本日完成任務
-```tasks
+```
 done today
 ```
 
@@ -52,9 +52,7 @@ function getWeek() {
 }
 let titleDate = tp.file.title;  // 可能在今天建立明天的日記，因此日期不能取系統日期
 let index = titleDate.indexOf("_");
-if (index > 0) {
-  titleDate = titleDate.substring(0, index);
-}
+titleDate = titleDate.substring(0, index);
 
 let week = getWeek();
 if (week == 1 || week == 4) {
@@ -72,10 +70,10 @@ if (week == 1 || week == 4) {
 - [ ] 🔵檢查Email
 - [ ] 🔵檢查即時通訊 (QQ)
 - [ ] 🔵檢查即時通訊 (Discord)
-- [ ] 🔵每日閱讀（Obsidian論壇，YouTube，ITHome，開源中國）
-<%-*
+- [ ] 🔵每日閱讀（ITHome，開源中國，Obsidian論壇，YouTube）
+<%*
 if (week == 1) {
--%>
+%>
 - [ ] 🔵周一閱讀（Obsidian Roundup）
 <%* } %>
 - [ ] 🔵檢查公告

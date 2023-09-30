@@ -1,8 +1,6 @@
 ---
-title:
-  "{ NAME }": 
-date:
-  "{ DATE:YYYY-MM-DD HH:mm:ss }": 
+title: <% tp.file.title %>
+date: <% tp.date.now("YYYY-MM-DD HH:mm:ss") %>
 tags:
   - movie
 draft: false
@@ -16,9 +14,9 @@ rate: ⭐️⭐️⭐️⭐️⭐️
 
 
 ### 剧情简介
-创建时间：<% tp.file.creation_date() %>
 
-<% tp.file.title() %>
+
+
 
 ### 观后评
 

@@ -75,17 +75,5 @@
 没有不合时宜的印度歌舞，节奏都拿捏的很好，不愧是豆瓣高分电影，五星好评。&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://senup.github.io/posts/movie/%E5%99%B6%E8%A7%82%E5%90%8E%E6%84%9F/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://senup.github.io/posts/movie/%E5%99%B6%E8%A7%82%E5%90%8E%E6%84%9F/</guid>
-      <description>&lt;h3 id=&#34;剧情简介&#34;&gt;剧情简介&lt;/h3&gt;
-&lt;p&gt;创建时间：&amp;lt;% tp.file.creation_date() %&amp;gt;&lt;/p&gt;
-&lt;p&gt;&amp;lt;% tp.file.title() %&amp;gt;&lt;/p&gt;
-&lt;h3 id=&#34;观后评&#34;&gt;观后评&lt;/h3&gt;</description>
-    </item>
-    
   </channel>
 </rss>

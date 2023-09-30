@@ -1,7 +1,8 @@
 ---
-title: {{DATE:YYYYMMDDHHmmss}}
-tags: [chat]
-date: {{DATE:YYYY-MM-DD HH:mm:ss}}
+title: <% tp.file.title %>
+tags:
+  - chat
+date: <% tp.date.now("YYYY-MM-DD HH:mm:ss") %>
 ---
 
 

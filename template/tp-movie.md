@@ -16,8 +16,9 @@ rate: ⭐️⭐️⭐️⭐️⭐️
 
 
 ### 剧情简介
+创建时间：<% tp.file.creation_date() %>
 
-
+<% tp.file.title() %>
 
 ### 观后评
 

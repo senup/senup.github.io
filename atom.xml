@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-10-03T20:04:23+00:00</updated>
+    <updated>2023-10-03T20:15:03+00:00</updated>
     
     
     
@@ -17,9 +17,9 @@
         
         <entry>
             <title type="html"><![CDATA[📒Obsidian 笔记]]></title>
-            <link href="https://senup.github.io/posts/tech/obsidian-%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" />
+            <link href="https://senup.github.io/posts/post/obsidian-%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/tech/obsidian-%E7%AC%94%E8%AE%B0/</id>
+                <id>https://senup.github.io/posts/post/obsidian-%E7%AC%94%E8%AE%B0/</id>
             
             
             <published>2023-10-03T02:14:00+08:00</published>

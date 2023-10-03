@@ -1,4 +1,4 @@
 ---
-title: "碎碎念"
+title: "Chat"
 slug: "chat"
 ---

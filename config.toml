@@ -15,29 +15,35 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="随笔"
+  name="Post"
   url="/posts/tech/"
   weight="1"
+
   [[menu.main]]
-  name="读书"
-  url="/posts/reading/"
+  name="Read"
+  url="/posts/read/"
   weight="2"
+
   [[menu.main]]
-  name="Obsidian"
-  url="/posts/obsidian/"
+  name="Movie"
+  url="/posts/movie/"
   weight="3"
+
   [[menu.main]]
-  name="碎碎念"
+  name="Chat"
   url="/posts/chat/"
   weight="4"
+
   [[menu.main]]
-  name="归档"
+  name="Archives"
   url="/archives/"
   weight="5"
+
   [[menu.main]]
-  name="关于"
+  name="About"
   url="/about/"
   weight="6"
+  
   [[menu.main]]
   name="🔍"
   url="/search/"

@@ -1,4 +1,4 @@
 ---
-title: "观影"
-slug: "movie-page"
+title: "Movie"
+slug: "movie"
 ---

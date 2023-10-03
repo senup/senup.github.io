@@ -1,4 +1,4 @@
 ---
-title: "obsidian"
+title: "Obsidian"
 slug: "obsidian"
 ---

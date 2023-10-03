@@ -2,23 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://senup.github.io/posts/tech/obsidian-%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/odsidian/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/</loc>
+    <lastmod>2023-10-03T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/movie/%E9%A9%B4%E5%BE%97%E6%B0%B4%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
+    <lastmod>2023-10-02T01:17:04+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/movie/</loc>
+    <lastmod>2023-10-02T01:17:04+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/movie/</loc>
+    <lastmod>2023-10-02T01:17:04+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/chat/20230930070102/</loc>
     <lastmod>2023-09-30T07:01:02+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/chat/</loc>
     <lastmod>2023-09-30T07:01:02+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/posts/</loc>
-    <lastmod>2023-09-30T07:01:02+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/</loc>
-    <lastmod>2023-09-30T07:01:02+08:00</lastmod>
-  </url><url>
     <loc>https://senup.github.io/posts/chat/</loc>
     <lastmod>2023-09-30T07:01:02+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/</loc>
-    <lastmod>2023-09-30T07:01:02+08:00</lastmod>
+    <loc>https://senup.github.io/posts/movie/%E5%B0%81%E7%A5%9E%E7%AC%AC%E4%B8%80%E9%83%A8%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
+    <lastmod>2023-09-29T01:39:25+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/movie/%E6%91%94%E8%B7%A4%E5%90%A7%E7%88%B8%E7%88%B8%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2023-09-29T01:16:04+08:00</lastmod>
@@ -26,16 +47,7 @@
     <loc>https://senup.github.io/tags/life/</loc>
     <lastmod>2023-09-29T01:16:04+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/tags/movie/</loc>
-    <lastmod>2023-09-29T01:16:04+08:00</lastmod>
-  </url><url>
     <loc>https://senup.github.io/posts/tech/%E6%88%91%E4%BB%AC%E6%80%BB%E6%98%AF%E5%96%9C%E6%AC%A2%E9%AB%98%E4%BC%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%83%BD%E5%8A%9B/</loc>
-    <lastmod>2023-09-29T01:16:04+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/posts/tech/</loc>
-    <lastmod>2023-09-29T01:16:04+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/posts/movie/</loc>
     <lastmod>2023-09-29T01:16:04+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/categories/</loc>

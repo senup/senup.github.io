@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post on 高等游民</title>
+    <title>随笔 on 高等游民</title>
     <link>https://senup.github.io/posts/post/</link>
-    <description>Recent content in Post on 高等游民</description>
+    <description>Recent content in 随笔 on 高等游民</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 03 Oct 2023 02:14:00 +0800</lastBuildDate><atom:link href="https://senup.github.io/posts/post/index.xml" rel="self" type="application/rss+xml" />

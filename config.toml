@@ -15,32 +15,32 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="Post"
-  url="/posts/tech/"
+  name="随笔"
+  url="/posts/post/"
   weight="1"
 
   [[menu.main]]
-  name="Read"
+  name="阅读"
   url="/posts/read/"
   weight="2"
 
   [[menu.main]]
-  name="Movie"
+  name="电影"
   url="/posts/movie/"
   weight="3"
 
   [[menu.main]]
-  name="Chat"
+  name="闲聊"
   url="/posts/chat/"
   weight="4"
 
   [[menu.main]]
-  name="Archives"
+  name="归档"
   url="/archives/"
   weight="5"
 
   [[menu.main]]
-  name="About"
+  name="关于"
   url="/about/"
   weight="6"
   

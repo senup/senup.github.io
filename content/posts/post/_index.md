@@ -1,4 +1,4 @@
 ---
-title: "Post"
+title: "随笔"
 slug: "post"
 ---

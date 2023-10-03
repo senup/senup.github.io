@@ -1,6 +1,9 @@
 {
 	"nodes":[
-		{"id":"416dc20fb3c378b5","x":-1083,"y":-751,"width":400,"height":400,"type":"file","file":"daily/2023/10-十月/2023-10-04_周三.md"}
+		{"id":"fbef0754d12d9484","x":-601,"y":-773,"width":400,"height":400,"type":"file","file":"content/posts/movie/🎬《驴得水》观后感.md"},
+		{"id":"e900d8166826d090","x":-156,"y":-773,"width":400,"height":400,"type":"file","file":"content/posts/movie/🎬《摔跤吧！爸爸》观后感.md"},
+		{"id":"416dc20fb3c378b5","x":-1083,"y":-751,"width":400,"height":400,"type":"file","file":"daily/2023/10-十月/2023-10-04_周三.md"},
+		{"id":"dca473cff7e18bb9","x":-1046,"y":-773,"width":400,"height":400,"type":"file","file":"content/posts/movie/🎬《封神第一部》观后感.md"}
 	],
 	"edges":[]
 }

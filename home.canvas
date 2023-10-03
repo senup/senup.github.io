@@ -1,4 +1,6 @@
 {
-	"nodes":[],
+	"nodes":[
+		{"id":"416dc20fb3c378b5","x":-1083,"y":-751,"width":400,"height":400,"type":"file","file":"daily/2023/10-十月/2023-10-04_周三.md"}
+	],
 	"edges":[]
 }

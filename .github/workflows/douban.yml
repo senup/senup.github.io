@@ -1,10 +1,14 @@
 # .github/workflows/douban.yml
 name: douban
-on: 
-  schedule:
-  - cron: "0 0,0,12,23 * * *"
-  watch:
-    types: [started]
+# on: 
+#   schedule:
+#   - cron: "0 0,0,12,23 * * *"
+#   watch:
+#     types: [started]
+on:
+  push:
+    branches:
+      - main  # 或者是你的源代码分支
 
 jobs:
   douban:

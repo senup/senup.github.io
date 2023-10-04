@@ -4,16 +4,16 @@ date: 2022-02-21 19:57:45
 layout: 'posts'
 hideInList: false
 isTop: true
+weight: 1
 ---
 
-> 欢迎来到我的博客
 
 ## 👨‍💻 关于博主
 
-98年的Java程序员。
-双子座，坐标广东广州。
+- 98年的Java程序员。
+- 双子座，坐标广东广州。
+欢迎来到我的博客
 
-## 🪧 我的收藏夹
 
 - [📷相册](/album/)
 - [📚阅读](/books/)

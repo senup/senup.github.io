@@ -24,7 +24,7 @@ jobs:
     - name: movie
       uses: lizheming/doumark-action@master
       with:
-        id: senup
+        id: kukk
         type: movie
         format: csv
         dir: ./data/douban
@@ -32,7 +32,7 @@ jobs:
     - name: book
       uses: lizheming/doumark-action@master
       with:
-        id: senup
+        id: kukk
         type: book
         format: csv
         dir: ./data/douban

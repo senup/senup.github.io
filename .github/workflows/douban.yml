@@ -1,8 +1,12 @@
 # .github/workflows/douban.yml
 name: douban
+# on: 
+#   schedule:
+#   - cron: "0 0,0,12,23 * * *"
+#   watch:
+#     types: [started]
 on: 
-  schedule:
-  - cron: "0 0/5 * * * ?"
+  workflow_dispatch:
   watch:
     types: [started]
 

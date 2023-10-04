@@ -24,7 +24,7 @@ jobs:
     - name: movie
       uses: lizheming/doumark-action@master
       with:
-        id: kukk
+        id: senup
         type: movie
         format: csv
         dir: ./data/douban
@@ -32,7 +32,7 @@ jobs:
     - name: book
       uses: lizheming/doumark-action@master
       with:
-        id: kukk
+        id: senup
         type: book
         format: csv
         dir: ./data/douban
@@ -40,5 +40,5 @@ jobs:
     - name: Commit
       uses: EndBug/add-and-commit@v9
       with:
-        message: 'chore: update douban data'
+        message: '豆瓣电影和书籍已更新'
         add: './data/douban'

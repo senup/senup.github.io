@@ -1,12 +1,8 @@
 # .github/workflows/douban.yml
 name: douban
-# on: 
-#   schedule:
-#   - cron: "0 0,0,12,23 * * *"
-#   watch:
-#     types: [started]
 on: 
-  workflow_dispatch:
+  schedule:
+  - cron: "0 0/5 * * * ? "
   watch:
     types: [started]
 
@@ -17,23 +13,26 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
+      
+    - name: delete old file
+      run: |
+        rm -rf ./data
     - name: movie
       uses: lizheming/doumark-action@master
       with:
-        id: 259856184
+        id: kukk
         type: movie
         format: csv
         dir: ./data/douban
-        
+
     - name: book
       uses: lizheming/doumark-action@master
       with:
-        id: 259856184
+        id: kukk
         type: book
         format: csv
         dir: ./data/douban
-        
+  
     - name: Commit
       uses: EndBug/add-and-commit@v9
       with:

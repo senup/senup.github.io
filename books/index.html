@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     
-      <title>odsidian :: 高等游民</title>
+      <title>我的阅读 :: 高等游民</title>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta charset="UTF-8"/>
@@ -15,7 +15,7 @@
 <meta name="description" content=""/>
 <meta name="keywords" content="博客、app、折腾、生活、阅读、自律"/>
 <link href="/atom.xml" title="高等游民" type="application/rss+xml">
-<link rel="canonical" href="https://senup.github.io/tags/odsidian/" />
+<link rel="canonical" href="https://senup.github.io/books/" />
 <link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/theme-20230215.css">
 <link rel="shortcut icon" href="https://senup.github.io/favicon.ico">
@@ -28,13 +28,14 @@
 <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://senup.github.io/favicon.ico" >
 
 
-<meta property="og:title" content="odsidian" />
-<meta property="og:description" content="生命就是反重力的过程" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://senup.github.io/tags/odsidian/" />
+<meta property="og:title" content="我的阅读" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://senup.github.io/books/" /><meta property="article:section" content="" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/tags/odsidian/index.xml" title="高等游民" />
+
+
 
 <script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
 
@@ -147,109 +148,142 @@
 
       <div class="content">
         
-  <div class="posts archive">
-    <div  class="breadcrumb">
+<div class="post">
+  <h2 class="post-title">我的阅读</h2>
+  <script type="text/javascript">
+    function search(e) {
+      document.querySelectorAll('.dfdORB').forEach(item => item.classList.add('hide'));
+      document.querySelector(`.dvtjjf.active[data-search="${e.target.dataset.search}"]`)?.classList.remove('active');
+      if(e.target.dataset.value) {
+        e.target.classList.add('active');
+      }
+      const searchItems = document.querySelectorAll('.dvtjjf.active');
+      const attributes = Array.from(searchItems, searchItem => {
+        const property = `data-${searchItem.dataset.search}`;
+        const logic = searchItem.dataset.method === 'contain' ? '*' : '^';
+        const value = searchItem.dataset.method === 'contain' ? `${searchItem.dataset.value}` : searchItem.dataset.value;
+        return `[${property}${logic}='${value}']`;
+      });
+      const selector = `.dfdORB${attributes.join('')}`;
+      document.querySelectorAll(selector).forEach(item => item.classList.remove('hide'));
+    }
+    window.addEventListener('click', function(e) {
+      if(e.target.classList.contains('sc-gtsrHT')) {
+        e.preventDefault();
+        search(e);
+      }
+    });
+    function sort(e) {
+      const sortBy = e.target.dataset.order;
+      const style = document.createElement('style');
+      style.classList.add('sort-order-style');
+      document.querySelector('style.sort-order-style')?.remove();
+      document.querySelector('.sort-by-item.active')?.classList.remove('active');
+      e.target.classList.add('active');
+      if(sortBy === 'rating') {
+        const items = Array.from(document.querySelectorAll('.dfdORB'));
+        items.sort((itemA, itemB) => {
+          const ratingA = parseFloat(itemA.dataset.rating) || 0;
+          const ratingB = parseFloat(itemB.dataset.rating) || 0;
+          if(ratingA === ratingB) {
+            return 0;
+          }
+          return ratingA > ratingB ? -1 : 1;
+        });
+        const stylesheet = items.map((item, idx) => `.dfdORB[data-rating="${item.dataset.rating}"] { order: ${idx}; }`).join('\r\n');
+        style.innerHTML = stylesheet;
+        document.body.appendChild(style);
+      }
+    }
+    window.addEventListener('click', function(e) {
+      if(e.target.classList.contains('sort-by-item')) {
+        e.preventDefault();
+        sort(e);
+      }
+    });
+  </script>
+<div class="lg:col-start-2 lg:col-span-6">
   
-
-  
-
-  
-
-<li>
-  <a href="https://senup.github.io/">首页</a>
-</li>
-
-
-<li>
-  <a href="https://senup.github.io/tags/">标签</a>
-</li>
-
-
-<li class="active">
-  <a href="https://senup.github.io/tags/odsidian/">odsidian</a>
-</li>
+  <div class="sc-ksluID gFnzgG">
+    <div class="sc-bdnxRM">
+      <a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="year" data-method="equal" data-value="">全部</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2023">2023</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2022">2022</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2021">2021</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2020">2020</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2019">2019</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2018">2018</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2017">2017</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2016">2016</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2015">2015</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2014">2014</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2013">2013</a>
+      
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="year" data-method="equal" data-value="2012">2012</a>
+      
+    </div>
+    <div class="sc-bdnxRM">
+      <a href="javascript:void 0;" class="sc-gtsrHT kEoOHR" data-search="star" data-method="equal" data-value="">全部</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="5">五星</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="4">四星</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="3">三星</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="2">二星</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="1">一星</a>
+      <a href="javascript:void 0;" class="sc-gtsrHT dvtjjf" data-search="star" data-method="equal" data-value="0">零星</a>
+    </div>
+    <div class="jvCTkj sort-by">
+      <a href="javascript:void 0;" class="sort-by-item active" data-order="time">时间排序</a>
+      <a href="javascript:void 0;" class="sort-by-item" data-order="rating">评分排序</a>
+    </div>
+    <div class="sc-dIsUp fIuTG">
+      
+      
+      
+      
+        
+        
+          
+        
+      <div 
+        class="sc-gKAaRy dfdORB" 
+        data-year="2023-10-04 10:21:26" 
+        data-star="4"
+        data-rating="7.5"
+      >
+          <div class="sc-hKFxyN HPRth">
+            <div class="lazyload-wrapper">
+              <img class="avatar" src="https://dou.img.lithub.cc/book/35613006.jpg" referrer-policy="no-referrer" decoding="async" loading="lazy" alt=""  title="放弃减肥" width="150" height="220">
+            </div>
+          </div>
+          <div class="sc-fujyAs eysHZq">
+            <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:75%"></span></span><span class="rating_nums">7.5</span></div>
+          </div>
+          <div class="sc-iCoGMd kMthTr"><a rel="link" href="https://book.douban.com/subject/35613006/" target="_blank">放弃减肥</a></div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
 
 </div>
 
-
-    
-    <h1 class="post-title">odsidian</h1>
-    <div id="all-tags"><a href="/tags/chat">#chat<small>(1)</small></a><a href="/tags/life">#life<small>(1)</small></a><a href="/tags/movie">#movie<small>(3)</small></a><a href="/tags/odsidian">#odsidian<small>(1)</small></a></div>
-    <div class="post archive__group-posts ">
-        <div class="archive__group-month">
-          <h3>2023-10</h3>
-          <div class="archive__post">
-          <div class="archive__post-title">
-            <a href="https://senup.github.io/posts/post/obsidian-%E7%AC%94%E8%AE%B0/">📒Obsidian 笔记<span class="post-date">2023-10-03</span></a>
-          </div>
-          
-          </div>
-        </div>
-    </div>
-  </div>
-
       </div>
 
       
-        
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-
-
-
-
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="copyright copyright-font">
-      <span>共 5964 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
-    </div>
-    <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
-    <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
-    
-      <div class="copyright">
-        <span>© 2023 | 你比你想象的还要好</span>
-      </div>
-    
-  </div>
-</footer>
-
 <script type="text/javascript" src="/theme-main-1.js"></script>
-<script type="text/javascript" src="/lately.min.js"></script>
-<script type="text/javascript" src="/waterfall.min.js"></script>
-<script type="text/javascript" src="/imgStatus.min.js"></script>
-<script type="text/javascript" src="/view-image.js"></script>
-<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
-<script type="text/javascript" src="/pangu.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    pangu.autoSpacingPage();
-  });
-</script>
 
-
-      
     </div>
   </body>
 </html>

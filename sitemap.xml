@@ -62,6 +62,22 @@
     <loc>https://senup.github.io/search/</loc>
     <priority>0.1</priority>
   </url><url>
+    <loc>https://senup.github.io/friends/</loc>
+  </url><url>
+    <loc>https://senup.github.io/bbs/</loc>
+  </url><url>
+    <loc>https://senup.github.io/bb/</loc>
+  </url><url>
+    <loc>https://senup.github.io/gallery/</loc>
+  </url><url>
+    <loc>https://senup.github.io/album/</loc>
+  </url><url>
+    <loc>https://senup.github.io/movies/</loc>
+  </url><url>
+    <loc>https://senup.github.io/books/</loc>
+  </url><url>
+    <loc>https://senup.github.io/caipu/</loc>
+  </url><url>
     <loc>https://senup.github.io/posts/read/</loc>
   </url>
 </urlset>

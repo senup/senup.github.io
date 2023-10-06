@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     
-      <title>【置顶】简介 :: 高等游民</title>
+      <title>cron表达式 :: 高等游民</title>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta charset="UTF-8"/>
@@ -12,10 +12,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
 <script>if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="关于我：98年的Java程序员。双子座，坐标广东广州。 欢迎大家访问我的博客。 📷我的相册 📚年度阅读 🎬年度观影"/>
+<meta name="description" content="[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[cron表达式]]。
+cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。
+分钟范围：0~59 小时范围：0~24 日期：1~31 月份：1~12 星期几： 0~6
+空格意义：分隔不同的时间单位 逗号意义：同个时间范围里面的多个值 斜杠含义：代表每隔一段时间就重复 问号意义：不关心当前的时间单位 星号含义：任意
+"/>
 <meta name="keywords" content="博客、app、折腾、生活、阅读、自律"/>
 <link href="/atom.xml" title="高等游民" type="application/rss+xml">
-<link rel="canonical" href="https://senup.github.io/about/" />
+<link rel="canonical" href="https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
 <link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/theme-20230215.css">
 <link rel="shortcut icon" href="https://senup.github.io/favicon.ico">
@@ -28,20 +32,31 @@
 <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://senup.github.io/favicon.ico" >
 
 
-<meta property="og:title" content="【置顶】简介" />
-<meta property="og:description" content="关于我：98年的Java程序员。双子座，坐标广东广州。 欢迎大家访问我的博客。 📷我的相册 📚年度阅读 🎬年度观影" />
+<meta property="og:title" content="cron表达式" />
+<meta property="og:description" content="[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[cron表达式]]。
+cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。
+分钟范围：0~59
+小时范围：0~24
+日期：1~31
+月份：1~12
+星期几： 0~6
+空格意义：分隔不同的时间单位
+逗号意义：同个时间范围里面的多个值
+斜杠含义：代表每隔一段时间就重复
+问号意义：不关心当前的时间单位
+星号含义：任意" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://senup.github.io/about/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2022-02-21T19:57:45+08:00" />
-<meta property="article:modified_time" content="2022-02-21T19:57:45+08:00" />
+<meta property="og:url" content="https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-04T20:48:29+08:00" />
+<meta property="article:modified_time" content="2023-10-04T20:48:29+08:00" />
 
 
 
 <script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
 
     
-  
   <link rel="prefetch" href="https://senup.github.io/posts/post/%E6%94%BE%E5%BC%83%E5%87%8F%E8%82%A5%E6%88%91%E7%98%A6%E4%BA%8660%E6%96%A4/">
+  <link rel="prefetch" href="https://senup.github.io/posts/movie/%E9%A9%B4%E5%BE%97%E6%B0%B4%E8%A7%82%E5%90%8E%E6%84%9F/">
 
   </head>
   <body class="">
@@ -154,8 +169,12 @@
   
   
   
-  <div class="post about.md">
+  <div class="post post">
     <div  class="breadcrumb">
+  
+
+  
+
   
 
   
@@ -165,18 +184,30 @@
 </li>
 
 
+<li>
+  <a href="https://senup.github.io/posts/">归档</a>
+</li>
+
+
+<li>
+  <a href="https://senup.github.io/posts/post/">随笔</a>
+</li>
+
+
 <li class="active">
-  <a href="https://senup.github.io/about/">【置顶】简介</a>
+  <a href="https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">cron表达式</a>
 </li>
 
 </div>
 
 
   
-    <h2 class="post-title"><a href="https://senup.github.io/about/">【置顶】简介</a></h2>
+    <h2 class="post-title"><a href="https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/">cron表达式</a></h2>
     <div class="post-meta">
       
-        <span class="post-date">2022-02-21</span><span> / <span id="twikoo_visitors">0</span> 阅读</span>
+        <span class="post-date">2023-10-04</span><span> / <span id="twikoo_visitors">0</span> 阅读</span>
+        
+          
         
       
     </div>
@@ -184,21 +215,74 @@
   
     <div class="post-content">
       
-      <p>关于我：98年的Java程序员。双子座，坐标广东广州。
-欢迎大家访问我的博客。</p>
+      <p>[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[cron表达式]]。</p>
+<p>cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。</p>
+<p>分钟范围：0~59
+小时范围：0~24
+日期：1~31
+月份：1~12
+星期几： 0~6</p>
+<p>空格意义：分隔不同的时间单位
+逗号意义：同个时间范围里面的多个值
+斜杠含义：代表每隔一段时间就重复
+问号意义：不关心当前的时间单位
+星号含义：任意</p>
+<h3 id="案例">案例</h3>
+<ol>
+<li>每天的凌晨 3 点执行：<code>0 3 * * *</code></li>
+<li>每周一的上午 10 点执行：<code>0 10 * * 1</code></li>
+<li>每个月的第一天执行：<code>* * 1 * *</code></li>
+<li>每个星期五的下午 4 点执行：<code>* 16 * * 5</code></li>
+</ol>
 <ul>
-<li><a href="/gallery/">📷我的相册</a></li>
-<li><a href="/books/">📚年度阅读</a></li>
-<li><a href="/movies/">🎬年度观影</a></li>
+<li>每隔 5 分钟执行任务：<code>*/5 * * * *</code></li>
+<li>每隔 2 小时执行任务：<code>* */2 * * *</code></li>
+<li>每天的上午 9 点和下午 3 点执行任务：<code>* 9,15 * * *</code></li>
+<li>每月的第一天执行任务，不关心星期几：<code>* * 1 * ?</code></li>
+<li>每周一和周五的上午 10 点执行任务，不关心日期：<code>* 10 * * 1,5 ?</code></li>
 </ul>
-
       
     </div>
 
     
+      <span class="post-tags">
+        
+          #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+        
+      </span>
+    
   
     <div class="clear"></div>
     
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://senup.github.io/posts/post/%E6%94%BE%E5%BC%83%E5%87%8F%E8%82%A5%E6%88%91%E7%98%A6%E4%BA%8660%E6%96%A4/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">放弃减肥，我瘦了60斤</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://senup.github.io/posts/movie/%E9%A9%B4%E5%BE%97%E6%B0%B4%E8%A7%82%E5%90%8E%E6%84%9F/">
+                  <span class="button__text">🎬《驴得水》观后感</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
     
 
     

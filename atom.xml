@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-10-10T08:25:58+00:00</updated>
+    <updated>2023-10-10T08:31:19+00:00</updated>
     
     
     
@@ -219,26 +219,34 @@
             
             
             <content type="html"><![CDATA[<h3 id="训练日">训练日</h3>
-<p>总量：
-碳水     69 * 2.7= 186.3g
-蛋白质 69 * 1.6 = 110.4g
-脂肪 69 * 0.8 = 55.2g</p>
-<p>三餐：
-早饭  碳水37g 蛋白质22g
-午饭  碳水56g 蛋白质33g
-晚饭  碳水56g 蛋白质33g</p>
+<p>总量：</p>
+<ul>
+<li>碳水     69 * 2.7= 186.3g</li>
+<li>蛋白质 69 * 1.6 = 110.4g</li>
+<li>脂肪 69 * 0.8 = 55.2g</li>
+</ul>
+<p>三餐：</p>
+<ul>
+<li>早饭  碳水37g 蛋白质22g</li>
+<li>午饭  碳水56g 蛋白质33g</li>
+<li>晚饭  碳水56g 蛋白质33g</li>
+</ul>
 <hr>
 <h3 id="休息日">休息日</h3>
-<p>总量：
-碳水     69 * 2.2= 151.8g
-蛋白质 69 * 1.6 = 110.4g
-脂肪 69 * 0.8 = 55.2g
-热量：607+440+495=</p>
-<p>三餐：
-<strong>早饭  碳水30g 蛋白质22g</strong>|熟米饭100g|熟面条130g|广东肠粉142g|肉110g|鸡蛋白4个
-<strong>午饭  碳水45g 蛋白质33g</strong>|吐司馒头90g|熟面条200g|熟米饭150g|燕麦麸100g|速食燕麦片80g|
-<strong>晚饭  碳水45g 蛋白质33g</strong>
-宵夜</p>
+<p>总量：</p>
+<ul>
+<li>碳水     69 * 2.2= 151.8g</li>
+<li>蛋白质 69 * 1.6 = 110.4g</li>
+<li>脂肪 69 * 0.8 = 55.2g</li>
+<li>热量：607+440+495=1542</li>
+</ul>
+<p>三餐：</p>
+<ul>
+<li><strong>早饭  碳水30g 蛋白质22g</strong>|熟米饭100g|熟面条130g|广东肠粉142g|肉110g|鸡蛋白4个</li>
+<li><strong>午饭  碳水45g 蛋白质33g</strong>|吐司馒头90g|熟面条200g|熟米饭150g|燕麦麸100g|速食燕麦片80g|</li>
+<li><strong>晚饭  碳水45g 蛋白质33g</strong></li>
+<li>宵夜</li>
+</ul>
 <hr>
 <p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310071747790.png" alt="image.png"  /></p>
 <ul>

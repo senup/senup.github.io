@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://senup.github.io/posts/movie/%E6%9A%B4%E9%A3%9F%E7%9A%84%E5%B7%B4%E8%90%A8%E5%8D%A1/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/movie/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/movie/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/</loc>
+    <lastmod>2023-10-18T11:54:36+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/read/%E8%BA%AB%E4%BB%BD%E7%9A%84%E7%84%A6%E8%99%91/</loc>
     <lastmod>2023-10-16T11:35:01+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/read/</loc>
     <lastmod>2023-10-16T11:35:01+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/posts/</loc>
-    <lastmod>2023-10-16T11:35:01+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/</loc>
-    <lastmod>2023-10-16T11:35:01+08:00</lastmod>
-  </url><url>
     <loc>https://senup.github.io/posts/read/</loc>
-    <lastmod>2023-10-16T11:35:01+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/</loc>
     <lastmod>2023-10-16T11:35:01+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/chat/20231010162308/</loc>
@@ -57,12 +66,6 @@
     <lastmod>2023-10-04T20:48:29+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/movie/%E9%A9%B4%E5%BE%97%E6%B0%B4/</loc>
-    <lastmod>2023-10-02T01:17:04+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/movie/</loc>
-    <lastmod>2023-10-02T01:17:04+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/posts/movie/</loc>
     <lastmod>2023-10-02T01:17:04+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/chat/20230930070102/</loc>

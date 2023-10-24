@@ -7,12 +7,43 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-10-22T10:56:38+00:00</updated>
+    <updated>2023-10-24T08:13:35+00:00</updated>
     
     
     
     
         <id>https://senup.github.io/atom.xml</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[20231024160340]]></title>
+            <link href="https://senup.github.io/posts/chat/20231024160340/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/chat/20231024160340/</id>
+            
+            
+            <published>2023-10-24T16:03:40+08:00</published>
+            <updated>2023-10-24T16:03:40+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>突然想起年前带爸妈去了一趟海底捞。老爸老妈第一次吃海底捞各种开心聒噪地拍照打卡，两个妹妹期待地吃着东西，而我骂骂咧咧让他们别少大惊小怪&hellip;感觉跟家人在一起的时光好像也不坏，而这些时光变得越来越少越来越可贵，我有点想家了。</p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/chat" term="chat" label="chat" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -764,37 +795,6 @@
             
             
             <content type="html"><![CDATA[<p>遇到kex_exchange_identification: Connection closed by remote host Connection的问题，就是openwrt的端口号冲突了。解决方法：关闭梯子然后git push下文件，再打开梯子就好了。有没有更简单的方法，不知道咋搞了:(</p>
-]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/chat" term="chat" label="chat" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[20231010162037]]></title>
-            <link href="https://senup.github.io/posts/chat/20231010162037/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/chat/20231010162037/</id>
-            
-            
-            <published>2023-10-10T16:20:38+08:00</published>
-            <updated>2023-10-10T16:20:38+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<p>油管上远程工作的博主真让人羡慕，什么时候我也能这么自由呢？</p>
 ]]></content>
             
                  

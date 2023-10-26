@@ -1414,10 +1414,27 @@ photos .photo:last-child {
    100% {opacity: 1;}
 }
 
-.page.gallery-photos{margin-top:-46px;}
-@media (max-width: 683px){
-	.page.gallery-photos{margin-top:4px;}
+.page.gallery-photos{margin-top:4px;}
+@media (max-width: 980px){
+	.gallery-photos{column-count:3;}
 }
+
+.post-content p:has(> img:nth-child(2)){column-count:2;column-gap:8px;margin:6px 0;}
+.post-content p:has(> img:nth-child(3)){column-count:3;}
+.post-content p:has(> img:nth-child(4)){column-count:4;}
+.post-content p:has(> img:nth-child(5)){column-count:5;}
+.post-content p:has(> img:nth-child(6)){column-count:4;}
+.post-content p:has(> img:nth-child(2)) img{display:inherit;}
+.post-content p:has(> img:nth-child(6)) img{margin-bottom:8px;}
+
+.fullscreen{margin-left:calc(490px - 50vw);width:calc(100vw - 20px);column-count:4;column-gap:6px;}
+.fullscreen img{display:inherit;margin-bottom:8px;}
+@media (max-width: 980px){
+	.fullscreen{margin-left: 0;width:auto;column-count:3;}
+}
+
+
+
 
 /* SLIMBOX2 */
 #lbOverlay{position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background-color:#000;cursor:pointer;}

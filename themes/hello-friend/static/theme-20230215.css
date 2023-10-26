@@ -701,7 +701,7 @@ hr {
 	}
 }
 
-.post-avatar.avatar{width:48px;margin:8px 1rem 0 0;border-radius:50%;box-shadow: 0 12px 40px rgba(0,0,0,.15);float:left;}
+.post-avatar.avatar{width:48px;margin:8px;border-radius:50%;box-shadow: 0 12px 40px rgba(0,0,0,.15);float:left;}
 
 .post-title {
 	font-weight: 400;
@@ -745,7 +745,9 @@ hr {
 }
 .home .post .post-content p{margin:0;}
 .home-1 .post-title,.home-1 .post-meta,.home-1 .post-content{margin-left:500px;}
-
+.post.on-list.chat img {
+    transform: scale(0.4);
+}
 .post-content {
 	font-family: "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
 	font-weight: 500;

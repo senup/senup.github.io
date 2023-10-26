@@ -23,7 +23,8 @@
       {{ .Render "chat"}}
       <div class="post-content $PostCate">
         <a href="{{ .Permalink }}" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src=https://cravatar.cn/avatar/{{ md5 "bestkxt@gmail.com" }} ></a>
-          {{ .Summary }}
+          <!-- {{ .Summary }} -->
+          {{ .Content }}
       </div>
     {{ else }}
       <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>

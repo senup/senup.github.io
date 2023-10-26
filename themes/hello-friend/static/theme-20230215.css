@@ -745,9 +745,7 @@ hr {
 }
 .home .post .post-content p{margin:0;}
 .home-1 .post-title,.home-1 .post-meta,.home-1 .post-content{margin-left:500px;}
-div.post.on-list.chat p:only-child > img {
-	transform: scale(0.5);
-}
+
 
 
 .post-content {

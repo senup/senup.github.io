@@ -743,6 +743,9 @@ hr {
 		margin-right: 0.5rem;
 	}
 }
+.home .post .post-content p{margin:0;}
+.home-1 .post-title,.home-1 .post-meta,.home-1 .post-content{margin-left:500px;}
+
 .post-content {
 	font-family: "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
 	font-weight: 500;

@@ -1,0 +1,45 @@
+{{$movieitems := getCSV "," "data/douban/movie.csv" }}
+{{$movienumb := 6}}
+<div class="douban border-top sc-ksluID gFnzgG">
+  <h3><a href="/movies/">🎥 近期观影</a></h3>
+    <div class="items sc-dIsUp fIuTG">
+        {{range $idx,$item := first $movienumb $movieitems}}
+        {{if ne $idx 0}}
+            {{ $rating := float (index $item 6)}}
+            {{ $coverSrc := index $item 5 }}
+            {{ $douURL := replaceRE "https://movie.douban.com/subject/([0-9]+)/" "https://dou.img.lithub.cc/movie/$1.jpg" $coverSrc}}
+            <div class="dfdORB">
+                <div class="sc-hKFxyN HPRth"><div class="lazyload-wrapper"><img class="avatar" src="{{ $douURL }}" referrer-policy="no-referrer" loading="lazy" alt="{{ index $item 9 }}"  title="{{ index $item 1 }}" width="150" height="220"></div></div>
+                <div class="sc-fujyAs eysHZq">
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:{{mul  10 $rating }}%"></span></span><span class="rating_nums">{{$rating}}</span></div>
+                </div>
+                <div class="sc-iCoGMd kMthTr"><a rel="noreferrer" href="{{ index $item 5 }}" target="_blank">{{ index $item 1 }}</a></div>
+            </div>
+        {{end}}
+        {{end}}
+    </div>
+</div>
+
+<hr>
+
+{{$bookitems := getCSV "," "data/douban/book.csv" }}
+{{$booknumb := 6}}
+<div class="douban border-bottom sc-ksluID gFnzgG">
+  <h3><a href="/books/">📖 近期阅读</a></h3>
+    <div class="items sc-dIsUp fIuTG">
+        {{range $idx,$item := first $booknumb $bookitems}}
+        {{if ne $idx 0}}
+            {{ $rating := float (index $item 6)}}
+            {{ $coverSrc := index $item 5 }}
+            {{ $douURL := replaceRE "https://book.douban.com/subject/([0-9]+)/" "https://dou.img.lithub.cc/book/$1.jpg" $coverSrc}}
+            <div class="dfdORB">
+                <div class="sc-hKFxyN HPRth"><div class="lazyload-wrapper"><img class="avatar" src="{{ $douURL }}" referrer-policy="no-referrer" loading="lazy" alt="{{ index $item 9 }}"  title="{{ index $item 1 }}" width="150" height="220"></div></div>
+                <div class="sc-fujyAs eysHZq">
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:{{mul  10 $rating }}%"></span></span><span class="rating_nums">{{$rating}}</span></div>
+                </div>
+                <div class="sc-iCoGMd kMthTr"><a rel="noreferrer" href="{{ index $item 5 }}" target="_blank">{{ index $item 1 }}</a></div>
+            </div>
+        {{end}}
+        {{end}}
+    </div>
+</div>

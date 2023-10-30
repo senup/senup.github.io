@@ -1,7 +1,8 @@
 ---
-title: 📒Obsidian 笔记
+title: Obsidian 笔记
 date: 2023-10-03 02:14:00
-tags: [odsidian]
+tags:
+  - odsidian
 draft: true
 hideInList: false
 feature: 

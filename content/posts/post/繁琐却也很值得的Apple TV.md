@@ -29,6 +29,9 @@ isTop: false
 遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
 解决方法：使用Mac进行初始化库即可。
 
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png)
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png)
+
 # cheers
 也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。
 # youtube prime

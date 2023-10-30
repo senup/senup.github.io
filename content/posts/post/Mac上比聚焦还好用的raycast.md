@@ -10,6 +10,9 @@ isTop: false
 ---
 > 之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。
 
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png)
+
+
 # 安装插件
 [Raycast - Store](https://www.raycast.com/store)
 

@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-10-30T19:49:09+00:00</updated>
+    <updated>2023-10-30T20:36:13+00:00</updated>
     
     
     
@@ -41,6 +41,270 @@
                             
                              
                                 <category scheme="https://senup.github.io/tags/movie" term="movie" label="movie" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Mac上比聚焦还好用的raycast]]></title>
+            <link href="https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</id>
+            
+            
+            <published>2023-10-31T02:53:49+08:00</published>
+            <updated>2023-10-31T02:53:49+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>
+<p>之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。</p>
+</blockquote>
+<h1 id="安装插件">安装插件</h1>
+<p><a href="https://www.raycast.com/store" target="_blank" rel="noopener nofollow noreferrer" >Raycast - Store</a></p>
+<h1 id="插件替代软件">插件替代软件</h1>
+<p>软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。</p>
+<ul>
+<li>剪切板：clipboard history</li>
+<li>窗口管理: window management</li>
+<li>翻译：google translate</li>
+<li>OCR识别: screenOCR</li>
+<li>软件卸载： 搜索APP打开菜单</li>
+</ul>
+<p>额外设置替代系统的搜索框：
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png" alt="image.png"  /></p>
+<h1 id="设置别名">设置别名</h1>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png" alt="image.png"  /></p>
+<h1 id="quicklinks">QuickLinks</h1>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png" alt="image.png"  /></p>
+<h1 id="参考链接">参考链接</h1>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百度</td>
+<td><code>https://www.baidu.com/s?ie=UTF-8&amp;wd={Query}</code></td>
+</tr>
+<tr>
+<td>AI</td>
+<td><code>https://chat.openai.com/</code></td>
+</tr>
+<tr>
+<td>Google</td>
+<td><code>https://google.com/search?q={Query}</code></td>
+</tr>
+<tr>
+<td>V2ex</td>
+<td><code>https://www.google.com/search?q=site:v2ex.com/t%20{Query}</code></td>
+</tr>
+<tr>
+<td>Github</td>
+<td><code>https://github.com/search?q={Query}</code></td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td><code>https://www.youtube.com/results?search_query={Query}</code></td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td><code>https://twitter.com/search?q={Query}&amp;src=typed_query&amp;f=live</code></td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td><code>https://www.instagram.com</code></td>
+</tr>
+<tr>
+<td>Stackoverflow</td>
+<td><code>https://stackoverflow.com/search?q={Query}</code></td>
+</tr>
+<tr>
+<td>Reddit</td>
+<td><code>https://www.reddit.com/search/?q={Query}</code></td>
+</tr>
+<tr>
+<td>maven</td>
+<td><code>https://mvnrepository.com/search?q={Query}</code></td>
+</tr>
+<tr>
+<td>json</td>
+<td><code>https://www.jsont.run/</code></td>
+</tr>
+<tr>
+<td>表格转换</td>
+<td><code>https://tableconvert.com/zh-cn/</code></td>
+</tr>
+<tr>
+<td>开发工具箱</td>
+<td><code>https://ctool.dev/tool.html#/tool/json?category=conversion</code></td>
+</tr>
+<tr>
+<td>代码图片生成</td>
+<td><code>https://ray.so/</code></td>
+</tr>
+<tr>
+<td>Figma</td>
+<td><code>https://www.figma.com/</code></td>
+</tr>
+<tr>
+<td>Excalidraw</td>
+<td><code>https://excalidraw.com/</code></td>
+</tr>
+<tr>
+<td>掘金</td>
+<td><code>https://juejin.cn/search?query={Query}</code></td>
+</tr>
+<tr>
+<td>微博</td>
+<td><code>https://s.weibo.com/realtime?q={Query}&amp;rd=realtime&amp;tw=realtime&amp;Refer=weibo_realtime</code></td>
+</tr>
+<tr>
+<td>小红书</td>
+<td><code>https://www.baidu.com/s?wd=site%3Axiaohongshu.com%20{Query}</code></td>
+</tr>
+<tr>
+<td>Bilibili</td>
+<td><code>https://search.bilibili.com/all?keyword={Query}&amp;from_source=nav_suggest_new</code></td>
+</tr>
+<tr>
+<td>即刻</td>
+<td><code>https://web.okjike.com/search?keyword={Query}</code></td>
+</tr>
+<tr>
+<td>NGA</td>
+<td><code>https://bbs.nga.cn/thread.php?key={Query}</code></td>
+</tr>
+<tr>
+<td>高德地图</td>
+<td><code>https://www.amap.com/search?city=你自己的区划(3301)&amp;query={Query}</code></td>
+</tr>
+<tr>
+<td>豆瓣</td>
+<td><code>https://search.douban.com/movie/subject_search?search_text={Query}</code></td>
+</tr>
+<tr>
+<td>虎扑</td>
+<td><code>https://bbs.hupu.com/search?q={Query}&amp;topicId=&amp;sortby=general&amp;page=1</code></td>
+</tr>
+<tr>
+<td>知乎</td>
+<td><code>https://www.zhihu.com/search?type=content&amp;q={Query}</code></td>
+</tr>
+<tr>
+<td>腾讯视频</td>
+<td><code>https://v.qq.com/x/search/?q={Query}</code></td>
+</tr>
+<tr>
+<td>爱奇艺</td>
+<td><code>https://so.iqiyi.com/so/q_{Query}?source=</code></td>
+</tr>
+<tr>
+<td>淘宝</td>
+<td><code>https://s.taobao.com/search?q={Query}</code></td>
+</tr>
+<tr>
+<td>京东</td>
+<td><code>https://search.jd.com/Search?keyword={Query}&amp;enc=utf-8</code></td>
+</tr>
+<tr>
+<td>优酷</td>
+<td><code>https://so.youku.com/search_video/q_{Query}?searchfrom=1</code></td>
+</tr>
+<tr>
+<td>什么值得买</td>
+<td><code>https://search.smzdm.com/?c=faxian&amp;s={Query}&amp;order=time&amp;v=b</code></td>
+</tr>
+<tr>
+<td>Tinypng</td>
+<td><code>https://tinypng.com/</code></td>
+</tr>
+</tbody>
+</table>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://goalonez.github.io/blog/Raycast%E6%8A%98%E8%85%BE%E4%B9%8B%E8%B7%AF%EF%BC%88%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E7%AF%87%EF%BC%89" target="_blank" rel="noopener nofollow noreferrer" >Raycast折腾之路（常用功能篇） | Goalonez</a></li>
+<li><a href="https://goalonez.github.io/blog/Raycast%E6%8A%98%E8%85%BE%E4%B9%8B%E8%B7%AF%EF%BC%88%E6%8F%92%E4%BB%B6%E7%AF%87%EF%BC%89" target="_blank" rel="noopener nofollow noreferrer" >Raycast折腾之路（插件篇） | Goalonez</a></li>
+</ul>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[繁琐却也很值得的Apple TV]]></title>
+            <link href="https://senup.github.io/posts/post/%E7%B9%81%E7%90%90%E5%8D%B4%E4%B9%9F%E5%BE%88%E5%80%BC%E5%BE%97%E7%9A%84apple-tv/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/post/%E7%B9%81%E7%90%90%E5%8D%B4%E4%B9%9F%E5%BE%88%E5%80%BC%E5%BE%97%E7%9A%84apple-tv/</id>
+            
+            
+            <published>2023-10-30T02:54:33+08:00</published>
+            <updated>2023-10-30T02:54:33+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。</p>
+<p>渠道：京东。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png" alt="image.png"  /></p>
+<h1 id="8字电源线">8字电源线</h1>
+<p>港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。</p>
+<h1 id="infuse-pro">infuse pro</h1>
+<blockquote>
+<p>用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙</p>
+</blockquote>
+<p>流程：</p>
+<ul>
+<li>申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空</li>
+<li>土区<a href="https://www.oyunfor.com/" target="_blank" rel="noopener nofollow noreferrer" >onyunfor</a>礼品卡购买100里拉，花费26¥</li>
+<li>Apple store订阅infuse pro年费</li>
+<li>片源获取：<a href="https://www.codelicence.cn/" target="_blank" rel="noopener nofollow noreferrer" >云盘4K-综合网盘搜索</a>+telegram电报群资源</li>
+</ul>
+<p>遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。</p>
+<h1 id="cheers">cheers</h1>
+<p>也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。</p>
+<h1 id="youtube-prime">youtube prime</h1>
+<ul>
+<li>油管会员，用于去广告，还附赠了YouTube music，体验很不错。</li>
+<li>渠道：电报群拼车。</li>
+<li>花费：年付45¥。</li>
+</ul>
+<h1 id="iplaytv">iplaytv</h1>
+<ul>
+<li>渠道：闲鱼账号附赠，无需花费。</li>
+<li>进阶：搜索<strong>m3u直播源</strong>，导入配置订阅即可。</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。</p>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/life" term="life" label="life" />
                             
                         
                     
@@ -116,678 +380,6 @@
                             
                              
                                 <category scheme="https://senup.github.io/tags/chat" term="chat" label="chat" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[🎬《暴食的巴萨卡》]]></title>
-            <link href="https://senup.github.io/posts/movie/%E6%9A%B4%E9%A3%9F%E7%9A%84%E5%B7%B4%E8%90%A8%E5%8D%A1/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/movie/%E6%9A%B4%E9%A3%9F%E7%9A%84%E5%B7%B4%E8%90%A8%E5%8D%A1/</id>
-            
-            
-            <published>2023-10-18T11:54:36+08:00</published>
-            <updated>2023-10-18T11:54:36+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<div class="db-card">
-            <div class="db-card-subject">
-                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36139983.jpg"></div>
-                <div class="db-card-content">
-                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36139983/" class="cute" target="_blank" rel="external nofollow">暴食的巴萨卡</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:56%"></span></span><span class="rating_nums">5.6</span></div>
-                    <div class="db-card-abstract">2023 / 日本 / 动画 / 柳泽哲也 / 逢坂良太 Ryota Ohsaka 关智一 Tomokazu Seki</div>
-                    <div class="db-card-comment"></div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-<h3 id="剧情简介">剧情简介</h3>
-<p>在这个崇尚“技能至上”的异世界里面，男主角菲特fate获得的技能——暴食，屡次让自己挨饿，入不敷出，穷困潦倒。因为自己的弱小也被布雷利克家族的圣骑士们欺负，即使面对各种生活压力，他还是按照父亲的遗言，笑对人生。幸运的是有女神的庇佑，进入了哈特家族工作。某天，意外刺死了一个小偷，暴食技能发动了，不仅能吸收技能也能吸收属性值，从此，菲特就开始了打怪升级，消灭魔物的生活。期间触发了获得大罪武器、结识玛茵、亚伦老头子传授剑术、暗中保护女神、击败天龙、击败法拉路、玛茵被辛劫走、身体互换、讨伐哥布林巫师、梅森复活等剧情，武器也有了剑、弓、斧头、法杖四个形态。</p>
-<h3 id="观后评">观后评</h3>
-<p>我是在边跳绳边看电视的时候看的这部剧，只有前三集。看完第一集就觉得很爽文男主的路线，但是又很期待剧情后面怎么发展，怎么说也比异世界农夫、贩卖机这些厕纸番好一点吧，于是把漫画<a href="https://www.manhuagui.com/comic/28358/" target="_blank" rel="noopener nofollow noreferrer" >狂怒的暴食 ～只有我突破了等级这概念～漫画_滝乃大祐×一色一凛 - 看漫画</a>看了一遍。结果呢，还是一如既往的不太行。这部剧的主线是为了保护女神，暗中消灭魔物。后面身份曝光后，菲特承认了蒙面人骇的身份并和女主一起战斗，剧情转向探究彼方之门是什么和挽回玛茵。作者有种想到哪写到哪的感觉，中间穿插了一些没必要的剧情，而且还在更新中。</p>
-<p>总结，不建议花太多时间在这种番剧上面。</p>
-<hr>
-<p>观影 tips：你可以使用这个表格来逐一回答这些问题，从而构建一个全面的电影影评。</p>
-<table>
-<thead>
-<tr>
-<th>问题</th>
-<th>详细讨论</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>剧情和情节</td>
-<td>电影的主要情节如何？是否有令人惊喜的情节转折？</td>
-</tr>
-<tr>
-<td>角色和表演</td>
-<td>电影中的主要角色有哪些？你对他们的性格和发展有什么看法？</td>
-</tr>
-<tr>
-<td>导演和摄影</td>
-<td>电影的导演采用了什么样的导演风格？有没有特别引人注目的镜头或导演手法？</td>
-</tr>
-<tr>
-<td>音乐和音效</td>
-<td>电影的音乐如何？它增强了电影的氛围和情感吗？</td>
-</tr>
-<tr>
-<td>主题和信息</td>
-<td>电影中探讨了哪些主题？它们对你产生了什么样的影响？</td>
-</tr>
-<tr>
-<td>情感和观众体验</td>
-<td>电影触发了你的情感吗？是否有感人的时刻？</td>
-</tr>
-<tr>
-<td>与其他作品的比较</td>
-<td>与类似类型的其他电影相比，这部电影有什么独特之处？</td>
-</tr>
-<tr>
-<td>目标观众</td>
-<td>这部电影的目标观众是谁？你认为哪类人会特别喜欢这部电影？</td>
-</tr>
-<tr>
-<td>改进的空间</td>
-<td>是否有任何你认为电影可以改进的方面？可能是剧情逻辑、角色发展、表演等方面。</td>
-</tr>
-<tr>
-<td>总结和评价</td>
-<td>最后，你会如何总结这部电影？你会给它一个什么样的评分或建议观众是否观看？</td>
-</tr>
-</tbody>
-</table>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/movie" term="movie" label="movie" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[📚《身份的焦虑》]]></title>
-            <link href="https://senup.github.io/posts/read/%E8%BA%AB%E4%BB%BD%E7%9A%84%E7%84%A6%E8%99%91/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/read/%E8%BA%AB%E4%BB%BD%E7%9A%84%E7%84%A6%E8%99%91/</id>
-            
-            
-            <published>2023-10-16T11:35:01+08:00</published>
-            <updated>2023-10-16T11:35:01+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<div class="db-card">
-            <div class="db-card-subject">
-                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/book/2033081.jpg"></div>
-                <div class="db-card-content">
-                    <div class="db-card-title"><a href="https://book.douban.com/subject/2033081/" class="cute" target="_blank" rel="external nofollow">身份的焦虑</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:81%"></span></span><span class="rating_nums">8.1</span></div>
-                    <div class="db-card-abstract">[英] 阿兰·德波顿 / 2007 / 上海译文出版社</div>
-                    <div class="db-card-comment"></div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-    
-
-
-
-<h3 id="观后评">观后评</h3>
-<p>为什么会有身份焦虑？</p>
-<ul>
-<li>没有期待的时候，失败其实没有那么大的羞辱感。当我们把这件事放到很重要的位置，并且此事事关我们的自尊和成就感，然后此事做砸了，我们就会觉得非常羞愧，踏入了自己的评价体系里面。</li>
-<li>是不是评价体系越低越好？答案是false。每个人的出生和机遇是不平等的，但我们不可能不和别人做比较。可能比较好的方式是不去深究，而是马上去改变。</li>
-<li>底层员工受制于上级的评价，奖赏和惩罚分配不合理容易诱导自己的挫败感。所以在新公司要试着让自己达到上级的预期，所谓的预期管理。</li>
-</ul>
-<p>怎么避免身份焦虑？</p>
-<ul>
-<li>原生家庭不佳的情况下，需要建立自己的评价体系。想到了小时候呢，自己接受的是批评教育，也就是几乎没有得到好的评价，导致自己对于外界的反馈特别在意。我回想起小时候的经历，并没有特别骄傲的时候，我妈习惯于拿“别人家的孩子”教育我，这令我非常不舒服，我也曾想让她夸夸我，但也没做到。那么，我有什么比较骄傲的事迹呢？作为普通人，我似乎没有好好记录我自己的一点点小小的成就，我没有远大的目标，所以我可能需要在成就笔记里面多记录日常的小成就。</li>
-<li>推敲负面评价。有些人就是喜欢贬低你，比如绩效面谈的时候，领导总是喜欢给你打压敲打，所以你只需要做好自己，不需要考虑太多，做起来就行。</li>
-<li>从生命的角度来看。人嘛，总是要死的，这些让你很难受的事情最终都会变得不重要。</li>
-</ul>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/read" term="read" label="read" />
                             
                         
                     

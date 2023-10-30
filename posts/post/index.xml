@@ -6,8 +6,74 @@
     <description>Recent content in 随笔 on 高等游民</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Oct 2023 03:06:10 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Oct 2023 02:53:49 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/posts/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac上比聚焦还好用的raycast</title>
+      <link>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</link>
+      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
+      <guid>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
+&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
+&lt;li&gt;窗口管理: window management&lt;/li&gt;
+&lt;li&gt;翻译：google translate&lt;/li&gt;
+&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
+&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;额外设置替代系统的搜索框：
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>繁琐却也很值得的Apple TV</title>
+      <link>https://senup.github.io/posts/post/%E7%B9%81%E7%90%90%E5%8D%B4%E4%B9%9F%E5%BE%88%E5%80%BC%E5%BE%97%E7%9A%84apple-tv/</link>
+      <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
+      <guid>https://senup.github.io/posts/post/%E7%B9%81%E7%90%90%E5%8D%B4%E4%B9%9F%E5%BE%88%E5%80%BC%E5%BE%97%E7%9A%84apple-tv/</guid>
+      <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
+&lt;p&gt;渠道：京东。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;8字电源线&#34;&gt;8字电源线&lt;/h1&gt;
+&lt;p&gt;港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。&lt;/p&gt;
+&lt;h1 id=&#34;infuse-pro&#34;&gt;infuse pro&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空&lt;/li&gt;
+&lt;li&gt;土区&lt;a href=&#34;https://www.oyunfor.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;onyunfor&lt;/a&gt;礼品卡购买100里拉，花费26¥&lt;/li&gt;
+&lt;li&gt;Apple store订阅infuse pro年费&lt;/li&gt;
+&lt;li&gt;片源获取：&lt;a href=&#34;https://www.codelicence.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;云盘4K-综合网盘搜索&lt;/a&gt;+telegram电报群资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。&lt;/p&gt;
+&lt;h1 id=&#34;cheers&#34;&gt;cheers&lt;/h1&gt;
+&lt;p&gt;也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。&lt;/p&gt;
+&lt;h1 id=&#34;youtube-prime&#34;&gt;youtube prime&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;油管会员，用于去广告，还附赠了YouTube music，体验很不错。&lt;/li&gt;
+&lt;li&gt;渠道：电报群拼车。&lt;/li&gt;
+&lt;li&gt;花费：年付45¥。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;iplaytv&#34;&gt;iplaytv&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;渠道：闲鱼账号附赠，无需花费。&lt;/li&gt;
+&lt;li&gt;进阶：搜索&lt;strong&gt;m3u直播源&lt;/strong&gt;，导入配置订阅即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>二手手机越卖越亏</title>
       <link>https://senup.github.io/posts/post/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</link>
@@ -57,17 +123,6 @@
 斜杠含义：代表每隔一段时间就重复
 问号意义：不关心当前的时间单位
 星号含义：任意&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>我们总是喜欢高估自己的能力</title>
-      <link>https://senup.github.io/posts/post/%E6%88%91%E4%BB%AC%E6%80%BB%E6%98%AF%E5%96%9C%E6%AC%A2%E9%AB%98%E4%BC%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
-      <pubDate>Fri, 29 Sep 2023 01:16:04 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E6%88%91%E4%BB%AC%E6%80%BB%E6%98%AF%E5%96%9C%E6%AC%A2%E9%AB%98%E4%BC%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
-      <description>&lt;p&gt;我在 2023 年 8 月 25 日的周五离职了，随后开始休假，截止到今天已经过去了一个月多一点。不禁感慨时间过得很快，因为我大部分时间都是呆在租的小房子里面无所事事，想起这段时间做过的事情只有很少的几件，遂在此记录。&lt;/p&gt;
-&lt;h3 id=&#34;第一次离职&#34;&gt;第一次离职&lt;/h3&gt;
-&lt;p&gt;年中绩效面谈的时候，领导跟我说了晋升没通过，并问我下半年有什么打算。心灰意冷的我只是冷冷说了句：不想做了，想找段时间休息下。
-其实结果我应该是提前就知道的。二月之后被调岗到新部门，重复做着不喜欢的工作内容，被动处理很多事情，慢慢地丧失了工作所产生的成就感，主动产出的内容也很有限。我曾经想过五月的时候一走了之，但是互联网大环境就业环境差以及晋升机会尚摆在眼前，曾几何时我还怀抱着一丝希望，希望后续一切能变好，不过客观事实也摆在眼前，失败了就是失败了。
-那么怎么做呢？留着也只是徒增内耗，繁琐的业务编码对于技术并没有多少长进，离职的念头在这一刻就变得无比清晰了。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

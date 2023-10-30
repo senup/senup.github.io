@@ -6,8 +6,35 @@
     <description>Recent content in tech on 高等游民</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 04 Oct 2023 20:48:29 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Oct 2023 02:53:49 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac上比聚焦还好用的raycast</title>
+      <link>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</link>
+      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
+      <guid>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
+&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
+&lt;li&gt;窗口管理: window management&lt;/li&gt;
+&lt;li&gt;翻译：google translate&lt;/li&gt;
+&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
+&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;额外设置替代系统的搜索框：
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>cron表达式</title>
       <link>https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>

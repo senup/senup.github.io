@@ -1,5 +1,5 @@
 ---
-title: mac 下常用命令
+title: Hello，MacOS
 date: 2023-11-07 23:23:28
 tags:
   - tech

@@ -1,5 +1,5 @@
 ---
-title: Mac上比聚焦还好用的raycast
+title: Hello，Raycast
 date: 2023-10-31 02:53:49
 tags:
   - tech

@@ -1,5 +1,5 @@
 ---
-title: 繁琐却也很值得的Apple TV
+title: Hello，Apple TV
 date: 2023-10-30T02:54:33
 tags:
   - life

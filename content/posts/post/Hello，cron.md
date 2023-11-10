@@ -1,14 +1,15 @@
 ---
-title: cron表达式
+title: Hello，cron
 date: 2023-10-04 20:48:29
-tags: [tech]
+tags:
+  - tech
 draft: false
 hideInList: false
 feature: 
 isTop: false
 ---
 
-[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[cron表达式]]。
+[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[Hello，cron]]。
 
 cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。
 

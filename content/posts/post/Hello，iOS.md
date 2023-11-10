@@ -1,8 +1,7 @@
 ---
-title: iOS 使用经验
+title: Hello，iOS
 date: 2023-11-08 15:54:54
 tags:
-  - life
   - iOS
   - tech
 draft: true

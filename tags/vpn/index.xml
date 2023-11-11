@@ -17,15 +17,16 @@
 &lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;环境配置&#34;&gt;环境配置&lt;/h1&gt;
-&lt;p&gt;路由器：红米ax6000
-固件：官方固件&lt;/p&gt;
+&lt;p&gt;路由器：红米ax6000&lt;/p&gt;
+&lt;p&gt;固件：官方固件&lt;/p&gt;
 &lt;p&gt;红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。&lt;/p&gt;
 &lt;p&gt;其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png&#34; alt=&#34;image.png&#34;  /&gt;
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png&#34; alt=&#34;image.png&#34;  /&gt;
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
 &lt;h1 id=&#34;界面讲解&#34;&gt;界面讲解&lt;/h1&gt;
-&lt;p&gt;代理界面有selector和URLTest的两种类型。
+&lt;p&gt;打开&lt;a href=&#34;http://192.168.31.1:9999/ui/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;yacd&lt;/a&gt;。
+代理界面有selector和URLTest的两种类型。
 selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png&#34; alt=&#34;image.png&#34;  /&gt;
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;

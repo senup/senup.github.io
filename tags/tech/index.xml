@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 31 Oct 2023 02:53:49 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mac上比聚焦还好用的raycast</title>
-      <link>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</link>
+      <title>Hello，Raycast</title>
+      <link>https://senup.github.io/posts/post/helloraycast/</link>
       <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/mac%E4%B8%8A%E6%AF%94%E8%81%9A%E7%84%A6%E8%BF%98%E5%A5%BD%E7%94%A8%E7%9A%84raycast/</guid>
+      <guid>https://senup.github.io/posts/post/helloraycast/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -37,11 +37,11 @@
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>cron表达式</title>
-      <link>https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <title>Hello，cron</title>
+      <link>https://senup.github.io/posts/post/hellocron/</link>
       <pubDate>Wed, 04 Oct 2023 20:48:29 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>&lt;p&gt;[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[cron表达式]]。&lt;/p&gt;
+      <guid>https://senup.github.io/posts/post/hellocron/</guid>
+      <description>&lt;p&gt;[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[Hello，cron]]。&lt;/p&gt;
 &lt;p&gt;cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。&lt;/p&gt;
 &lt;p&gt;分钟范围：0~59
 小时范围：0~24

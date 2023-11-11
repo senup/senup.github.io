@@ -12,6 +12,7 @@ isTop: false
 > shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。
 # 环境配置
 路由器：红米ax6000
+
 固件：官方固件
 
 红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。
@@ -24,6 +25,7 @@ isTop: false
 
 
 # 界面讲解
+打开[yacd](http://192.168.31.1:9999/ui/#/)。
 代理界面有selector和URLTest的两种类型。
 selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。
 

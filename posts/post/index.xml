@@ -6,8 +6,33 @@
     <description>Recent content in 随笔 on 高等游民</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 11 Nov 2023 23:13:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2023 01:17:06 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/posts/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，shellclash</title>
+      <link>https://senup.github.io/posts/post/helloshellclash/</link>
+      <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
+      <guid>https://senup.github.io/posts/post/helloshellclash/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;环境配置&#34;&gt;环境配置&lt;/h1&gt;
+&lt;p&gt;路由器：红米ax6000
+固件：官方固件&lt;/p&gt;
+&lt;p&gt;红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。&lt;/p&gt;
+&lt;p&gt;其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;界面讲解&#34;&gt;界面讲解&lt;/h1&gt;
+&lt;p&gt;代理界面有selector和URLTest的两种类型。
+selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
+&lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
+&lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello，Quantumult X</title>
       <link>https://senup.github.io/posts/post/helloquantumult-x/</link>
@@ -121,17 +146,6 @@
 &lt;li&gt;不要购入二手iPhone，电池等问题就算当面也检查不出来&lt;/li&gt;
 &lt;li&gt;赚钱才是花钱的充分必要条件&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>奇怪的知识增加了</title>
-      <link>https://senup.github.io/posts/post/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</link>
-      <pubDate>Tue, 10 Oct 2023 13:42:40 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;上帝对人类的爱，超过世间万物，性爱的欢愉（不仅仅是为了传宗接代），的确是最美好的礼物。不过，每一对夫妻也应该谨记： “婚姻，人人应该尊重，床榻不可污秽。”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;刷到&lt;a href=&#34;https://twitter.com/shijinxia/status/1694476243754746110&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;twitter&lt;/a&gt;的这个视频，来自于清水健老师和竹内由纪老师主演的《爱の授业》。看完大为震撼，知识点满满。关于这方面的教育，想必很多人都是缺失的，我们能接收到的有限的影视材料大多都是为了更刺激的视觉体验而使用了很多不当的动作姿势。其中这些反面教材的动作在没人指点的情况下误用，可能会导致男女双方体验不适，或者忽略了对方的感受。毕竟，现实和电影里面可是不一样的。&lt;/p&gt;
-&lt;p&gt;这一集里面，几分钟的讲解就干货满满。渴望知识的我于是找了全集学习了下，不禁感慨人类的智慧真是无限大（笑）。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

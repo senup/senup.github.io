@@ -7,12 +7,111 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-11T07:45:28+00:00</updated>
+    <updated>2023-11-11T17:08:14+00:00</updated>
     
     
     
     
         <id>https://senup.github.io/atom.xml</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Hello，Quantumult X]]></title>
+            <link href="https://senup.github.io/posts/post/helloquantumult-x/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/post/helloquantumult-x/</id>
+            
+            
+            <published>2023-11-11T23:13:43+08:00</published>
+            <updated>2023-11-11T23:13:43+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>
+<p>Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。</p>
+</blockquote>
+<h1 id="下载配置">下载配置</h1>
+<p>推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。<br>
+<a href="https://github.com/ddgksf2013" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/ddgksf2013</a></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg" alt="IMG_1860.jpg"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg" alt="IMG_1859.jpg"  /></p>
+<h1 id="重写规则">重写规则</h1>
+<p>有些小众 APP 再从这个组里面找需要的 APP 规则：<br>
+<a href="https://t.me/Aa28413761" target="_blank" rel="noopener nofollow noreferrer" >https://t.me/Aa28413761</a></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg" alt="IMG_1857.jpg"  /></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg" alt="IMG_1858.jpg"  /></p>
+<h1 id="导入节点订阅">导入节点订阅</h1>
+<p>目前用的是魔戒，按量订阅，缺点是偏慢</p>
+<h1 id="配置证书">配置证书</h1>
+<p>打开设置的MitM开关，生成证书并去设置里面配置证书
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg" alt="IMG_1861.jpg"  /></p>
+<h1 id="重写规则配置">重写规则配置</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 🟢&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;功能重写&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>rewrite_remote<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/Netease.conf, tag<span style="color:#f92672">=</span>网易云音乐, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.snippet, tag<span style="color:#f92672">=</span>知乎新版, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/wyun.js, tag<span style="color:#f92672">=</span>by-伟人,网易云音乐, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf, tag<span style="color:#f92672">=</span>去开屏, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/senup/QuantX/main/rule.conf, tag<span style="color:#f92672">=</span>个人配置, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/zwf234/rules/master/QuantumultX/qxrules.conf, tag<span style="color:#f92672">=</span>齐心规则, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Collections.conf, tag<span style="color:#f92672">=</span>𝑪𝒐𝒍𝒍𝒆𝒄𝒕𝒊𝒐𝒏𝒔, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, inserted-resource<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/amap.snippet, tag<span style="color:#f92672">=</span>高德净化, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, inserted-resource<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Script/Bilibili/AD_Bilibili.conf, tag<span style="color:#f92672">=</span>哔哩广告, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Cainiao.conf, tag<span style="color:#f92672">=</span>菜鸟裹裹, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/XHS.conf, tag<span style="color:#f92672">=</span>小红书, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Search.conf, tag<span style="color:#f92672">=</span>超级搜索, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/ADBlock.conf, tag<span style="color:#f92672">=</span>ADBlock, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/TikTok/TikTok-US.conf, tag<span style="color:#f92672">=</span>𝑻𝒊𝒌𝑻𝒐𝒌, update-interval<span style="color:#f92672">=</span>86400, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/app2smile/rules/master/module/youtube.sgmodule, tag<span style="color:#f92672">=</span>油管广告, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Maasea/sgmodule/master/YoutubeAds.sgmodule, tag<span style="color:#f92672">=</span>油管画中画, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/ZHVIP.js, tag<span style="color:#f92672">=</span>知乎会员, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/wxds.js, tag<span style="color:#f92672">=</span>微信读书, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Cookie.conf, tag<span style="color:#f92672">=</span>Cookie, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ======================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://gitlab.com/ioshkj/quantumultx/-/raw/main/vipjs/ylgy.conf, tag=𝑺𝒉𝒆𝒆𝒑, update-interval=172800, opt-parser=true, enabled=false</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/zwf234/rules/master/QuantumultX/price.conf, tag=京东淘宝比价, update-interval=172800, opt-parser=true, enabled=true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/TestFlightDownload.conf , tag=TestFlight区域限制解除, update-interval=172800, opt-parser=false, enabled=true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/zZPiglet/Task/master/UnblockURLinWeChat.conf, tag=微信跳过中间界面, update-interval=172800, opt-parser=true, enabled=true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/yqc007/QuantumultX/master/DuolingoPlusCrack.js, tag=𝑫𝒖𝒐𝒍𝒊𝒏𝒈𝒐, update-interval=172800, opt-parser=true, enabled=true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Bilibili/AutoBilibili.conf, tag=哔哩换区, update-interval=172800, opt-parser=false, enabled=true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ======================================</span>
+</span></span></code></pre></div><h1 id="本地任务配置">本地任务配置</h1>
+<p>可以参考<a href="https://www.cnblogs.com/zh76412950/p/17207805.html" target="_blank" rel="noopener nofollow noreferrer" >圈x脚本 - 菜鸟辉哥</a>讲了<strong>本地任务</strong>和<strong>抓包</strong>的使用
+相关脚本可以参考<a href="https://t.me/nobyda" target="_blank" rel="noopener nofollow noreferrer" >Telegram: Contact @nobyda</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 🟢&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;本地任务&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>task_local<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ===============莫离收集===============</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">36</span> 6,14,23 * * * https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/testflight/Auto_join_TF.js, tag<span style="color:#f92672">=</span>TestFlight自动加入, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/Orz-3/mini/master/Color/testflight.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">36</span> 6,14,23 * * * https://raw.githubusercontent.com/dompling/Script/master/jd/jd_cookie_search.js, tag<span style="color:#f92672">=</span>京东检测, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/FoKit/Quantumult-X/main/images/check.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 7,11,15,19 * * * https://raw.githubusercontent.com/id77/QuantumultX/master/task/jdWuLiu.js, tag<span style="color:#f92672">=</span>京东物流, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 18,20 * * * https://raw.githubusercontent.com/ChuheGit/1/main/Script/jd_scripts/jd_unsubscribe.js, tag<span style="color:#f92672">=</span>京东取关, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 8,12,16,20 * * * https://raw.githubusercontent.com/ChuheGit/1/main/Script/jd_scripts/jd_bean_change.js, tag<span style="color:#f92672">=</span>京豆变动, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_bean_change.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span> * https://raw.githubusercontent.com/WSL33099/QuantumultX/main/Script/JD/ClCart.js, tag<span style="color:#f92672">=</span>清空购物车, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span> <span style="color:#ae81ff">0</span> * * * https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag<span style="color:#f92672">=</span>京东签到, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 7-22 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/appstore/AppMonitor.js, tag<span style="color:#f92672">=</span>软件监控, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/WSL33099/QuantumultX/main/Icon/Test/App-Store.PNG, enabled<span style="color:#f92672">=</span>false
+</span></span></code></pre></div><h1 id="参考">参考</h1>
+<p><a href="https://github.com/kjfx/QuantumultX/" target="_blank" rel="noopener nofollow noreferrer" >GitHub - kjfx/QuantumultX: Quantumult X 新手入门教程</a>
+<a href="https://www.youtube.com/watch?v=QUNzXesYMOo" target="_blank" rel="noopener nofollow noreferrer" >Quantumult实现京东签到</a>
+<a href="https://www.notion.so/Quantumult-X-1d32ddc6e61c4892ad2ec5ea47f00917" target="_blank" rel="noopener nofollow noreferrer" >Quantumult X 不完全教程</a></p>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
+                             
+                                <category scheme="https://senup.github.io/tags/vpn" term="vpn" label="vpn" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -31,7 +130,7 @@
                 <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36283000.jpg"></div>
                 <div class="db-card-content">
                     <div class="db-card-title"><a href="https://movie.douban.com/subject/36283000/" class="cute" target="_blank" rel="external nofollow">进击的巨人 最终季 完结篇 后篇</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:0%"></span></span><span class="rating_nums">0</span></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:93%"></span></span><span class="rating_nums">9.3</span></div>
                     <div class="db-card-abstract">2023 / 日本 / 动作 动画 奇幻 / 林祐一郎 / 梶裕贵 石川由依</div>
                     <div class="db-card-comment"></div>
                 </div>
@@ -562,12 +661,6 @@
     
     
 
-
-<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<style type="text/css">.dark-theme .aplayer{background:#212121}.dark-theme .aplayer.aplayer-withlist .aplayer-info{border-bottom-color:#5c5c5c}.dark-theme .aplayer.aplayer-fixed .aplayer-list{border-color:#5c5c5c}.dark-theme .aplayer .aplayer-body{background-color:#212121}.dark-theme .aplayer .aplayer-info{border-top-color:#212121}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-title{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-author{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time{color:#eee}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path{fill:#eee}.dark-theme .aplayer .aplayer-list{background-color:#212121}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb{background-color:#999}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb:hover{background-color:#bbb}.dark-theme .aplayer .aplayer-list li{color:#fff;border-top-color:#666}.dark-theme .aplayer .aplayer-list li:hover{background:#4e4e4e}.dark-theme .aplayer .aplayer-list li.aplayer-list-light{background:#6c6c6c}.dark-theme .aplayer .aplayer-list li .aplayer-list-index{color:#ddd}.dark-theme .aplayer .aplayer-list li .aplayer-list-author{color:#ddd}.dark-theme .aplayer .aplayer-lrc{text-shadow:-1px -1px 0 #666}.dark-theme .aplayer .aplayer-lrc:before{background:-moz-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:-webkit-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:linear-gradient(to bottom, #212121 0%, rgba(33,33,33,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#00212121',GradientType=0 )}.dark-theme .aplayer .aplayer-lrc:after{background:-moz-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:-webkit-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:linear-gradient(to bottom, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00212121', endColorstr='#cc212121',GradientType=0 )}.dark-theme .aplayer .aplayer-lrc p{color:#fff}.dark-theme .aplayer .aplayer-miniswitcher{background:#484848}.dark-theme .aplayer .aplayer-miniswitcher .aplayer-icon path{fill:#eee}</style>
-<script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-
-<script src="https://fastly.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><meting-js auto="https://music.163.com/#/song?id=2096750174" theme="#2980b9"></meting-js>
 <p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536261.GIF" alt="IMG_1809.GIF"  /></p>
 <h3 id="观后评">观后评</h3>
 <p>这部2013 年的作品，在 2023 年终于完结了。电影的观感非常不错，画面很流畅。后篇从调查兵团搭上法尔科的鸟形颚巨对着进击的巨人进行断头行动讲起，其中比较有感触的点：</p>
@@ -1473,630 +1566,6 @@
                             
                              
                                 <category scheme="https://senup.github.io/tags/life" term="life" label="life" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[🎬《美国恐怖故事集 第三季》]]></title>
-            <link href="https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%89%E5%AD%A3/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%89%E5%AD%A3/</id>
-            
-            
-            <published>2023-10-29T04:57:20+08:00</published>
-            <updated>2023-10-29T04:57:20+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<div class="db-card">
-            <div class="db-card-subject">
-                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36395330.jpg"></div>
-                <div class="db-card-content">
-                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36395330/" class="cute" target="_blank" rel="external nofollow">美国恐怖故事集 第三季</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:71%"></span></span><span class="rating_nums">7.1</span></div>
-                    <div class="db-card-abstract">2023 / 美国 / 剧情 悬疑 惊悚 恐怖 / 麦克思·温克勒 艾利根斯·布拉顿 亚历克西斯·马丁·伍达尔 / 杰西卡·巴登 格温妮斯·帕特洛</div>
-                    <div class="db-card-comment"></div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-<h1 id="第1集bestie-闺蜜">第1集《Bestie 闺蜜》</h1>
-<ul>
-<li>女主在丑陋的网络闺蜜衬托的格外漂亮</li>
-<li>看了豆瓣评论才发现女主万圣节的装扮是嘲讽老师死去的孩子</li>
-<li>结尾的反转还是让人措不及防，足够恶心👍🏻</li>
-<li>总体好评，画面观感很不错</li>
-</ul>
-<p>第2集《Daphne 月桂女神》
-第3集《Tapeworm 绦虫》
-第4集《Organ 器官》
-第5集《Backrooms 暗房》
-第6集《The Thing Under the Bed 床底下的东西》
-第7集《Howl 嚎叫》
-第8集《Clone 克隆》
-第9集《Leprechaun 妖精》</p>
-<hr>
-<p>观影 tips：你可以使用这个表格来逐一回答这些问题，从而构建一个全面的电影影评。</p>
-<table>
-<thead>
-<tr>
-<th>问题</th>
-<th>详细讨论</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>剧情和情节</td>
-<td>电影的主要情节如何？是否有令人惊喜的情节转折？</td>
-</tr>
-<tr>
-<td>角色和表演</td>
-<td>电影中的主要角色有哪些？你对他们的性格和发展有什么看法？</td>
-</tr>
-<tr>
-<td>导演和摄影</td>
-<td>电影的导演采用了什么样的导演风格？有没有特别引人注目的镜头或导演手法？</td>
-</tr>
-<tr>
-<td>音乐和音效</td>
-<td>电影的音乐如何？它增强了电影的氛围和情感吗？</td>
-</tr>
-<tr>
-<td>主题和信息</td>
-<td>电影中探讨了哪些主题？它们对你产生了什么样的影响？</td>
-</tr>
-<tr>
-<td>情感和观众体验</td>
-<td>电影触发了你的情感吗？是否有感人的时刻？</td>
-</tr>
-<tr>
-<td>与其他作品的比较</td>
-<td>与类似类型的其他电影相比，这部电影有什么独特之处？</td>
-</tr>
-<tr>
-<td>目标观众</td>
-<td>这部电影的目标观众是谁？你认为哪类人会特别喜欢这部电影？</td>
-</tr>
-<tr>
-<td>改进的空间</td>
-<td>是否有任何你认为电影可以改进的方面？可能是剧情逻辑、角色发展、表演等方面。</td>
-</tr>
-<tr>
-<td>总结和评价</td>
-<td>最后，你会如何总结这部电影？你会给它一个什么样的评分或建议观众是否观看？</td>
-</tr>
-</tbody>
-</table>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/movie" term="movie" label="movie" />
                             
                         
                     

@@ -233,3 +233,42 @@ innodb_old_blocks_pct参数控制的，他默认是37，也就是说冷数据占
 对于 LRU 链表来说，后台其实会启动一个工作线程空闲的时候就开始刷磁盘了，不会等到实在free 链表实在没有节点的时候才刷。
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131934345.png)
+
+
+## 多个 buffer pool
+首先内存小于 1GB只能申请一个 buffer pool，并且多线程访问 buffer pool 也是需要加锁的，因此内存大的话就可以申请多个来优化多线程下的并发能力。比如
+
+［server］
+innodb_buffer_poo_size = 8589934592
+innodb_buffer_poo_instances = 4
+
+我们给buffer pool设置了8GB的总内存，然后设置了他应该有4个Buffer Pool，此时就是说，每个buffer pool的大小就是2GB。
+
+这个时候，MySQL在运行的时候就会有4个Buffer Pool了！每个Buffer Pool负责管理一部分的缓存页和描述数据块，有自己独立的free、flush、Iru等链表。
+这个时候，假设多个线程并发过来访问，那么不就可以把压力分散开来了吗？有的线程访问这个buffer pool，有的线程访问那个buffer pool。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132320225.png)
+
+# chunk 机制
+因为 buffer pool 是机器启动的时候系统自己划分的一块儿连续的内存，所以并不支持系统运行期间动态修改。因此，就有了更为细化的 chunk。
+
+怎么动态调整呢？就是 buffer pool 是由一系列的 chunk 组成。那么只有有单个连续空间内存的 chunk 就可以分配给 buffer pool。比如我们buffer pool现在总大小是8GB，现在要动态加到16GB，那么此时只要申请一系列的128MB大小（固定）的chunk就可以了，只要每个chunk是连续的128MB内存就行了。然后把这些申请到的chunk内存分配给buffer pool就行了。
+
+
+有个这个chunk机制，此时并不需要额外申请16GB的连续内存空间，然后还要把已有的数据进行拷贝。
+
+
+> MySQL自然会想办法去做一些优化的，他实际上设计了一个chunk机制，也就是说buffer pool是由很多chunk组成的，他的大小是innodb_buffer_pool_chunk_size参数控制的，默认值就是128MB。
+所以实际上我们可以来做一个假设，比如现在我们给buffer pool设置一个总大小是8GB，然后有4个buffer pool，那么每个buffer pool就是2GB，此时每个buffer pool是由一系列的128MB的chunk组成的，也就是说每个buffer pool会有16个chunk。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132326527.png)
+
+
+## 容量调节
+此时要记住，有一个很关键的公式就是：buffer pool总大小=（chunk大小 * buffer pool数量）的倍数。
+
+比如默认的chunk大小是128MB，那么此时如果你的机器的内存是32GB，你打算给buffer pool总大小在20GB左右，那么你得算一下，此时你的buffer pool的数量应该是多少个呢？
+假设你的buffer pool的数量是16个，这是没问题的，那么此时chunk大小 * buffer pool的数量= 16* 128MB =2048MB，然后buffer pool总大小如果是20GB，此时buffer pool总大小就是2048MB的10倍，这就符合规则了。
+
+# 物理结构
+虽然用户使用的 MySQL 展示为一条条的 数据库记录，但是每次从磁盘读取一行数据再放到内存，频率会很高，不现实。所以使用了数据页这个概念，每次

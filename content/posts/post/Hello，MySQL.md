@@ -49,11 +49,31 @@ isTop: false
 - redo log buffer:在内存里面开辟出新的一块儿地方存放着SQL语句的操作，比如把张三改成了李四。
 - redo log:存放在磁盘里面，当buffer在内存写完后就会再开始写磁盘。记录数据比如对“id=1这行记录修改了name字段的值为xxx”
 
+
+## redo log
+为什么需要 redo log 呢？因为相比事务未提交的时候宕机，刷入磁盘的速度较慢，毕竟一个数据页 16kb；redo log 顺序写入较快才几十个字节，重启后再次提交事务即可。因此，使用 redo log 能够让数据库的并发能力更强。
+
+redo log里本质上记录的就是在对某个表空间的某个数据页的某个偏移量的地方修改了几个字节的值，具体修改的值是什么，他里面需要记录的就是<u>表空间号+数据页号+偏移量+修改几个字节的值+具体的值</u>。
+
+日志文件默认就两个，一个写满就覆盖另一个的日志文件。
 ## **redo log buffer写磁盘的时机控制**
 有一个参数：innodb_flush_log_at_trx_commit来控制怎么写入？
 - 0代表不写磁盘日志
 - 1代表事务提交的时候必须写入redo日志（推荐）✅
 - 2代表事务提交后可能过一段时间（比如一秒）再写入磁盘日志
+
+redo log buffer的缓冲机制，，redo 1og在写的时候，都是一个事务里的一组redo log，先暂存在一个地方，完事儿了以后把一组redo log写入redo log buffer。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141654845.png)
+
+写入redo log buffer的时候，是写入里面提前划分好的一个一个的redo log block的，选择有空闲空间的redo log block去写入，然后redo log block写满之后，其实会在某个时机刷入到磁盘里去，如图。
+
+redo log block 写入时间：
+- 超过了buffer 一半的空间
+- 事务提交的时候
+- 后台线程每秒写入
+- MySQL 关闭时
+
 
 
 ## **宕机时机的影响**
@@ -271,4 +291,90 @@ innodb_buffer_poo_instances = 4
 假设你的buffer pool的数量是16个，这是没问题的，那么此时chunk大小 * buffer pool的数量= 16* 128MB =2048MB，然后buffer pool总大小如果是20GB，此时buffer pool总大小就是2048MB的10倍，这就符合规则了。
 
 # 物理结构
-虽然用户使用的 MySQL 展示为一条条的 数据库记录，但是每次从磁盘读取一行数据再放到内存，频率会很高，不现实。所以使用了数据页这个概念，每次
+## 数据页
+虽然用户使用的 MySQL 展示为一条条的 数据库记录，但是每次从磁盘读取一行数据再放到内存，频率会很高，不现实。
+
+所以使用了数据页这个概念，每次加载一个或多个数据页到磁盘上面。
+
+## 变长字段存储
+
+一行数据的存储格式大致如下所示。
+
+<u>变长字段的长度列表，null值列表，数据头，column01的值，column02的值，column0n的值......</u>
+
+比如一行数据有VARCHAR(10) VARCHAR(5) VARCHAR(20) CHAR(1) CHAR(1)，一共5个字段，其中三个是变长字段，此时假设一行数据是这样的：
+
+hello hi hao a a，其中字段设置都可以为 null
+
+实际存储可能是下面这样的：
+
+0x03 0x02 0x05 null值列表 头字段 hello hi hao a a
+
+解释一下，原数据前三个变长字段的长度分别为 5,2,3，但是实际存储是逆序存储。
+
+## null 值存储
+null 值列表是 8 位 bit 组成，1 是 0 否，针对的是表字段允许为 null 的字段，逆序且不足补 0。
+
+## 磁盘数据如何还原
+
+看上面的磁盘数据存储格式：
+0x09 0x04 00000101 头信息 column1=value1 column2=value2 ... columnN=valueN
+
+首先MySQL 肯定知道了表结构的组成，再了解变长字段和 null 值列表，这个时候再去遍历表结构和尾部的文本信息，就能够推测出变长字段读几位、null 值列表跳过，剩下的定长字段直接读表结构的长度即可。
+
+举个例子，比如我们之前说了一个例子，有一行数据是“jack NULL m NULL xx_schooI”，那么他真实存储大致如下所示：
+0x09 0x04 00000101 0000000000000000000010000000000000011001 00000000094C（DB_ROW_ID）
+00000000032D （DB_TRX_ID） EA000010078E （DB_ROL_PTR） 616161 636320 6262626262
+
+头消息有 40 位，后续还包含了行的唯一标识、事务 ID、回滚指针，然后才是三个文本数值的编码值
+
+## 行溢出
+一行如果超出了数据页的范围，那么就会将数据存储在别的数据页上面，使用一个指针指向新数据页的地址，如果一个数据页放不下，那么就会有多个数据页来进行存放。
+
+这种情况一般是超出了 varchar 的最大范围，以及 blob、text类型字段存储过长。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141559221.png)
+
+
+## 数据页的结构
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603272.png)
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603816.png)
+
+## 数据区
+数据表的物理实体是一个叫做表名.ibd 的文件，其中这么多数据页不可能放在一个表空间里面，因此产生了一个中间概念——数据区。
+
+一个表空间有 256 个数据区，每个数据区有 64 个数据页，每个数据页有 16kb 的大小。
+
+
+
+从磁盘读取数据页的时候，随机读取一个 extend 里面的一部分数据，指定开始位置和结束位置，取中间的一部分数据，可能这一部分数据就是一个数据页包含的内容，然后再将其刷入内存作为缓存页。
+
+
+## 随机读和顺序写
+
+执行 select 语句的时候，一般就是随机读的一个代表。此时磁盘文件散落在各处，所以只能使用这种性能较差的方式。同时，更新数据的时候也需要在内存中更新，在磁盘更新的磁盘更大。
+
+另一种是顺序写，比如写 redo log。这种写的方式性能几乎同内存操作一样快。
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141619129.png)
+
+## Linux 读写
+Linux的存储系统分为VFS层、文件系统层、Page Cache缓存层、通用Block层、IO调度层、Block设备驱动层、Block设备层，如下图：
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141623678.png)
+
+简单讲下，vfs层相当于一个接口，接到请求就按照不同的类型分发给不同的文件系统。接着在页缓存找下，找不到就转发给通用 block 层，转化成 IO 请求，io 调度层有两种算法，一种是公平算法，讲究先来后到，可能导致请求过大阻塞后来请求；另一种更推荐，就是 deadline 算法，给定一个到期时间，确保所有请求不至于被阻塞。然后 io 调度决定 IO 顺序，选择不同的驱动，去设备层真正执行存储硬件查询。
+
+## RAID
+raid ，磁盘阵列技术。就是用来管理多块磁盘之前读写的一种技术，方便磁盘进行拓展，以及决定哪块磁盘进行写入。还有额外的备份技术，如图：
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141629886.png)
+
+
+这个比较有意思的是，当服务器断电之后，这里有个磁盘缓存设置来进行继续供电，将缓存中的数据写入到阵列中的磁盘上面。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141631361.png)
+
+## 实战案例
+- 问题：数据库无法连接故障的定位，Too many connections
+- 核对：Java 系统连接池两台机器最多 400 个连接，排查 MySQL 最大连接数是 241 个（show variables like 'max_connections'）
+- 原因：底层的linux操作系统把进程可以打开的文件句柄数限制为了1024了，计算出 214
+- 解决：ulimit -HSn 65535
+

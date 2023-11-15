@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-15T15:37:26+00:00</updated>
+    <updated>2023-11-15T15:55:35+00:00</updated>
     
     
     
@@ -852,25 +852,25 @@ select t1.* from t1 semi join t2 on t1.x1=t2.x2 and t2.×3=xxx
 <h1 id="执行计划的ref">执行计划的ref</h1>
 <p>而执行计划里的 ref 也相对会关键一些，当你的查询方式是索引等值匹配的时候，比如const、ref、eq_ref、ref_or_null这这些方式的时候，此时执行计划的ref字段告诉你的就是：你跟索引列等值匹配的是什么？是等值匹配一个常量值？还是等值匹配另外一个字段的值？</p>
 <p>EXPLAIN SELECT * FROM t1 WHERE ×1 =&lsquo;xXX&rsquo;</p>
-<p>这个语句的执行计划是常量 const
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152249298.png" alt="image.png"  /></p>
+<p>这个语句的执行计划是常量 const。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152249298.png" alt="image.png"  /></p>
 <p>EXPLAIN SELECT * FROM t1 INNER JOIN t2 ON t1.id =t2.id；
-这个语句的执行计划是 primary，代表 t2 表的主键，被驱动表基于主键进行等值匹配。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152250787.png" alt="image.png"  /></p>
+这个语句的执行计划是 primary，代表 t2 表的主键，被驱动表基于主键进行等值匹配。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152250787.png" alt="image.png"  /></p>
 <h2 id="extra">extra</h2>
 <p>好，那么我们看看extra的信息，是Using index，这是什么意思呢？其实就是说这次查询，仅仅涉及到了一个二级索引，不需要回表，因为他仅仅是查出来了x1这个字段，直接从index_x1索引里查就行了。
-如果没有回表操作，仅仅在二级索引里执行，那么extra里会告诉in是<strong>Using index</strong>。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152253877.png" alt="image.png"  /></p>
-<p><strong>using where</strong> 表示没用到索引或者除了用到索引还用到别的条件
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152254369.png" alt="image.png"  />
-这个执行计划也是非常的清晰明了，这里针对t1表去查询，先通过ref方式直接在index_×1 索引里查找，是跟const代表的常量值去查找，然后查出来250条数据，接着再用Using where代表的方式，去使用AND x2=&lsquo;xxx&rsquo;条件进行筛选，筛选后的数据比例是18%，最终所以查出来的数据大概应该是45条。</p>
+如果没有回表操作，仅仅在二级索引里执行，那么extra里会告诉in是<strong>Using index</strong>。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152253877.png" alt="image.png"  /></p>
+<p><strong>using where</strong> 表示没用到索引或者除了用到索引还用到别的条件。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152254369.png" alt="image.png"  /></p>
+<p>这个执行计划也是非常的清晰明了，这里针对t1表去查询，先通过ref方式直接在index_×1 索引里查找，是跟const代表的常量值去查找，然后查出来250条数据，接着再用Using where代表的方式，去使用AND x2=&lsquo;xxx&rsquo;条件进行筛选，筛选后的数据比例是18%，最终所以查出来的数据大概应该是45条。</p>
 <p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152255192.png" alt="image.png"  /></p>
-<p><strong>内存优化多表关联</strong>
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152257050.png" alt="image.png"  /></p>
+<p><strong>内存优化多表关联</strong></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152257050.png" alt="image.png"  /></p>
 <p>这个SQL很明确了，他基于x2字段来排序，是没法直接根据有序的索引去找数据的，只能把所有数据写入一个临时的磁盘文件，基于排序算法在磁盘文件里按照×2字段的值完成排序，然后再按照LIMIT 10的要求取出来头10条数据。
 <img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152259346.png" alt="image.png"  /></p>
-<p>这个SQL里只能对全表数据放到临时表里做大量的磁盘文件操作，然后才能完成对x2字段的不同的值去分组，分组完了以后对不同x2值的分组去做聚合操作，这个过程也是相当的耗时的，性能是极低的。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152300554.png" alt="image.png"  /></p>
+<p>这个SQL里只能对全表数据放到临时表里做大量的磁盘文件操作，然后才能完成对x2字段的不同的值去分组，分组完了以后对不同x2值的分组去做聚合操作，这个过程也是相当的耗时的，性能是极低的。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152300554.png" alt="image.png"  /></p>
 <h2 id="其他字段">其他字段</h2>
 <ul>
 <li>key_len表示这个字段里面长度最大的长度</li>

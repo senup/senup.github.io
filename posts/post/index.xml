@@ -44,7 +44,7 @@
   &lt;body&gt;
     &lt;div class=&#34;aspect-ratio&#34;&gt;
       &lt;iframe
-              src=&#34;//player.bilibili.com/player.html?bvid=BV19t411y7DE&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&amp;autoplay=1&#34;
+              src=&#34;//player.bilibili.com/player.html?bvid=BV19t411y7DE&amp;autoplay=1&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&#34;
               scrolling=&#34;no&#34; 
               border=&#34;0&#34; 
               frameborder=&#34;no&#34; 

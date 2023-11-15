@@ -1,6 +1,6 @@
 ---
 title: Hello，MySQL
-date: 2023-11-10 14:03:43
+date: 2023-11-16T14:03:43
 tags:
   - tech
   - mysql
@@ -506,6 +506,7 @@ LOCK TABLES xxx WRITE：这是加表级独占锁
 
 ## 主键查询
 每个数据页的页号，还有数据页里最小的主键值放在一起，组成一个索引的目录。
+
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151742144.png)
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151806121.png)

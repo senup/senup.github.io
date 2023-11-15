@@ -288,57 +288,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     
     <div class="post on-list tech">
     
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/hellomysql/">Hello，MySQL</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-10
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/mysql/">mysql</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <h1 id="mysql-概述">MySQL 概述</h1>
-<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
-<p>接下来讲讲其中的一些部件：</p>
-<ul>
-<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
-<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
-<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
-<ul>
-<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
-<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
-<li>SQL 解析器：解析 SQL 语句的含义</li>
-<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
-<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
-<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
-</ul>
-        <div><a class="read-more button" href="/posts/tech/hellomysql/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
-    
-    <div class="post on-list tech">
-    
       <h1 class="post-title"><a href="https://senup.github.io/posts/tech/helloraycast/">Hello，Raycast</a></h1>
       <div class="post-meta">
         
@@ -579,8 +528,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
-    
-
 
 
 
@@ -591,7 +538,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 32680 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 16546 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

@@ -423,57 +423,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </div>
     
     
-    <div class="post on-list tech">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/hellomysql/">Hello，MySQL</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-10
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/mysql/">mysql</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <h1 id="mysql-概述">MySQL 概述</h1>
-<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
-<p>接下来讲讲其中的一些部件：</p>
-<ul>
-<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
-<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
-<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
-<ul>
-<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
-<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
-<li>SQL 解析器：解析 SQL 语句的含义</li>
-<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
-<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
-<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
-</ul>
-        <div><a class="read-more button" href="/posts/tech/hellomysql/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
-    
     <div class="post on-list movie">
     
       <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">🎥《进击的巨人 最终季 完结篇 后篇》</a></h1>
@@ -2317,6 +2266,73 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     
     </div>
     
+    
+    <div class="post on-list tech">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/helloapple-tv/">Hello，Apple TV</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-30
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。</p>
+<p>渠道：京东。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png" alt="image.png"  /></p>
+<h1 id="8字电源线">8字电源线</h1>
+<p>港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。</p>
+<h1 id="infuse-pro">infuse pro</h1>
+<blockquote>
+<p>用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙</p>
+</blockquote>
+<p>流程：</p>
+<ul>
+<li>申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空</li>
+<li>土区<a href="https://www.oyunfor.com/" target="_blank" rel="noopener nofollow noreferrer" >onyunfor</a>礼品卡购买100里拉，花费26¥</li>
+<li>Apple store订阅infuse pro年费</li>
+<li>片源获取：<a href="https://www.codelicence.cn/" target="_blank" rel="noopener nofollow noreferrer" >云盘4K-综合网盘搜索</a>+telegram电报群资源</li>
+</ul>
+<p>遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png" alt="image.png"  /></p>
+<h1 id="cheers">cheers</h1>
+<p>也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。</p>
+<h1 id="youtube-prime">youtube prime</h1>
+<ul>
+<li>油管会员，用于去广告，还附赠了YouTube music，体验很不错。</li>
+<li>渠道：电报群拼车。</li>
+<li>花费：年付45¥。</li>
+</ul>
+<h1 id="iplaytv">iplaytv</h1>
+<ul>
+<li>渠道：闲鱼账号附赠，无需花费。</li>
+<li>进阶：搜索<strong>m3u直播源</strong>，导入配置订阅即可。</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。</p>
+        
+      
+      </div>
+    
+    </div>
+    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -2400,8 +2416,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
-    
-
 
 
 
@@ -2412,7 +2426,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 32680 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 16546 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

@@ -3,6 +3,7 @@ title: Hello，VS code
 date: 2023-11-13 16:00:07
 tags:
   - tech
+  - hello
 draft: true
 hideInList: false
 feature: 

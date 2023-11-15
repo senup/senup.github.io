@@ -2,9 +2,10 @@
 title: Hello，MacOS
 date: 2023-11-07 23:23:28
 tags:
-  - life
+  - tech
   - mac
   - finder
+  - hello
 draft: true
 hideInList: false
 feature: 

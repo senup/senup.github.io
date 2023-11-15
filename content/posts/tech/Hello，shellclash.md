@@ -2,9 +2,10 @@
 title: Hello，shellclash
 date: 2023-11-12 01:17:06
 tags:
-  - life
+  - tech
   - vpn
   - linux
+  - hello
 draft: false
 hideInList: false
 feature: 

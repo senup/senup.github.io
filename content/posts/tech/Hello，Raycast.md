@@ -2,8 +2,9 @@
 title: Hello，Raycast
 date: 2023-10-31 02:53:49
 tags:
-  - life
+  - tech
   - mac
+  - hello
 draft: false
 hideInList: false
 feature: 

@@ -3,7 +3,8 @@ title: Hello，iOS
 date: 2023-11-08 15:54:54
 tags:
   - iOS
-  - life
+  - tech
+  - hello
 draft: true
 hideInList: false
 feature: 

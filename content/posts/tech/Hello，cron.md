@@ -3,6 +3,7 @@ title: Hello，cron
 date: 2023-10-04 20:48:29
 tags:
   - tech
+  - hello
 draft: false
 hideInList: false
 feature: 

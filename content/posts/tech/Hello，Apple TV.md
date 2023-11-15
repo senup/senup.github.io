@@ -2,7 +2,8 @@
 title: Hello，Apple TV
 date: 2023-10-30T02:54:33
 tags:
-  - life
+  - tech
+  - hello
 draft: false
 hideInList: false
 feature: 

@@ -2,8 +2,9 @@
 title: Hello，Quantumult X
 date: 2023-11-11 23:13:43
 tags:
-  - life
+  - tech
   - vpn
+  - hello
 draft: false
 hideInList: false
 feature: 

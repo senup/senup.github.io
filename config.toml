@@ -15,11 +15,11 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="生活"
-  url="/posts/life/"
+  name="闲聊"
+  url="/posts/chat/"
   weight="1"
-
-  [[menu.main]]
+  
+    [[menu.main]]
   name="阅读"
   url="/posts/read/"
   weight="2"
@@ -35,14 +35,14 @@ rssLimit = 5
   weight="4"
 
   [[menu.main]]
-  name="折腾"
-  url="/posts/tech/"
+  name="生活"
+  url="/posts/life/"
   weight="5"
 
   [[menu.main]]
-  name="闲聊"
-  url="/posts/chat/"
-  weight="99"
+  name="折腾"
+  url="/posts/tech/"
+  weight="6"
 
   [[menu.main]]
   name="归档"
@@ -57,7 +57,7 @@ rssLimit = 5
   [[menu.main]]
   name="🔍"
   url="/search/"
-  weight="102"
+  weight="999"
 
 
 

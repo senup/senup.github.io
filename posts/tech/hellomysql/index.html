@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Hello，MySQL :: 高等游民🗯️</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta name="force-rendering" content="webkit"/>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<script>if ( false || (!!window.MSInputMethodContext && !!document.documentMode)) document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="MySQL 概述 在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。
+接下来讲讲其中的一些部件：
+需要发送网络请求才能进行访问，所以需要引入 MySQL 驱动的 jar 包。 Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了连接池。 按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：
+线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。 SQL 接口：作为接口，负责接收（和处理 SQL） SQL 解析器：解析 SQL 语句的含义 查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划 执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询 存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。 "/>
+<meta name="keywords" content="博客、app、折腾、生活、阅读、自律"/>
+<link href="/atom.xml" title="高等游民🗯️" type="application/rss+xml">
+<link rel="canonical" href="https://senup.github.io/posts/tech/hellomysql/" />
+<link rel="stylesheet" href="//cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/theme-20230215.css">
+<link rel="shortcut icon" href="https://senup.github.io/favicon.ico">
+
+<link rel="apple-touch-icon" href="https://senup.github.io/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="高等游民🗯️">
+<link rel="bookmark" href="https://senup.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://senup.github.io/favicon.ico" >
+
+
+<meta property="og:title" content="Hello，MySQL" />
+<meta property="og:description" content="MySQL 概述
+在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。
+接下来讲讲其中的一些部件：
+
+需要发送网络请求才能进行访问，所以需要引入 MySQL 驱动的 jar 包。
+Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了连接池。
+
+
+按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：
+
+线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。
+SQL 接口：作为接口，负责接收（和处理 SQL）
+SQL 解析器：解析 SQL 语句的含义
+查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划
+执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询
+存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://senup.github.io/posts/tech/hellomysql/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-10T14:03:43+08:00" />
+<meta property="article:modified_time" content="2023-11-10T14:03:43+08:00" />
+
+
+
+
+<script async defer data-website-id="c27bd84b-02a3-4c3f-a168-0d7fadec9c74" src="https://u.edui.fun/lmmtj.js"></script>
+
+    
+  <link rel="prefetch" href="https://senup.github.io/posts/tech/helloquantumult-x/">
+  <link rel="prefetch" href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">
+
+  </head>
+  <body class="">
+    <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="https://senup.github.io/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__text">高等游民🗯️</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu hidden">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/post/">随笔</a></li>
+        
+      
+        
+          <li><a href="/posts/read/">阅读</a></li>
+        
+      
+        
+          <li><a href="/posts/movie/">电影</a></li>
+        
+      
+        
+          <li><a href="/posts/guitar/">吉他</a></li>
+        
+      
+        
+          <li><a href="/posts/tech/">技术</a></li>
+        
+      
+        
+          <li><a href="/search/">🔍</a></li>
+        
+      
+        
+          <li><a href="/posts/chat/">闲聊</a></li>
+        
+      
+        
+          <li><a href="/archives/">归档</a></li>
+        
+      
+        
+          <li><a href="/about/">关于</a></li>
+        
+      
+    
+    <li><a href="javascript:;" onclick="randomPost()" title="随机访问一篇文章"><svg t="1660103436159" class="icon search-box-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1184" width="32" height="32"><path d="M421.376 481.28s117.248 24.576 175.104-8.704c0 0-89.6 70.144-89.6 166.4 0.512-0.512-8.192-121.344-85.504-157.696zM438.784 969.216s68.608 6.656 68.608-80.896c0 0 3.072 88.576 65.024 78.336 0 0.512-50.688 22.016-133.632 2.56zM161.28 238.08s-30.208 65.536 11.264 91.648c0 0-67.072-17.408-81.408 37.376 0 0 8.704-82.944 70.144-129.024zM857.6 227.328s49.152 50.176 1.024 81.408c0 0 58.88-18.432 66.56 36.352 0 0 5.12-69.632-67.584-117.76z" p-id="1185"></path><path d="M443.392 970.752c-5.632 0-10.752-1.024-15.36-3.072l-270.848-157.184-1.536-1.024s-1.024-1.024-4.608-2.56c-51.2-29.184-62.976-94.208-65.536-120.832V386.56c0-3.072 0.512-7.168 1.024-11.264l0.512-3.584 1.024-2.56c19.456-50.688 76.8-51.2 103.936-44.032l-1.536 5.632 4.096-6.144L476.16 486.4l18.944 37.888c20.992 36.864 29.184 77.824 32.768 99.84v258.048c-4.608 56.32-36.864 76.288-55.808 82.944-1.024 0.512-15.36 5.632-28.672 5.632z m-262.144-196.096l263.168 152.576c12.288-0.512 36.864-6.656 40.448-48.128v-250.368c-4.608-31.744-20.992-103.936-72.192-128L322.56 445.44l1.536 3.072-142.336-82.432c-2.048-0.512-40.448-9.216-52.736 15.872-0.512 2.56-0.512 4.608-0.512 6.144v294.4c1.536 16.896 9.728 67.072 43.52 86.528 3.584 2.048 6.656 4.096 9.216 5.632z" p-id="1186"></path><path d="M837.632 212.992c6.656 4.096 12.8 7.168 18.432 10.752l1.536 1.024 1.536 1.536c5.12 4.096 10.752 9.216 16.384 15.36 6.144 11.776 5.632 33.28 4.608 49.152-1.024 12.288-6.656 30.208-26.624 44.544l-1.024 0.512-247.808 156.672c-26.624 14.336-62.976 18.432-96.256 18.432-40.96 0-77.824-6.656-89.088-8.704l-3.072-0.512-245.248-142.336c-39.424-29.696-28.16-85.504-15.36-113.664l2.56-6.144 263.68-166.912c29.184-14.336 104.448-43.008 173.056-1.024 3.584 2.56 58.368 34.304 119.296 69.632M431.616 460.8c40.448 7.168 114.176 13.824 152.576-6.144l244.736-155.136c7.168-5.632 8.192-10.24 8.704-12.8 1.024-11.264-9.728-26.624-15.36-32.768-55.808-32.256-243.712-141.312-250.368-145.408-49.664-30.72-107.008-9.216-130.048 2.56L192.512 268.8c-4.096 12.288-12.288 42.496 3.584 55.808l235.52 136.192z" p-id="1187"></path><path d="M831.488 299.008c4.096-1.024 38.4-11.264 66.048 6.144 7.168 4.608 17.92 11.776 24.064 24.576 1.024 5.632 4.096 10.752 4.608 16.896v2.048l-1.024 323.072c-5.12 35.328-22.528 91.648-77.312 125.44l-5.12 3.584h-1.024l-262.144 165.888-4.608 0.512c-4.096 0.512-8.704 1.024-12.8 1.024-15.872 0-30.208-5.12-41.984-14.848-24.576-20.48-32.768-55.808-35.328-73.728l-1.024-252.928h1.536c6.144-96.768 88.576-164.864 96.768-171.008l-0.512-0.512L829.44 299.52m-301.056 567.808c0.512 10.24 5.12 41.472 19.968 53.76 3.072 2.56 7.68 5.632 16.384 5.12l264.704-167.936c56.32-38.4 53.76-115.712 53.76-116.224l-0.512-32.256 1.024-250.368h-0.512c-1.536-12.8-7.168-16.384-8.704-17.408-8.704-5.632-23.552-3.072-28.672-2.048l-235.52 148.992c-1.024 0.512-80.896 65.024-80.896 149.504h-1.536l0.512 228.864zM435.2 264.192c0 27.648 31.744 50.176 71.168 50.176s71.168-22.528 71.168-50.176-31.744-50.176-71.168-50.176S435.2 236.544 435.2 264.192z" p-id="1188"></path><path d="M663.552 782.848c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM760.32 602.624c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-49.664-0.512-49.664-31.232s22.528-67.072 49.664-80.384c27.136-13.824 49.664 0.512 49.664 31.232zM867.84 428.032c0 30.72-22.528 67.072-49.664 80.384-27.648 13.824-50.176-0.512-50.176-31.232s22.528-67.072 50.176-80.384c27.136-13.824 49.664 0 49.664 31.232zM270.848 538.112c0 30.72-22.016 41.984-48.64 24.576-27.136-16.896-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528zM432.128 823.296c0 30.72-22.016 41.984-48.64 24.576-26.624-17.408-48.64-55.808-48.64-86.528 0-30.72 22.016-41.984 48.64-24.576 26.624 16.896 48.64 55.808 48.64 86.528z" p-id="1189"></path></svg></a></li>
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/post/">随笔</a></li>
+      
+    
+      
+        <li><a href="/posts/read/">阅读</a></li>
+      
+    
+      
+        <li><a href="/posts/movie/">电影</a></li>
+      
+    
+      
+        <li><a href="/posts/guitar/">吉他</a></li>
+      
+    
+      
+        <li><a href="/posts/tech/">技术</a></li>
+      
+    
+      
+        <li><a href="/search/">🔍</a></li>
+      
+    
+      
+        <li><a href="/posts/chat/">闲聊</a></li>
+      
+    
+      
+        <li><a href="/archives/">归档</a></li>
+      
+    
+      
+        <li><a href="/about/">关于</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+
+      <div class="content">
+        
+  
+  
+  
+  
+  <div class="post tech">
+    <div  class="breadcrumb">
+  
+
+  
+
+  
+
+  
+
+<li>
+  <a href="https://senup.github.io/">首页</a>
+</li>
+
+
+<li>
+  <a href="https://senup.github.io/posts/">归档</a>
+</li>
+
+
+<li>
+  <a href="https://senup.github.io/posts/tech/">技术</a>
+</li>
+
+
+<li class="active">
+  <a href="https://senup.github.io/posts/tech/hellomysql/">Hello，MySQL</a>
+</li>
+
+</div>
+
+
+  
+    <h2 class="post-title"><a href="https://senup.github.io/posts/tech/hellomysql/">Hello，MySQL</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">2023-11-10</span><span> / <span id="twikoo_visitors">0</span> 阅读</span>
+        
+          
+        
+      
+    </div>
+    
+  
+    <div class="post-content">
+      
+      <h1 id="mysql-概述">MySQL 概述</h1>
+<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
+<p>接下来讲讲其中的一些部件：</p>
+<ul>
+<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
+<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
+<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
+<ul>
+<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
+<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
+<li>SQL 解析器：解析 SQL 语句的含义</li>
+<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
+<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
+<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101446249.png" alt="image.png"  /></p>
+<h1 id="innodb-存储引擎">InnoDB 存储引擎</h1>
+<p>接下来说下底部存储引擎、内存、磁盘的一个关系。</p>
+<p>假设现在有一条更新语句：update t_student set name = &ldquo;lisi&rdquo; where id = 1。需要把id=1的张三改名成李四。</p>
+<h2 id="执行顺序">执行顺序</h2>
+<ul>
+<li>buffer pool:直接从磁盘更新文件太慢了，所以引入了缓存池，将磁盘文件读一份后放到内存里面，对内存进行操作会快的多。</li>
+<li>undo 日志：很多时候我们用到了事务，需要回滚。事务回滚就需要知道上一个被覆盖的值是什么，因此就有了undo日志。它的作用是写入数据的旧值，方便回滚。</li>
+<li>buffer pool:写入undo日志后，缓存池就先更新内存里面的数据。</li>
+<li>redo log buffer:在内存里面开辟出新的一块儿地方存放着SQL语句的操作，比如把张三改成了李四。</li>
+<li>redo log:存放在磁盘里面，当buffer在内存写完后就会再开始写磁盘。记录数据比如对“id=1这行记录修改了name字段的值为xxx”</li>
+</ul>
+<h2 id="redo-log">redo log</h2>
+<p>为什么需要 redo log 呢？因为相比事务未提交的时候宕机，刷入磁盘的速度较慢，毕竟一个数据页 16kb；redo log 顺序写入较快才几十个字节，重启后再次提交事务即可。因此，使用 redo log 能够让数据库的并发能力更强。</p>
+<p>redo log里本质上记录的就是在对某个表空间的某个数据页的某个偏移量的地方修改了几个字节的值，具体修改的值是什么，他里面需要记录的就是<u>表空间号+数据页号+偏移量+修改几个字节的值+具体的值</u>。</p>
+<p>日志文件默认就两个，一个写满就覆盖另一个的日志文件。</p>
+<h2 id="redo-log-buffer写磁盘的时机控制"><strong>redo log buffer写磁盘的时机控制</strong></h2>
+<p>有一个参数：innodb_flush_log_at_trx_commit来控制怎么写入？</p>
+<ul>
+<li>0代表不写磁盘日志</li>
+<li>1代表事务提交的时候必须写入redo日志（推荐）✅</li>
+<li>2代表事务提交后可能过一段时间（比如一秒）再写入磁盘日志</li>
+</ul>
+<p>redo log buffer的缓冲机制，，redo 1og在写的时候，都是一个事务里的一组redo log，先暂存在一个地方，完事儿了以后把一组redo log写入redo log buffer。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141654845.png" alt="image.png"  /></p>
+<p>写入redo log buffer的时候，是写入里面提前划分好的一个一个的redo log block的，选择有空闲空间的redo log block去写入，然后redo log block写满之后，其实会在某个时机刷入到磁盘里去，如图。</p>
+<p>redo log block 写入时间：</p>
+<ul>
+<li>超过了buffer 一半的空间</li>
+<li>事务提交的时候</li>
+<li>后台线程每秒写入</li>
+<li>MySQL 关闭时</li>
+</ul>
+<h2 id="宕机时机的影响"><strong>宕机时机的影响</strong></h2>
+<ul>
+<li>假设第三步更新内存数据后宕机，那么就没写入磁盘，所以引入了redo日志用来恢复记录。</li>
+<li>假设第四步做完宕机，那么内存里面的数据就都会丢失，事务也就会回滚，此时问题不大，一般就会报事务出错然后回滚回原来的状态即可。</li>
+<li>假设第五步事务提交后宕机，那么此时MySQL并没有更新成功，这个时候重启MySQL就能使用redo日志重新进行更新。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101455891.png" alt="image.png"  /></p>
+<h1 id="binlog">Binlog</h1>
+<p>上面1~4其实都是更新SQL的过程，到了后面几步就是事务提交的一个过程。</p>
+<p>其实在第五步redo日志刷入磁盘时，也会同步写入Binlog。这里区别一下概念：</p>
+<ul>
+<li>redo日志是物理上的概念，比如对着内存上的数据页的什么记录，做了什么修改。这个是innodb特有的</li>
+<li>Binlog是逻辑上的一个概念，比如学生表上面id=1的记录，更新后的值是什么。这个是MySQL自己特有的</li>
+</ul>
+<h2 id="binlog刷入时机控制">Binlog刷入时机控制</h2>
+<p>参数：sync_binlog</p>
+<ul>
+<li>0代表先进入OS cache，晚点再刷入磁盘，宕机就会有风险</li>
+<li>1代表事务提交了，就要强制刷入磁盘✅</li>
+</ul>
+<h2 id="commit标记">commit标记</h2>
+<p>第七步里面才会写入commit标记，代表整个事务提交了，如果在之前发生了宕机，那么此时事务都算不成功。</p>
+<h2 id="两阶段提交">两阶段提交</h2>
+<p>我们来通过一个简单的例子来说明两阶段提交。</p>
+<p>假设我们有一个在线购物系统，分布在不同地方的数据库处理订单。一个订单的处理可能涉及到减少库存、扣款等多个数据库的操作。现在我们要确保所有这些数据库的操作要么都成功，要么都失败，以避免因为一部分成功一部分失败导致的问题。</p>
+<ol>
+<li><strong>准备阶段：</strong>
+<ul>
+<li>订单处理系统的主控制中心告诉每个数据库：“我们有一个订单要处理，你们准备好了吗？”</li>
+<li>每个数据库在本地进行准备工作，比如检查库存是否足够、用户账户是否有足够余额等。</li>
+<li>如果所有数据库都准备好了，它们会回应：“准备好了！”但此时它们并没有正式执行订单，只是表示可以执行。</li>
+</ul>
+</li>
+<li><strong>提交阶段：</strong>
+<ul>
+<li>主控制中心收到所有数据库的回应后，如果都是“准备好了”，那么它告诉它们：“可以执行订单了，大家一起来！”</li>
+<li>每个数据库执行实际的订单处理操作，比如减少库存、扣款等。</li>
+<li>如果所有数据库都成功执行了订单，它们会回应：“订单执行成功！”</li>
+<li>如果有任何一个数据库在执行过程中出了问题，它会回应：“订单执行失败！”</li>
+<li>如果所有数据库都成功，主控制中心最终告诉大家：“订单完成！”如果有一个数据库失败，主控制中心告诉大家：“订单取消！”</li>
+</ul>
+</li>
+</ol>
+<p>这样，无论是全部成功还是其中有一个失败，整个订单的状态都是一致的。如果有一个数据库执行失败，所有数据库都会回滚到事务开始的状态，确保数据的一致性。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101536549.png" alt="image.png"  /></p>
+<p>7步都完成后，那么就会有后台的线程将内存的脏数据一点点刷入磁盘了。</p>
+<h2 id="为什么不直接更新磁盘里的数据而是通过io线程不定时执行这与性能和io效率有关">为什么不直接更新磁盘里的数据，而是通过IO线程不定时执行，这与性能和I/O效率有关：</h2>
+<ul>
+<li>
+<p><strong>性能：</strong> 直接更新磁盘可能导致大量的I/O操作，影响性能。通过使用内存中的Buffer Pool，可以在内存中完成大部分读写操作，减少对磁盘的访问，提高性能。</p>
+</li>
+<li>
+<p><strong>事务隔离：</strong> 数据库需要考虑多个事务同时进行的情况，为了保证事务的隔离性，它可能需要在内存中暂存多个事务的修改，最后一次性写入磁盘，而不是每次都即时写入。</p>
+</li>
+</ul>
+<p>总体而言，这些概念和机制的引入是为了平衡数据库的性能、可靠性和一致性。虽然增加了一些复杂性，但它们为数据库系统提供了更多的功能和优化选项。</p>
+<h1 id="机器配置">机器配置</h1>
+<h2 id="java机器配置">Java机器配置</h2>
+<ul>
+<li>2核4G</li>
+<li>4核8G,每秒钟可以抗下五百左右的并发访问量</li>
+</ul>
+<h2 id="mysql配置">MySQL配置</h2>
+<ul>
+<li>8核16G,每秒钟可以抗下一两千左右的并发访问量</li>
+<li>16核32G，每秒钟可以抗下三四左右的并发访问量</li>
+</ul>
+<h2 id="配置题">配置题</h2>
+<p>假设你开发的Java系统部署在一台4核8G的机器上，那么我们假设这个Java系统处理一个请 求非常非常快，每个请求只需要0.01ms就可以处理完了，那你觉得这一台机器部署的Java系统，可以实现每秒抗下几千并发 请求吗？可以实现每秒抗下几万并发请求吗？</p>
+<p>如果每个请求只需要0.01毫秒（即10微秒）来处理，那么我们可以通过以下方式来估算它每秒抗下的并发请求量：</p>
+<ol>
+<li><strong>计算每个核心的请求数：</strong>
+<ul>
+<li>1秒 = 1000毫秒，所以每个核心每秒可以处理的请求数为：1秒 / 0.01毫秒 = 100,000次。</li>
+</ul>
+</li>
+<li><strong>计算总的请求数：</strong>
+<ul>
+<li>如果系统有4个核心，那么总的每秒处理请求数为：4核心 * 100,000次/核心 = 400,000次/秒。
+根据上述估算，这台4核8G的机器上的Java系统理论上每秒可以处理约40万次请求。
+当然，这个估算是基于每个请求处理非常迅速的情况下得出的。实际上，系统的性能可能会受到其他因素的影响，比如内存大小、垃圾回收效率、网络带宽等。因此，在实际生产环境中，最好通过性能测试和基准测试来获取更准确的结果。</li>
+</ul>
+</li>
+</ol>
+<h2 id="性能指标">性能指标</h2>
+<ul>
+<li>qps：每秒的请求数</li>
+<li>tps:每秒可处理的事务量，比如事务提交或者回滚的量</li>
+<li>吞吐量：磁盘每秒可读写的字节数量，比如redo日志写磁盘</li>
+<li>iops:每秒可以执行的随机io请求数量，决定了内存脏数据刷回磁盘的效率</li>
+<li>lantency:磁盘读写延迟</li>
+<li>CPU负载</li>
+<li>网络负载</li>
+<li>内存负载</li>
+</ul>
+<h1 id="buffer-pool">buffer pool</h1>
+<p>buffer pool 是个缓存池，大小默认是 128MB。存放在内存里面，里面存放着大量的数据页。
+（数据页：和磁盘中的数据页一页页对应起来，需要从磁盘加载到缓存池里面，我们所认知的数据库一行行的数据就是放在数据页里面，数据页是 16kb。）
+我们把缓存池里面的数据页叫做缓存页，缓存页上面会有一些描述信息，比如数据页所属的表空间、数据页的编号、缓存页在 buffer pool 中的地址等。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131758446.png" alt="image.png"  /></p>
+<p>既然 buffer pool 只是放在内存里面，而内存空间是有限的，那么如果从磁盘加载全部数据会不会导致内存不足？还是说产生了内存碎片？如果有内存碎片，那么怎么才能减少呢？</p>
+<p>内存碎片是指规划完缓存页和描述数据后剩下的内存，我们探讨的是如何减少这部分的内存。</p>
+<h2 id="free-链表">Free 链表</h2>
+<p>为啥需要这个链表呢？因为我们从磁盘将数据页读到 buffer pool 的时候，我们如果不知道哪些空白的缓存页可以用，就无法去分配内存.</p>
+<p>所以这个时候就会把 buffer pool里面空白的所有描述页的描述数据组成一条双向链表，称其为 free 链表。如图所示，多了一个额外的 40 字节的基础节点，存放了多少个空间的节点、引用的开始节点、引用的结束节点。</p>
+<p>怎么用这个链表呢？</p>
+<ul>
+<li>如果数据在内存里面，那么就会有一个数据页缓存，如图右下角。这个时候额外的这个 hash map 的结构，类似 map&lt;磁盘中数据页表空间号+数据页号，缓存页地址&gt;的键值对结构，现在 map 里面找一下，如果有，则直接读，没有就从磁盘读。</li>
+<li>如果数据在磁盘上面，就是去 free 链表找到一个空闲的缓存页，然后将磁盘上面目标数据页的描述信息写到链表的这个缓存页里面，然后再将 free 链表上的这个节点的双向链表指针变更，使其脱离链表即可。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131810137.png" alt="image.png"  /></p>
+<h2 id="flush-链表">flush 链表</h2>
+<p>这个链表是用来干什么的呢？首先，我们数据库一般是会进行增删查改的操作的，所以会有读写操作，但是基本都是要将磁盘页刷入到缓存页里面，这个时候其实 buffer pool 里面是有大量用于读的缓存页，这些数据页不需要后续写入到磁盘，而数据库也不可能马上写数据到磁盘，所以就出了 flush 链表，用于记录更新了数据的缓存页，目前还是脏页，等待刷入磁盘，结构和使用方法同 free 链表相似。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131824806.png" alt="image.png"  /></p>
+<h2 id="lru链表">LRU链表</h2>
+<p>解决了什么问题呢？就是内存空间有限的情况下，我们比如读全表的时候会把巨多的数据页刷入磁盘，那么这个时候 free 链表直接就被耗尽，所以有了 LRU 链表。</p>
+<p>LRU链表指的是 least recently use,最近最少使用的意思，如图。每次磁盘读取数据页到内存的时候，会把描述数据放在链表的头部，后面如果有被重新查询或者修改，那么重新放在链表的头部，通过这样控制频率来确保链表尾部的元素就是应该被淘汰的元素。</p>
+<p>因此 ，如果 free 链表满了的话，就需要淘汰 LRU 链表最后的一个节点，将其刷入磁盘，以此产生新的 free 链表空白的数据页。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131841866.png" alt="image.png"  /></p>
+<h3 id="预读机制基础版">预读机制基础版</h3>
+<p>预读机制是因为 MySQL 会把可能跟目标数据页关联的相邻数据页一起查了放进缓存页里面，因为这样就可以不用多次从磁盘里面读取了。但是，我们进行全表扫描的时候会将不需要的数据页放在 LRU 链表的头部，而尾部可能是我们真正需要读的，如果此时淘汰了尾部，那么就会出现问题。</p>
+<p>预读机制有一个参数是innodb_read_ahead_threshold，默认值是56，意思就是如果顺序的访问了一个区里的多个数据页，访问的数据页的数量超过了这个阈值，此时就会触发预读机制，把下一个相邻区中的所有数据页都加载到缓存里去。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131853862.png" alt="image.png"  /></p>
+<h3 id="预读机制冷热分离">预读机制冷热分离</h3>
+<p>有问题就有解决方案。上面就是因为放在一条链表导致出了问题，MySQL 就使用了冷热分离的思想，比如刚加载的时候就放在冷区的头部，然后如果在一秒<strong>后</strong>还有访问，那就放在热区的头部，这样全表扫描的数据就会都在冷区，而热区才是我们经常访问的数据。</p>
+<p>冷热区的比例：
+innodb_old_blocks_pct参数控制的，他默认是37，也就是说冷数据占比37％。</p>
+<p>更进一步的优化：冷热数据要注意预加载。所以LRU链表热区的前四分之一的数据是不会经常改变的，不会一直改动。只有热区后四分之三的数据被重新访问到才会放到热区的头部，这样就减少了最频繁访问的那部分数据频繁变更。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131908164.png" alt="image.png"  /></p>
+<hr>
+<p>在缓存中同时包含冷热数据（访问频率高和低的数据）的场景，可能会面临以下问题：</p>
+<ol>
+<li>
+<p><strong>资源浪费：</strong> 热数据通常需要更频繁地被访问，而冷数据可能很长时间都不会被访问。将它们放在同一个缓存中可能导致对资源的浪费，因为缓存的大小是有限的。</p>
+</li>
+<li>
+<p><strong>缓存命中率下降：</strong> 冷热数据混在一起，可能导致缓存命中率下降。如果缓存中有很多冷数据，它们会占用缓存空间，降低了热数据的命中率。</p>
+</li>
+</ol>
+<p>为了优化这个问题，可以考虑在缓存设计中运用冷热隔离的思想来重构：</p>
+<ol>
+<li>
+<p><strong>冷热数据分离：</strong> 将热数据和冷数据分别放在不同的缓存区域中。这可以通过使用多个Redis数据库（比如使用不同的DB index）或者不同的缓存实例来实现。热数据放在一个容量较小但更快访问的缓存中，冷数据放在一个较大但访问频率较低的缓存中。</p>
+</li>
+<li>
+<p><strong>设置不同的过期策略：</strong> 对于热数据，可以使用较短的过期时间，以确保缓存中的数据总是保持较新。而对于冷数据，可以使用较长的过期时间，以减少对后端数据存储的频繁查询。</p>
+</li>
+<li>
+<p><strong>缓存预热：</strong> 对于热数据，可以在系统启动或者某个时间段内进行缓存预热，将热数据提前加载到缓存中，以提高缓存命中率。</p>
+</li>
+<li>
+<p><strong>动态调整：</strong> 根据实际情况动态调整冷热数据的划分和缓存容量。可以通过监控缓存的访问模式和命中率来进行调整。</p>
+</li>
+</ol>
+<p>通过冷热隔离的思想，可以更灵活地管理不同访问模式的数据，提高缓存的效率和性能。这种设计适用于那些有大量数据，但只有一小部分是热点数据的场景。</p>
+<hr>
+<h2 id="工作线程">工作线程</h2>
+<p>新增数据的时候，free 链表移除节点，LRU 链表就会在冷区数据头部新增节点。
+如果是更新操作，那么 flush 链表也会在头部新增一个节点。</p>
+<p>对于 LRU 链表来说，后台其实会启动一个工作线程空闲的时候就开始刷磁盘了，不会等到实在free 链表实在没有节点的时候才刷。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131934345.png" alt="image.png"  /></p>
+<h2 id="多个-buffer-pool">多个 buffer pool</h2>
+<p>首先内存小于 1GB只能申请一个 buffer pool，并且多线程访问 buffer pool 也是需要加锁的，因此内存大的话就可以申请多个来优化多线程下的并发能力。比如</p>
+<p>［server］
+innodb_buffer_poo_size = 8589934592
+innodb_buffer_poo_instances = 4</p>
+<p>我们给buffer pool设置了8GB的总内存，然后设置了他应该有4个Buffer Pool，此时就是说，每个buffer pool的大小就是2GB。</p>
+<p>这个时候，MySQL在运行的时候就会有4个Buffer Pool了！每个Buffer Pool负责管理一部分的缓存页和描述数据块，有自己独立的free、flush、Iru等链表。
+这个时候，假设多个线程并发过来访问，那么不就可以把压力分散开来了吗？有的线程访问这个buffer pool，有的线程访问那个buffer pool。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132320225.png" alt="image.png"  /></p>
+<h1 id="chunk-机制">chunk 机制</h1>
+<p>因为 buffer pool 是机器启动的时候系统自己划分的一块儿连续的内存，所以并不支持系统运行期间动态修改。因此，就有了更为细化的 chunk。</p>
+<p>怎么动态调整呢？就是 buffer pool 是由一系列的 chunk 组成。那么只有有单个连续空间内存的 chunk 就可以分配给 buffer pool。比如我们buffer pool现在总大小是8GB，现在要动态加到16GB，那么此时只要申请一系列的128MB大小（固定）的chunk就可以了，只要每个chunk是连续的128MB内存就行了。然后把这些申请到的chunk内存分配给buffer pool就行了。</p>
+<p>有个这个chunk机制，此时并不需要额外申请16GB的连续内存空间，然后还要把已有的数据进行拷贝。</p>
+<blockquote>
+<p>MySQL自然会想办法去做一些优化的，他实际上设计了一个chunk机制，也就是说buffer pool是由很多chunk组成的，他的大小是innodb_buffer_pool_chunk_size参数控制的，默认值就是128MB。
+所以实际上我们可以来做一个假设，比如现在我们给buffer pool设置一个总大小是8GB，然后有4个buffer pool，那么每个buffer pool就是2GB，此时每个buffer pool是由一系列的128MB的chunk组成的，也就是说每个buffer pool会有16个chunk。</p>
+</blockquote>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132326527.png" alt="image.png"  /></p>
+<h2 id="容量调节">容量调节</h2>
+<p>此时要记住，有一个很关键的公式就是：buffer pool总大小=（chunk大小 * buffer pool数量）的倍数。</p>
+<p>比如默认的chunk大小是128MB，那么此时如果你的机器的内存是32GB，你打算给buffer pool总大小在20GB左右，那么你得算一下，此时你的buffer pool的数量应该是多少个呢？
+假设你的buffer pool的数量是16个，这是没问题的，那么此时chunk大小 * buffer pool的数量= 16* 128MB =2048MB，然后buffer pool总大小如果是20GB，此时buffer pool总大小就是2048MB的10倍，这就符合规则了。</p>
+<h1 id="物理结构">物理结构</h1>
+<h2 id="数据页">数据页</h2>
+<p>虽然用户使用的 MySQL 展示为一条条的 数据库记录，但是每次从磁盘读取一行数据再放到内存，频率会很高，不现实。</p>
+<p>所以使用了数据页这个概念，每次加载一个或多个数据页到磁盘上面。</p>
+<h2 id="变长字段存储">变长字段存储</h2>
+<p>一行数据的存储格式大致如下所示。</p>
+<p><u>变长字段的长度列表，null值列表，数据头，column01的值，column02的值，column0n的值&hellip;&hellip;</u></p>
+<p>比如一行数据有VARCHAR(10) VARCHAR(5) VARCHAR(20) CHAR(1) CHAR(1)，一共5个字段，其中三个是变长字段，此时假设一行数据是这样的：</p>
+<p>hello hi hao a a，其中字段设置都可以为 null</p>
+<p>实际存储可能是下面这样的：</p>
+<p>0x03 0x02 0x05 null值列表 头字段 hello hi hao a a</p>
+<p>解释一下，原数据前三个变长字段的长度分别为 5,2,3，但是实际存储是逆序存储。</p>
+<h2 id="null-值存储">null 值存储</h2>
+<p>null 值列表是 8 位 bit 组成，1 是 0 否，针对的是表字段允许为 null 的字段，逆序且不足补 0。</p>
+<h2 id="磁盘数据如何还原">磁盘数据如何还原</h2>
+<p>看上面的磁盘数据存储格式：
+0x09 0x04 00000101 头信息 column1=value1 column2=value2 &hellip; columnN=valueN</p>
+<p>首先MySQL 肯定知道了表结构的组成，再了解变长字段和 null 值列表，这个时候再去遍历表结构和尾部的文本信息，就能够推测出变长字段读几位、null 值列表跳过，剩下的定长字段直接读表结构的长度即可。</p>
+<p>举个例子，比如我们之前说了一个例子，有一行数据是“jack NULL m NULL xx_schooI”，那么他真实存储大致如下所示：
+0x09 0x04 00000101 0000000000000000000010000000000000011001 00000000094C（DB_ROW_ID）
+00000000032D （DB_TRX_ID） EA000010078E （DB_ROL_PTR） 616161 636320 6262626262</p>
+<p>头消息有 40 位，后续还包含了行的唯一标识、事务 ID、回滚指针，然后才是三个文本数值的编码值</p>
+<h2 id="行溢出">行溢出</h2>
+<p>一行如果超出了数据页的范围，那么就会将数据存储在别的数据页上面，使用一个指针指向新数据页的地址，如果一个数据页放不下，那么就会有多个数据页来进行存放。</p>
+<p>这种情况一般是超出了 varchar 的最大范围，以及 blob、text类型字段存储过长。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141559221.png" alt="image.png"  /></p>
+<h2 id="数据页的结构">数据页的结构</h2>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603272.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603816.png" alt="image.png"  /></p>
+<h2 id="数据区">数据区</h2>
+<p>数据表的物理实体是一个叫做表名.ibd 的文件，其中这么多数据页不可能放在一个表空间里面，因此产生了一个中间概念——数据区。</p>
+<p>一个表空间有 256 个数据区，每个数据区有 64 个数据页，每个数据页有 16kb 的大小。</p>
+<p>从磁盘读取数据页的时候，随机读取一个 extend 里面的一部分数据，指定开始位置和结束位置，取中间的一部分数据，可能这一部分数据就是一个数据页包含的内容，然后再将其刷入内存作为缓存页。</p>
+<h2 id="随机读和顺序写">随机读和顺序写</h2>
+<p>执行 select 语句的时候，一般就是随机读的一个代表。此时磁盘文件散落在各处，所以只能使用这种性能较差的方式。同时，更新数据的时候也需要在内存中更新，在磁盘更新的磁盘更大。</p>
+<p>另一种是顺序写，比如写 redo log。这种写的方式性能几乎同内存操作一样快。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141619129.png" alt="image.png"  /></p>
+<h2 id="linux-读写">Linux 读写</h2>
+<p>Linux的存储系统分为VFS层、文件系统层、Page Cache缓存层、通用Block层、IO调度层、Block设备驱动层、Block设备层，如下图：
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141623678.png" alt="image.png"  /></p>
+<p>简单讲下，vfs层相当于一个接口，接到请求就按照不同的类型分发给不同的文件系统。接着在页缓存找下，找不到就转发给通用 block 层，转化成 IO 请求，io 调度层有两种算法，一种是公平算法，讲究先来后到，可能导致请求过大阻塞后来请求；另一种更推荐，就是 deadline 算法，给定一个到期时间，确保所有请求不至于被阻塞。然后 io 调度决定 IO 顺序，选择不同的驱动，去设备层真正执行存储硬件查询。</p>
+<h2 id="raid">RAID</h2>
+<p>raid ，磁盘阵列技术。就是用来管理多块磁盘之前读写的一种技术，方便磁盘进行拓展，以及决定哪块磁盘进行写入。还有额外的备份技术，如图：
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141629886.png" alt="image.png"  /></p>
+<p>这个比较有意思的是，当服务器断电之后，这里有个磁盘缓存设置来进行继续供电，将缓存中的数据写入到阵列中的磁盘上面。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141631361.png" alt="image.png"  /></p>
+<h2 id="实战案例">实战案例</h2>
+<ul>
+<li>问题：数据库无法连接故障的定位，Too many connections</li>
+<li>核对：Java 系统连接池两台机器最多 400 个连接，排查 MySQL 最大连接数是 241 个（show variables like &lsquo;max_connections&rsquo;）</li>
+<li>原因：底层的linux操作系统把进程可以打开的文件句柄数限制为了1024了，计算出 214</li>
+<li>解决：ulimit -HSn 65535</li>
+</ul>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+        
+          #<a href="https://senup.github.io/tags/mysql/">mysql</a>&nbsp;
+        
+      </span>
+    
+  
+    <div class="clear"></div>
+    
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            
+              <span class="pagination__title-h">阅读更多</span>
+            
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://senup.github.io/posts/tech/helloquantumult-x/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Hello，Quantumult X</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">
+                  <span class="button__text">🎬《进击的巨人 最终季 完结篇 后篇》</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+
+    
+
+    </div>
+
+      </div>
+
+      
+        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="copyright copyright-font">
+      <span>共 24662 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+    </div>
+    <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
+    <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
+    
+      <div class="copyright">
+        <span>© 2023 | 你比你想象的还要好</span>
+      </div>
+    
+  </div>
+</footer>
+
+<script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/lately.min.js"></script>
+<script type="text/javascript" src="/waterfall.min.js"></script>
+<script type="text/javascript" src="/imgStatus.min.js"></script>
+<script type="text/javascript" src="/view-image.js"></script>
+<script type="text/javascript" src="/theme-lmm-20230123.js"></script>
+<script type="text/javascript" src="/pangu.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    pangu.autoSpacingPage();
+  });
+</script>
+
+
+      
+    </div>
+  </body>
+</html>

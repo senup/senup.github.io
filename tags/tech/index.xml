@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tech on 高等游民</title>
+    <title>tech on 高等游民🗯️</title>
     <link>https://senup.github.io/tags/tech/</link>
-    <description>Recent content in tech on 高等游民</description>
+    <description>Recent content in tech on 高等游民🗯️</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 11 Nov 2023 23:13:43 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello，Quantumult X</title>
-      <link>https://senup.github.io/posts/post/helloquantumult-x/</link>
+      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
       <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloquantumult-x/</guid>
+      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -34,9 +34,9 @@
     </item>
     <item>
       <title>Hello，MySQL</title>
-      <link>https://senup.github.io/posts/post/hellomysql/</link>
+      <link>https://senup.github.io/posts/tech/hellomysql/</link>
       <pubDate>Fri, 10 Nov 2023 14:03:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/hellomysql/</guid>
+      <guid>https://senup.github.io/posts/tech/hellomysql/</guid>
       <description>&lt;h1 id=&#34;mysql-概述&#34;&gt;MySQL 概述&lt;/h1&gt;
 &lt;p&gt;在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。&lt;/p&gt;
 &lt;p&gt;接下来讲讲其中的一些部件：&lt;/p&gt;
@@ -57,9 +57,9 @@
     </item>
     <item>
       <title>Hello，Raycast</title>
-      <link>https://senup.github.io/posts/post/helloraycast/</link>
+      <link>https://senup.github.io/posts/tech/helloraycast/</link>
       <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloraycast/</guid>
+      <guid>https://senup.github.io/posts/tech/helloraycast/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -85,9 +85,9 @@
     </item>
     <item>
       <title>Hello，cron</title>
-      <link>https://senup.github.io/posts/post/hellocron/</link>
+      <link>https://senup.github.io/posts/tech/hellocron/</link>
       <pubDate>Wed, 04 Oct 2023 20:48:29 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/hellocron/</guid>
+      <guid>https://senup.github.io/posts/tech/hellocron/</guid>
       <description>&lt;p&gt;[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[Hello，cron]]。&lt;/p&gt;
 &lt;p&gt;cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。&lt;/p&gt;
 &lt;p&gt;分钟范围：0~59

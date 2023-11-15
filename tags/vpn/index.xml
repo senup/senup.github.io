@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vpn on 高等游民</title>
+    <title>vpn on 高等游民🗯️</title>
     <link>https://senup.github.io/tags/vpn/</link>
-    <description>Recent content in vpn on 高等游民</description>
+    <description>Recent content in vpn on 高等游民🗯️</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 12 Nov 2023 01:17:06 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello，shellclash</title>
-      <link>https://senup.github.io/posts/post/helloshellclash/</link>
+      <link>https://senup.github.io/posts/tech/helloshellclash/</link>
       <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloshellclash/</guid>
+      <guid>https://senup.github.io/posts/tech/helloshellclash/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -36,9 +36,9 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </item>
     <item>
       <title>Hello，Quantumult X</title>
-      <link>https://senup.github.io/posts/post/helloquantumult-x/</link>
+      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
       <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloquantumult-x/</guid>
+      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
 &lt;/blockquote&gt;

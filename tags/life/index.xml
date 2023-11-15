@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>life on 高等游民</title>
+    <title>life on 高等游民🗯️</title>
     <link>https://senup.github.io/tags/life/</link>
-    <description>Recent content in life on 高等游民</description>
+    <description>Recent content in life on 高等游民🗯️</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 15 Nov 2023 12:41:52 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>吉他打板第一步</title>
-      <link>https://senup.github.io/posts/post/%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</link>
+      <link>https://senup.github.io/posts/guitar/%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</link>
       <pubDate>Wed, 15 Nov 2023 12:41:52 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</guid>
+      <guid>https://senup.github.io/posts/guitar/%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</guid>
       <description>&lt;p&gt;在 b 站看到这个视频，立马找回了当初想要学习吉他的冲动，太酷啦。我已经开始幻想我学会《王菲》的画面了。&lt;/p&gt;
 &lt;p&gt;适用于四四拍，有三种节奏型：&lt;/p&gt;
 &lt;ul&gt;
@@ -62,9 +62,9 @@
     </item>
     <item>
       <title>Hello，shellclash</title>
-      <link>https://senup.github.io/posts/post/helloshellclash/</link>
+      <link>https://senup.github.io/posts/tech/helloshellclash/</link>
       <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloshellclash/</guid>
+      <guid>https://senup.github.io/posts/tech/helloshellclash/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -88,9 +88,9 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </item>
     <item>
       <title>Hello，Apple TV</title>
-      <link>https://senup.github.io/posts/post/helloapple-tv/</link>
+      <link>https://senup.github.io/posts/tech/helloapple-tv/</link>
       <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/helloapple-tv/</guid>
+      <guid>https://senup.github.io/posts/tech/helloapple-tv/</guid>
       <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
 &lt;p&gt;渠道：京东。&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
@@ -129,9 +129,9 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </item>
     <item>
       <title>二手手机越卖越亏</title>
-      <link>https://senup.github.io/posts/post/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</link>
+      <link>https://senup.github.io/posts/life/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</link>
       <pubDate>Fri, 27 Oct 2023 03:06:10 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</guid>
+      <guid>https://senup.github.io/posts/life/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</guid>
       <description>&lt;p&gt;之前有一部iPhone 12 Pro一直在闲置的状态，这不双十一到了，终于想起来能换点零花钱买点别的，于是挂在闲鱼上面出手。&lt;/p&gt;
 &lt;p&gt;一开始我想快点卖出，省的夜长梦多，所以标注了两千多块的价格。有很多买家过来咨询，价格确实比较实在，但是一聊到屏幕是非原装屏纷纷显得有些犹豫。无奈，我加上了验货宝的附加功能，来打消其他人的顾忌，但还是需要花很多时间和精力给人展示手机内在的详细配置信息和外表细节的磨损情况，甚至细究产地的区别等，这让我觉得非常麻烦。&lt;/p&gt;
 &lt;p&gt;最后一个东北的学生非常爽快的拍下了。但好景不长，我自己清除资料的时候发现低亮度的情况下屏幕出现一块亮斑。坏了！估计是自己搬家的时候被其他东西压坏了。没办法，只能谢绝买家，改成回收。&lt;/p&gt;
@@ -150,9 +150,9 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </item>
     <item>
       <title>奇怪的知识增加了</title>
-      <link>https://senup.github.io/posts/post/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</link>
+      <link>https://senup.github.io/posts/life/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</link>
       <pubDate>Tue, 10 Oct 2023 13:42:40 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</guid>
+      <guid>https://senup.github.io/posts/life/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;上帝对人类的爱，超过世间万物，性爱的欢愉（不仅仅是为了传宗接代），的确是最美好的礼物。不过，每一对夫妻也应该谨记： “婚姻，人人应该尊重，床榻不可污秽。”&lt;/p&gt;
 &lt;/blockquote&gt;

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术 on 高等游民🗯️</title>
+    <link>https://senup.github.io/posts/tech/</link>
+    <description>Recent content in 技术 on 高等游民🗯️</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 12 Nov 2023 01:17:06 +0800</lastBuildDate>
+    <atom:link href="https://senup.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，shellclash</title>
+      <link>https://senup.github.io/posts/tech/helloshellclash/</link>
+      <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloshellclash/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;环境配置&#34;&gt;环境配置&lt;/h1&gt;
+&lt;p&gt;路由器：红米ax6000&lt;/p&gt;
+&lt;p&gt;固件：官方固件&lt;/p&gt;
+&lt;p&gt;红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。&lt;/p&gt;
+&lt;p&gt;其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;界面讲解&#34;&gt;界面讲解&lt;/h1&gt;
+&lt;p&gt;打开&lt;a href=&#34;http://192.168.31.1:9999/ui/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;yacd&lt;/a&gt;。
+代理界面有selector和URLTest的两种类型。
+selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
+&lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
+&lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Quantumult X</title>
+      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
+      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
+&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
+&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
+&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
+&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
+&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
+&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
+&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，MySQL</title>
+      <link>https://senup.github.io/posts/tech/hellomysql/</link>
+      <pubDate>Fri, 10 Nov 2023 14:03:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/hellomysql/</guid>
+      <description>&lt;h1 id=&#34;mysql-概述&#34;&gt;MySQL 概述&lt;/h1&gt;
+&lt;p&gt;在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。&lt;/p&gt;
+&lt;p&gt;接下来讲讲其中的一些部件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要发送网络请求才能进行访问，所以需要引入 &lt;strong&gt;MySQL 驱动&lt;/strong&gt;的 jar 包。&lt;/li&gt;
+&lt;li&gt;Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了&lt;strong&gt;连接池&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。&lt;/li&gt;
+&lt;li&gt;SQL 接口：作为接口，负责接收（和处理 SQL）&lt;/li&gt;
+&lt;li&gt;SQL 解析器：解析 SQL 语句的含义&lt;/li&gt;
+&lt;li&gt;查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划&lt;/li&gt;
+&lt;li&gt;执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询&lt;/li&gt;
+&lt;li&gt;存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Raycast</title>
+      <link>https://senup.github.io/posts/tech/helloraycast/</link>
+      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloraycast/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
+&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
+&lt;li&gt;窗口管理: window management&lt;/li&gt;
+&lt;li&gt;翻译：google translate&lt;/li&gt;
+&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
+&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;额外设置替代系统的搜索框：
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Apple TV</title>
+      <link>https://senup.github.io/posts/tech/helloapple-tv/</link>
+      <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloapple-tv/</guid>
+      <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
+&lt;p&gt;渠道：京东。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;8字电源线&#34;&gt;8字电源线&lt;/h1&gt;
+&lt;p&gt;港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。&lt;/p&gt;
+&lt;h1 id=&#34;infuse-pro&#34;&gt;infuse pro&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空&lt;/li&gt;
+&lt;li&gt;土区&lt;a href=&#34;https://www.oyunfor.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;onyunfor&lt;/a&gt;礼品卡购买100里拉，花费26¥&lt;/li&gt;
+&lt;li&gt;Apple store订阅infuse pro年费&lt;/li&gt;
+&lt;li&gt;片源获取：&lt;a href=&#34;https://www.codelicence.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;云盘4K-综合网盘搜索&lt;/a&gt;+telegram电报群资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;cheers&#34;&gt;cheers&lt;/h1&gt;
+&lt;p&gt;也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。&lt;/p&gt;
+&lt;h1 id=&#34;youtube-prime&#34;&gt;youtube prime&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;油管会员，用于去广告，还附赠了YouTube music，体验很不错。&lt;/li&gt;
+&lt;li&gt;渠道：电报群拼车。&lt;/li&gt;
+&lt;li&gt;花费：年付45¥。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;iplaytv&#34;&gt;iplaytv&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;渠道：闲鱼账号附赠，无需花费。&lt;/li&gt;
+&lt;li&gt;进阶：搜索&lt;strong&gt;m3u直播源&lt;/strong&gt;，导入配置订阅即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

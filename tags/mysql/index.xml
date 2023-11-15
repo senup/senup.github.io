@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mysql on 高等游民</title>
+    <title>mysql on 高等游民🗯️</title>
     <link>https://senup.github.io/tags/mysql/</link>
-    <description>Recent content in mysql on 高等游民</description>
+    <description>Recent content in mysql on 高等游民🗯️</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 10 Nov 2023 14:03:43 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello，MySQL</title>
-      <link>https://senup.github.io/posts/post/hellomysql/</link>
+      <link>https://senup.github.io/posts/tech/hellomysql/</link>
       <pubDate>Fri, 10 Nov 2023 14:03:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/hellomysql/</guid>
+      <guid>https://senup.github.io/posts/tech/hellomysql/</guid>
       <description>&lt;h1 id=&#34;mysql-概述&#34;&gt;MySQL 概述&lt;/h1&gt;
 &lt;p&gt;在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。&lt;/p&gt;
 &lt;p&gt;接下来讲讲其中的一些部件：&lt;/p&gt;

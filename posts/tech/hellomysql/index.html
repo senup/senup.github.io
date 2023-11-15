@@ -265,6 +265,10 @@ SQL 解析器：解析 SQL 语句的含义
 <li>redo log buffer:在内存里面开辟出新的一块儿地方存放着SQL语句的操作，比如把张三改成了李四。</li>
 <li>redo log:存放在磁盘里面，当buffer在内存写完后就会再开始写磁盘。记录数据比如对“id=1这行记录修改了name字段的值为xxx”</li>
 </ul>
+<h2 id="undo-log">undo log</h2>
+<p>假设一个事务里面有4个update的语句，只执行了两个语句，就要回滚，那么此时就需要undo log日志，用来应对增删改回滚的事务。</p>
+<p>结构是这样的：<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151551071.png" alt="image.png"  /></p>
+<p>根据语句的undo日志可以直接定位到哪张表哪个主键做了什么修改，即可实现事务回滚。</p>
 <h2 id="redo-log">redo log</h2>
 <p>为什么需要 redo log 呢？因为相比事务未提交的时候宕机，刷入磁盘的速度较慢，毕竟一个数据页 16kb；redo log 顺序写入较快才几十个字节，重启后再次提交事务即可。因此，使用 redo log 能够让数据库的并发能力更强。</p>
 <p>redo log里本质上记录的就是在对某个表空间的某个数据页的某个偏移量的地方修改了几个字节的值，具体修改的值是什么，他里面需要记录的就是<u>表空间号+数据页号+偏移量+修改几个字节的值+具体的值</u>。</p>
@@ -522,6 +526,210 @@ innodb_buffer_poo_instances = 4</p>
 <li>原因：底层的linux操作系统把进程可以打开的文件句柄数限制为了1024了，计算出 214</li>
 <li>解决：ulimit -HSn 65535</li>
 </ul>
+<h1 id="事务">事务</h1>
+<p>接下来介绍解决多个事务并发运行的时候，同时写和同时读写的一些并发冲突的处理机制，包括了MySQL事务的隔离级别、MVCC多版本隔离、锁机制，等等。</p>
+<h2 id="脏写">脏写</h2>
+<p>所谓脏写，就是我刚才明明写了一个数据值，结果过了一会儿却没了！真是莫名其妙。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151606789.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151606669.png" alt="image.png"  /></p>
+<h2 id="脏读">脏读</h2>
+<p>事务B去查询了事务A修改过的数据，但是此时事务A还没提交，所以事务A随时会回滚导致事务B再次查询就读不到刚才事务A修改的数据了！这就是脏读。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151608641.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151559113.png" alt="image.png"  /></p>
+<h2 id="不可重复读">不可重复读</h2>
+<p>假设有三个事务并发执行，事务a执行期间未提交的时候，因为事务b或c的事务提交的关系读到了三次不同的值。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151603780.png" alt="image.png"  /></p>
+<h2 id="幻读">幻读</h2>
+<p>两个事务并发执行，事务a第一次查出来数据有十条，结果因为事务b提交了所以事务a第二次查出来有十二条数据。</p>
+<h2 id="小结">小结</h2>
+<p>脏写和脏读是在两个事务均未提交前写、读。
+不可重复读和幻读是发生在已经提交的事务后。</p>
+<hr>
+<p>在SQL标准中规定了4种事务隔离级别，就是说多个事务并发运行的时候，互相是如何隔离的，从而避免一些事务并发问题。</p>
+<p>这4种级别包括了：read uncommitted（读未提交），read committed（读已提交），repeatable read（可重复读），serializable（串行化）。</p>
+<h2 id="隔离级别修改">隔离级别修改</h2>
+<p>@Transactional（isolation=Isolation.DEFAULT），然后默认的就是DEFAULT值，这个就是MySQL默认支持什么隔离级别就是什么隔离级别。也可以改成Isolation.READ_COMMITTED,Isolation.REPEATABLE_READ, Isolation.SERIALIZABLE几个级别，都是可以的。</p>
+<h2 id="undo-log-版本链">undo log 版本链</h2>
+<p>就是说数据库的每个行记录都会有一个undo log的版本链，同时行记录中会有两个两个隐藏的字段，描述了当前的事务id和回滚指针。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151623928.png" alt="image.png"  /></p>
+<h2 id="mvcc">MVCC</h2>
+<p>这个ReadView呢，简单来说，就是你执行一个事务的时候，就给你生成一个ReadView，里面比较关键的东西有4个。
+• 一个是m_ids，这个就是说此时有哪些事务在MySQL里执行还没提交的；
+• 一个是min_trx_id，就是m_ids里最小的值；
+• 一个是max_trx_jd，这是说mysql下一个要生成的事务id，就是最大事务id；
+•一个是creator_trx_id，就是你这个事务的id</p>
+<p>每个事务访问行数据的时候都会记录当前的事务id和当前活动的事务id，如果行数据事务id小于等于当前的事务id，那么可以查；如果事务大于或者事务id在当前活动id列表里面，说明事务未提交或者大于当前版本，不可以查，需要顺着版本链往下找。</p>
+<p>读已提交的级别每次读数据会生成一个readview，可重复读只会在事务开始的时候生成一个事务，所以读已提交能给读到提交后的数据，而可重复读每次读取的数据都是一样的。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151634199.png" alt="image.png"  /></p>
+<h2 id="小结-1">小结</h2>
+<p>首先我们先要明白，多个事务并发运行的时候，同时读写一个数据，可能会出现脏写、脏读、不可重复读、幻读几个问题。</p>
+<ul>
+<li>
+<p>脏写，就是两个事务都更新一个数据，结果有一个人回滚了把另外一个人更新的数据也回滚没了。</p>
+</li>
+<li>
+<p>脏读，就是一个事务读到了另外一个事务没提交的时候修改的数据，结果另外一个事务回滚了，下次读就读不到了。</p>
+</li>
+<li>
+<p>不可重复读，就是多次读一条数据，别的事务老是修改数据值还提交了，多次读到的值不同。</p>
+</li>
+<li>
+<p>幻读，就是范围查询，每次查到的数据不同，有时候别的事务插入了新的值，就会读到更多的数据。
+针对这些问题，所以才有RU、RC、RR和串行四个隔离级别。</p>
+</li>
+<li>
+<p>RU隔离级别，就是可以读到人家没提交的事务修改的数据，只能避免脏写问题；</p>
+</li>
+<li>
+<p>RC隔离级别，可以读到人家提交的事务修改过的数据，可以避免脏写和脏读问题。</p>
+</li>
+<li>
+<p>RR是不会读到别的已经提交事务修改的数据，可以避免脏读、脏写和不可重复读的问题；</p>
+</li>
+<li>
+<p>串行是让事务都串行执行，可以避免所有问题。</p>
+</li>
+</ul>
+<h1 id="锁机制">锁机制</h1>
+<p>共享锁的语法如下：select * from table <code>lock in share mode</code>。</p>
+<p>查询操作还能加互斥锁：select * from table <code>for update</code>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">锁类型</th>
+<th style="text-align:left">独占锁</th>
+<th style="text-align:left">共享锁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">独占锁</td>
+<td style="text-align:left">互斥</td>
+<td style="text-align:left">互斥</td>
+</tr>
+<tr>
+<td style="text-align:left">共享锁</td>
+<td style="text-align:left">互斥</td>
+<td style="text-align:left">不互斥</td>
+</tr>
+<tr>
+<td style="text-align:left">还有就是有另外两个情况会加表级锁。如果有事务在表里执行增删改操作，那在行级会加独占锁，此时其实同时会在表级加一个意向独占锁；如果有事务在表里执行查询操作，那么会在表级加一个意向共享锁。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>LOCK TABLES xxx READ：这是加表级共享锁</p>
+<p>LOCK TABLES xxx WRITE：这是加表级独占锁</p>
+<p>但是我们接下来就要给大家讲讲，手动加表级共享锁和独占锁，以及更新和查询的时候自动在<strong>表级</strong>加的意向共享锁和意向独占锁，他们之间反而是有一定的互斥关系，关系如下表所示。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151728567.png" alt="image.png"  /></p>
+<h2 id="数据库性能抖动">数据库性能抖动</h2>
+<p>问题：</p>
+<ul>
+<li>缓存页满了，刷入磁盘过慢</li>
+<li>redo log写满去写另一个文件，另一个文件大量变更尚未写入磁盘，于是开始写入
+解决:第一个是尽量减少缓存页flush到磁盘的频率，第二个是尽量提升缓存页flush到磁盘的速度。
+由于频率没法变，因此采用第二种，用固态硬盘+修改最大flush速率innodb_io_capacity.。</li>
+</ul>
+<h1 id="索引">索引</h1>
+<h2 id="页分裂">页分裂</h2>
+<p>页分裂，就是万一你的主键值都是你自己设置的，那么在增加一个新的数据页的时候，实际上会把前一个数据页里主键值较大的，挪动到新的数据页里来，然后把你新插入的主键值较小的数据挪动到上一个数据页里去，保证新数据页里的主键值一定都比上一个数据页里的主键值大。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151741348.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151741719.png" alt="image.png"  /></p>
+<h2 id="主键查询">主键查询</h2>
+<p>每个数据页的页号，还有数据页里最小的主键值放在一起，组成一个索引的目录。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151742144.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151806121.png" alt="image.png"  /></p>
+<h2 id="聚簇索引">聚簇索引</h2>
+<p>如果一颗大的B+树索引数据结构里，叶子节点就是数据页自己本身，那么此时我们就可以称这颗B+树索引为聚簇索引！</p>
+<h2 id="二级索引">二级索引</h2>
+<p>聚簇索引里面的叶子节点存放的是所有字段，而二级索引的索引页里都是页号和最小的索引字段值和主键id。</p>
+<p>根据主键id重新回聚簇索引里面查询数据就叫做回表。
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151810220.png" alt="image.png"  /></p>
+<h3 id="二级索引的页分裂">二级索引的页分裂</h3>
+<p>表数据多了，那么二级索引树的数据页就会满，满了就拷贝新的数据页，然后进行主键值的挪动，确保按照主键值排序，此时根页就升级成为了索引页。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151817023.png" alt="image.png"  /></p>
+<h2 id="优缺点">优缺点</h2>
+<p>好处显而易见了，你可以直接根据某个字段的索引B+树来查找数据，不需要全表搜索，性能提升是很高的。</p>
+<p>但是坏处呢？索引当然有缺点了，主要是两个缺点，一个是空间上的，一个是时间上的。</p>
+<ul>
+<li>空间上而言，你要是给很多字段创建很多的索引，那你必须会有很多棵索引B+树，每一棵B+树都要占用很多的磁盘空间啊！所以你要是搞的索引太多了，是很耗费磁盘空间的。 其次，你要是搞了很多索引，那么你在进行增删改查的时候，每次都需要维护各个索引的数据有序性，因为每个索引B+树都要求页内是按照值大小排序的，页之间也是有序的，下一个页的所有值必须大于上一个页的所有值！所以你不停的增删改查，必然会导致各个数据页之间的值大小可能会没有顺序，比如下一个数据页里插入了一个比较小的值，居然比上一个数据页的值要小！此时就没办法了，只能进行数据页的挪动，维护页之间的顺序。</li>
+<li>或者是你不停的插入数据，各个索引的数据页就要不停的分裂，不停的增加新的索引页，这个过程都是耗费时间的。</li>
+</ul>
+<h2 id="排序">排序</h2>
+<p>MySQL在查询大数据量的时候，是不能用内存来排序的，通常就会基于磁盘文件来排序，filesort，速度很慢，</p>
+<p>因此需要<code>order by 联合索引</code>，才能解决问题。</p>
+<h2 id="分组">分组</h2>
+<p>同上。</p>
+<h2 id="覆盖索引">覆盖索引</h2>
+<p>需要的字段值直接在索引树里就能提取出来，不需要回表到聚簇索引，这种查询方式就是覆盖索引。</p>
+<h2 id="回表">回表</h2>
+<p>有的时候MySQL的执行引擎甚至可能会认为，你要是类似select * from table order by xx1,xx2,xx3的语句，相当于是得把联合索引和聚簇索引，两个索引的所有数据都扫描一遍了，那还不如就不走联合索引了，直接全表扫描得了，这样还就扫描一个索引而已。
+但是你如果要是select * from table order by xx1,xx2,xx3 limit 10这样的语句，那执行引擎就知道了，你先扫描联合索引的索引树拿到10条数据，接着对10条数据在聚簇索引里查找10次就可以了，那么就
+还是会走联合索引的。</p>
+<h2 id="索引设计规则">索引设计规则</h2>
+<ul>
+<li>写完功能后，了解会进行怎样的查询语句，那么这个时候，第一个索引设计原则就来了，针对你的SQL语句里的where条件、order by条件以及group by条件去设计索引。</li>
+<li>一般建立索引，尽量使用那些基数比较大的字段，就是值比较多的字段，那么才能发挥出B+树快速二分查找的优势来。</li>
+<li>为防止索引页分裂过快，性能差，建议两三个索引覆盖全表的查询。</li>
+<li>自增主键不用uuid等手段，否则也会导致频繁页分裂。</li>
+<li>where 和 order by 不可兼得。毕竟大多数场景用不上同一个联合索引。</li>
+<li>联合索引拓展索引字段的时候可以巧妙使用in(枚举值)的方法保证最左匹配原则。</li>
+<li>如果索引字段需要计算，那么就得考虑多冗余一个字段在表里。</li>
+</ul>
+<h1 id="执行计划">执行计划</h1>
+<h2 id="性能罗列">性能罗列</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">性能</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">const</td>
+<td style="text-align:left">超高</td>
+<td style="text-align:left">通过聚簇索引或者二级索引(唯一索引)+聚簇索引回源，比如where id = xx 或者 where unique_name = xx</td>
+</tr>
+<tr>
+<td style="text-align:left">ref</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">普通二级索引，比如where name = xx</td>
+</tr>
+<tr>
+<td style="text-align:left">ref_or_null</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">普通二级索引回源，比如where name=xx and name is null</td>
+</tr>
+<tr>
+<td style="text-align:left">range</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">普通索引范围查询，where age &gt; 10 and age&lt; 1</td>
+</tr>
+<tr>
+<td style="text-align:left">index</td>
+<td style="text-align:left">慢</td>
+<td style="text-align:left">select的数据在二级索引树上面，因此只扫描二级索引树</td>
+</tr>
+<tr>
+<td style="text-align:left">all</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">全表扫</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多表查询">多表查询</h2>
+<ul>
+<li>警惕笛卡尔积的产生，关联条件要写好，避免select * from table1,table2</li>
+<li>警惕嵌套循环关联。</li>
+<li>了解驱动表和被驱动表。</li>
+</ul>
+<p>select * from t1 where x1 in （select x2 from t2 where ×3=xxx）这个语句就会先执行子查询的语句，然后生成一张物化表。</p>
+<p>如果这个时候t1表的数据大于物化表，那么就全表扫物化表，再对每行数据都到x1这个字段的索引进行查找，如果在就符合条件。</p>
+<p>如果这个时候t1表的数据小于物化表，那就全表扫t1，判断每条数据是否都在物化表里面。</p>
       
     </div>
 
@@ -655,7 +863,7 @@ innodb_buffer_poo_instances = 4</p>
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 24885 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 28857 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

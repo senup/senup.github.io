@@ -59,6 +59,29 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Hello，MySQL</title>
+      <link>https://senup.github.io/posts/post/hellomysql/</link>
+      <pubDate>Fri, 10 Nov 2023 14:03:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/post/hellomysql/</guid>
+      <description>&lt;h1 id=&#34;mysql-概述&#34;&gt;MySQL 概述&lt;/h1&gt;
+&lt;p&gt;在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。&lt;/p&gt;
+&lt;p&gt;接下来讲讲其中的一些部件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要发送网络请求才能进行访问，所以需要引入 &lt;strong&gt;MySQL 驱动&lt;/strong&gt;的 jar 包。&lt;/li&gt;
+&lt;li&gt;Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了&lt;strong&gt;连接池&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。&lt;/li&gt;
+&lt;li&gt;SQL 接口：作为接口，负责接收（和处理 SQL）&lt;/li&gt;
+&lt;li&gt;SQL 解析器：解析 SQL 语句的含义&lt;/li&gt;
+&lt;li&gt;查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划&lt;/li&gt;
+&lt;li&gt;执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询&lt;/li&gt;
+&lt;li&gt;存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Hello，Raycast</title>
       <link>https://senup.github.io/posts/post/helloraycast/</link>
       <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
@@ -126,27 +149,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;/ul&gt;
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
 &lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>二手手机越卖越亏</title>
-      <link>https://senup.github.io/posts/post/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</link>
-      <pubDate>Fri, 27 Oct 2023 03:06:10 +0800</pubDate>
-      <guid>https://senup.github.io/posts/post/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</guid>
-      <description>&lt;p&gt;之前有一部iPhone 12 Pro一直在闲置的状态，这不双十一到了，终于想起来能换点零花钱买点别的，于是挂在闲鱼上面出手。&lt;/p&gt;
-&lt;p&gt;一开始我想快点卖出，省的夜长梦多，所以标注了两千多块的价格。有很多买家过来咨询，价格确实比较实在，但是一聊到屏幕是非原装屏纷纷显得有些犹豫。无奈，我加上了验货宝的附加功能，来打消其他人的顾忌，但还是需要花很多时间和精力给人展示手机内在的详细配置信息和外表细节的磨损情况，甚至细究产地的区别等，这让我觉得非常麻烦。&lt;/p&gt;
-&lt;p&gt;最后一个东北的学生非常爽快的拍下了。但好景不长，我自己清除资料的时候发现低亮度的情况下屏幕出现一块亮斑。坏了！估计是自己搬家的时候被其他东西压坏了。没办法，只能谢绝买家，改成回收。&lt;/p&gt;
-&lt;p&gt;我简单查阅了小红书的回收平台，选择了讨论度较高的爱回收。爱回收上门速度很快，第二天预约，小哥骑着电瓶车和一堆工具让你下楼来当面验机，对着他的checklist一项项检查，最后表示屏幕比描述的情况更严重些，还有边框的磨损超出预期，因此价格只能一低再低，一千出头，询问我是否考虑进行回收。眼下我没有更好的选择，只能点头答应，钱款在当天就到账了，故事告一段落。&lt;/p&gt;
-&lt;p&gt;第二天在v站看到一个网友遇到同样的二手手机买卖情况，底下有条评论表示苹果官网好得多。具体表现在检修更宽松且回收价也高，按我当时的情况可以出到两千到三千多。听罢觉得自己更加后悔了。&lt;/p&gt;
-&lt;p&gt;最后，给未来的自己一些教训：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;美版的iPhone只支持单卡，谨慎购买&lt;/li&gt;
-&lt;li&gt;不建议尝试单卡改双卡的操作，比如维修小哥可能给你把屏幕搞坏&lt;/li&gt;
-&lt;li&gt;iPhone建议使用官网平台进行回收&lt;/li&gt;
-&lt;li&gt;闲置的东西请尽快及时止损&lt;/li&gt;
-&lt;li&gt;不要买型号为偶数的iPhone&lt;/li&gt;
-&lt;li&gt;不要购入二手iPhone，电池等问题就算当面也检查不出来&lt;/li&gt;
-&lt;li&gt;赚钱才是花钱的充分必要条件&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

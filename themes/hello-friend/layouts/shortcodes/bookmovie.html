@@ -1,4 +1,5 @@
 {{$movieitems := getCSV "," "data/douban/movie.csv" }}
+<!-- 展示8个电影 -->
 {{$movienumb := 9}}
 <div class="douban border-top sc-ksluID gFnzgG">
   <h3><a href="/movies/">🎥 近期观影</a></h3>
@@ -23,6 +24,7 @@
 <hr>
 
 {{$bookitems := getCSV "," "data/douban/book.csv" }}
+<!-- 展示8个阅读 -->
 {{$booknumb := 9}}
 <div class="douban border-bottom sc-ksluID gFnzgG">
   <h3><a href="/books/">📖 近期阅读</a></h3>

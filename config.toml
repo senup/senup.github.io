@@ -25,7 +25,7 @@ rssLimit = 5
   weight="2"
 
   [[menu.main]]
-  name="电影"
+  name="观影"
   url="/posts/movie/"
   weight="3"
 

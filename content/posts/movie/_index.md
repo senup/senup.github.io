@@ -1,4 +1,4 @@
 ---
-title: "电影"
+title: "观影"
 slug: "movie"
 ---

@@ -2,7 +2,8 @@
 title: Hello，chatGPT
 date: 2023-11-12 01:54:27
 tags:
-  - tech
+  - life
+  - chatGPT
 draft: true
 hideInList: false
 feature: 

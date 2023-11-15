@@ -1,4 +1,4 @@
 ---
-title: "技术"
+title: "折腾"
 slug: "tech"
 ---

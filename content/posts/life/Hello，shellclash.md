@@ -4,6 +4,7 @@ date: 2023-11-12 01:17:06
 tags:
   - life
   - vpn
+  - linux
 draft: false
 hideInList: false
 feature: 

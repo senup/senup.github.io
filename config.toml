@@ -1,7 +1,7 @@
 baseURL = 'https://senup.github.io/'
 languageCode = 'zh-CN'
 timeZone = 'Asia/Shanghai'
-title = '高等游民🗯️'
+title = '『高等游民』'
 
 # 主题
 theme  =  "hello-friend"
@@ -15,8 +15,8 @@ rssLimit = 5
 
 [menu]
   [[menu.main]]
-  name="随笔"
-  url="/posts/post/"
+  name="生活"
+  url="/posts/life/"
   weight="1"
 
   [[menu.main]]
@@ -35,7 +35,7 @@ rssLimit = 5
   weight="4"
 
   [[menu.main]]
-  name="技术"
+  name="折腾"
   url="/posts/tech/"
   weight="5"
 
@@ -57,7 +57,7 @@ rssLimit = 5
   [[menu.main]]
   name="🔍"
   url="/search/"
-  weight="7"
+  weight="102"
 
 
 

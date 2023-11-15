@@ -2,7 +2,7 @@
 title: Hello，MacOS
 date: 2023-11-07 23:23:28
 tags:
-  - tech
+  - life
   - mac
   - finder
 draft: true

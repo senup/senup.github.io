@@ -346,6 +346,7 @@ null 值列表是 8 位 bit 组成，1 是 0 否，针对的是表字段允许�
 
 
 ## 数据页的结构
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603272.png)
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603816.png)
 
@@ -654,34 +655,42 @@ EXPLAIN SELECT * FROM （SELECT X 1, count（ * ） as cnt FROM t1 GROUP BY XI�
 
 EXPLAIN SELECT * FROM t1 WHERE ×1 ='xXX'
 
-这个语句的执行计划是常量 const
+这个语句的执行计划是常量 const。
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152249298.png)
 
 EXPLAIN SELECT * FROM t1 INNER JOIN t2 ON t1.id =t2.id；
 这个语句的执行计划是 primary，代表 t2 表的主键，被驱动表基于主键进行等值匹配。
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152250787.png)
 
 ## extra
 好，那么我们看看extra的信息，是Using index，这是什么意思呢？其实就是说这次查询，仅仅涉及到了一个二级索引，不需要回表，因为他仅仅是查出来了x1这个字段，直接从index_x1索引里查就行了。
 如果没有回表操作，仅仅在二级索引里执行，那么extra里会告诉in是**Using index**。
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152253877.png)
 
 
-**using where** 表示没用到索引或者除了用到索引还用到别的条件
+**using where** 表示没用到索引或者除了用到索引还用到别的条件。
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152254369.png)
+
 这个执行计划也是非常的清晰明了，这里针对t1表去查询，先通过ref方式直接在index_×1 索引里查找，是跟const代表的常量值去查找，然后查出来250条数据，接着再用Using where代表的方式，去使用AND x2='xxx'条件进行筛选，筛选后的数据比例是18%，最终所以查出来的数据大概应该是45条。
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152255192.png)
 
 
 **内存优化多表关联**
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152257050.png)
 
 
 这个SQL很明确了，他基于x2字段来排序，是没法直接根据有序的索引去找数据的，只能把所有数据写入一个临时的磁盘文件，基于排序算法在磁盘文件里按照×2字段的值完成排序，然后再按照LIMIT 10的要求取出来头10条数据。
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152259346.png)
 
+
 这个SQL里只能对全表数据放到临时表里做大量的磁盘文件操作，然后才能完成对x2字段的不同的值去分组，分组完了以后对不同x2值的分组去做聚合操作，这个过程也是相当的耗时的，性能是极低的。
+
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152300554.png)
 
 

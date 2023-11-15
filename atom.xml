@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-15T05:00:30+00:00</updated>
+    <updated>2023-11-15T05:08:58+00:00</updated>
     
     
     
@@ -57,7 +57,7 @@
   <body>
     <div class="aspect-ratio">
       <iframe
-              src="//player.bilibili.com/player.html?bvid=BV19t411y7DE&autoplay=1&page=1&as_wide=1&high_quality=1&danmaku=0"
+              src="//player.bilibili.com/player.html?bvid=BV19t411y7DE&autoplay=0&page=1&as_wide=1&high_quality=1&danmaku=0"
               scrolling="no" 
               border="0" 
               frameborder="no" 
@@ -1147,7 +1147,7 @@ innodb_buffer_poo_instances = 4</p>
   <body>
     <div class="aspect-ratio">
       <iframe
-              src="//player.bilibili.com/player.html?bvid=BV1bw411s79q&autoplay=1&page=1&as_wide=1&high_quality=1&danmaku=0"
+              src="//player.bilibili.com/player.html?bvid=BV1bw411s79q&autoplay=0&page=1&as_wide=1&high_quality=1&danmaku=0"
               scrolling="no" 
               border="0" 
               frameborder="no" 

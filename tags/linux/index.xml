@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vpn on 『高等游民』</title>
-    <link>https://senup.github.io/tags/vpn/</link>
-    <description>Recent content in vpn on 『高等游民』</description>
+    <title>linux on 『高等游民』</title>
+    <link>https://senup.github.io/tags/linux/</link>
+    <description>Recent content in linux on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 12 Nov 2023 01:17:06 +0800</lastBuildDate>
-    <atom:link href="https://senup.github.io/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://senup.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello，shellclash</title>
       <link>https://senup.github.io/posts/life/helloshellclash/</link>
@@ -33,30 +33,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
 &lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
 &lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello，Quantumult X</title>
-      <link>https://senup.github.io/posts/life/helloquantumult-x/</link>
-      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/life/helloquantumult-x/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
-&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
-&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
-&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
-&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
-&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
-&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
-&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>life on 高等游民🗯️</title>
+    <title>life on 『高等游民』</title>
     <link>https://senup.github.io/tags/life/</link>
-    <description>Recent content in life on 高等游民🗯️</description>
+    <description>Recent content in life on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 15 Nov 2023 12:41:52 +0800</lastBuildDate>
@@ -62,9 +62,9 @@
     </item>
     <item>
       <title>Hello，shellclash</title>
-      <link>https://senup.github.io/posts/tech/helloshellclash/</link>
+      <link>https://senup.github.io/posts/life/helloshellclash/</link>
       <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloshellclash/</guid>
+      <guid>https://senup.github.io/posts/life/helloshellclash/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -87,10 +87,62 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Hello，Quantumult X</title>
+      <link>https://senup.github.io/posts/life/helloquantumult-x/</link>
+      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/life/helloquantumult-x/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
+&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
+&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
+&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
+&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
+&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
+&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
+&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Raycast</title>
+      <link>https://senup.github.io/posts/life/helloraycast/</link>
+      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
+      <guid>https://senup.github.io/posts/life/helloraycast/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
+&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
+&lt;li&gt;窗口管理: window management&lt;/li&gt;
+&lt;li&gt;翻译：google translate&lt;/li&gt;
+&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
+&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;额外设置替代系统的搜索框：
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Hello，Apple TV</title>
-      <link>https://senup.github.io/posts/tech/helloapple-tv/</link>
+      <link>https://senup.github.io/posts/life/helloapple-tv/</link>
       <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloapple-tv/</guid>
+      <guid>https://senup.github.io/posts/life/helloapple-tv/</guid>
       <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
 &lt;p&gt;渠道：京东。&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
@@ -126,38 +178,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;/ul&gt;
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
 &lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>二手手机越卖越亏</title>
-      <link>https://senup.github.io/posts/life/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</link>
-      <pubDate>Fri, 27 Oct 2023 03:06:10 +0800</pubDate>
-      <guid>https://senup.github.io/posts/life/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/</guid>
-      <description>&lt;p&gt;之前有一部iPhone 12 Pro一直在闲置的状态，这不双十一到了，终于想起来能换点零花钱买点别的，于是挂在闲鱼上面出手。&lt;/p&gt;
-&lt;p&gt;一开始我想快点卖出，省的夜长梦多，所以标注了两千多块的价格。有很多买家过来咨询，价格确实比较实在，但是一聊到屏幕是非原装屏纷纷显得有些犹豫。无奈，我加上了验货宝的附加功能，来打消其他人的顾忌，但还是需要花很多时间和精力给人展示手机内在的详细配置信息和外表细节的磨损情况，甚至细究产地的区别等，这让我觉得非常麻烦。&lt;/p&gt;
-&lt;p&gt;最后一个东北的学生非常爽快的拍下了。但好景不长，我自己清除资料的时候发现低亮度的情况下屏幕出现一块亮斑。坏了！估计是自己搬家的时候被其他东西压坏了。没办法，只能谢绝买家，改成回收。&lt;/p&gt;
-&lt;p&gt;我简单查阅了小红书的回收平台，选择了讨论度较高的爱回收。爱回收上门速度很快，第二天预约，小哥骑着电瓶车和一堆工具让你下楼来当面验机，对着他的checklist一项项检查，最后表示屏幕比描述的情况更严重些，还有边框的磨损超出预期，因此价格只能一低再低，一千出头，询问我是否考虑进行回收。眼下我没有更好的选择，只能点头答应，钱款在当天就到账了，故事告一段落。&lt;/p&gt;
-&lt;p&gt;第二天在v站看到一个网友遇到同样的二手手机买卖情况，底下有条评论表示苹果官网好得多。具体表现在检修更宽松且回收价也高，按我当时的情况可以出到两千到三千多。听罢觉得自己更加后悔了。&lt;/p&gt;
-&lt;p&gt;最后，给未来的自己一些教训：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;美版的iPhone只支持单卡，谨慎购买&lt;/li&gt;
-&lt;li&gt;不建议尝试单卡改双卡的操作，比如维修小哥可能给你把屏幕搞坏&lt;/li&gt;
-&lt;li&gt;iPhone建议使用官网平台进行回收&lt;/li&gt;
-&lt;li&gt;闲置的东西请尽快及时止损&lt;/li&gt;
-&lt;li&gt;不要买型号为偶数的iPhone&lt;/li&gt;
-&lt;li&gt;不要购入二手iPhone，电池等问题就算当面也检查不出来&lt;/li&gt;
-&lt;li&gt;赚钱才是花钱的充分必要条件&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>奇怪的知识增加了</title>
-      <link>https://senup.github.io/posts/life/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</link>
-      <pubDate>Tue, 10 Oct 2023 13:42:40 +0800</pubDate>
-      <guid>https://senup.github.io/posts/life/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%8A%A0%E4%BA%86/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;上帝对人类的爱，超过世间万物，性爱的欢愉（不仅仅是为了传宗接代），的确是最美好的礼物。不过，每一对夫妻也应该谨记： “婚姻，人人应该尊重，床榻不可污秽。”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;刷到&lt;a href=&#34;https://twitter.com/shijinxia/status/1694476243754746110&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;twitter&lt;/a&gt;的这个视频，来自于清水健老师和竹内由纪老师主演的《爱の授业》。看完大为震撼，知识点满满。关于这方面的教育，想必很多人都是缺失的，我们能接收到的有限的影视材料大多都是为了更刺激的视觉体验而使用了很多不当的动作姿势。其中这些反面教材的动作在没人指点的情况下误用，可能会导致男女双方体验不适，或者忽略了对方的感受。毕竟，现实和电影里面可是不一样的。&lt;/p&gt;
-&lt;p&gt;这一集里面，几分钟的讲解就干货满满。渴望知识的我于是找了全集学习了下，不禁感慨人类的智慧真是无限大（笑）。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

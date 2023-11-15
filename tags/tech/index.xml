@@ -1,37 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tech on 高等游民🗯️</title>
+    <title>tech on 『高等游民』</title>
     <link>https://senup.github.io/tags/tech/</link>
-    <description>Recent content in tech on 高等游民🗯️</description>
+    <description>Recent content in tech on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 11 Nov 2023 23:13:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Nov 2023 14:03:43 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hello，Quantumult X</title>
-      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
-      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
-&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
-&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
-&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
-&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
-&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
-&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
-&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Hello，MySQL</title>
       <link>https://senup.github.io/posts/tech/hellomysql/</link>
@@ -54,34 +30,6 @@
 &lt;li&gt;执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询&lt;/li&gt;
 &lt;li&gt;存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Hello，Raycast</title>
-      <link>https://senup.github.io/posts/tech/helloraycast/</link>
-      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloraycast/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
-&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
-&lt;li&gt;窗口管理: window management&lt;/li&gt;
-&lt;li&gt;翻译：google translate&lt;/li&gt;
-&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
-&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;额外设置替代系统的搜索框：
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello，cron</title>

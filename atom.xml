@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-15T05:43:52+00:00</updated>
+    <updated>2023-11-15T05:53:35+00:00</updated>
     
     
     
@@ -94,9 +94,9 @@
         
         <entry>
             <title type="html"><![CDATA[Hello，shellclash]]></title>
-            <link href="https://senup.github.io/posts/life/helloshellclash/" rel="alternate" type="text/html" />
+            <link href="https://senup.github.io/posts/tech/helloshellclash/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/life/helloshellclash/</id>
+                <id>https://senup.github.io/posts/tech/helloshellclash/</id>
             
             
             <published>2023-11-12T01:17:06+08:00</published>
@@ -132,11 +132,13 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
                         
                             
                              
-                                <category scheme="https://senup.github.io/tags/life" term="life" label="life" />
+                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
                              
                                 <category scheme="https://senup.github.io/tags/vpn" term="vpn" label="vpn" />
                              
                                 <category scheme="https://senup.github.io/tags/linux" term="linux" label="linux" />
+                             
+                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
                             
                         
                     
@@ -147,9 +149,9 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
         
         <entry>
             <title type="html"><![CDATA[Hello，Quantumult X]]></title>
-            <link href="https://senup.github.io/posts/life/helloquantumult-x/" rel="alternate" type="text/html" />
+            <link href="https://senup.github.io/posts/tech/helloquantumult-x/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/life/helloquantumult-x/</id>
+                <id>https://senup.github.io/posts/tech/helloquantumult-x/</id>
             
             
             <published>2023-11-11T23:13:43+08:00</published>
@@ -233,9 +235,11 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
                         
                             
                              
-                                <category scheme="https://senup.github.io/tags/life" term="life" label="life" />
+                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
                              
                                 <category scheme="https://senup.github.io/tags/vpn" term="vpn" label="vpn" />
+                             
+                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
                             
                         
                     
@@ -553,6 +557,8 @@ innodb_buffer_poo_instances = 4</p>
                                 <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
                              
                                 <category scheme="https://senup.github.io/tags/mysql" term="mysql" label="mysql" />
+                             
+                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
                             
                         
                     

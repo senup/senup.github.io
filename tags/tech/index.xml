@@ -6,8 +6,58 @@
     <description>Recent content in tech on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 10 Nov 2023 14:03:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2023 01:17:06 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，shellclash</title>
+      <link>https://senup.github.io/posts/tech/helloshellclash/</link>
+      <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloshellclash/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;环境配置&#34;&gt;环境配置&lt;/h1&gt;
+&lt;p&gt;路由器：红米ax6000&lt;/p&gt;
+&lt;p&gt;固件：官方固件&lt;/p&gt;
+&lt;p&gt;红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。&lt;/p&gt;
+&lt;p&gt;其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;界面讲解&#34;&gt;界面讲解&lt;/h1&gt;
+&lt;p&gt;打开&lt;a href=&#34;http://192.168.31.1:9999/ui/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;yacd&lt;/a&gt;。
+代理界面有selector和URLTest的两种类型。
+selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
+&lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
+&lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Quantumult X</title>
+      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
+      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
+&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
+&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
+&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
+&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
+&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
+&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
+&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello，MySQL</title>
       <link>https://senup.github.io/posts/tech/hellomysql/</link>
@@ -32,22 +82,73 @@
 &lt;/ul&gt;</description>
     </item>
     <item>
-      <title>Hello，cron</title>
-      <link>https://senup.github.io/posts/tech/hellocron/</link>
-      <pubDate>Wed, 04 Oct 2023 20:48:29 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/hellocron/</guid>
-      <description>&lt;p&gt;[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[Hello，cron]]。&lt;/p&gt;
-&lt;p&gt;cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。&lt;/p&gt;
-&lt;p&gt;分钟范围：0~59
-小时范围：0~24
-日期：1~31
-月份：1~12
-星期几： 0~6&lt;/p&gt;
-&lt;p&gt;空格意义：分隔不同的时间单位
-逗号意义：同个时间范围里面的多个值
-斜杠含义：代表每隔一段时间就重复
-问号意义：不关心当前的时间单位
-星号含义：任意&lt;/p&gt;</description>
+      <title>Hello，Raycast</title>
+      <link>https://senup.github.io/posts/tech/helloraycast/</link>
+      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloraycast/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
+&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
+&lt;li&gt;窗口管理: window management&lt;/li&gt;
+&lt;li&gt;翻译：google translate&lt;/li&gt;
+&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
+&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;额外设置替代系统的搜索框：
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Apple TV</title>
+      <link>https://senup.github.io/posts/tech/helloapple-tv/</link>
+      <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloapple-tv/</guid>
+      <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
+&lt;p&gt;渠道：京东。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;8字电源线&#34;&gt;8字电源线&lt;/h1&gt;
+&lt;p&gt;港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。&lt;/p&gt;
+&lt;h1 id=&#34;infuse-pro&#34;&gt;infuse pro&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空&lt;/li&gt;
+&lt;li&gt;土区&lt;a href=&#34;https://www.oyunfor.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;onyunfor&lt;/a&gt;礼品卡购买100里拉，花费26¥&lt;/li&gt;
+&lt;li&gt;Apple store订阅infuse pro年费&lt;/li&gt;
+&lt;li&gt;片源获取：&lt;a href=&#34;https://www.codelicence.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;云盘4K-综合网盘搜索&lt;/a&gt;+telegram电报群资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;cheers&#34;&gt;cheers&lt;/h1&gt;
+&lt;p&gt;也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。&lt;/p&gt;
+&lt;h1 id=&#34;youtube-prime&#34;&gt;youtube prime&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;油管会员，用于去广告，还附赠了YouTube music，体验很不错。&lt;/li&gt;
+&lt;li&gt;渠道：电报群拼车。&lt;/li&gt;
+&lt;li&gt;花费：年付45¥。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;iplaytv&#34;&gt;iplaytv&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;渠道：闲鱼账号附赠，无需花费。&lt;/li&gt;
+&lt;li&gt;进阶：搜索&lt;strong&gt;m3u直播源&lt;/strong&gt;，导入配置订阅即可。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

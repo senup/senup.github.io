@@ -566,7 +566,8 @@ MySQL在查询大数据量的时候，是不能用内存来排序的，通常就
 |:-----|:-----|:-----|
 |const|超高|通过聚簇索引或者二级索引(唯一索引)+聚簇索引回源，比如where id = xx 或者 where unique_name = xx|
 |ref|      |普通二级索引，比如where name = xx|
-|ref_or_null|  |普通二级索引回源，比如where name=xx and name is null|
+|eq_ref|      |针对被驱动表如果基于主键进行等值匹配，那么他的查询方式就是eq_ref|
+|ref_or_null |  |普通二级索引回源，比如where name=xx and name is null|
 |range|      |普通索引范围查询，where age > 10 and age< 1|
 |index |慢|select的数据在二级索引树上面，因此只扫描二级索引树|
 |all|      |全表扫|
@@ -584,3 +585,180 @@ select * from t1 where x1 in （select x2 from t2 where ×3=xxx）这个语句�
 如果这个时候t1表的数据小于物化表，那就全表扫t1，判断每条数据是否都在物化表里面。
 
 
+## 半连接
+当然MySQL对子查询还有进行一种优化——半连接。比如：
+select t1.* from t1 semi join t2 on t1.x1=t2.x2 and t2.×3=xxx
+当然，其实并没有提供semi join这种语法，这是MySQL内核里面使用的一种方式，上面就是给大家说那么个意思，其实上面的semi join的语义，是和IN语句+子查询的语义完全一样的，他的意思就是说，对于 1表而言，只要在t2表里有符合t1.×1=t2.×2和t2．×3=xxx两个条件的数据就可以了，就可以把t1表的数据筛选出来了。
+
+
+
+
+# 执行计划
+### 案例1
+explain select * from t1 joint2
+
+
+extra显示 Using join buffffer (Block Nested Loop) ,代表嵌套循环扫描，每一条进行比对，产生了笛卡尔积。
+
+### 案例2
+EXPLAIN SELECT * FROM t1 WHERE X1 IN （SELECT ×1 FROM t2） OR x3='xxxx；
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152202603.png)
+
+
+因为有两个select语句，所以id有两个。其中select_type有两种，区分了主查询和子查询。对于t2表来说using index，也就是说走了二级索引查询x1；然后主查询有使用x3索引的机会，但是分析成本发现几乎跟全表扫描差不多，可能这个字段区分度不够大，因此决定直接全表扫。
+
+## 案例 3
+EXPLAIN SELECT * FROM t1 UNION SELECT * FROM t2
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152208059.png)
+
+第一二行是全表扫描，第三行使用了临时表，说明是因为 union 需要做去重工作。
+
+## 案例 4
+
+EXPLAIN SELECT * FROM t1 WHERE ×1 IN （SELECT ×1 FROM t2 WHERE ×1 = 'xXx' UNION SELECT ×1 FROM t1 WHERE ×1 ='xxX）；
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152228466.png)
+
+这里的 select_type有dependent subquery，就是说这是独立的子查询（子查询中的子查询），另一个 dependent union，子查询中的被 union 连接的表。
+
+
+## 案例 5
+
+EXPLAIN SELECT * FROM （SELECT X 1, count（ * ） as cnt FROM t1 GROUP BY XI）AS_t1 where knt>10；
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152241604.png)
+
+上面的执行计划里，我们其实应该先看第二条执行计划，他说的是子查询里的那个语句的执行计划，他的select_type是derived，意思就是说，针对子查询执行后的结果集会物化为一个内部临时表，然后外层查询是针对这个临时的物化表执行的。
+大家可以看到，他这里执行分组聚合的时候，是使用的index_×1这个索引来进行的，type是index，意思就是直接扫描偶了index_x1这个索引树的所有叶子节点，把x1相同值的个数都统计出来就可以了。
+然后外层查询是第一个执行计划，select_type是PRIMARY，针对的table是，就是一个子查询结果集物化形成的临时表，他是直接针对这个物化临时表进行了全表扫描根据where条件进行筛选的。
+
+
+
+## select type
+- `simple` 单表查询
+- `primary` 主查询
+- `subquery` 子查询
+- `union` union操作下被连接的表
+- `union result` union 操作的临时表
+- `dependent subquery` 子查询中的子查询
+- `dependent union` 子查询中的被 union
+- `derived` 内部临时表、物化表
+
+
+
+# 执行计划的ref
+
+而执行计划里的 ref 也相对会关键一些，当你的查询方式是索引等值匹配的时候，比如const、ref、eq_ref、ref_or_null这这些方式的时候，此时执行计划的ref字段告诉你的就是：你跟索引列等值匹配的是什么？是等值匹配一个常量值？还是等值匹配另外一个字段的值？
+
+EXPLAIN SELECT * FROM t1 WHERE ×1 ='xXX'
+
+这个语句的执行计划是常量 const
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152249298.png)
+
+EXPLAIN SELECT * FROM t1 INNER JOIN t2 ON t1.id =t2.id；
+这个语句的执行计划是 primary，代表 t2 表的主键，被驱动表基于主键进行等值匹配。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152250787.png)
+
+## extra
+好，那么我们看看extra的信息，是Using index，这是什么意思呢？其实就是说这次查询，仅仅涉及到了一个二级索引，不需要回表，因为他仅仅是查出来了x1这个字段，直接从index_x1索引里查就行了。
+如果没有回表操作，仅仅在二级索引里执行，那么extra里会告诉in是**Using index**。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152253877.png)
+
+
+**using where** 表示没用到索引或者除了用到索引还用到别的条件
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152254369.png)
+这个执行计划也是非常的清晰明了，这里针对t1表去查询，先通过ref方式直接在index_×1 索引里查找，是跟const代表的常量值去查找，然后查出来250条数据，接着再用Using where代表的方式，去使用AND x2='xxx'条件进行筛选，筛选后的数据比例是18%，最终所以查出来的数据大概应该是45条。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152255192.png)
+
+
+**内存优化多表关联**
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152257050.png)
+
+
+这个SQL很明确了，他基于x2字段来排序，是没法直接根据有序的索引去找数据的，只能把所有数据写入一个临时的磁盘文件，基于排序算法在磁盘文件里按照×2字段的值完成排序，然后再按照LIMIT 10的要求取出来头10条数据。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152259346.png)
+
+这个SQL里只能对全表数据放到临时表里做大量的磁盘文件操作，然后才能完成对x2字段的不同的值去分组，分组完了以后对不同x2值的分组去做聚合操作，这个过程也是相当的耗时的，性能是极低的。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152300554.png)
+
+
+
+## 其他字段
+- key_len表示这个字段里面长度最大的长度
+- rows表示扫描了多少行
+- filtered 是个百分比，代表最终过滤的比例，乘以 rows 能算出过滤后查到多少行
+
+## 生产案例
+EXPLAIN SELECT COUNT（id） FROM USers WHERE id IN （SELECT user_id FROM users.extentinfo WHERE latest_login_time < xxxxx）
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152302602.png)
+
+那么这里为什么会跑的这么慢呢？其实很明显了，大家可以想一下，首先他对子查询的结果做了一次物化临时表，落地磁盘了，接着他还全表扫描了users表的所有数据，每一条数据居然跑到一个没有索引的物化临时表里再做一次全表扫描找匹配数据。
+
+解决：引导着让数据库走 id 的主键聚簇索引。
+
+在不影响他语义的情况下，尽可能的去改变SQL语句的结构和格式，最终被我们尝试出了一个写法，如下所示：
+
+```
+SELECT COUNT（id）
+FROM users
+WHERE （id IN （SELECT user_id FROM users_extent_info WHERE latest_login_time < xxxxx） OR id IN
+（SELECT user_id FROM users_extent_info WHERE latest Jogin_time <-1））
+```
+
+在上述写法下，WHERE语句的OR后面的第二个条件，根本是不可能成立的，因为没有数据的latest_login_time是小于-1的，所以那是不会影响SQL语义的，但是我们发现改变了SQL的写法之后，执行计划也随之改变。
+
+
+---
+
+
+select * from products where category="xx' and sub_category='xx' order by id desc limit xx,xx
+
+这其实是一个很稀松平常的SQL语句，他就是用户在电商网站上根据商品的品类以及子类在进行筛选，然后按id倒序排序，最后是分页，就这么一个语句，KEY index_category（catetory，sub_category）肯定是存在的。
+
+此时执行计划具体内容就不写了，因为大家之前看了那么多执行计划，基本都很熟悉了，我就说这里最核心的信息，他的possible_keys里是有我们的index_category的，结果实际用的key不是这个索引，而是PRIMARY！！而且Extra里清晰写了Usingwhere。
+
+为什么呢？它根据了聚簇索引来对一行行的数据进行了过滤，所以是全表扫描。可以推测出 MySQL 计算成本出现了问题。为什么呢？
+- 即使找到了分类，也会筛出超多的数据，还要考虑回表、排序等问题
+- 运营加了新品类但是下面无商品，于是查询新品类，直接就全表扫描聚簇索引了
+
+
+
+```
+重写 SQL：select * from products force index（index_category） where category="xx' and sub_category="xx
+order by id desc limit xx,xx
+```
+
+---
+SELECT * FROM comments WHERE product_id ='xx' and is_good_comment='1'ORDER BY id desc
+LIMIT 100000,20
+
+也就是说，对这个商品的每一条评论，都要进行一次回表操作，回到聚簇索引里，根据id找到那条数据，取出来is_g00d_comment字段的值，接着对is_good_comment='1'条件做一个比对，筛选符合条件的数据。
+但是这个时候扫到了几十万的数据，要做几十万次的回表，还要做 基于磁盘临时文件的ID 倒序再取 20 条。
+
+那么如何对他进行优化呢？其实这个思路，反而就跟我们讲的第二个案例反过来了，第二个案例中基于商品品类去查商品表，是尽量避免对聚簇索引进行扫描，因为有可能找不到你指定的品类下的商品，出现聚簇索引全表扫描的问题。
+
+因此对于这个案例，我们通常会采取如下方式改造分页查询语句：
+
+
+```
+SELECT * from comments a，
+（SELECT id FROM comments WHERE product_id ='xx" and is_g00d_comment="1'ORDER BY id
+desc LIMIT 100000,20） b WHERE a.id=b.id
+```
+
+上面那个SQL语句的执行计划就会彻底改变他的执行方式，他通常会先执行括号里的子查询，子查询反而会使用PRIMARY聚簇索引，按照聚簇索引的id值的倒序方向进行扫描，扫描过程中就把符合`WHERE product_id ='xx'and is_g00d_comment='1'`条件的数据给筛选出来。
+比如这里就筛选出了十万多条的数据，并不需要把符合条件的数据都找到，因为limit后跟的是100000,20，理论上，只要有100000+20条符合条件的数据，而且是按照id有序的，此时就可以执行根据limit 100000,20提取到5001页的这20条数据了。
+
+# 主从架构
+然后从库上有一个10线程，这个1O线程会负责跟主库建立一个TCP连接，接着请求主库传输binlog日志给自己，这个时候主库上有一个IO dump线程，就会负责通过这个TCP连接把binlog日志传输给从库的IO线程，如下图所示。
+
+接着从库的IO线程会把读取到的binlog日志数据写入到自己本地的relay日志文件中去，然后从库上另外有一个SQL线程会读取relay日志里的内容，进行日志重做，把所有在主库执行过的增删改操作，在从库上做一遍，达到一个还原数据的过程，如下图。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152329826.png)
+
+到此为止，想必大家对MySQL主从复制的原理也就有一个基本的了解了，简单来说，你只要给主节点挂上一个从节点，从节点的IO线程就会跟主节点建立网络连接，然后请求主节点传输binlog日志，主节点的IO dump线程就负责传输binlog日志给从节点，从节点收到日志后就可以回放增删改操作恢复数据。
+在这个基础之上，就可以实现MySQL主从节点的数据复制以及基本一致，进而可以实现高可用架构以及读写分离架构。

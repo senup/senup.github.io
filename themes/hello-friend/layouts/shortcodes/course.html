@@ -1,0 +1,66 @@
+<!-- layouts/shortcodes/course.html -->
+{{ $imageURL := .Get 0 }}
+{{ $courseName := .Get 1 }}
+{{ $description := .Get 2 }}
+{{ $enrollmentTime := .Get 3 }}
+
+<style>
+.course-table {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+.course-table td {
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.course-table .course-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-table img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-table .course-info {
+  padding: 20px;
+  border-left: 4px solid #3498db;
+}
+
+.course-table .course-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.course-table .course-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.course-table .enrollment-time {
+  font-style: italic;
+  color: #888;
+}
+</style>
+
+<table class="course-table">
+  <tr>
+    <td class="course-image">
+      <img src="{{ $imageURL }}" alt="{{ $courseName }}">
+    </td>
+    <td class="course-info">
+      <div class="course-name">{{ $courseName }}</div>
+      <div class="course-description">{{ $description }}</div>
+      <div class="enrollment-time">结课日期: {{ $enrollmentTime }}</div>
+    </td>
+  </tr>
+</table>

@@ -7,46 +7,51 @@
 <style>
 .course-table {
   width: 100%;
-  border-spacing: 0;
+  border-collapse: collapse;
   margin-bottom: 20px;
 }
 
 .course-table td {
-  padding: 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.course-table .course-image {
+.course-image {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
-.course-table img {
-  display: block;
+.course-image img {
   width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
 
-.course-table .course-info {
-  padding: 20px;
-  border-left: 4px solid #3498db;
+.course-image:hover img {
+  transform: scale(1.05);
 }
 
-.course-table .course-name {
+.course-info {
+  padding: 20px;
+}
+
+.course-name {
   font-size: 24px;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
 }
 
-.course-table .course-description {
+.course-description {
   font-size: 18px;
   color: #666;
   margin-bottom: 15px;
 }
 
-.course-table .enrollment-time {
+.enrollment-time {
   font-style: italic;
   color: #888;
 }

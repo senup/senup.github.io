@@ -1,0 +1,54 @@
+<!-- layouts/shortcodes/profile.html -->
+{{ $qrCodeURL := .Get "qr_code" }}
+{{ $name := .Get "name" }}
+{{ $bio := .Get "bio" }}
+
+<style>
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.profile-image {
+  flex: 0 0 150px;
+}
+
+.profile-image img {
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-bio {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+</style>
+
+<div class="profile-container">
+  <div class="profile-info">
+    <div class="profile-name">{{ $name }}</div>
+    <div class="profile-bio">{{ $bio }}</div>
+  </div>
+  <div class="profile-image">
+    <img src="{{ $qrCodeURL }}" alt="QR Code">
+  </div>
+</div>

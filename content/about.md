@@ -6,9 +6,13 @@ hideInList: false
 isTop: true
 ---
 
-关于我：98年的Java程序员。双子座，坐标广东广州。
 
-> 欢迎大家访问我的博客。
+
+{{< bio 
+qr_code="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311161210651.jpg" name="高等游民" 
+bio="98 年生人，双子座，坐标广东广州。建构这个博客的初衷并非虚掷光阴，而是为了抗衡那无情的时光剥夺，期冀在未来岁月中，依旧能够回忆起曾经书写的点滴。" 
+>}}
+
 
 
 

@@ -400,324 +400,75 @@
     </div>
 </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
-    <style>
-        .ttimeline {
-            position: relative;
-        }
-
-        .ttimeline::before {
-            content: "";
-            background: #C5CAE9;
-            width: 5px;
-            height: 95%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            width: 100%;
-            margin-bottom: 70px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            float: right;
-            padding: 40px 30px 10px 30px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content .date {
-            right: auto;
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            content: "";
-            position: absolute;
-            border-style: solid;
-            width: 0;
-            height: 0;
-            top: 30px;
-            left: -15px;
-            border-width: 10px 15px 10px 0;
-            border-color: transparent var(--entry) transparent transparent;
-        }
-
-        .timeline-item::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        .timeline-content {
-            position: relative;
-            width: 43%;
-            padding: 10px 30px;
-            border-radius: 4px;
-            background: var(--entry);
-            box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
-        }
-
-        .timeline-content::after {
-            content: "";
-            position: absolute;
-            border-style: solid;
-            width: 0;
-            height: 0;
-            top: 30px;
-            right: -15px;
-            border-width: 10px 0 10px 15px;
-            border-color: transparent transparent transparent var(--entry);
-        }
-
-        .timeline-img {
-            width: 30px;
-            height: 30px;
-            background: #3F51B5;
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            margin-top: 25px;
-            margin-left: -15px;
-        }
-
-        .timeline-text {
-            font-size: 13px;
-        }
-
-        .bnt-more {
-            background: #3F51B5;
-            color: #FFFFFF;
-            padding: 8px 20px;
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            display: inline-block;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px -1000px rgba(0, 0, 0, 0.6);
-        }
-
-        .timeline-card {
-            padding: 0 !important;
-        }
-
-        .timeline-card p {
-            padding: 0 20px;
-        }
-
-        .timeline-card a {
-            margin-left: 20px;
-        }
-
-        .timeline-item .timeline-img-header {
-            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), center center no-repeat;
-            background-size: cover;
-        }
-
-        .timeline-img-header {
-            height: 200px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .timeline-img-header p {
-            position: absolute;
-            bottom: 5px;
-            left: 20px;
-            font-size: 24px;
-        }
-
-        .timeline-header {
-            font-size: 24px;
-        }
-
-
-        .date {
-            background: #FF4081;
-            display: inline-block;
-            color: #FFFFFF;
-            padding: 10px;
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        @media screen and (max-width: 768px) {
-            .ttimeline::before {
-                left: 50px;
-            }
-
-            .ttimeline .timeline-img {
-                left: 50px;
-            }
-
-            .ttimeline .timeline-content {
-                max-width: 100%;
-                width: auto;
-                margin-left: 82px;
-            }
-
-            .ttimeline .timeline-item:nth-child(even) .timeline-content {
-                float: none;
-            }
-
-            .ttimeline .timeline-item:nth-child(odd) .timeline-content::after {
-                content: "";
-                position: absolute;
-                border-style: solid;
-                width: 0;
-                height: 0;
-                top: 30px;
-                left: -15px;
-                border-width: 10px 15px 10px 0;
-                border-color: transparent var(--entry) transparent transparent;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<section class="ttimeline">
-    <div class="container">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        春
-        
-        
-        
-        
-        
-        2022.12-2023.12
-        
-        
-        盼望着，盼望着，东风来了，春天的脚步近了。一切都像刚睡醒的样子，欣欣然张开了眼。山朗润起来了，水涨起来了，太阳的脸红起来了。小草偷偷地从土里钻出来，嫩嫩的，绿绿的。园子里，田野里，瞧去，一大片一大片满是的。坐着，躺着，打两个滚，踢几脚球，赛几趟跑，捉几回迷藏。风轻悄悄的，草软绵绵的。
-        
-        
-        
-        
-        
-        TCMalloc
-        
-        
-        
-        
-        
-        2022.05.06
-        
-        
-        This repository contains the TCMalloc C++ code.TCMalloc is Google’s customized implementation of C’s malloc() and C++’s operator new used for memory allocation within our C and C++ code. TCMalloc is a fast, multi-threaded malloc implementation.
-        
-        
-        
-        
-        
-        More
-        
-        
-        TCMalloc
-        
-        
-        
-        
-        
-        2022.05.06
-        
-        
-        This repository contains the TCMalloc C++ code.TCMalloc is Google’s customized implementation of C’s malloc() and C++’s operator new used for memory allocation within our C and C++ code. TCMalloc is a fast, multi-threaded malloc implementation.
-        
-        
-        
-        
-        
-        More
-        
-        
-        
-        
-    </div>
-</section>
-
-
-
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src='https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js'></script>
-<script>
-    $(function () {
-
-        window.sr = ScrollReveal();
-
-        if ($(window).width() < 768) {
-
-            if ($('.timeline-content').hasClass('js--fadeInLeft')) {
-                $('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
-            }
-
-            sr.reveal('.js--fadeInRight', {
-                origin: 'bottom',
-                distance: '300px',
-                easing: 'ease-in-out',
-                duration: 800,
-            });
-
-        } else {
-
-            sr.reveal('.js--fadeInLeft', {
-                origin: 'left',
-                distance: '300px',
-                easing: 'ease-in-out',
-                duration: 800,
-            });
-
-            sr.reveal('.js--fadeInRight', {
-                origin: 'right',
-                distance: '300px',
-                easing: 'ease-in-out',
-                duration: 800,
-            });
-
-        }
-
-
-    });
-</script>
-
-</body>
-</html>
 <hr>
-<table>  
-  <thead>  
-    <tr>  
-      <th>列标题1</th>  
-      <th>列标题2</th>  
-      <th>列标题3</th>  
-    </tr>  
-  </thead>  
-  <tbody>  
-    <tr>  
-      <td>行1，列1</td>  
-      <td>行1，列2</td>  
-      <td>行1，列3</td>  
-    </tr>  
-    <tr>  
-      <td>行2，列1</td>  
-      <td>行2，列2</td>  
-      <td><img src="http://static.runoob.com/images/runoob-logo.png" width="50%"></td>  
-    </tr>  
-  </tbody>  
+<h3 id="-近期学习">🏫 近期学习</h3>
+
+
+
+
+
+
+<style>
+.course-table {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+.course-table td {
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.course-table .course-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-table img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-table .course-info {
+  padding: 20px;
+  border-left: 4px solid #3498db;
+}
+
+.course-table .course-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.course-table .course-description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.course-table .enrollment-time {
+  font-style: italic;
+  color: #888;
+}
+</style>
+
+<table class="course-table">
+  <tr>
+    <td class="course-image">
+      <img src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311161023150.png" alt="从0开始带你成为MySQL高手">
+    </td>
+    <td class="course-info">
+      <div class="course-name">从0开始带你成为MySQL高手</div>
+      <div class="course-description">46个生产案例，全面覆盖 MySQL 性能优化、分库分表等问题。</div>
+      <div class="enrollment-time">结课日期: 2023-11-16</div>
+    </td>
+  </tr>
 </table>
+
 
       
     </div>
@@ -811,7 +562,7 @@
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 16831 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 16598 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

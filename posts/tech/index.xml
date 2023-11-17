@@ -6,8 +6,31 @@
     <description>Recent content in 折腾 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 16 Nov 2023 08:03:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Nov 2023 18:05:10 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Gradle</title>
+      <link>https://senup.github.io/posts/tech/hellogradle/</link>
+      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/hellogradle/</guid>
+      <description>&lt;h2 id=&#34;下载&#34;&gt;下载&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://gradle.org/install/#manually&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;gradle官方网站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击上方连接进入到官方网&lt;/p&gt;
+&lt;p&gt;手动安装的话，点击releases page 选择自己想要安装的包下载&lt;/p&gt;
+&lt;p&gt;我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin&lt;/p&gt;
+&lt;h2 id=&#34;配置环境变量&#34;&gt;配置环境变量&lt;/h2&gt;
+&lt;p&gt;1.通过命令打开环境编辑文档，输入i进入编辑模式&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vim ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2.在文档的尾部追加gradle的环境配置&lt;/p&gt;
+&lt;p&gt;`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin&lt;/p&gt;
+&lt;p&gt;英文状态下，按esc键，然后输入&lt;code&gt;:wq&lt;/code&gt;保存并退出文档&lt;/p&gt;
+&lt;p&gt;3.让配置的文档生效&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;source ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.验证gradle安装成功&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gradle -v&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;出现gradle的版本信息证明安装成功。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello，MySQL</title>
       <link>https://senup.github.io/posts/tech/hellomysql/</link>
@@ -82,73 +105,16 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Hello，Raycast</title>
-      <link>https://senup.github.io/posts/tech/helloraycast/</link>
-      <pubDate>Tue, 31 Oct 2023 02:53:49 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloraycast/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;安装插件&#34;&gt;安装插件&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.raycast.com/store&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;Raycast - Store&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;插件替代软件&#34;&gt;插件替代软件&lt;/h1&gt;
-&lt;p&gt;软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;剪切板：clipboard history&lt;/li&gt;
-&lt;li&gt;窗口管理: window management&lt;/li&gt;
-&lt;li&gt;翻译：google translate&lt;/li&gt;
-&lt;li&gt;OCR识别: screenOCR&lt;/li&gt;
-&lt;li&gt;软件卸载： 搜索APP打开菜单&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;额外设置替代系统的搜索框：
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;设置别名&#34;&gt;设置别名&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;quicklinks&#34;&gt;QuickLinks&lt;/h1&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png&#34; alt=&#34;image.png&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello，Apple TV</title>
-      <link>https://senup.github.io/posts/tech/helloapple-tv/</link>
-      <pubDate>Mon, 30 Oct 2023 02:54:33 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloapple-tv/</guid>
-      <description>&lt;p&gt;倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。&lt;/p&gt;
-&lt;p&gt;渠道：京东。&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;8字电源线&#34;&gt;8字电源线&lt;/h1&gt;
-&lt;p&gt;港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。&lt;/p&gt;
-&lt;h1 id=&#34;infuse-pro&#34;&gt;infuse pro&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空&lt;/li&gt;
-&lt;li&gt;土区&lt;a href=&#34;https://www.oyunfor.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;onyunfor&lt;/a&gt;礼品卡购买100里拉，花费26¥&lt;/li&gt;
-&lt;li&gt;Apple store订阅infuse pro年费&lt;/li&gt;
-&lt;li&gt;片源获取：&lt;a href=&#34;https://www.codelicence.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;云盘4K-综合网盘搜索&lt;/a&gt;+telegram电报群资源&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
-解决方法：使用Mac进行初始化库即可。&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png&#34; alt=&#34;image.png&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;cheers&#34;&gt;cheers&lt;/h1&gt;
-&lt;p&gt;也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。&lt;/p&gt;
-&lt;h1 id=&#34;youtube-prime&#34;&gt;youtube prime&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;油管会员，用于去广告，还附赠了YouTube music，体验很不错。&lt;/li&gt;
-&lt;li&gt;渠道：电报群拼车。&lt;/li&gt;
-&lt;li&gt;花费：年付45¥。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;iplaytv&#34;&gt;iplaytv&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;渠道：闲鱼账号附赠，无需花费。&lt;/li&gt;
-&lt;li&gt;进阶：搜索&lt;strong&gt;m3u直播源&lt;/strong&gt;，导入配置订阅即可。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-&lt;p&gt;按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。&lt;/p&gt;</description>
+      <title>Hello，MacOS</title>
+      <link>https://senup.github.io/posts/tech/hellomacos/</link>
+      <pubDate>Tue, 07 Nov 2023 23:23:28 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/hellomacos/</guid>
+      <description>&lt;h1 id=&#34;finder&#34;&gt;Finder&lt;/h1&gt;
+&lt;p&gt;找出 当前文件夹或子目录下面所有的  pdf 文件并拷贝放到pdf文件夹下面&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;find ./  -name  &amp;#34;*.pdf&amp;#34; -exec mv {} ./pdf \;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;剪切&#34;&gt;剪切&lt;/h2&gt;
+&lt;p&gt;其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。&lt;/p&gt;
+&lt;p&gt;按下&lt;code&gt;command+C&lt;/code&gt;快捷键之后，在目标目录按下&lt;code&gt;option+command+V&lt;/code&gt;就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -6,13 +6,27 @@
     <description>Recent content in 标签 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 16 Nov 2023 08:03:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Nov 2023 18:05:10 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gradle</title>
+      <link>https://senup.github.io/tags/gradle/</link>
+      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
+      <guid>https://senup.github.io/tags/gradle/</guid>
+      <description></description>
+    </item>
     <item>
       <title>hello</title>
       <link>https://senup.github.io/tags/hello/</link>
-      <pubDate>Thu, 16 Nov 2023 08:03:43 +0800</pubDate>
+      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
       <guid>https://senup.github.io/tags/hello/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tech</title>
+      <link>https://senup.github.io/tags/tech/</link>
+      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
+      <guid>https://senup.github.io/tags/tech/</guid>
       <description></description>
     </item>
     <item>
@@ -23,24 +37,10 @@
       <description></description>
     </item>
     <item>
-      <title>tech</title>
-      <link>https://senup.github.io/tags/tech/</link>
-      <pubDate>Thu, 16 Nov 2023 08:03:43 +0800</pubDate>
-      <guid>https://senup.github.io/tags/tech/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>read</title>
       <link>https://senup.github.io/tags/read/</link>
       <pubDate>Wed, 15 Nov 2023 15:06:42 +0800</pubDate>
       <guid>https://senup.github.io/tags/read/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>guitar</title>
-      <link>https://senup.github.io/tags/guitar/</link>
-      <pubDate>Wed, 15 Nov 2023 12:41:52 +0800</pubDate>
-      <guid>https://senup.github.io/tags/guitar/</guid>
       <description></description>
     </item>
   </channel>

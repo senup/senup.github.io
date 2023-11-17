@@ -7,12 +7,63 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-17T06:36:45+00:00</updated>
+    <updated>2023-11-17T13:38:45+00:00</updated>
     
     
     
     
         <id>https://senup.github.io/atom.xml</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Hello，Gradle]]></title>
+            <link href="https://senup.github.io/posts/tech/hellogradle/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/tech/hellogradle/</id>
+            
+            
+            <published>2023-11-17T18:05:10+08:00</published>
+            <updated>2023-11-17T18:05:10+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<h2 id="下载">下载</h2>
+<p><a href="https://gradle.org/install/#manually" target="_blank" rel="noopener nofollow noreferrer" >gradle官方网站</a></p>
+<p>点击上方连接进入到官方网</p>
+<p>手动安装的话，点击releases page 选择自己想要安装的包下载</p>
+<p>我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin</p>
+<h2 id="配置环境变量">配置环境变量</h2>
+<p>1.通过命令打开环境编辑文档，输入i进入编辑模式</p>
+<p><code>vim ~/.bash_profile</code></p>
+<p>2.在文档的尾部追加gradle的环境配置</p>
+<p>`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin</p>
+<p>英文状态下，按esc键，然后输入<code>:wq</code>保存并退出文档</p>
+<p>3.让配置的文档生效</p>
+<p><code>source ~/.bash_profile</code></p>
+<p>4.验证gradle安装成功</p>
+<p><code>gradle -v</code></p>
+<p>出现gradle的版本信息证明安装成功。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png" alt="image.png"  /></p>
+<h2 id="idea-配置">idea 配置</h2>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
+                             
+                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
+                             
+                                <category scheme="https://senup.github.io/tags/gradle" term="gradle" label="gradle" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -828,107 +879,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
                                 <category scheme="https://senup.github.io/tags/vpn" term="vpn" label="vpn" />
                              
                                 <category scheme="https://senup.github.io/tags/linux" term="linux" label="linux" />
-                             
-                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[Hello，Quantumult X]]></title>
-            <link href="https://senup.github.io/posts/tech/helloquantumult-x/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/tech/helloquantumult-x/</id>
-            
-            
-            <published>2023-11-11T23:13:43+08:00</published>
-            <updated>2023-11-11T23:13:43+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<blockquote>
-<p>Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。</p>
-</blockquote>
-<h1 id="下载配置">下载配置</h1>
-<p>推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。<br>
-<a href="https://github.com/ddgksf2013" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/ddgksf2013</a></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg" alt="IMG_1860.jpg"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg" alt="IMG_1859.jpg"  /></p>
-<h1 id="重写规则">重写规则</h1>
-<p>有些小众 APP 再从这个组里面找需要的 APP 规则：<br>
-<a href="https://t.me/Aa28413761" target="_blank" rel="noopener nofollow noreferrer" >https://t.me/Aa28413761</a></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg" alt="IMG_1857.jpg"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg" alt="IMG_1858.jpg"  /></p>
-<h1 id="导入节点订阅">导入节点订阅</h1>
-<p>目前用的是魔戒，按量订阅，缺点是偏慢</p>
-<h1 id="配置证书">配置证书</h1>
-<p>打开设置的MitM开关，生成证书并去设置里面配置证书
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg" alt="IMG_1861.jpg"  /></p>
-<h1 id="重写规则配置">重写规则配置</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 🟢&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;功能重写&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>rewrite_remote<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/Netease.conf, tag<span style="color:#f92672">=</span>网易云音乐, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.snippet, tag<span style="color:#f92672">=</span>知乎新版, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/wyun.js, tag<span style="color:#f92672">=</span>by-伟人,网易云音乐, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf, tag<span style="color:#f92672">=</span>去开屏, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/senup/QuantX/main/rule.conf, tag<span style="color:#f92672">=</span>个人配置, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/zwf234/rules/master/QuantumultX/qxrules.conf, tag<span style="color:#f92672">=</span>齐心规则, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Collections.conf, tag<span style="color:#f92672">=</span>𝑪𝒐𝒍𝒍𝒆𝒄𝒕𝒊𝒐𝒏𝒔, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, inserted-resource<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/amap.snippet, tag<span style="color:#f92672">=</span>高德净化, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, inserted-resource<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Script/Bilibili/AD_Bilibili.conf, tag<span style="color:#f92672">=</span>哔哩广告, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>false, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Cainiao.conf, tag<span style="color:#f92672">=</span>菜鸟裹裹, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/XHS.conf, tag<span style="color:#f92672">=</span>小红书, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Search.conf, tag<span style="color:#f92672">=</span>超级搜索, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/ADBlock.conf, tag<span style="color:#f92672">=</span>ADBlock, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/TikTok/TikTok-US.conf, tag<span style="color:#f92672">=</span>𝑻𝒊𝒌𝑻𝒐𝒌, update-interval<span style="color:#f92672">=</span>86400, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/app2smile/rules/master/module/youtube.sgmodule, tag<span style="color:#f92672">=</span>油管广告, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Maasea/sgmodule/master/YoutubeAds.sgmodule, tag<span style="color:#f92672">=</span>油管画中画, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/ZHVIP.js, tag<span style="color:#f92672">=</span>知乎会员, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/WeiRen0/Scripts/main/wxds.js, tag<span style="color:#f92672">=</span>微信读书, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>true
-</span></span><span style="display:flex;"><span>https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Cookie.conf, tag<span style="color:#f92672">=</span>Cookie, update-interval<span style="color:#f92672">=</span>172800, opt-parser<span style="color:#f92672">=</span>true, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ======================================</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://gitlab.com/ioshkj/quantumultx/-/raw/main/vipjs/ylgy.conf, tag=𝑺𝒉𝒆𝒆𝒑, update-interval=172800, opt-parser=true, enabled=false</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/zwf234/rules/master/QuantumultX/price.conf, tag=京东淘宝比价, update-interval=172800, opt-parser=true, enabled=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/TestFlightDownload.conf , tag=TestFlight区域限制解除, update-interval=172800, opt-parser=false, enabled=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/zZPiglet/Task/master/UnblockURLinWeChat.conf, tag=微信跳过中间界面, update-interval=172800, opt-parser=true, enabled=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/yqc007/QuantumultX/master/DuolingoPlusCrack.js, tag=𝑫𝒖𝒐𝒍𝒊𝒏𝒈𝒐, update-interval=172800, opt-parser=true, enabled=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://raw.githubusercontent.com/Moli-X/Resources/main/Rewrite/Bilibili/AutoBilibili.conf, tag=哔哩换区, update-interval=172800, opt-parser=false, enabled=true</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ======================================</span>
-</span></span></code></pre></div><h1 id="本地任务配置">本地任务配置</h1>
-<p>可以参考<a href="https://www.cnblogs.com/zh76412950/p/17207805.html" target="_blank" rel="noopener nofollow noreferrer" >圈x脚本 - 菜鸟辉哥</a>讲了<strong>本地任务</strong>和<strong>抓包</strong>的使用
-相关脚本可以参考<a href="https://t.me/nobyda" target="_blank" rel="noopener nofollow noreferrer" >Telegram: Contact @nobyda</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 🟢&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;本地任务&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>task_local<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ===============莫离收集===============</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">36</span> 6,14,23 * * * https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/testflight/Auto_join_TF.js, tag<span style="color:#f92672">=</span>TestFlight自动加入, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/Orz-3/mini/master/Color/testflight.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">36</span> 6,14,23 * * * https://raw.githubusercontent.com/dompling/Script/master/jd/jd_cookie_search.js, tag<span style="color:#f92672">=</span>京东检测, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/FoKit/Quantumult-X/main/images/check.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 7,11,15,19 * * * https://raw.githubusercontent.com/id77/QuantumultX/master/task/jdWuLiu.js, tag<span style="color:#f92672">=</span>京东物流, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 18,20 * * * https://raw.githubusercontent.com/ChuheGit/1/main/Script/jd_scripts/jd_unsubscribe.js, tag<span style="color:#f92672">=</span>京东取关, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 8,12,16,20 * * * https://raw.githubusercontent.com/ChuheGit/1/main/Script/jd_scripts/jd_bean_change.js, tag<span style="color:#f92672">=</span>京豆变动, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/ChuheGit/1/main/QuantumultX/Gallery/API-Icon/jd_bean_change.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span> * https://raw.githubusercontent.com/WSL33099/QuantumultX/main/Script/JD/ClCart.js, tag<span style="color:#f92672">=</span>清空购物车, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span> <span style="color:#ae81ff">0</span> * * * https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag<span style="color:#f92672">=</span>京东签到, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png, enabled<span style="color:#f92672">=</span>false
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> 7-22 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/appstore/AppMonitor.js, tag<span style="color:#f92672">=</span>软件监控, img-url<span style="color:#f92672">=</span>https://raw.githubusercontent.com/WSL33099/QuantumultX/main/Icon/Test/App-Store.PNG, enabled<span style="color:#f92672">=</span>false
-</span></span></code></pre></div><h1 id="参考">参考</h1>
-<p><a href="https://github.com/kjfx/QuantumultX/" target="_blank" rel="noopener nofollow noreferrer" >GitHub - kjfx/QuantumultX: Quantumult X 新手入门教程</a>
-<a href="https://www.youtube.com/watch?v=QUNzXesYMOo" target="_blank" rel="noopener nofollow noreferrer" >Quantumult实现京东签到</a>
-<a href="https://www.notion.so/Quantumult-X-1d32ddc6e61c4892ad2ec5ea47f00917" target="_blank" rel="noopener nofollow noreferrer" >Quantumult X 不完全教程</a></p>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
-                             
-                                <category scheme="https://senup.github.io/tags/vpn" term="vpn" label="vpn" />
                              
                                 <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
                             

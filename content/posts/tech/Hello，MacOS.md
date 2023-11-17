@@ -6,7 +6,7 @@ tags:
   - mac
   - finder
   - hello
-draft: true
+draft: false
 hideInList: false
 feature: 
 isTop: false
@@ -18,5 +18,14 @@ isTop: false
 ```
 find ./  -name  "*.pdf" -exec mv {} ./pdf \;
 ```
+
+
+## 剪切
+其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。
+
+按下`command+C`快捷键之后，在目标目录按下`option+command+V`就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。
+
+
+
 
 <!--more-->

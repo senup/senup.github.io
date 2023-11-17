@@ -12,7 +12,7 @@ feature:
 isTop: false
 ---
 
-个人认为，PDF expert 应该是 Mac 上体验最为友好的阅读器了，启动速度快，没有花里胡哨的广告和收费，用的很舒心。
+PDF expert 应该是 Mac 上体验较为友好的阅读器了，启动速度快，没有花里胡哨的广告和收费，用的很舒心。
 
 
 ## 隐藏
@@ -22,10 +22,9 @@ isTop: false
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171332356.png)
 
 
-
+<!--more-->
 ## PDF 合并
 这个倒是没啥好说的。
 
 
 
-<!--more-->

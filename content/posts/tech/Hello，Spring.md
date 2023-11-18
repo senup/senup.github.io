@@ -64,3 +64,26 @@ resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getI
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181457611.png)
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181510070.png)
 
+这个 resolver 有什么用？XML 的配置文件头经常会引用 dtd 和 xsd 的校验规则，但是存在一个问题，就是使用的时候需要去网络下载，如果网络出现问题就会影响整个流程。为此，spring 把这些校验文件都放在 jar 包里面了，需要的时候就会从 jar 包加载成 bean 出来，而 resolver 就是用于规范和校验 XML 格式的类。
+
+至此，流程图为这样。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311182349751.png)
+
+
+上图中底部俩 resolver 分别规范和校验 dtd 和 xsd 的校验格式；
+- Dtd 的 resolver 会有两个入参：publicId 和 systemId。SystemId 是 XML 文件里面的一个 HTTP 链接。怎么根据这俩参数获取具体的位置? 首先构建 classPathResource 的时候 getClass 方法传入了 BeansDtdResolver 的相对应的 resources 文件夹下面就有 dtd 文件。文件名是默认的 spring-beans. Dtd。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190052326.png)
+
+- xsd 文件也有 publicId 和 systemId。不太相同的地方在于不需要 publicId 。其查找过程是将 “META-INF/spring. Schemas”文件解析成一个 map <systemId,xsd 路径>的结构，然后通过当前 XML 文件里面的 systemId 获取到对应的 xsd 路径，也能找到。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190057718.png)
+
+区别是哪种类型？XML 中引用的校验文件只有 dtd 和 xsd, 因此一旦发现 xml 里面包含了“DOCTYPE”字符串，那么就是 dtd 格式的校验规则，否则就是 xsd.
+
+
+ XML区别如图：
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190102960.png)
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190103948.png)
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190103273.png)
+

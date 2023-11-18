@@ -49,3 +49,6 @@ isTop: false
 <!--more-->
 
 ## idea 配置
+加载 spring 源码需要这么配置
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181237703.png)

@@ -7,7 +7,7 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-17T13:38:45+00:00</updated>
+    <updated>2023-11-18T04:46:39+00:00</updated>
     
     
     
@@ -43,7 +43,9 @@
 <p><code>gradle -v</code></p>
 <p>出现gradle的版本信息证明安装成功。</p>
 <p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png" alt="image.png"  /></p>
-<h2 id="idea-配置">idea 配置</h2>]]></content>
+<h2 id="idea-配置">idea 配置</h2>
+<p>加载 spring 源码需要这么配置</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181237703.png" alt="image.png"  /></p>]]></content>
             
                  
                     

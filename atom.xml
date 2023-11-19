@@ -7,12 +7,43 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-19T10:37:57+00:00</updated>
+    <updated>2023-11-19T21:47:15+00:00</updated>
     
     
     
     
         <id>https://senup.github.io/atom.xml</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[20231119195108]]></title>
+            <link href="https://senup.github.io/posts/chat/20231119195108/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/chat/20231119195108/</id>
+            
+            
+            <published>2023-11-19T19:51:09+08:00</published>
+            <updated>2023-11-19T19:51:09+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>减脂期间忍不住点了猪脚饭，备注了要瘦肉。真给我全瘦肉了，一点白肉都没有，是真不好吃&hellip; 吃了一点就停筷了，确实有减脂的效果。</p>
+]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://senup.github.io/tags/chat" term="chat" label="chat" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>
@@ -935,81 +966,6 @@ desc LIMIT 100000,20） b WHERE a.id=b.id
                             
                              
                                 <category scheme="https://senup.github.io/tags/read" term="read" label="read" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[🎸 吉他打板第一步]]></title>
-            <link href="https://senup.github.io/posts/guitar/-%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/guitar/-%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</id>
-            
-            
-            <published>2023-11-15T12:41:52+08:00</published>
-            <updated>2023-11-15T12:41:52+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<p>在 b 站看到这个视频，立马找回了当初想要学习吉他的冲动，太酷啦。我已经开始幻想我学会《王菲》的画面了。</p>
-<p>适用于四四拍，有三种节奏型：</p>
-<ul>
-<li>咚 哒 咚 哒</li>
-<li>咚咚哒 咚咚哒</li>
-<li>咚 哒咚 空咚 哒</li>
-</ul>
-<p>以《思念是一种病》的四拍为例，和弦是C G Am F。</p>
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <style type="text/css">
-      .aspect-ratio {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 75%;
-      }
-      .aspect-ratio iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="aspect-ratio">
-      <iframe
-              src="//player.bilibili.com/player.html?bvid=BV19t411y7DE&autoplay=0&page=1&as_wide=1&high_quality=1&danmaku=0"
-              scrolling="no" 
-              border="0" 
-              frameborder="no" 
-              framespacing="0" 
-              allowfullscreen="true"
-              sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
-              >
-      </iframe>
-      
-      
-    </div>
-  </body>
-
-</html>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/guitar" term="guitar" label="guitar" />
                             
                         
                     

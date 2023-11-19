@@ -119,3 +119,22 @@ spring 会罗列出可能的所有子标签，然后每种子标签就写一个�
 这个过程十分复杂繁琐，可能需要避免 property 重名、description 和 meta 等标签剔除不处理等。
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192058014.png)
+
+
+
+### Bean 注册
+
+BeanDefinitionHolder 可以封装 BeanDefinition 和别名 aliasArray。
+
+spring 容器也就是 BeanDefinitionMap，注入容器就是相当于拿着 holder 里面的 beanName 和 BeanDefinition 往 map 里面添加。如果同名则覆盖，默认是支持覆盖的。之后若发现之前的 Bean 容器有这个 Bean 或者这个已经根据 beanDefinition 创建出了对象，那么就会对 Bean 的缓存进行重置，我猜这里是为了及时性。
+
+之前注入 Bean 是往 map<name,BeanDefinition>添加，现在别名注入是往 map<alias,beanName>这个里面添加。并且，如果打算要注册的别名key已经在 map 里面存在了，那么就不再注册了。
+如果打算注册的别名 key 和 value 不同，但是 map 里面已存在这个键值对，且这个时候不允许覆盖，那么这个时候就会抛异常。
+
+别名可能会有循环，所以会有个循环检测。相当于同时存在：alias 1 到 name 1，alias 1 到 name 2，name 2 再到 name 1 这两个关系，出现了两个起点和重点都相同的循环了，这样就造成了别名循环的问题就会抛异常。但是
+
+创建 Bean 的时候只能使用 spring 普通的方式创建，或者使用工厂方法来创建，两者如果都有，那么这个时候就会抛出异常。
+
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311200034697.png)

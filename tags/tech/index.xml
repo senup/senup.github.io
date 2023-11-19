@@ -6,8 +6,26 @@
     <description>Recent content in tech on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 17 Nov 2023 18:05:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Nov 2023 02:14:00 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Obsidian</title>
+      <link>https://senup.github.io/posts/tech/helloobsidian/</link>
+      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/helloobsidian/</guid>
+      <description>&lt;p&gt;开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。&lt;/p&gt;
+&lt;h3 id=&#34;推荐博主&#34;&gt;推荐博主&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicole&lt;/li&gt;
+&lt;li&gt;Danny&lt;/li&gt;
+&lt;li&gt;简悦课堂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题设置&#34;&gt;主题设置&lt;/h3&gt;
+&lt;p&gt;整体效果：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;强烈推荐这个&lt;a href=&#34;https://github.com/lxgw/LxgwWenKai/releases&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;霞鹜文楷&lt;/a&gt;，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello，Gradle</title>
       <link>https://senup.github.io/posts/tech/hellogradle/</link>
@@ -103,18 +121,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
 &lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
 &lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello，MacOS</title>
-      <link>https://senup.github.io/posts/tech/hellomacos/</link>
-      <pubDate>Tue, 07 Nov 2023 23:23:28 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/hellomacos/</guid>
-      <description>&lt;h1 id=&#34;finder&#34;&gt;Finder&lt;/h1&gt;
-&lt;p&gt;找出 当前文件夹或子目录下面所有的  pdf 文件并拷贝放到pdf文件夹下面&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;find ./  -name  &amp;#34;*.pdf&amp;#34; -exec mv {} ./pdf \;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;剪切&#34;&gt;剪切&lt;/h2&gt;
-&lt;p&gt;其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。&lt;/p&gt;
-&lt;p&gt;按下&lt;code&gt;command+C&lt;/code&gt;快捷键之后，在目标目录按下&lt;code&gt;option+command+V&lt;/code&gt;就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

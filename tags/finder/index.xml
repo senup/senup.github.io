@@ -18,7 +18,23 @@
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;find ./  -name  &amp;#34;*.pdf&amp;#34; -exec mv {} ./pdf \;
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;剪切&#34;&gt;剪切&lt;/h2&gt;
 &lt;p&gt;其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。&lt;/p&gt;
-&lt;p&gt;按下&lt;code&gt;command+C&lt;/code&gt;快捷键之后，在目标目录按下&lt;code&gt;option+command+V&lt;/code&gt;就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。&lt;/p&gt;</description>
+&lt;p&gt;按下&lt;code&gt;command+C&lt;/code&gt;快捷键之后，在目标目录按下&lt;code&gt;option+command+V&lt;/code&gt;就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。&lt;/p&gt;
+&lt;h2 id=&#34;popcliphttpsgithubcomtisfengeasydictblobmainreadmemd&#34;&gt;&lt;a href=&#34;https://github.com/tisfeng/Easydict/blob/main/README.md&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;PopClip&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;开启 easydict。你需要先安装 &lt;a href=&#34;https://pilotmoon.com/popclip/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;PopClip&lt;/a&gt;，然后选中以下代码块，&lt;code&gt;PopClip&lt;/code&gt; 会显示 &amp;ldquo;安装扩展 Easydict&amp;rdquo;，点击它即可。（By &lt;strong&gt;&lt;a href=&#34;https://github.com/liziqiang&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;liziqiang&lt;/a&gt;&lt;/strong&gt;）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# popclip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;name: Easydict
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;icon: iconify:ri:translate
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;interpreter: zsh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;shell script: |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  result&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;ps aux | grep Easydict.app | wc -l&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[[&lt;/span&gt; $result -lt &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]]&lt;/span&gt;;&lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    open /Applications/Easydict.app
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    sleep &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  open &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;easydict://query?text=&lt;/span&gt;$POPCLIP_TEXT&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href=&#34;https://www.popclip.app/dev/shell-script-actions&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://www.popclip.app/dev/shell-script-actions&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
   </channel>
 </rss>

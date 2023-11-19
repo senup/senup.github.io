@@ -184,6 +184,52 @@
     
     <div class="post on-list tech">
     
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/helloobsidian/">Hello，Obsidian</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-19
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/odsidian/">odsidian</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。</p>
+<h3 id="推荐博主">推荐博主</h3>
+<ul>
+<li>Nicole</li>
+<li>Danny</li>
+<li>简悦课堂</li>
+</ul>
+<h3 id="主题设置">主题设置</h3>
+<p>整体效果：</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png" alt="image.png"  /></p>
+<p>强烈推荐这个<a href="https://github.com/lxgw/LxgwWenKai/releases" target="_blank" rel="noopener nofollow noreferrer" >霞鹜文楷</a>，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/helloobsidian/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech">
+    
       <h1 class="post-title"><a href="https://senup.github.io/posts/tech/hellogradle/">Hello，Gradle</a></h1>
       <div class="post-meta">
         
@@ -560,6 +606,22 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 </code></pre><h2 id="剪切">剪切</h2>
 <p>其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。</p>
 <p>按下<code>command+C</code>快捷键之后，在目标目录按下<code>option+command+V</code>就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。</p>
+<h2 id="popcliphttpsgithubcomtisfengeasydictblobmainreadmemd"><a href="https://github.com/tisfeng/Easydict/blob/main/README.md" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a></h2>
+<p>开启 easydict。你需要先安装 <a href="https://pilotmoon.com/popclip/" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a>，然后选中以下代码块，<code>PopClip</code> 会显示 &ldquo;安装扩展 Easydict&rdquo;，点击它即可。（By <strong><a href="https://github.com/liziqiang" target="_blank" rel="noopener nofollow noreferrer" >liziqiang</a></strong>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># popclip</span>
+</span></span><span style="display:flex;"><span>name: Easydict
+</span></span><span style="display:flex;"><span>icon: iconify:ri:translate
+</span></span><span style="display:flex;"><span>interpreter: zsh
+</span></span><span style="display:flex;"><span>shell script: |
+</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ps aux | grep Easydict.app | wc -l<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $result -lt <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    open /Applications/Easydict.app
+</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  open <span style="color:#e6db74">&#34;easydict://query?text=</span>$POPCLIP_TEXT<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><blockquote>
+<p>参考：<a href="https://www.popclip.app/dev/shell-script-actions" target="_blank" rel="noopener nofollow noreferrer" >https://www.popclip.app/dev/shell-script-actions</a></p>
+</blockquote>
         
       
       </div>
@@ -1729,579 +1791,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     
     </div>
     
-    
-    <div class="post on-list movie">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E4%BD%A9%E5%B0%8F%E5%A7%90%E7%9A%84%E5%A5%87%E5%B9%BB%E5%9F%8E%E5%A0%A1/">🎥《佩小姐的奇幻城堡》</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-10-31
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <div class="db-card">
-            <div class="db-card-subject">
-                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/7051830.jpg"></div>
-                <div class="db-card-content">
-                    <div class="db-card-title"><a href="https://movie.douban.com/subject/7051830/" class="cute" target="_blank" rel="external nofollow">佩小姐的奇幻城堡</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:72%"></span></span><span class="rating_nums">7.2</span></div>
-                    <div class="db-card-abstract">2016 / 美国 / 剧情 奇幻 冒险 / 蒂姆·波顿 / 阿萨·巴特菲尔德 伊娃·格林</div>
-                    <div class="db-card-comment"></div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-<h3 id="剧情简介">剧情简介</h3>
-<p>小时候爷爷总给男主讲世界上有些异能者，比如幻化成鸽子的佩小姐、透明人、看到双眼就会石化的双胞胎、脚上不系上重物就会飘走的女孩、赋予木偶心脏即可活动的傀儡师、操控火焰的火女等。
-直到某天夜里，爷爷被谋害，眼球被夺走，于是，男主遵循爷爷临死前的遗嘱开始展开调查。调查过程中进入了奇幻的城堡，正是佩小姐和拥有各种特殊能力的小孩们。此时危机已经来临，反派在男主的引导下成功进入了城堡。在佩小姐那儿了解了真相后，男主发挥自己能够看清怪物的超能力，带领伙伴们灭掉了专吃眼球的反派——巴伦。结尾，男主多次跳跃时间循环去找到了自己的真爱，故事完。</p>
-<h3 id="观后评">观后评</h3>
-<p>主要是娜娜强烈建议看的剧。但是呢这部剧故事显得比较单薄，正反派冲突然后主角获胜的故事，没有一点点悬念，所以看完会有一种“也就这样吧”的感觉。</p>
-        
-      
-      </div>
-    
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -2391,6 +1880,8 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
+    
+
 
 
 
@@ -2401,7 +1892,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 33242 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 33839 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

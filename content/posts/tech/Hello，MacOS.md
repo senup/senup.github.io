@@ -28,4 +28,27 @@ find ./  -name  "*.pdf" -exec mv {} ./pdf \;
 
 
 
+
+## [PopClip](https://github.com/tisfeng/Easydict/blob/main/README.md) 
+
+
+开启 easydict。你需要先安装 [PopClip](https://pilotmoon.com/popclip/)，然后选中以下代码块，`PopClip` 会显示 "安装扩展 Easydict"，点击它即可。（By **[liziqiang](https://github.com/liziqiang)**）
+
+```shell
+# popclip
+name: Easydict
+icon: iconify:ri:translate
+interpreter: zsh
+shell script: |
+  result=$(ps aux | grep Easydict.app | wc -l)
+  if [[ $result -lt 2 ]];then
+    open /Applications/Easydict.app
+    sleep 2
+  fi
+  open "easydict://query?text=$POPCLIP_TEXT"
+```
+
+> 参考：[https://www.popclip.app/dev/shell-script-actions](https://www.popclip.app/dev/shell-script-actions)
+
+
 <!--more-->

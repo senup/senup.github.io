@@ -1,6 +1,6 @@
 ---
 title: Hello，Spring
-date: 2023-11-18 12:51:42
+date: 2023-11-20T12:51:42
 tags:
   - tech
   - hello
@@ -89,3 +89,33 @@ resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getI
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190103273.png)
 
+
+能加载校验文件后，就会开始对文件进行一步步解析。这里关注的是 spring 会拿到 document，然后遍历去解析节点。在执行解析的时候，会将具体工作交给一个代理类 delegate，代理类会针对 document 的每一个节点，区别是默认标签还是自定义标签，这一步是通过判断 namespace URI 判断的，默认链接如下图。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192014968.png)
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192015745.png)
+
+---
+
+### bean 初步解析
+
+解析到一个标签的时候，会有四个 if 判断标签属性是 Bean、beans、alias、import。后两个如今在 XML 用得少了，重点放在前两个上面。
+
+假设判断是 bean 标签，那么就开始解析标签属性，比如 Id 和 name 直接解析出来，name 因为是由逗号拼接而成，所以这里需要对字符串切割后放进一个数组里面...... 接下来，开始初步放进 beanDefinition 接口的实现类里面，用于存放标签解析结果。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192021344.png)
+
+### BeanDefinition
+BeanDefinition 是一个接口，用于封装 bean 的信息。他的继承关系如下：
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192041677.png)
+
+如图自上而下，左侧先被一个抽象类继承，其下还有三个具体的实现类，其中 rootBeanDefinition 代表只有单个的 XML 标签，不能含有 parent 属性；而 childBeanDefinition 代表拥有 parent 属性的标签。这两种是早期的 spring 版本用的，目前用的多的是通用的 genericBeanDefinition。
+
+右侧分支是一路走注解的实现。
+
+### 子标签解析
+spring 会罗列出可能的所有子标签，然后每种子标签就写一个方法，只要判断标签的 key 匹配，就会走流程：解析出每一个键值对，然后放进 beanXXXAttribute 或者 BeanDefinition 中。
+这个过程十分复杂繁琐，可能需要避免 property 重名、description 和 meta 等标签剔除不处理等。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192058014.png)

@@ -424,7 +424,8 @@ html {
 }
 
 *,:after,:before {
-	box-sizing: inherit
+	box-sizing: inherit;
+	word-wrap: break-word
 }
 
 body {

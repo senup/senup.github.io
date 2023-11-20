@@ -6,8 +6,26 @@
     <description>Recent content in 折腾 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 02:14:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Nov 2023 12:51:42 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Spring</title>
+      <link>https://senup.github.io/posts/tech/hellospring/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/hellospring/</guid>
+      <description>&lt;h2 id=&#34;resource&#34;&gt;Resource&lt;/h2&gt;
+&lt;p&gt;Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。&lt;/p&gt;
+&lt;p&gt;resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;xmlbeanfactory&#34;&gt;xmlBeanFactory&lt;/h2&gt;
+&lt;h3 id=&#34;父类方法&#34;&gt;父类方法&lt;/h3&gt;
+&lt;p&gt;拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。&lt;/p&gt;
+&lt;p&gt;比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&amp;ldquo;李四&amp;rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。&lt;/p&gt;
+&lt;p&gt;但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hello，Obsidian</title>
       <link>https://senup.github.io/posts/tech/helloobsidian/</link>
@@ -97,30 +115,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 &lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
 &lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
 &lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello，Quantumult X</title>
-      <link>https://senup.github.io/posts/tech/helloquantumult-x/</link>
-      <pubDate>Sat, 11 Nov 2023 23:13:43 +0800</pubDate>
-      <guid>https://senup.github.io/posts/tech/helloquantumult-x/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;下载配置&#34;&gt;下载配置&lt;/h1&gt;
-&lt;p&gt;推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。&lt;br&gt;
-&lt;a href=&#34;https://github.com/ddgksf2013&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://github.com/ddgksf2013&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg&#34; alt=&#34;IMG_1860.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg&#34; alt=&#34;IMG_1859.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;重写规则&#34;&gt;重写规则&lt;/h1&gt;
-&lt;p&gt;有些小众 APP 再从这个组里面找需要的 APP 规则：&lt;br&gt;
-&lt;a href=&#34;https://t.me/Aa28413761&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;https://t.me/Aa28413761&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg&#34; alt=&#34;IMG_1857.jpg&#34;  /&gt;
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg&#34; alt=&#34;IMG_1858.jpg&#34;  /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;导入节点订阅&#34;&gt;导入节点订阅&lt;/h1&gt;
-&lt;p&gt;目前用的是魔戒，按量订阅，缺点是偏慢&lt;/p&gt;
-&lt;h1 id=&#34;配置证书&#34;&gt;配置证书&lt;/h1&gt;
-&lt;p&gt;打开设置的MitM开关，生成证书并去设置里面配置证书
-&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg&#34; alt=&#34;IMG_1861.jpg&#34;  /&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

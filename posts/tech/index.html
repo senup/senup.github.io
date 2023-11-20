@@ -180,6 +180,54 @@
     
     <div class="post on-list tech">
     
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/hellospring/">Hello，Spring</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-20
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/spring/">spring</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/java/">Java</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h2 id="resource">Resource</h2>
+<p>Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。</p>
+<p>resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。</p>
+<blockquote>
+<p>那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？</p>
+</blockquote>
+<h2 id="xmlbeanfactory">xmlBeanFactory</h2>
+<h3 id="父类方法">父类方法</h3>
+<p>拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。</p>
+<p>比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&ldquo;李四&rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。</p>
+<p>但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/hellospring/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech">
+    
       <h1 class="post-title"><a href="https://senup.github.io/posts/tech/helloobsidian/">Hello，Obsidian</a></h1>
       <div class="post-meta">
         
@@ -744,6 +792,8 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
+    
+
 
 
 
@@ -754,7 +804,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 33906 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 39428 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

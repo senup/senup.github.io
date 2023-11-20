@@ -6,41 +6,41 @@
     <description>Recent content in 标签 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 19:51:09 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Nov 2023 12:51:42 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>chat</title>
-      <link>https://senup.github.io/tags/chat/</link>
-      <pubDate>Sun, 19 Nov 2023 19:51:09 +0800</pubDate>
-      <guid>https://senup.github.io/tags/chat/</guid>
-      <description></description>
-    </item>
     <item>
       <title>hello</title>
       <link>https://senup.github.io/tags/hello/</link>
-      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
       <guid>https://senup.github.io/tags/hello/</guid>
       <description></description>
     </item>
     <item>
-      <title>odsidian</title>
-      <link>https://senup.github.io/tags/odsidian/</link>
-      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
-      <guid>https://senup.github.io/tags/odsidian/</guid>
+      <title>Java</title>
+      <link>https://senup.github.io/tags/java/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>spring</title>
+      <link>https://senup.github.io/tags/spring/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/spring/</guid>
       <description></description>
     </item>
     <item>
       <title>tech</title>
       <link>https://senup.github.io/tags/tech/</link>
-      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
       <guid>https://senup.github.io/tags/tech/</guid>
       <description></description>
     </item>
     <item>
-      <title>gradle</title>
-      <link>https://senup.github.io/tags/gradle/</link>
-      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
-      <guid>https://senup.github.io/tags/gradle/</guid>
+      <title>chat</title>
+      <link>https://senup.github.io/tags/chat/</link>
+      <pubDate>Sun, 19 Nov 2023 19:51:09 +0800</pubDate>
+      <guid>https://senup.github.io/tags/chat/</guid>
       <description></description>
     </item>
   </channel>

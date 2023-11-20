@@ -182,6 +182,54 @@
   <div class="posts">
     
     
+    <div class="post on-list tech">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/hellospring/">Hello，Spring</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-20
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/spring/">spring</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/java/">Java</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h2 id="resource">Resource</h2>
+<p>Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。</p>
+<p>resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。</p>
+<blockquote>
+<p>那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？</p>
+</blockquote>
+<h2 id="xmlbeanfactory">xmlBeanFactory</h2>
+<h3 id="父类方法">父类方法</h3>
+<p>拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。</p>
+<p>比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&ldquo;李四&rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。</p>
+<p>但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/hellospring/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
     <div class="post on-list chat">
     
             <div class="post-meta">
@@ -654,585 +702,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     
     </div>
     
-    
-    <div class="post on-list movie">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">🎥《进击的巨人 最终季 完结篇 后篇》</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-06
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <div class="db-card">
-            <div class="db-card-subject">
-                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36283000.jpg"></div>
-                <div class="db-card-content">
-                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36283000/" class="cute" target="_blank" rel="external nofollow">进击的巨人 最终季 完结篇 后篇</a></div>
-                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:93%"></span></span><span class="rating_nums">9.3</span></div>
-                    <div class="db-card-abstract">2023 / 日本 / 动作 动画 奇幻 / 林祐一郎 / 梶裕贵 石川由依</div>
-                    <div class="db-card-comment"></div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536261.GIF" alt="IMG_1809.GIF"  /></p>
-<h3 id="观后评">观后评</h3>
-<p>这部2013 年的作品，在 2023 年终于完结了。电影的观感非常不错，画面很流畅。后篇从调查兵团搭上法尔科的鸟形颚巨对着进击的巨人进行断头行动讲起，其中比较有感触的点：</p>
-<ul>
-<li>艾伦承认了深爱三笠的心意，希望三笠记得自己十几年，小人物的独白看的我又哭又笑。他承认了自己也只是个普通人，存在着自己的私心。与其结束巨人化死去早早死去，帕拉迪亚岛和同伴们还得承受岛外的炮火，他选择了发动地鸣解决这一切，当然，他的死亡也已经早就预料到了吧。</li>
-<li>吉克在道路的远方参透了存在的意义：如果是和那个人打一场棒球的话，那么自己愿意出在在这个世界上。短短几句话，就把虚无主义化解了，活着只想玩一场棒球⚾️。纵使命运对自己这么残酷，对吉克来说，可能正如奇葩说的那句：内心很苦的人，只需要一丝甜就足够了。</li>
-<li>“我已经不再是铠之巨人了，母亲”，“没关系，这些年你辛苦了”。莱纳失去巨人之力站在矮小的母亲面前，母亲只是轻轻安慰他，这一幕真的很感人。莱纳的铠之巨人以坚固著称，但是让等人还是会调侃道：为什么你的巨人叫铠巨却总是被击碎，其中的心酸只有莱纳能懂吧。但他直到最后一集都是一直在坚持捍卫家人国家的安全，现如今高大的身影在母亲眼里始终是那个长不大的孩子，母亲是了解他的。</li>
-<li>阿尔敏看着艾伦死去的模样痛哭，声优的出色表现让我也为之动容。</li>
-<li>巨人之力消失，让的母亲也能恢复成人类。这一手操作都在艾伦的部署之内，了解了让的心结，也间接完结了之前无垢巨人篇的故事。</li>
-<li>三笠总是对于杀死艾伦犹豫不决，直到她真实了解到如今的艾伦也是痛苦的，终于选择听从艾伦真实的想法。结尾处帕拉迪岛熟悉的树下，艾伦也如小时候喜欢在这里睡午觉，如今也是长眠如此，旁边的三笠回忆起一阵阵苦痛，她深爱着他。一只白鸟飞来，将三笠的红色围巾系好，打破了这份悲伤。此时《给两千年后 亦或是两万年后的你》副歌响起，看的我也饱含热泪。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536346.GIF" alt="IMG_1810.GIF"  /></p>
-<p>如果需要向你的朋友推荐一部番，那么我强烈推荐的就是《进击的巨人》。</p>
-        <div><a class="read-more button" href="/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -1326,6 +795,8 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
+    
+
 
 
 
@@ -1336,7 +807,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 33906 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 39428 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

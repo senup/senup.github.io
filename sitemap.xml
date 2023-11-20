@@ -2,37 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://senup.github.io/tags/hello/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/hellospring/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/java/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/spring/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/tech/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/chat/20231119195108/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/chat/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/posts/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
     <loc>https://senup.github.io/posts/chat/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/hello/</loc>
-    <lastmod>2023-11-19T02:14:00+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/tech/helloobsidian/</loc>
     <lastmod>2023-11-19T02:14:00+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/odsidian/</loc>
-    <lastmod>2023-11-19T02:14:00+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/tech/</loc>
-    <lastmod>2023-11-19T02:14:00+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/posts/tech/</loc>
     <lastmod>2023-11-19T02:14:00+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/gradle/</loc>

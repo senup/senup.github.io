@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on 『高等游民』</title>
+    <link>https://senup.github.io/tags/java/</link>
+    <description>Recent content in Java on 『高等游民』</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 20 Nov 2023 12:51:42 +0800</lastBuildDate>
+    <atom:link href="https://senup.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Spring</title>
+      <link>https://senup.github.io/posts/tech/hellospring/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/hellospring/</guid>
+      <description>&lt;h2 id=&#34;resource&#34;&gt;Resource&lt;/h2&gt;
+&lt;p&gt;Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。&lt;/p&gt;
+&lt;p&gt;resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;xmlbeanfactory&#34;&gt;xmlBeanFactory&lt;/h2&gt;
+&lt;h3 id=&#34;父类方法&#34;&gt;父类方法&lt;/h3&gt;
+&lt;p&gt;拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。&lt;/p&gt;
+&lt;p&gt;比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&amp;ldquo;李四&amp;rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。&lt;/p&gt;
+&lt;p&gt;但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

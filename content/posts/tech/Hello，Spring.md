@@ -131,10 +131,134 @@ spring 容器也就是 BeanDefinitionMap，注入容器就是相当于拿着 hol
 之前注入 Bean 是往 map<name,BeanDefinition>添加，现在别名注入是往 map<alias,beanName>这个里面添加。并且，如果打算要注册的别名key已经在 map 里面存在了，那么就不再注册了。
 如果打算注册的别名 key 和 value 不同，但是 map 里面已存在这个键值对，且这个时候不允许覆盖，那么这个时候就会抛异常。
 
-别名可能会有循环，所以会有个循环检测。相当于同时存在：alias 1 到 name 1，alias 1 到 name 2，name 2 再到 name 1 这两个关系，出现了两个起点和重点都相同的循环了，这样就造成了别名循环的问题就会抛异常。但是
+别名可能会有循环，所以会有个循环检测。相当于同时存在：alias 1 到 name 1，alias 1 到 name 2，name 2 再到 name 1 这两个关系，出现了两个起点和重点都相同的循环了，这样就造成了别名循环的问题就会抛异常。
 
-创建 Bean 的时候只能使用 spring 普通的方式创建，或者使用工厂方法来创建，两者如果都有，那么这个时候就会抛出异常。
+- [ ] <span style="background:#fff88f">理清为什么别名循环不允许存在</span>
 
+
+补充：创建 Bean 的时候只能使用 spring 普通的方式创建，或者使用工厂方法来创建，两者如果都有，那么这个时候就会抛出异常。
 
 
 ![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311200034697.png)
+
+## ApplicationContext
+理清了 xmlBeanFactory, 接下来看一个功能更全的类——ClassPathXmlApplicationContext。它也是 ApplicationContext 的一个具体实现类。
+
+1. 简单来使用一下 ApplicationContext，作源码分析的入口
+2. 接下来再来看下 ApplicationContext 对环境变量以及路径占位符解析的准备工作
+3. 最后再来定位下 ApplicationContext 中，最核心的方法是在什么位置，为下一步的源码分析做准备
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201413240.png)
+
+- 父类构造方法设置了成员变量 parent
+- 支持传入多个 configLocations，同时支持使用占位符来对 placeHolder 进行解析，如果找不到占位符那么就报错
+- Refresh 默认为 true 
+- refresh 方法是核心方法。
+
+- [ ] Refresh 待验证
+
+### prepareFefresh 初始化上下文信息
+提供一个拓展方法方便在上下文环境中解析参数占位符。
+
+使用方法：提前设置占位符的键值对，方便后续操作直接使用占位符的键即可找到。比如使用“$｛username｝”。
+
+
+```
+Public class NewClassPathXmlApplicationContext extends ClassPathXmlApplicationContext ｛
+Public NewClassPathXmlApplicationContext（String... ConfigLocations） ｛
+Super（configLocations）；
+｝
+
+@Override
+Protected void initPropertySources（）｛
+System. Out. PrintIn（"重写 initPropertySource 方法."）；
+getEnvironment（）. setSystemPropenties（）. Put（"username”，"zhangsan"）；
+｝
+｝
+```
+
+接下来就会校验必要的环境变量值是否为空，如果为空则报错。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201432263.png)
+
+
+### 初始化容器 beanFactory
+
+首先调用了获得并刷新 Bean 工厂的 obtainFreshBeanFactory 方法，返回了一个 ConfigurableListableBeanFactory。这个是继承 BeanFactory 的一个接口。具体可以看下下方的继承关系图。
+
+ObtainFreshBeanFactory 如它的名字一样，就是包含了刷新和获取的方法。刷新的方法在前，也是重点关注的部分。刷新的 refreshBeanFactory 方法会判断 BeanFactory 是否存在，如果存在，那么就会销毁所有的 Bean，再销毁关闭 Bean 工厂，然后走新增 BeanFactory 的逻辑。
+
+新增 BeanFactory：首先创建一个初级的 Bean 容器，DefaultListableBeanFactory，这个是 XMLBeanFactory 的父类。然后提供了一个 customize 的客制化方法，这里提供了两个拓展方法。
+
+- 是否允许同名的 BeanDefinition 在容器 beanDefinitionMap 中被覆盖
+- 是否允许存在循环依赖
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201516076.png)
+
+接下来，有了初始的 Bean 容器，那么就会开始解析资源。
+中间提供了一个去拓展 reader 的方法。
+
+
+然后，applicationContext 允许传入多个字符串，因此会遍历字符串数组去解析每一个路径。有了 BeanFactory，就能作为参数传给 reader，reader 就能读取路径，路径就能获得 resource，根据 resource 加载对应的 document 对象，解析对象，再解析 XML 中的各种标签属性，将得到的属性和方法信息封装在 beanDefinition 中，最后注册到 Bean 容器 beanDefinitionMap 中。
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201514650.png)
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201448356.png)
+
+
+到此，需要记住一点就是，spring 源码中出现 protected 修饰的方法，一般都是客制化的拓展方法。
+
+- [ ] 罗列出拓展接口并进行最佳实践
+
+### prepareBeanFactory
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201531517.png)
+
+拓展点：
+- 第二步设置了 spel 表达式的解析器，全称就是 spring expression language。用于解析比如 XML 里面的一些#{}，当然，这些变量可以放在一个统一的文件中集中管理。
+- 第三步添加了很多属性编辑器，这个主要是因为 XML 的局限所致的。比如 XML 有些属性的值是字符串，但是使用到的时候就都需要转化成各种 stream 使用，因此这里就提供了各种各样的属性编辑器。
+- 第四步添加了各种 aware 接口的后处理器。如果判断不是这些接口，那么就会直接返回当前的 Bean。否则，就会执行实现了这些 aware 感知接口的方法去修改 Bean。这里拓展的是后置处理器的前置处理。
+- 第五步添加需要忽略的感知接口，<span style="background:#fff88f">简单来说，如果一个 bean 实现了传入 ignoreDependencyInterface 方法的这些感知接口，Spring 是不允许外界注入任何的依赖到 bean 中的，只允许 Spring 容器内部调用感知接口的方法来注入相应的依赖。</span>
+- 第六步添加接口指定的依赖。这个东西就是说获取这几个 Bean 的时候，可能会找 Bean 对应的一个实现类。假设这个时候自己写了一个实现类，但是 spring 获取 Bean 的时候还是按照它内部自己生成的这个 Bean 提供给你而不是使用我自己写的实现类，为了确保这些关键的接口，它的实现类只能是 spring 内部指定的一些对象。
+
+
+
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201551755.png)
+
+### PostProcessBeanFactory
+那方法 postProcessBeanFactory 留给子类具体是要去实现什么样的功能呢？通过方法的注释我们可以知道，方法 postProcessBeanFactory 是 Spring 暴露给子类去修改容器 beanFactory 的。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201615884.png)
+
+
+### BeanFactoryPostProcessor
+可以看到，BeanFactoryPostProcessor 中的方法和我们刚才看到的空实现方法 postProcessBeanFactory 几乎是一模一样的，目的也是一样的，也就是给了我们一次机会，允许我们通过参数 beanFactory 去获取相应的BeanDefinition 并修改相应的信息。
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201616556.png)
+
+- [ ] 上面这两个东西有什么区别？
+
+### BeanFactoryPostProcessor 的执行顺序
+
+首先，明确有两种 PostProcessor：一种是 regular 普通的，一种是 registry 注册类的。从这儿可以了解到 Bean 除了常规解析 XML 得来的，还可以自定义 beanDefinition，然后走 register 的接口注册到容器里面。
+
+然后，按照是否是注册类来将两种类型的 postProcessor 分类到两个数组里面。
+
+接下来找个 currentRegisterProcessors 的数组。用来存放数量众多的一批 register 且同时实现了 priority 接口的 Bean 。收集完对数组进行优先级的排序，越小的优先级越排前面，然后添加到 registryProcessors 的数组里面，开始实现 beanDefinition 的 postProcessor，清空 currentRegisterProcessors，接着循环去整下一轮。
+
+
+第二轮处理的是属于 registry 且实现类 ordered 接口的 Bean，具体方式同上。
+
+第三轮会讲前两轮剩下的属于 registry 的Bean 做处理，方式也同上。
+
+最终，对两种 PostProcessor 分别执行了后处理器的方法来修改 beanDefinition。
+
+上面这个过程适用于参数、容器的 registry、容器的普通 processor 三种，情况还是较多的。
+
+![image.png](https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201716119.png)
+
+
+
+### BeanPostProcessor

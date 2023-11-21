@@ -40,8 +40,8 @@ rssLimit = 5
   weight="5"
 
   [[menu.main]]
-  name="折腾"
-  url="/posts/tech/"
+  name="Wiki"
+  url="https://senup.github.io/wiki"
   weight="6"
 
   [[menu.main]]

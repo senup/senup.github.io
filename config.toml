@@ -41,7 +41,7 @@ rssLimit = 5
 
   [[menu.main]]
   name="Wiki"
-  url="https://senup.github.io/wiki"
+  url="https://senup.github.io/wiki/home.html"
   weight="6"
 
   [[menu.main]]

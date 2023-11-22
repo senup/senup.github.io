@@ -41,7 +41,7 @@ rssLimit = 5
 
   [[menu.main]]
   name="Wiki"
-  url="https://senup.github.io/wiki/toc.html"
+  url="https://senup.github.io/wiki/interview/toc.html"
   weight="6"
 
   [[menu.main]]

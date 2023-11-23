@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>odsidian on 『高等游民』</title>
+    <link>https://senup.github.io/tags/odsidian/</link>
+    <description>Recent content in odsidian on 『高等游民』</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 19 Nov 2023 02:14:00 +0800</lastBuildDate>
+    <atom:link href="https://senup.github.io/tags/odsidian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Obsidian</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</link>
+      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</guid>
+      <description>&lt;p&gt;开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。&lt;/p&gt;
+&lt;h3 id=&#34;推荐博主&#34;&gt;推荐博主&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicole&lt;/li&gt;
+&lt;li&gt;Danny&lt;/li&gt;
+&lt;li&gt;简悦课堂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题设置&#34;&gt;主题设置&lt;/h3&gt;
+&lt;p&gt;整体效果：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;强烈推荐这个&lt;a href=&#34;https://github.com/lxgw/LxgwWenKai/releases&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;霞鹜文楷&lt;/a&gt;，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

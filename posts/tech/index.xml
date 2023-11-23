@@ -6,6 +6,115 @@
     <description>Recent content in 折腾 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Mon, 20 Nov 2023 12:51:42 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello，Spring</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/</guid>
+      <description>&lt;h2 id=&#34;resource&#34;&gt;Resource&lt;/h2&gt;
+&lt;p&gt;Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。&lt;/p&gt;
+&lt;p&gt;resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;xmlbeanfactory&#34;&gt;xmlBeanFactory&lt;/h2&gt;
+&lt;h3 id=&#34;父类方法&#34;&gt;父类方法&lt;/h3&gt;
+&lt;p&gt;拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。&lt;/p&gt;
+&lt;p&gt;比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&amp;ldquo;李四&amp;rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。&lt;/p&gt;
+&lt;p&gt;但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Obsidian</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</link>
+      <pubDate>Sun, 19 Nov 2023 02:14:00 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</guid>
+      <description>&lt;p&gt;开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。&lt;/p&gt;
+&lt;h3 id=&#34;推荐博主&#34;&gt;推荐博主&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Nicole&lt;/li&gt;
+&lt;li&gt;Danny&lt;/li&gt;
+&lt;li&gt;简悦课堂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主题设置&#34;&gt;主题设置&lt;/h3&gt;
+&lt;p&gt;整体效果：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;强烈推荐这个&lt;a href=&#34;https://github.com/lxgw/LxgwWenKai/releases&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;霞鹜文楷&lt;/a&gt;，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，Gradle</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/</link>
+      <pubDate>Fri, 17 Nov 2023 18:05:10 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/</guid>
+      <description>&lt;h2 id=&#34;下载&#34;&gt;下载&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://gradle.org/install/#manually&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;gradle官方网站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击上方连接进入到官方网&lt;/p&gt;
+&lt;p&gt;手动安装的话，点击releases page 选择自己想要安装的包下载&lt;/p&gt;
+&lt;p&gt;我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin&lt;/p&gt;
+&lt;h2 id=&#34;配置环境变量&#34;&gt;配置环境变量&lt;/h2&gt;
+&lt;p&gt;1.通过命令打开环境编辑文档，输入i进入编辑模式&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vim ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2.在文档的尾部追加gradle的环境配置&lt;/p&gt;
+&lt;p&gt;`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin&lt;/p&gt;
+&lt;p&gt;英文状态下，按esc键，然后输入&lt;code&gt;:wq&lt;/code&gt;保存并退出文档&lt;/p&gt;
+&lt;p&gt;3.让配置的文档生效&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;source ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.验证gradle安装成功&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;gradle -v&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;出现gradle的版本信息证明安装成功。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello，MySQL</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/</link>
+      <pubDate>Thu, 16 Nov 2023 08:03:43 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/</guid>
+      <description>&lt;h1 id=&#34;mysql-概述&#34;&gt;MySQL 概述&lt;/h1&gt;
+&lt;p&gt;在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。&lt;/p&gt;
+&lt;p&gt;接下来讲讲其中的一些部件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要发送网络请求才能进行访问，所以需要引入 &lt;strong&gt;MySQL 驱动&lt;/strong&gt;的 jar 包。&lt;/li&gt;
+&lt;li&gt;Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了&lt;strong&gt;连接池&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。&lt;/li&gt;
+&lt;li&gt;SQL 接口：作为接口，负责接收（和处理 SQL）&lt;/li&gt;
+&lt;li&gt;SQL 解析器：解析 SQL 语句的含义&lt;/li&gt;
+&lt;li&gt;查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划&lt;/li&gt;
+&lt;li&gt;执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询&lt;/li&gt;
+&lt;li&gt;存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Hello，shellclash</title>
+      <link>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloshellclash/</link>
+      <pubDate>Sun, 12 Nov 2023 01:17:06 +0800</pubDate>
+      <guid>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloshellclash/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;环境配置&#34;&gt;环境配置&lt;/h1&gt;
+&lt;p&gt;路由器：红米ax6000&lt;/p&gt;
+&lt;p&gt;固件：官方固件&lt;/p&gt;
+&lt;p&gt;红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。&lt;/p&gt;
+&lt;p&gt;其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;界面讲解&#34;&gt;界面讲解&lt;/h1&gt;
+&lt;p&gt;打开&lt;a href=&#34;http://192.168.31.1:9999/ui/#/&#34; target=&#34;_blank&#34; rel=&#34;noopener nofollow noreferrer&#34; &gt;yacd&lt;/a&gt;。
+代理界面有selector和URLTest的两种类型。
+selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png&#34; alt=&#34;image.png&#34;  /&gt;
+&lt;img loading=&#39;lazy&#39; decoding=&#34;async&#34; src=&#34;https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png&#34; alt=&#34;image.png&#34;  /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;使用场景&#34;&gt;使用场景&lt;/h1&gt;
+&lt;p&gt;比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。&lt;/p&gt;
+&lt;p&gt;同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

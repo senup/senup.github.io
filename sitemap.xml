@@ -2,23 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://senup.github.io/tags/hello/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/java/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/spring/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/tech/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/</loc>
+    <lastmod>2023-11-20T12:51:42+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/chat/20231119195108/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/tags/chat/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/posts/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
-    <loc>https://senup.github.io/tags/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
-  </url><url>
     <loc>https://senup.github.io/posts/chat/</loc>
     <lastmod>2023-11-19T19:51:09+08:00</lastmod>
   </url><url>
-    <loc>https://senup.github.io/</loc>
-    <lastmod>2023-11-19T19:51:09+08:00</lastmod>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</loc>
+    <lastmod>2023-11-19T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/odsidian/</loc>
+    <lastmod>2023-11-19T02:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/gradle/</loc>
+    <lastmod>2023-11-17T18:05:10+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/</loc>
+    <lastmod>2023-11-17T18:05:10+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/</loc>
+    <lastmod>2023-11-16T08:03:43+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/mysql/</loc>
+    <lastmod>2023-11-16T08:03:43+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/read/%E7%85%A4%E6%B0%94%E7%81%AF%E6%95%88%E5%BA%94/</loc>
     <lastmod>2023-11-15T15:06:42+08:00</lastmod>
@@ -38,6 +74,27 @@
     <loc>https://senup.github.io/posts/guitar/</loc>
     <lastmod>2023-11-15T12:41:52+08:00</lastmod>
   </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloshellclash/</loc>
+    <lastmod>2023-11-12T01:17:06+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/linux/</loc>
+    <lastmod>2023-11-12T01:17:06+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/vpn/</loc>
+    <lastmod>2023-11-12T01:17:06+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloquantumult-x/</loc>
+    <lastmod>2023-11-11T23:13:43+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/finder/</loc>
+    <lastmod>2023-11-07T23:23:28+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomacos/</loc>
+    <lastmod>2023-11-07T23:23:28+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/tags/mac/</loc>
+    <lastmod>2023-11-07T23:23:28+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/</loc>
     <lastmod>2023-11-06T15:34:21+08:00</lastmod>
   </url><url>
@@ -53,8 +110,14 @@
     <loc>https://senup.github.io/posts/movie/%E4%BD%A9%E5%B0%8F%E5%A7%90%E7%9A%84%E5%A5%87%E5%B9%BB%E5%9F%8E%E5%A0%A1/</loc>
     <lastmod>2023-10-31T02:55:26+08:00</lastmod>
   </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloraycast/</loc>
+    <lastmod>2023-10-31T02:53:49+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/read/%E6%9B%B4%E5%A3%AE-%E6%9B%B4%E7%98%A6-%E6%9B%B4%E5%BC%BA/</loc>
     <lastmod>2023-10-30T15:05:32+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloapple-tv/</loc>
+    <lastmod>2023-10-30T02:54:33+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%89%E5%AD%A3/</loc>
     <lastmod>2023-10-29T04:57:20+08:00</lastmod>
@@ -92,6 +155,9 @@
     <loc>https://senup.github.io/posts/read/%E6%94%BE%E5%BC%83%E5%87%8F%E8%82%A5%E6%88%91%E7%98%A6%E4%BA%8660%E6%96%A4/</loc>
     <lastmod>2023-10-05T09:10:00+08:00</lastmod>
   </url><url>
+    <loc>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellocron/</loc>
+    <lastmod>2023-10-04T20:48:29+08:00</lastmod>
+  </url><url>
     <loc>https://senup.github.io/posts/movie/%E9%A9%B4%E5%BE%97%E6%B0%B4/</loc>
     <lastmod>2023-10-02T01:17:04+08:00</lastmod>
   </url><url>
@@ -111,6 +177,13 @@
     <lastmod>2022-02-21T19:57:45+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/categories/</loc>
+    <lastmod>2018-12-25T11:09:28+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/categories/life/</loc>
+    <lastmod>2018-12-25T11:09:28+08:00</lastmod>
+  </url><url>
+    <loc>https://senup.github.io/posts/life/%E6%88%91%E7%9A%84%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2018-12-25T11:09:28+08:00</lastmod>
   </url><url>
     <loc>https://senup.github.io/search/</loc>
     <priority>0.1</priority>
@@ -118,8 +191,6 @@
     <loc>https://senup.github.io/archives/</loc>
   </url><url>
     <loc>https://senup.github.io/gallery/</loc>
-  </url><url>
-    <loc>https://senup.github.io/posts/tech/</loc>
   </url><url>
     <loc>https://senup.github.io/movies/</loc>
   </url><url>

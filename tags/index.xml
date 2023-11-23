@@ -6,41 +6,41 @@
     <description>Recent content in 标签 on 『高等游民』</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 19:51:09 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Nov 2023 12:51:42 +0800</lastBuildDate>
     <atom:link href="https://senup.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hello</title>
+      <link>https://senup.github.io/tags/hello/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/hello/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://senup.github.io/tags/java/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>spring</title>
+      <link>https://senup.github.io/tags/spring/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tech</title>
+      <link>https://senup.github.io/tags/tech/</link>
+      <pubDate>Mon, 20 Nov 2023 12:51:42 +0800</pubDate>
+      <guid>https://senup.github.io/tags/tech/</guid>
+      <description></description>
+    </item>
     <item>
       <title>chat</title>
       <link>https://senup.github.io/tags/chat/</link>
       <pubDate>Sun, 19 Nov 2023 19:51:09 +0800</pubDate>
       <guid>https://senup.github.io/tags/chat/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>read</title>
-      <link>https://senup.github.io/tags/read/</link>
-      <pubDate>Wed, 15 Nov 2023 15:06:42 +0800</pubDate>
-      <guid>https://senup.github.io/tags/read/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>guitar</title>
-      <link>https://senup.github.io/tags/guitar/</link>
-      <pubDate>Wed, 15 Nov 2023 12:41:52 +0800</pubDate>
-      <guid>https://senup.github.io/tags/guitar/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>movie</title>
-      <link>https://senup.github.io/tags/movie/</link>
-      <pubDate>Mon, 06 Nov 2023 15:34:21 +0800</pubDate>
-      <guid>https://senup.github.io/tags/movie/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>life</title>
-      <link>https://senup.github.io/tags/life/</link>
-      <pubDate>Fri, 27 Oct 2023 03:06:10 +0800</pubDate>
-      <guid>https://senup.github.io/tags/life/</guid>
       <description></description>
     </item>
   </channel>

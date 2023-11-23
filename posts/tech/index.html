@@ -177,6 +177,535 @@
   
   <div class="posts">
     
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/">Hello，Spring</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-20
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/spring/">spring</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/java/">Java</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h2 id="resource">Resource</h2>
+<p>Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。</p>
+<p>resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。</p>
+<blockquote>
+<p>那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？</p>
+</blockquote>
+<h2 id="xmlbeanfactory">xmlBeanFactory</h2>
+<h3 id="父类方法">父类方法</h3>
+<p>拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。</p>
+<p>比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&ldquo;李四&rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。</p>
+<p>但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/">Hello，Obsidian</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-19
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/odsidian/">odsidian</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。</p>
+<h3 id="推荐博主">推荐博主</h3>
+<ul>
+<li>Nicole</li>
+<li>Danny</li>
+<li>简悦课堂</li>
+</ul>
+<h3 id="主题设置">主题设置</h3>
+<p>整体效果：</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png" alt="image.png"  /></p>
+<p>强烈推荐这个<a href="https://github.com/lxgw/LxgwWenKai/releases" target="_blank" rel="noopener nofollow noreferrer" >霞鹜文楷</a>，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/">Hello，Gradle</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-17
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/gradle/">gradle</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h2 id="下载">下载</h2>
+<p><a href="https://gradle.org/install/#manually" target="_blank" rel="noopener nofollow noreferrer" >gradle官方网站</a></p>
+<p>点击上方连接进入到官方网</p>
+<p>手动安装的话，点击releases page 选择自己想要安装的包下载</p>
+<p>我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin</p>
+<h2 id="配置环境变量">配置环境变量</h2>
+<p>1.通过命令打开环境编辑文档，输入i进入编辑模式</p>
+<p><code>vim ~/.bash_profile</code></p>
+<p>2.在文档的尾部追加gradle的环境配置</p>
+<p>`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin</p>
+<p>英文状态下，按esc键，然后输入<code>:wq</code>保存并退出文档</p>
+<p>3.让配置的文档生效</p>
+<p><code>source ~/.bash_profile</code></p>
+<p>4.验证gradle安装成功</p>
+<p><code>gradle -v</code></p>
+<p>出现gradle的版本信息证明安装成功。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/">Hello，MySQL</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-16
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/mysql/">mysql</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h1 id="mysql-概述">MySQL 概述</h1>
+<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
+<p>接下来讲讲其中的一些部件：</p>
+<ul>
+<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
+<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
+<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
+<ul>
+<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
+<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
+<li>SQL 解析器：解析 SQL 语句的含义</li>
+<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
+<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
+<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
+</ul>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloshellclash/">Hello，shellclash</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-12
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/vpn/">vpn</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/linux/">linux</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <blockquote>
+<p>shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。</p>
+</blockquote>
+<h1 id="环境配置">环境配置</h1>
+<p>路由器：红米ax6000</p>
+<p>固件：官方固件</p>
+<p>红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。</p>
+<p>其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png" alt="image.png"  /></p>
+<h1 id="界面讲解">界面讲解</h1>
+<p>打开<a href="http://192.168.31.1:9999/ui/#/" target="_blank" rel="noopener nofollow noreferrer" >yacd</a>。
+代理界面有selector和URLTest的两种类型。
+selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png" alt="image.png"  /></p>
+<h1 id="使用场景">使用场景</h1>
+<p>比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。</p>
+<p>同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。</p>
+        
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloquantumult-x/">Hello，Quantumult X</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-11
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/vpn/">vpn</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <blockquote>
+<p>Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。</p>
+</blockquote>
+<h1 id="下载配置">下载配置</h1>
+<p>推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。<br>
+<a href="https://github.com/ddgksf2013" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/ddgksf2013</a></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg" alt="IMG_1860.jpg"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg" alt="IMG_1859.jpg"  /></p>
+<h1 id="重写规则">重写规则</h1>
+<p>有些小众 APP 再从这个组里面找需要的 APP 规则：<br>
+<a href="https://t.me/Aa28413761" target="_blank" rel="noopener nofollow noreferrer" >https://t.me/Aa28413761</a></p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg" alt="IMG_1857.jpg"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg" alt="IMG_1858.jpg"  /></p>
+<h1 id="导入节点订阅">导入节点订阅</h1>
+<p>目前用的是魔戒，按量订阅，缺点是偏慢</p>
+<h1 id="配置证书">配置证书</h1>
+<p>打开设置的MitM开关，生成证书并去设置里面配置证书
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg" alt="IMG_1861.jpg"  /></p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/helloquantumult-x/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomacos/">Hello，MacOS</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-07
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/mac/">mac</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/finder/">finder</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <h1 id="finder">Finder</h1>
+<p>找出 当前文件夹或子目录下面所有的  pdf 文件并拷贝放到pdf文件夹下面</p>
+<pre tabindex="0"><code>find ./  -name  &#34;*.pdf&#34; -exec mv {} ./pdf \;
+</code></pre><h2 id="剪切">剪切</h2>
+<p>其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。</p>
+<p>按下<code>command+C</code>快捷键之后，在目标目录按下<code>option+command+V</code>就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。</p>
+<h2 id="popcliphttpsgithubcomtisfengeasydictblobmainreadmemd"><a href="https://github.com/tisfeng/Easydict/blob/main/README.md" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a></h2>
+<p>开启 easydict。你需要先安装 <a href="https://pilotmoon.com/popclip/" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a>，然后选中以下代码块，<code>PopClip</code> 会显示 &ldquo;安装扩展 Easydict&rdquo;，点击它即可。（By <strong><a href="https://github.com/liziqiang" target="_blank" rel="noopener nofollow noreferrer" >liziqiang</a></strong>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># popclip</span>
+</span></span><span style="display:flex;"><span>name: Easydict
+</span></span><span style="display:flex;"><span>icon: iconify:ri:translate
+</span></span><span style="display:flex;"><span>interpreter: zsh
+</span></span><span style="display:flex;"><span>shell script: |
+</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ps aux | grep Easydict.app | wc -l<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $result -lt <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    open /Applications/Easydict.app
+</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>  open <span style="color:#e6db74">&#34;easydict://query?text=</span>$POPCLIP_TEXT<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><blockquote>
+<p>参考：<a href="https://www.popclip.app/dev/shell-script-actions" target="_blank" rel="noopener nofollow noreferrer" >https://www.popclip.app/dev/shell-script-actions</a></p>
+</blockquote>
+        
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloraycast/">Hello，Raycast</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-31
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/mac/">mac</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <blockquote>
+<p>之前在windows上使用listary比较多，功能很强大。换到苹果生态后就少了这么一个效率工具，后面发现了这一款raycast，十分强大。</p>
+</blockquote>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310443100.png" alt="image.png"  /></p>
+<h1 id="安装插件">安装插件</h1>
+<p><a href="https://www.raycast.com/store" target="_blank" rel="noopener nofollow noreferrer" >Raycast - Store</a></p>
+<h1 id="插件替代软件">插件替代软件</h1>
+<p>软件支持很多自定义拓展，因此剪切板、窗口管理、翻译等软件均删除，保留一个raycast即可。</p>
+<ul>
+<li>剪切板：clipboard history</li>
+<li>窗口管理: window management</li>
+<li>翻译：google translate</li>
+<li>OCR识别: screenOCR</li>
+<li>软件卸载： 搜索APP打开菜单</li>
+</ul>
+<p>额外设置替代系统的搜索框：
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415790.png" alt="image.png"  /></p>
+<h1 id="设置别名">设置别名</h1>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310415644.png" alt="image.png"  /></p>
+<h1 id="quicklinks">QuickLinks</h1>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356516.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310356924.png" alt="image.png"  /></p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/helloraycast/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloapple-tv/">Hello，Apple TV</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-30
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>倒卖了闲置的iPhone，因此有额外的零花钱，于是购入了Apple TV 2023款 64GB港版。</p>
+<p>渠道：京东。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310435591.png" alt="image.png"  /></p>
+<h1 id="8字电源线">8字电源线</h1>
+<p>港版的电源线不能直接使用，因此购入了绿联的电源线进行替换，花费12¥。</p>
+<h1 id="infuse-pro">infuse pro</h1>
+<blockquote>
+<p>用途：支持6个设备，在阿里云盘存取资源，infuse即可构建海报墙</p>
+</blockquote>
+<p>流程：</p>
+<ul>
+<li>申请土区Apple ID，使用大众点评模拟当地地址电话+付款方式为空</li>
+<li>土区<a href="https://www.oyunfor.com/" target="_blank" rel="noopener nofollow noreferrer" >onyunfor</a>礼品卡购买100里拉，花费26¥</li>
+<li>Apple store订阅infuse pro年费</li>
+<li>片源获取：<a href="https://www.codelicence.cn/" target="_blank" rel="noopener nofollow noreferrer" >云盘4K-综合网盘搜索</a>+telegram电报群资源</li>
+</ul>
+<p>遇到问题：AppleTV上的infuse Pro中阿里网盘服务器读取不到？
+解决方法：使用Mac进行初始化库即可。</p>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310441076.png" alt="image.png"  />
+<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202310310440711.png" alt="image.png"  /></p>
+<h1 id="cheers">cheers</h1>
+<p>也就是第三方版的b站，闲鱼购买账号进行下载，花费3.88¥。</p>
+<h1 id="youtube-prime">youtube prime</h1>
+<ul>
+<li>油管会员，用于去广告，还附赠了YouTube music，体验很不错。</li>
+<li>渠道：电报群拼车。</li>
+<li>花费：年付45¥。</li>
+</ul>
+<h1 id="iplaytv">iplaytv</h1>
+<ul>
+<li>渠道：闲鱼账号附赠，无需花费。</li>
+<li>进阶：搜索<strong>m3u直播源</strong>，导入配置订阅即可。</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>按我这种最低开销，买完Apple TV也得多花一百块钱来配置软件生态。</p>
+        
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list tech/归档">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellocron/">Hello，cron</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-04
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
+          
+            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>[[github action]]中可以配置[[schedule]]，而如果有定时或者重复构建的需求的话，就需要用到[[Hello，cron]]。</p>
+<p>cron表达式总共有五位，从左到右分别代表 分钟、小时、日期、月份、星期几。</p>
+<p>分钟范围：0~59
+小时范围：0~24
+日期：1~31
+月份：1~12
+星期几： 0~6</p>
+<p>空格意义：分隔不同的时间单位
+逗号意义：同个时间范围里面的多个值
+斜杠含义：代表每隔一段时间就重复
+问号意义：不关心当前的时间单位
+星号含义：任意</p>
+        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellocron/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
     <div class="pagination">
   <div class="pagination__buttons">
     
@@ -245,6 +774,28 @@
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
 
 
 
@@ -255,7 +806,7 @@
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 13984 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 40562 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

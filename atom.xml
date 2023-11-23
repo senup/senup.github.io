@@ -7,237 +7,12 @@
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-23T09:52:57+00:00</updated>
+    <updated>2023-11-23T09:55:53+00:00</updated>
     
     
     
     
         <id>https://senup.github.io/atom.xml</id>
-    
-        
-        <entry>
-            <title type="html"><![CDATA[Hello，Spring]]></title>
-            <link href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/" rel="alternate" type="text/html" />
-            
-                <id>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/</id>
-            
-            
-            <published>2023-11-20T12:51:42+08:00</published>
-            <updated>2023-11-20T12:51:42+08:00</updated>
-            
-            
-            <content type="html"><![CDATA[<h2 id="resource">Resource</h2>
-<p>Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。</p>
-<p>resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。</p>
-<blockquote>
-<p>那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？</p>
-</blockquote>
-<h2 id="xmlbeanfactory">xmlBeanFactory</h2>
-<h3 id="父类方法">父类方法</h3>
-<p>拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。</p>
-<p>比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&ldquo;李四&rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。</p>
-<p>但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png" alt="image.png"  /></p>
-<p>比如下面这个例子，刻意满足了两个条件，实现了 beanNameAware 接口+存在同名的 setBeanName 方法，name 这个时候就不会注入属性值。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181339671.png" alt="image.png"  /></p>
-<p>为什么要做这种限制呢？我理解 spring 是为了确保类属性值的 setter 方法和感知接口的重写方法重名的时候，优先级肯定是当前类属性值优先，防止外部注入来改变，确保了 bean 名称的唯一性。同时，确保只能由内部接口注入，不能由外部的 XML 来变更。</p>
-<hr>
-<h3 id="reader-加载-beandefinition">reader 加载 beanDefinition</h3>
-<p>上面一步是继承父类在某些情况要忽略感知接口。这一步是将传进来的 resource 类添加编码，转化成输入流，再对流做处理，正式开始加载 beanDefinition。</p>
-<p>目前的路径：XML 文件-&gt;resource-&gt;inputStream-&gt;<span style="background:#d3f8b6">document-&gt;beanDefinition</span>❓</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181409602.png" alt="image.png"  /></p>
-<h3 id="解析成-document">解析成 document</h3>
-<p>文件流最终转化成了内存中的数据结构，这一步可以了解到 DOM 是如何解析的。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181444338.png" alt="image.png"  /></p>
-<h3 id="document-前置的-entitysolver">document 前置的 entitySolver</h3>
-<p>注意到上面的第二个参数传入了 entitySovler，发现他是单纯通过 get 方法无参获取的。实际是 xmlBeanDefinitionReader 的父类初始化的时候传进来了一个 xmlBeanDefinitionReader.register，这个 register 不属于 resourceLoader，因此被赋予了 PathMatchingResourcePatternResolver。因此不为空，所以下图这里获取到的 resolver 是第一个。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181457611.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181510070.png" alt="image.png"  /></p>
-<p>这个 resolver 有什么用？XML 的配置文件头经常会引用 dtd 和 xsd 的校验规则，但是存在一个问题，就是使用的时候需要去网络下载，如果网络出现问题就会影响整个流程。为此，spring 把这些校验文件都放在 jar 包里面了，需要的时候就会从 jar 包加载成 bean 出来，而 resolver 就是用于规范和校验 XML 格式的类。</p>
-<p>至此，流程图为这样。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311182349751.png" alt="image.png"  /></p>
-<p>上图中底部俩 resolver 分别规范和校验 dtd 和 xsd 的校验格式；</p>
-<ul>
-<li>Dtd 的 resolver 会有两个入参：publicId 和 systemId。SystemId 是 XML 文件里面的一个 HTTP 链接。怎么根据这俩参数获取具体的位置? 首先构建 classPathResource 的时候 getClass 方法传入了 BeansDtdResolver 的相对应的 resources 文件夹下面就有 dtd 文件。文件名是默认的 spring-beans. Dtd。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190052326.png" alt="image.png"  /></p>
-<ul>
-<li>xsd 文件也有 publicId 和 systemId。不太相同的地方在于不需要 publicId 。其查找过程是将 “META-INF/spring. Schemas”文件解析成一个 map &lt;systemId,xsd 路径&gt;的结构，然后通过当前 XML 文件里面的 systemId 获取到对应的 xsd 路径，也能找到。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190057718.png" alt="image.png"  /></p>
-<p>区别是哪种类型？XML 中引用的校验文件只有 dtd 和 xsd, 因此一旦发现 xml 里面包含了“DOCTYPE”字符串，那么就是 dtd 格式的校验规则，否则就是 xsd.</p>
-<p>XML 区别如图：
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190102960.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190103948.png" alt="image.png"  /></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311190103273.png" alt="image.png"  /></p>
-<p>能加载校验文件后，就会开始对文件进行一步步解析。这里关注的是 spring 会拿到 document，然后遍历去解析节点。在执行解析的时候，会将具体工作交给一个代理类 delegate，代理类会针对 document 的每一个节点，区别是默认标签还是自定义标签，这一步是通过判断 namespace URI 判断的，默认链接如下图。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192014968.png" alt="image.png"  /></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192015745.png" alt="image.png"  /></p>
-<hr>
-<h3 id="bean-初步解析">bean 初步解析</h3>
-<p>解析到一个标签的时候，会有四个 if 判断标签属性是 Bean、beans、alias、import。后两个如今在 XML 用得少了，重点放在前两个上面。</p>
-<p>假设判断是 bean 标签，那么就开始解析标签属性，比如 Id 和 name 直接解析出来，name 因为是由逗号拼接而成，所以这里需要对字符串切割后放进一个数组里面&hellip;&hellip; 接下来，开始初步放进 beanDefinition 接口的实现类里面，用于存放标签解析结果。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192021344.png" alt="image.png"  /></p>
-<h3 id="beandefinition">BeanDefinition</h3>
-<p>BeanDefinition 是一个接口，用于封装 bean 的信息。他的继承关系如下：
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192041677.png" alt="image.png"  /></p>
-<p>如图自上而下，左侧先被一个抽象类继承，其下还有三个具体的实现类，其中 rootBeanDefinition 代表只有单个的 XML 标签，不能含有 parent 属性；而 childBeanDefinition 代表拥有 parent 属性的标签。这两种是早期的 spring 版本用的，目前用的多的是通用的 genericBeanDefinition。</p>
-<p>右侧分支是一路走注解的实现。</p>
-<h3 id="子标签解析">子标签解析</h3>
-<p>spring 会罗列出可能的所有子标签，然后每种子标签就写一个方法，只要判断标签的 key 匹配，就会走流程：解析出每一个键值对，然后放进 beanXXXAttribute 或者 BeanDefinition 中。
-这个过程十分复杂繁琐，可能需要避免 property 重名、description 和 meta 等标签剔除不处理等。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311192058014.png" alt="image.png"  /></p>
-<h3 id="bean-注册">Bean 注册</h3>
-<p>BeanDefinitionHolder 可以封装 BeanDefinition 和别名 aliasArray。</p>
-<p>spring 容器也就是 BeanDefinitionMap，注入容器就是相当于拿着 holder 里面的 beanName 和 BeanDefinition 往 map 里面添加。如果同名则覆盖，默认是支持覆盖的。之后若发现之前的 Bean 容器有这个 Bean 或者这个已经根据 beanDefinition 创建出了对象，那么就会对 Bean 的缓存进行重置，我猜这里是为了及时性。</p>
-<p>之前注入 Bean 是往 map&lt;name,BeanDefinition&gt;添加，现在别名注入是往 map&lt;alias,beanName&gt;这个里面添加。并且，如果打算要注册的别名 key 已经在 map 里面存在了，那么就不再注册了。
-如果打算注册的别名 key 和 value 不同，但是 map 里面已存在这个键值对，且这个时候不允许覆盖，那么这个时候就会抛异常。</p>
-<p>别名可能会有循环，所以会有个循环检测。相当于同时存在：alias 1 到 name 1，alias 1 到 name 2，name 2 再到 name 1 这两个关系，出现了两个起点和重点都相同的循环了，这样就造成了别名循环的问题就会抛异常。</p>
-<ul>
-<li><input disabled="" type="checkbox"> <span style="background:#fff88f">理清为什么别名循环不允许存在</span></li>
-</ul>
-<p>补充：创建 Bean 的时候只能使用 spring 普通的方式创建，或者使用工厂方法来创建，两者如果都有，那么这个时候就会抛出异常。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311200034697.png" alt="image.png"  /></p>
-<h2 id="applicationcontext">ApplicationContext</h2>
-<p>理清了 xmlBeanFactory, 接下来看一个功能更全的类——ClassPathXmlApplicationContext。它也是 ApplicationContext 的一个具体实现类。</p>
-<ol>
-<li>简单来使用一下 ApplicationContext，作源码分析的入口</li>
-<li>接下来再来看下 ApplicationContext 对环境变量以及路径占位符解析的准备工作</li>
-<li>最后再来定位下 ApplicationContext 中，最核心的方法是在什么位置，为下一步的源码分析做准备</li>
-</ol>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201413240.png" alt="image.png"  /></p>
-<ul>
-<li>
-<p>父类构造方法设置了成员变量 parent</p>
-</li>
-<li>
-<p>支持传入多个 configLocations，同时支持使用占位符来对 placeHolder 进行解析，如果找不到占位符那么就报错</p>
-</li>
-<li>
-<p>Refresh 默认为 true</p>
-</li>
-<li>
-<p>refresh 方法是核心方法。</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Refresh 待验证</p>
-</li>
-</ul>
-<h3 id="preparefefresh-初始化上下文信息">prepareFefresh 初始化上下文信息</h3>
-<p>提供一个拓展方法方便在上下文环境中解析参数占位符。</p>
-<p>使用方法：提前设置占位符的键值对，方便后续操作直接使用占位符的键即可找到。比如使用“$｛username｝”。</p>
-<pre tabindex="0"><code>Public class NewClassPathXmlApplicationContext extends ClassPathXmlApplicationContext ｛
-Public NewClassPathXmlApplicationContext（String... ConfigLocations） ｛
-Super（configLocations）；
-｝
-
-@Override
-Protected void initPropertySources（）｛
-System. Out. PrintIn（&#34;重写 initPropertySource 方法.&#34;）；
-getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;zhangsan&#34;）；
-｝
-｝
-</code></pre><p>接下来就会校验必要的环境变量值是否为空，如果为空则报错。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201432263.png" alt="image.png"  /></p>
-<h3 id="初始化容器-beanfactory">初始化容器 beanFactory</h3>
-<p>首先调用了获得并刷新 Bean 工厂的 obtainFreshBeanFactory 方法，返回了一个 ConfigurableListableBeanFactory。这个是继承 BeanFactory 的一个接口。具体可以看下下方的继承关系图。</p>
-<p>ObtainFreshBeanFactory 如它的名字一样，就是包含了刷新和获取的方法。刷新的方法在前，也是重点关注的部分。刷新的 refreshBeanFactory 方法会判断 BeanFactory 是否存在，如果存在，那么就会销毁所有的 Bean，再销毁关闭 Bean 工厂，然后走新增 BeanFactory 的逻辑。</p>
-<p>新增 BeanFactory：首先创建一个初级的 Bean 容器，DefaultListableBeanFactory，这个是 XMLBeanFactory 的父类。然后提供了一个 customize 的客制化方法，这里提供了两个拓展方法。</p>
-<ul>
-<li>是否允许同名的 BeanDefinition 在容器 beanDefinitionMap 中被覆盖</li>
-<li>是否允许存在循环依赖</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201516076.png" alt="image.png"  /></p>
-<p>接下来，有了初始的 Bean 容器，那么就会开始解析资源。
-中间提供了一个去拓展 reader 的方法。</p>
-<p>然后，applicationContext 允许传入多个字符串，因此会遍历字符串数组去解析每一个路径。有了 BeanFactory，就能作为参数传给 reader，reader 就能读取路径，路径就能获得 resource，根据 resource 加载对应的 document 对象，解析对象，再解析 XML 中的各种标签属性，将得到的属性和方法信息封装在 beanDefinition 中，最后注册到 Bean 容器 beanDefinitionMap 中。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201514650.png" alt="image.png"  /></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201448356.png" alt="image.png"  /></p>
-<p>到此，需要记住一点就是，spring 源码中出现 protected 修饰的方法，一般都是客制化的拓展方法。</p>
-<ul>
-<li><input disabled="" type="checkbox"> 罗列出拓展接口并进行最佳实践</li>
-</ul>
-<h3 id="preparebeanfactory">prepareBeanFactory</h3>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201531517.png" alt="image.png"  /></p>
-<p>拓展点：</p>
-<ul>
-<li>第二步设置了 spel 表达式的解析器，全称就是 spring expression language。用于解析比如 XML 里面的一些#{}，当然，这些变量可以放在一个统一的文件中集中管理。</li>
-<li>第三步添加了很多属性编辑器，这个主要是因为 XML 的局限所致的。比如 XML 有些属性的值是字符串，但是使用到的时候就都需要转化成各种 stream 使用，因此这里就提供了各种各样的属性编辑器。</li>
-<li>第四步添加了各种 aware 接口的后处理器。如果判断不是这些接口，那么就会直接返回当前的 Bean。否则，就会执行实现了这些 aware 感知接口的方法去修改 Bean。这里拓展的是后置处理器的前置处理。</li>
-<li>第五步添加需要忽略的感知接口，<span style="background:#fff88f">简单来说，如果一个 bean 实现了传入 ignoreDependencyInterface 方法的这些感知接口，Spring 是不允许外界注入任何的依赖到 bean 中的，只允许 Spring 容器内部调用感知接口的方法来注入相应的依赖。</span></li>
-<li>第六步添加接口指定的依赖。这个东西就是说获取这几个 Bean 的时候，可能会找 Bean 对应的一个实现类。假设这个时候自己写了一个实现类，但是 spring 获取 Bean 的时候还是按照它内部自己生成的这个 Bean 提供给你而不是使用我自己写的实现类，为了确保这些关键的接口，它的实现类只能是 spring 内部指定的一些对象。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201551755.png" alt="image.png"  /></p>
-<h3 id="postprocessbeanfactory">PostProcessBeanFactory</h3>
-<p>那方法 postProcessBeanFactory 留给子类具体是要去实现什么样的功能呢？通过方法的注释我们可以知道，方法 postProcessBeanFactory 是 Spring 暴露给子类去修改容器 beanFactory 的。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201615884.png" alt="image.png"  /></p>
-<h3 id="beanfactorypostprocessor">BeanFactoryPostProcessor</h3>
-<p>可以看到，BeanFactoryPostProcessor 中的方法和我们刚才看到的空实现方法 postProcessBeanFactory 几乎是一模一样的，目的也是一样的，也就是给了我们一次机会，允许我们通过参数 beanFactory 去获取相应的 BeanDefinition 并修改相应的信息。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201616556.png" alt="image.png"  /></p>
-<ul>
-<li><input disabled="" type="checkbox"> 上面这两个东西有什么区别？</li>
-</ul>
-<h3 id="beanfactorypostprocessor-的执行顺序">BeanFactoryPostProcessor 的执行顺序</h3>
-<p>首先，明确有两种 PostProcessor：一种是 regular 普通的，一种是 registry 注册类的。从这儿可以了解到 Bean 除了常规解析 XML 得来的，还可以自定义 beanDefinition，然后走 register 的接口注册到容器里面。</p>
-<p>然后，按照是否是注册类来将两种类型的 postProcessor 分类到两个数组里面。</p>
-<p>接下来找个 currentRegisterProcessors 的数组。用来存放数量众多的一批 register 且同时实现了 priority 接口的 Bean 。收集完对数组进行优先级的排序，越小的优先级越排前面，然后添加到 registryProcessors 的数组里面，开始实现 beanDefinition 的 postProcessor，清空 currentRegisterProcessors，接着循环去整下一轮。</p>
-<p>第二轮处理的是属于 registry 且实现类 ordered 接口的 Bean，具体方式同上。</p>
-<p>第三轮会讲前两轮剩下的属于 registry 的 Bean 做处理，方式也同上。</p>
-<p>最终，对两种 PostProcessor 分别执行了后处理器的方法来修改 beanDefinition。</p>
-<p>上面这个过程适用于参数、容器的 registry、容器的普通 processor 三种，情况还是较多的。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201716119.png" alt="image.png"  /></p>
-<h3 id="registerbeanpostprocessors-beanfactory-">RegisterBeanPostProcessors (beanFactory) ;</h3>
-<p>区别于 BeanFactoryPostProcessor，力度更小，使用案例：</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201735538.png" alt="image.png"  /></p>
-<p>实现原理就是找到这个 beanPostProcessor 的所有实现类，然后将实现类的名字统一抽出来进行分三类，三类注册到 BeanFactory 上。</p>
-<p>其中分类的时候多出了一个 internalPostProcessors，是用来存放解析注解产生的内部 postProcessor 集合，在最后才会注册上去。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201745552.png" alt="image.png"  /></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201741886.png" alt="image.png"  /></p>
-<h3 id="初始化消息源-messagesource">初始化消息源 MessageSource</h3>
-<p>处理国际化的拓展类。必须配置同名的 Bean 才能从容器中获取到。</p>
-<h3 id="初始化广播器-applicationeventmulticaster">初始化广播器 ApplicationEventMulticaster</h3>
-<p>自定义实现的一个案例：获取到事件的时候，监听器可以额外做处理。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201806516.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201806071.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201806645.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201806721.png" alt="image.png"  /></p>
-<p>也就是说广播器接收到一个事件之后，会将事件通知到所有 Spring 容器中的所有监听器，并且调用监听器中的 onApplicationEvent 方法来处理相应的事件。</p>
-<blockquote>
-<p>Spring 这套基于事件驱动的机制，相信大家现在应该也比较清楚了，主要就是通过广播器ApplicationEventMulticaster 和监听器 ApplicationListener 来实现的，大家也可以理解为是发布一订阅模式， ApplicationEventMulticaster 用来广播发布事件，ApplicationListener 监听订阅事件，每种监听器负责处理一种或多种事件。</p>
-<p>而且，如果大家冷静分析一下会发现，其实 Spring 这套发布订阅的模式，采用的就是设计模式中的观察者模式，ApplicationEventMulticaster 作为广播事件的 subject，属于被观察者，ApplicationListener 作为 Observer 观察者，最终是用来处理相应的事件的，属于观察者 Observer。</p>
-</blockquote>
-<h3 id="onrefresh">OnRefresh</h3>
-<p>空实现，用于留给字类去拓展实现实例化 Bean 之前，做一些其他初始化 Bean 的工作。</p>
-<h3 id="registerlisteners">RegisterListeners</h3>
-<p>讲参数中和容器内的监听器收集起来注册到广播器中，这里就能从广播器中获取到监听器。</p>
-<h3 id="finishbeanfactoryinitialization-beanfactory">FinishBeanFactoryInitialization (beanFactory)</h3>
-<p>不是懒加载的 Bean 就需要预加载。实现思路是从 beanDefinitionNames 的数组里面挨个判断，满足预加载就先加载。如果是单例，name 就会将实例化好的 Bean 放一份到单例缓存中，下次获取直接从缓存里面拿。</p>
-<h3 id="finishrefresh">FinishRefresh</h3>
-<p>开启 Spring 的生命周期。将有生命周期的 Bean 做一个生命周期的管理。</p>
-<p>根据我们前面的源码分析，事件 ContextRefreshedEvent 将会注册到广播器中，广播器会把该事件广播器相应的监听器去处理，这个事件相当于告诉 Spring 整个容器已经刷新了，也就说 Spring 容器 ApplicationContext 经初始化完毕了。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311201830761.png" alt="image.png"  /></p>]]></content>
-            
-                 
-                    
-                 
-                    
-                         
-                        
-                            
-                             
-                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
-                             
-                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
-                             
-                                <category scheme="https://senup.github.io/tags/spring" term="spring" label="spring" />
-                             
-                                <category scheme="https://senup.github.io/tags/java" term="java" label="Java" />
-                            
-                        
-                    
-                
-            
-        </entry>
     
         
         <entry>
@@ -272,165 +47,43 @@ getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;z
     
         
         <entry>
-            <title type="html"><![CDATA[Hello，Obsidian]]></title>
-            <link href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/" rel="alternate" type="text/html" />
+            <title type="html"><![CDATA[📖《煤气灯效应》]]></title>
+            <link href="https://senup.github.io/posts/read/%E7%85%A4%E6%B0%94%E7%81%AF%E6%95%88%E5%BA%94/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/</id>
-            
-            
-            <published>2023-11-19T02:14:00+08:00</published>
-            <updated>2023-11-19T02:14:00+08:00</updated>
+                <id>https://senup.github.io/posts/read/%E7%85%A4%E6%B0%94%E7%81%AF%E6%95%88%E5%BA%94/</id>
             
             
-            <content type="html"><![CDATA[<p>开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。</p>
-<h3 id="推荐博主">推荐博主</h3>
-<ul>
-<li>Nicole</li>
-<li>Danny</li>
-<li>简悦课堂</li>
-</ul>
-<h3 id="主题设置">主题设置</h3>
-<p>整体效果：</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png" alt="image.png"  /></p>
-<p>强烈推荐这个<a href="https://github.com/lxgw/LxgwWenKai/releases" target="_blank" rel="noopener nofollow noreferrer" >霞鹜文楷</a>，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png" alt="image.png"  /></p>
-<p>Anuppuccin 主题的 style setting</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;blue-topaz-theme@@remove-file-icons&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;blue-topaz-theme@@unmuted-collapsed-folder&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;blue-topaz-theme@@blockquote-style-change-options&#34;</span>: <span style="color:#e6db74">&#34;blockquote-style-quotation-mark&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;blue-topaz-theme@@background-image-settings-switch&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;blue-topaz-theme@@color-scheme-options&#34;</span>: <span style="color:#e6db74">&#34;color-scheme-options-default&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings-extended@@anp-theme-ext-light&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings-extended@@anp-theme-ext-dark&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings-extended@@catppuccin-theme-extended&#34;</span>: <span style="color:#e6db74">&#34;ctp-atom-light&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings-extended@@catppuccin-theme-dark-extended&#34;</span>: <span style="color:#e6db74">&#34;ctp-atom-dark&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-base@@light&#34;</span>: <span style="color:#e6db74">&#34;#F8F5F1&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-mantle@@light&#34;</span>: <span style="color:#e6db74">&#34;#F1EAE4&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-crust@@light&#34;</span>: <span style="color:#e6db74">&#34;#EAE2DC&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anuppuccin-light-theme-accents&#34;</span>: <span style="color:#e6db74">&#34;ctp-accent-light-blue&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-active-line&#34;</span>: <span style="color:#e6db74">&#34;anp-current-line&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-callout-select&#34;</span>: <span style="color:#e6db74">&#34;anp-callout-sleek&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-callout-color-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@callout-radius&#34;</span>: <span style="color:#ae81ff">7</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@callout-title-padding&#34;</span>: <span style="color:#e6db74">&#34;8px&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@callout-title-opacity&#34;</span>: <span style="color:#ae81ff">0.2</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@callout-content-padding&#34;</span>: <span style="color:#e6db74">&#34;15px&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-callout-fold-position&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-custom-checkboxes&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-speech-bubble&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-codeblock-numbers&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-codeblock-wrap-edit&#34;</span>: <span style="color:#e6db74">&#34;none&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-codeblock-wrap-preview&#34;</span>: <span style="color:#e6db74">&#34;none&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@list-indent&#34;</span>: <span style="color:#ae81ff">2.5</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@list-marker-color@@light&#34;</span>: <span style="color:#e6db74">&#34;#907AA9&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-table-width&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-table-auto&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-table-th-highlight&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-td-highlight&#34;</span>: <span style="color:#e6db74">&#34;anp-table-row-alt&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-table-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-table-highlight-opacity&#34;</span>: <span style="color:#ae81ff">0.4</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@tag-border-width&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@tag-radius&#34;</span>: <span style="color:#ae81ff">0.7</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-list-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@list-spacing&#34;</span>: <span style="color:#ae81ff">0.075</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-toggle-preview&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-preview-width-pct&#34;</span>: <span style="color:#ae81ff">100</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@file-margins&#34;</span>: <span style="color:#ae81ff">32</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-color-transition-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-print&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-button-metadata-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-autohide-titlebar&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-cursor&#34;</span>: <span style="color:#e6db74">&#34;initial&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-toggle-metadata&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-toggle-scrollbars&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-hide-status-bar&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-tooltip-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-font-live-preview-wt&#34;</span>: <span style="color:#e6db74">&#34;300&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-font-editor-wt&#34;</span>: <span style="color:#e6db74">&#34;300&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-font-preview-wt&#34;</span>: <span style="color:#e6db74">&#34;300&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@bold-weight&#34;</span>: <span style="color:#e6db74">&#34;500&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-header-color-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-header-margin-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-header-divider-color-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-h1-divider&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@h1-line-height&#34;</span>: <span style="color:#ae81ff">1.2</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-green@@light&#34;</span>: <span style="color:#e6db74">&#34;#64BE82&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-decoration-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-bold-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-bold-red&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-italic-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-italic-red&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-highlight-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-highlight-pink&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-background-image-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-custom-bg-blur-light&#34;</span>: <span style="color:#ae81ff">18</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-custom-bg-card-fg-opacity-light&#34;</span>: <span style="color:#ae81ff">0.95</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-colorful-frame&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-colorful-frame-icon-toggle-light&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-pdf-blend-toggle-light&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-alt-rainbow-style&#34;</span>: <span style="color:#e6db74">&#34;anp-simple-rainbow-color-toggle&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-rainbow-file-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-full-rainbow-text-color-toggle-dark&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-rainbow-folder-bg-opacity&#34;</span>: <span style="color:#ae81ff">0.7</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-status-bar-select&#34;</span>: <span style="color:#e6db74">&#34;anp-floating-status-bar&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-alt-tab-style&#34;</span>: <span style="color:#e6db74">&#34;anp-mini-tab-toggle&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-disable-newtab-align&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-depth-tab-text-invert&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-depth-tab-opacity&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-depth-tab-gap&#34;</span>: <span style="color:#ae81ff">5</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-alt-tab-custom-height&#34;</span>: <span style="color:#ae81ff">32</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-translucency-opacity&#34;</span>: <span style="color:#ae81ff">0.15</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-layout-select&#34;</span>: <span style="color:#e6db74">&#34;anp-card-layout&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-bg-fix&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-hide-borders&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-layout-padding&#34;</span>: <span style="color:#ae81ff">5</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-header-left-padding&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-shadows&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-layout-actions&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-layout-filebrowser&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-h3-color-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-h3-yellow&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-h4-color-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-h4-green&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-h5-color-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-h5-teal&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-h6-color-custom&#34;</span>: <span style="color:#e6db74">&#34;anp-h6-lavender&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-simple-rainbow-title-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-simple-rainbow-icon-folder-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-simple-rainbow-indentation-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-simple-rainbow-collapse-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-simple-rainbow-icon-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-rainbow-subfolder-color-toggle&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-sapphire@@light&#34;</span>: <span style="color:#e6db74">&#34;#5980BF&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-sky@@light&#34;</span>: <span style="color:#e6db74">&#34;#76ABC5&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-blue@@light&#34;</span>: <span style="color:#e6db74">&#34;#6F72C0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-teal@@light&#34;</span>: <span style="color:#e6db74">&#34;#68B4B1&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-lavender@@light&#34;</span>: <span style="color:#e6db74">&#34;#907AA9&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-yellow@@light&#34;</span>: <span style="color:#e6db74">&#34;#EBC475&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-maroon@@light&#34;</span>: <span style="color:#e6db74">&#34;#C76777&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-peach@@light&#34;</span>: <span style="color:#e6db74">&#34;#E8A687&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-red@@light&#34;</span>: <span style="color:#e6db74">&#34;#B25A89&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@ctp-custom-mauve@@light&#34;</span>: <span style="color:#e6db74">&#34;#B4799B&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-hide-card-menus&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-lanes&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-hide-lane-border&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-lane-opacity&#34;</span>: <span style="color:#ae81ff">0.5</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-lane-radius&#34;</span>: <span style="color:#ae81ff">6</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-kanban-lane-spacing&#34;</span>: <span style="color:#ae81ff">11</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-canvas-dark-bg&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-header-margin-value&#34;</span>: <span style="color:#ae81ff">16</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-colorful-frame-opacity&#34;</span>: <span style="color:#ae81ff">0.4</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-collapse-folders&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-file-icons&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-floating-header&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-custom-vault-toggle&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-file-label-align&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-card-radius&#34;</span>: <span style="color:#ae81ff">16</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-border-radius&#34;</span>: <span style="color:#ae81ff">16</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-border-padding&#34;</span>: <span style="color:#ae81ff">20</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-file-icon-align&#34;</span>: <span style="color:#e6db74">&#34;0&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anuppuccin-theme-dark&#34;</span>: <span style="color:#e6db74">&#34;ctp-mocha-old&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anuppuccin-theme-accents&#34;</span>: <span style="color:#e6db74">&#34;ctp-accent-yellow&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anuppuccin-theme-light&#34;</span>: <span style="color:#e6db74">&#34;ctp-latte&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;anuppuccin-theme-settings@@anp-full-rainbow-text-color-toggle-light&#34;</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="插件推荐">插件推荐</h3>
-<p>待补充。</p>]]></content>
+            <published>2023-11-15T15:06:42+08:00</published>
+            <updated>2023-11-15T15:06:42+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/book/34978658.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://book.douban.com/subject/34978658/" class="cute" target="_blank" rel="external nofollow">煤气灯效应</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:74%"></span></span><span class="rating_nums">7.4</span></div>
+                    <div class="db-card-abstract">[美]罗宾·斯特恩 / 2020 / 中信出版集团</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+<h3 id="观后评">观后评</h3>
+<p>这本书讲的是如何认清并摆脱别人对你生活的隐性控制。</p>
+<p>比较有感触的一个点是，职场上有权威的对象容易对你产生自我怀疑，这就是煤气灯效应。比如上司谈话等，就事论事，有则改之即可，切勿自我怀疑。</p>
+<p>第二个是列举出自己自信骄傲的一段时间，再对比当下的处境，你就可以得知这段时间你是否被迫改变。</p>
+<p>区别出煤气灯效应还是忠言逆耳，煤气灯效应只能作用于自我，不适用于教导别人。煤气灯效应中在意自己的感受而不是讲道理（重感受）。</p>]]></content>
             
                  
                     
@@ -440,11 +93,7 @@ getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;z
                         
                             
                              
-                                <category scheme="https://senup.github.io/tags/odsidian" term="odsidian" label="odsidian" />
-                             
-                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
-                             
-                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
+                                <category scheme="https://senup.github.io/tags/read" term="read" label="read" />
                             
                         
                     
@@ -454,36 +103,62 @@ getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;z
     
         
         <entry>
-            <title type="html"><![CDATA[Hello，Gradle]]></title>
-            <link href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/" rel="alternate" type="text/html" />
+            <title type="html"><![CDATA[🎸 吉他打板第一步]]></title>
+            <link href="https://senup.github.io/posts/guitar/-%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/</id>
-            
-            
-            <published>2023-11-17T18:05:10+08:00</published>
-            <updated>2023-11-17T18:05:10+08:00</updated>
+                <id>https://senup.github.io/posts/guitar/-%E5%90%89%E4%BB%96%E6%89%93%E6%9D%BF%E7%AC%AC%E4%B8%80%E6%AD%A5/</id>
             
             
-            <content type="html"><![CDATA[<h2 id="下载">下载</h2>
-<p><a href="https://gradle.org/install/#manually" target="_blank" rel="noopener nofollow noreferrer" >gradle官方网站</a></p>
-<p>点击上方连接进入到官方网</p>
-<p>手动安装的话，点击releases page 选择自己想要安装的包下载</p>
-<p>我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin</p>
-<h2 id="配置环境变量">配置环境变量</h2>
-<p>1.通过命令打开环境编辑文档，输入i进入编辑模式</p>
-<p><code>vim ~/.bash_profile</code></p>
-<p>2.在文档的尾部追加gradle的环境配置</p>
-<p>`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin</p>
-<p>英文状态下，按esc键，然后输入<code>:wq</code>保存并退出文档</p>
-<p>3.让配置的文档生效</p>
-<p><code>source ~/.bash_profile</code></p>
-<p>4.验证gradle安装成功</p>
-<p><code>gradle -v</code></p>
-<p>出现gradle的版本信息证明安装成功。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png" alt="image.png"  /></p>
-<h2 id="idea-配置">idea 配置</h2>
-<p>加载 spring 源码需要这么配置</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181237703.png" alt="image.png"  /></p>]]></content>
+            <published>2023-11-15T12:41:52+08:00</published>
+            <updated>2023-11-15T12:41:52+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>在 b 站看到这个视频，立马找回了当初想要学习吉他的冲动，太酷啦。我已经开始幻想我学会《王菲》的画面了。</p>
+<p>适用于四四拍，有三种节奏型：</p>
+<ul>
+<li>咚 哒 咚 哒</li>
+<li>咚咚哒 咚咚哒</li>
+<li>咚 哒咚 空咚 哒</li>
+</ul>
+<p>以《思念是一种病》的四拍为例，和弦是C G Am F。</p>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style type="text/css">
+      .aspect-ratio {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 75%;
+      }
+      .aspect-ratio iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="aspect-ratio">
+      <iframe
+              src="//player.bilibili.com/player.html?bvid=BV19t411y7DE&autoplay=0&page=1&as_wide=1&high_quality=1&danmaku=0"
+              scrolling="no" 
+              border="0" 
+              frameborder="no" 
+              framespacing="0" 
+              allowfullscreen="true"
+              sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+              >
+      </iframe>
+      
+      
+    </div>
+  </body>
+
+</html>]]></content>
             
                  
                     
@@ -493,11 +168,7 @@ getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;z
                         
                             
                              
-                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
-                             
-                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
-                             
-                                <category scheme="https://senup.github.io/tags/gradle" term="gradle" label="gradle" />
+                                <category scheme="https://senup.github.io/tags/guitar" term="guitar" label="guitar" />
                             
                         
                     
@@ -507,620 +178,608 @@ getEnvironment（）. setSystemPropenties（）. Put（&#34;username”，&#34;z
     
         
         <entry>
-            <title type="html"><![CDATA[Hello，MySQL]]></title>
-            <link href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/" rel="alternate" type="text/html" />
+            <title type="html"><![CDATA[🎥《进击的巨人 最终季 完结篇 后篇》]]></title>
+            <link href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/" rel="alternate" type="text/html" />
             
-                <id>https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/</id>
-            
-            
-            <published>2023-11-16T08:03:43+08:00</published>
-            <updated>2023-11-16T08:03:43+08:00</updated>
+                <id>https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/</id>
             
             
-            <content type="html"><![CDATA[<h1 id="mysql-概述">MySQL 概述</h1>
-<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
-<p>接下来讲讲其中的一些部件：</p>
+            <published>2023-11-06T15:34:21+08:00</published>
+            <updated>2023-11-06T15:34:21+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36283000.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36283000/" class="cute" target="_blank" rel="external nofollow">进击的巨人 最终季 完结篇 后篇</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:93%"></span></span><span class="rating_nums">9.3</span></div>
+                    <div class="db-card-abstract">2023 / 日本 / 动作 动画 奇幻 / 林祐一郎 / 梶裕贵 石川由依</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536261.GIF" alt="IMG_1809.GIF"  /></p>
+<h3 id="观后评">观后评</h3>
+<p>这部2013 年的作品，在 2023 年终于完结了。电影的观感非常不错，画面很流畅。后篇从调查兵团搭上法尔科的鸟形颚巨对着进击的巨人进行断头行动讲起，其中比较有感触的点：</p>
 <ul>
-<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
-<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
+<li>艾伦承认了深爱三笠的心意，希望三笠记得自己十几年，小人物的独白看的我又哭又笑。他承认了自己也只是个普通人，存在着自己的私心。与其结束巨人化死去早早死去，帕拉迪亚岛和同伴们还得承受岛外的炮火，他选择了发动地鸣解决这一切，当然，他的死亡也已经早就预料到了吧。</li>
+<li>吉克在道路的远方参透了存在的意义：如果是和那个人打一场棒球的话，那么自己愿意出在在这个世界上。短短几句话，就把虚无主义化解了，活着只想玩一场棒球⚾️。纵使命运对自己这么残酷，对吉克来说，可能正如奇葩说的那句：内心很苦的人，只需要一丝甜就足够了。</li>
+<li>“我已经不再是铠之巨人了，母亲”，“没关系，这些年你辛苦了”。莱纳失去巨人之力站在矮小的母亲面前，母亲只是轻轻安慰他，这一幕真的很感人。莱纳的铠之巨人以坚固著称，但是让等人还是会调侃道：为什么你的巨人叫铠巨却总是被击碎，其中的心酸只有莱纳能懂吧。但他直到最后一集都是一直在坚持捍卫家人国家的安全，现如今高大的身影在母亲眼里始终是那个长不大的孩子，母亲是了解他的。</li>
+<li>阿尔敏看着艾伦死去的模样痛哭，声优的出色表现让我也为之动容。</li>
+<li>巨人之力消失，让的母亲也能恢复成人类。这一手操作都在艾伦的部署之内，了解了让的心结，也间接完结了之前无垢巨人篇的故事。</li>
+<li>三笠总是对于杀死艾伦犹豫不决，直到她真实了解到如今的艾伦也是痛苦的，终于选择听从艾伦真实的想法。结尾处帕拉迪岛熟悉的树下，艾伦也如小时候喜欢在这里睡午觉，如今也是长眠如此，旁边的三笠回忆起一阵阵苦痛，她深爱着他。一只白鸟飞来，将三笠的红色围巾系好，打破了这份悲伤。此时《给两千年后 亦或是两万年后的你》副歌响起，看的我也饱含热泪。</li>
 </ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
-<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
-<ul>
-<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
-<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
-<li>SQL 解析器：解析 SQL 语句的含义</li>
-<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
-<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
-<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101446249.png" alt="image.png"  /></p>
-<h1 id="innodb-存储引擎">InnoDB 存储引擎</h1>
-<p>接下来说下底部存储引擎、内存、磁盘的一个关系。</p>
-<p>假设现在有一条更新语句：update t_student set name = &ldquo;lisi&rdquo; where id = 1。需要把id=1的张三改名成李四。</p>
-<h2 id="执行顺序">执行顺序</h2>
-<ul>
-<li>buffer pool:直接从磁盘更新文件太慢了，所以引入了缓存池，将磁盘文件读一份后放到内存里面，对内存进行操作会快的多。</li>
-<li>undo 日志：很多时候我们用到了事务，需要回滚。事务回滚就需要知道上一个被覆盖的值是什么，因此就有了undo日志。它的作用是写入数据的旧值，方便回滚。</li>
-<li>buffer pool:写入undo日志后，缓存池就先更新内存里面的数据。</li>
-<li>redo log buffer:在内存里面开辟出新的一块儿地方存放着SQL语句的操作，比如把张三改成了李四。</li>
-<li>redo log:存放在磁盘里面，当buffer在内存写完后就会再开始写磁盘。记录数据比如对“id=1这行记录修改了name字段的值为xxx”</li>
-</ul>
-<h2 id="undo-log">undo log</h2>
-<p>假设一个事务里面有4个update的语句，只执行了两个语句，就要回滚，那么此时就需要undo log日志，用来应对增删改回滚的事务。</p>
-<p>结构是这样的：<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151551071.png" alt="image.png"  /></p>
-<p>根据语句的undo日志可以直接定位到哪张表哪个主键做了什么修改，即可实现事务回滚。</p>
-<h2 id="redo-log">redo log</h2>
-<p>为什么需要 redo log 呢？因为相比事务未提交的时候宕机，刷入磁盘的速度较慢，毕竟一个数据页 16kb；redo log 顺序写入较快才几十个字节，重启后再次提交事务即可。因此，使用 redo log 能够让数据库的并发能力更强。</p>
-<p>redo log里本质上记录的就是在对某个表空间的某个数据页的某个偏移量的地方修改了几个字节的值，具体修改的值是什么，他里面需要记录的就是<u>表空间号+数据页号+偏移量+修改几个字节的值+具体的值</u>。</p>
-<p>日志文件默认就两个，一个写满就覆盖另一个的日志文件。</p>
-<h2 id="redo-log-buffer写磁盘的时机控制"><strong>redo log buffer写磁盘的时机控制</strong></h2>
-<p>有一个参数：innodb_flush_log_at_trx_commit来控制怎么写入？</p>
-<ul>
-<li>0代表不写磁盘日志</li>
-<li>1代表事务提交的时候必须写入redo日志（推荐）✅</li>
-<li>2代表事务提交后可能过一段时间（比如一秒）再写入磁盘日志</li>
-</ul>
-<p>redo log buffer的缓冲机制，，redo 1og在写的时候，都是一个事务里的一组redo log，先暂存在一个地方，完事儿了以后把一组redo log写入redo log buffer。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141654845.png" alt="image.png"  /></p>
-<p>写入redo log buffer的时候，是写入里面提前划分好的一个一个的redo log block的，选择有空闲空间的redo log block去写入，然后redo log block写满之后，其实会在某个时机刷入到磁盘里去，如图。</p>
-<p>redo log block 写入时间：</p>
-<ul>
-<li>超过了buffer 一半的空间</li>
-<li>事务提交的时候</li>
-<li>后台线程每秒写入</li>
-<li>MySQL 关闭时</li>
-</ul>
-<h2 id="宕机时机的影响"><strong>宕机时机的影响</strong></h2>
-<ul>
-<li>假设第三步更新内存数据后宕机，那么就没写入磁盘，所以引入了redo日志用来恢复记录。</li>
-<li>假设第四步做完宕机，那么内存里面的数据就都会丢失，事务也就会回滚，此时问题不大，一般就会报事务出错然后回滚回原来的状态即可。</li>
-<li>假设第五步事务提交后宕机，那么此时MySQL并没有更新成功，这个时候重启MySQL就能使用redo日志重新进行更新。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101455891.png" alt="image.png"  /></p>
-<h1 id="binlog">Binlog</h1>
-<p>上面1~4其实都是更新SQL的过程，到了后面几步就是事务提交的一个过程。</p>
-<p>其实在第五步redo日志刷入磁盘时，也会同步写入Binlog。这里区别一下概念：</p>
-<ul>
-<li>redo日志是物理上的概念，比如对着内存上的数据页的什么记录，做了什么修改。这个是innodb特有的</li>
-<li>Binlog是逻辑上的一个概念，比如学生表上面id=1的记录，更新后的值是什么。这个是MySQL自己特有的</li>
-</ul>
-<h2 id="binlog刷入时机控制">Binlog刷入时机控制</h2>
-<p>参数：sync_binlog</p>
-<ul>
-<li>0代表先进入OS cache，晚点再刷入磁盘，宕机就会有风险</li>
-<li>1代表事务提交了，就要强制刷入磁盘✅</li>
-</ul>
-<h2 id="commit标记">commit标记</h2>
-<p>第七步里面才会写入commit标记，代表整个事务提交了，如果在之前发生了宕机，那么此时事务都算不成功。</p>
-<h2 id="两阶段提交">两阶段提交</h2>
-<p>我们来通过一个简单的例子来说明两阶段提交。</p>
-<p>假设我们有一个在线购物系统，分布在不同地方的数据库处理订单。一个订单的处理可能涉及到减少库存、扣款等多个数据库的操作。现在我们要确保所有这些数据库的操作要么都成功，要么都失败，以避免因为一部分成功一部分失败导致的问题。</p>
-<ol>
-<li><strong>准备阶段：</strong>
-<ul>
-<li>订单处理系统的主控制中心告诉每个数据库：“我们有一个订单要处理，你们准备好了吗？”</li>
-<li>每个数据库在本地进行准备工作，比如检查库存是否足够、用户账户是否有足够余额等。</li>
-<li>如果所有数据库都准备好了，它们会回应：“准备好了！”但此时它们并没有正式执行订单，只是表示可以执行。</li>
-</ul>
-</li>
-<li><strong>提交阶段：</strong>
-<ul>
-<li>主控制中心收到所有数据库的回应后，如果都是“准备好了”，那么它告诉它们：“可以执行订单了，大家一起来！”</li>
-<li>每个数据库执行实际的订单处理操作，比如减少库存、扣款等。</li>
-<li>如果所有数据库都成功执行了订单，它们会回应：“订单执行成功！”</li>
-<li>如果有任何一个数据库在执行过程中出了问题，它会回应：“订单执行失败！”</li>
-<li>如果所有数据库都成功，主控制中心最终告诉大家：“订单完成！”如果有一个数据库失败，主控制中心告诉大家：“订单取消！”</li>
-</ul>
-</li>
-</ol>
-<p>这样，无论是全部成功还是其中有一个失败，整个订单的状态都是一致的。如果有一个数据库执行失败，所有数据库都会回滚到事务开始的状态，确保数据的一致性。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101536549.png" alt="image.png"  /></p>
-<p>7步都完成后，那么就会有后台的线程将内存的脏数据一点点刷入磁盘了。</p>
-<h2 id="为什么不直接更新磁盘里的数据而是通过io线程不定时执行这与性能和io效率有关">为什么不直接更新磁盘里的数据，而是通过IO线程不定时执行，这与性能和I/O效率有关：</h2>
-<ul>
-<li>
-<p><strong>性能：</strong> 直接更新磁盘可能导致大量的I/O操作，影响性能。通过使用内存中的Buffer Pool，可以在内存中完成大部分读写操作，减少对磁盘的访问，提高性能。</p>
-</li>
-<li>
-<p><strong>事务隔离：</strong> 数据库需要考虑多个事务同时进行的情况，为了保证事务的隔离性，它可能需要在内存中暂存多个事务的修改，最后一次性写入磁盘，而不是每次都即时写入。</p>
-</li>
-</ul>
-<p>总体而言，这些概念和机制的引入是为了平衡数据库的性能、可靠性和一致性。虽然增加了一些复杂性，但它们为数据库系统提供了更多的功能和优化选项。</p>
-<h1 id="机器配置">机器配置</h1>
-<h2 id="java机器配置">Java机器配置</h2>
-<ul>
-<li>2核4G</li>
-<li>4核8G,每秒钟可以抗下五百左右的并发访问量</li>
-</ul>
-<h2 id="mysql配置">MySQL配置</h2>
-<ul>
-<li>8核16G,每秒钟可以抗下一两千左右的并发访问量</li>
-<li>16核32G，每秒钟可以抗下三四左右的并发访问量</li>
-</ul>
-<h2 id="配置题">配置题</h2>
-<p>假设你开发的Java系统部署在一台4核8G的机器上，那么我们假设这个Java系统处理一个请 求非常非常快，每个请求只需要0.01ms就可以处理完了，那你觉得这一台机器部署的Java系统，可以实现每秒抗下几千并发 请求吗？可以实现每秒抗下几万并发请求吗？</p>
-<p>如果每个请求只需要0.01毫秒（即10微秒）来处理，那么我们可以通过以下方式来估算它每秒抗下的并发请求量：</p>
-<ol>
-<li><strong>计算每个核心的请求数：</strong>
-<ul>
-<li>1秒 = 1000毫秒，所以每个核心每秒可以处理的请求数为：1秒 / 0.01毫秒 = 100,000次。</li>
-</ul>
-</li>
-<li><strong>计算总的请求数：</strong>
-<ul>
-<li>如果系统有4个核心，那么总的每秒处理请求数为：4核心 * 100,000次/核心 = 400,000次/秒。
-根据上述估算，这台4核8G的机器上的Java系统理论上每秒可以处理约40万次请求。
-当然，这个估算是基于每个请求处理非常迅速的情况下得出的。实际上，系统的性能可能会受到其他因素的影响，比如内存大小、垃圾回收效率、网络带宽等。因此，在实际生产环境中，最好通过性能测试和基准测试来获取更准确的结果。</li>
-</ul>
-</li>
-</ol>
-<h2 id="性能指标">性能指标</h2>
-<ul>
-<li>qps：每秒的请求数</li>
-<li>tps:每秒可处理的事务量，比如事务提交或者回滚的量</li>
-<li>吞吐量：磁盘每秒可读写的字节数量，比如redo日志写磁盘</li>
-<li>iops:每秒可以执行的随机io请求数量，决定了内存脏数据刷回磁盘的效率</li>
-<li>lantency:磁盘读写延迟</li>
-<li>CPU负载</li>
-<li>网络负载</li>
-<li>内存负载</li>
-</ul>
-<h1 id="buffer-pool">buffer pool</h1>
-<p>buffer pool 是个缓存池，大小默认是 128MB。存放在内存里面，里面存放着大量的数据页。
-（数据页：和磁盘中的数据页一页页对应起来，需要从磁盘加载到缓存池里面，我们所认知的数据库一行行的数据就是放在数据页里面，数据页是 16kb。）
-我们把缓存池里面的数据页叫做缓存页，缓存页上面会有一些描述信息，比如数据页所属的表空间、数据页的编号、缓存页在 buffer pool 中的地址等。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131758446.png" alt="image.png"  /></p>
-<p>既然 buffer pool 只是放在内存里面，而内存空间是有限的，那么如果从磁盘加载全部数据会不会导致内存不足？还是说产生了内存碎片？如果有内存碎片，那么怎么才能减少呢？</p>
-<p>内存碎片是指规划完缓存页和描述数据后剩下的内存，我们探讨的是如何减少这部分的内存。</p>
-<h2 id="free-链表">Free 链表</h2>
-<p>为啥需要这个链表呢？因为我们从磁盘将数据页读到 buffer pool 的时候，我们如果不知道哪些空白的缓存页可以用，就无法去分配内存.</p>
-<p>所以这个时候就会把 buffer pool里面空白的所有描述页的描述数据组成一条双向链表，称其为 free 链表。如图所示，多了一个额外的 40 字节的基础节点，存放了多少个空间的节点、引用的开始节点、引用的结束节点。</p>
-<p>怎么用这个链表呢？</p>
-<ul>
-<li>如果数据在内存里面，那么就会有一个数据页缓存，如图右下角。这个时候额外的这个 hash map 的结构，类似 map&lt;磁盘中数据页表空间号+数据页号，缓存页地址&gt;的键值对结构，现在 map 里面找一下，如果有，则直接读，没有就从磁盘读。</li>
-<li>如果数据在磁盘上面，就是去 free 链表找到一个空闲的缓存页，然后将磁盘上面目标数据页的描述信息写到链表的这个缓存页里面，然后再将 free 链表上的这个节点的双向链表指针变更，使其脱离链表即可。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131810137.png" alt="image.png"  /></p>
-<h2 id="flush-链表">flush 链表</h2>
-<p>这个链表是用来干什么的呢？首先，我们数据库一般是会进行增删查改的操作的，所以会有读写操作，但是基本都是要将磁盘页刷入到缓存页里面，这个时候其实 buffer pool 里面是有大量用于读的缓存页，这些数据页不需要后续写入到磁盘，而数据库也不可能马上写数据到磁盘，所以就出了 flush 链表，用于记录更新了数据的缓存页，目前还是脏页，等待刷入磁盘，结构和使用方法同 free 链表相似。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131824806.png" alt="image.png"  /></p>
-<h2 id="lru链表">LRU链表</h2>
-<p>解决了什么问题呢？就是内存空间有限的情况下，我们比如读全表的时候会把巨多的数据页刷入磁盘，那么这个时候 free 链表直接就被耗尽，所以有了 LRU 链表。</p>
-<p>LRU链表指的是 least recently use,最近最少使用的意思，如图。每次磁盘读取数据页到内存的时候，会把描述数据放在链表的头部，后面如果有被重新查询或者修改，那么重新放在链表的头部，通过这样控制频率来确保链表尾部的元素就是应该被淘汰的元素。</p>
-<p>因此 ，如果 free 链表满了的话，就需要淘汰 LRU 链表最后的一个节点，将其刷入磁盘，以此产生新的 free 链表空白的数据页。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131841866.png" alt="image.png"  /></p>
-<h3 id="预读机制基础版">预读机制基础版</h3>
-<p>预读机制是因为 MySQL 会把可能跟目标数据页关联的相邻数据页一起查了放进缓存页里面，因为这样就可以不用多次从磁盘里面读取了。但是，我们进行全表扫描的时候会将不需要的数据页放在 LRU 链表的头部，而尾部可能是我们真正需要读的，如果此时淘汰了尾部，那么就会出现问题。</p>
-<p>预读机制有一个参数是innodb_read_ahead_threshold，默认值是56，意思就是如果顺序的访问了一个区里的多个数据页，访问的数据页的数量超过了这个阈值，此时就会触发预读机制，把下一个相邻区中的所有数据页都加载到缓存里去。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131853862.png" alt="image.png"  /></p>
-<h3 id="预读机制冷热分离">预读机制冷热分离</h3>
-<p>有问题就有解决方案。上面就是因为放在一条链表导致出了问题，MySQL 就使用了冷热分离的思想，比如刚加载的时候就放在冷区的头部，然后如果在一秒<strong>后</strong>还有访问，那就放在热区的头部，这样全表扫描的数据就会都在冷区，而热区才是我们经常访问的数据。</p>
-<p>冷热区的比例：
-innodb_old_blocks_pct参数控制的，他默认是37，也就是说冷数据占比37％。</p>
-<p>更进一步的优化：冷热数据要注意预加载。所以LRU链表热区的前四分之一的数据是不会经常改变的，不会一直改动。只有热区后四分之三的数据被重新访问到才会放到热区的头部，这样就减少了最频繁访问的那部分数据频繁变更。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131908164.png" alt="image.png"  /></p>
-<hr>
-<p>在缓存中同时包含冷热数据（访问频率高和低的数据）的场景，可能会面临以下问题：</p>
-<ol>
-<li>
-<p><strong>资源浪费：</strong> 热数据通常需要更频繁地被访问，而冷数据可能很长时间都不会被访问。将它们放在同一个缓存中可能导致对资源的浪费，因为缓存的大小是有限的。</p>
-</li>
-<li>
-<p><strong>缓存命中率下降：</strong> 冷热数据混在一起，可能导致缓存命中率下降。如果缓存中有很多冷数据，它们会占用缓存空间，降低了热数据的命中率。</p>
-</li>
-</ol>
-<p>为了优化这个问题，可以考虑在缓存设计中运用冷热隔离的思想来重构：</p>
-<ol>
-<li>
-<p><strong>冷热数据分离：</strong> 将热数据和冷数据分别放在不同的缓存区域中。这可以通过使用多个Redis数据库（比如使用不同的DB index）或者不同的缓存实例来实现。热数据放在一个容量较小但更快访问的缓存中，冷数据放在一个较大但访问频率较低的缓存中。</p>
-</li>
-<li>
-<p><strong>设置不同的过期策略：</strong> 对于热数据，可以使用较短的过期时间，以确保缓存中的数据总是保持较新。而对于冷数据，可以使用较长的过期时间，以减少对后端数据存储的频繁查询。</p>
-</li>
-<li>
-<p><strong>缓存预热：</strong> 对于热数据，可以在系统启动或者某个时间段内进行缓存预热，将热数据提前加载到缓存中，以提高缓存命中率。</p>
-</li>
-<li>
-<p><strong>动态调整：</strong> 根据实际情况动态调整冷热数据的划分和缓存容量。可以通过监控缓存的访问模式和命中率来进行调整。</p>
-</li>
-</ol>
-<p>通过冷热隔离的思想，可以更灵活地管理不同访问模式的数据，提高缓存的效率和性能。这种设计适用于那些有大量数据，但只有一小部分是热点数据的场景。</p>
-<hr>
-<h2 id="工作线程">工作线程</h2>
-<p>新增数据的时候，free 链表移除节点，LRU 链表就会在冷区数据头部新增节点。
-如果是更新操作，那么 flush 链表也会在头部新增一个节点。</p>
-<p>对于 LRU 链表来说，后台其实会启动一个工作线程空闲的时候就开始刷磁盘了，不会等到实在free 链表实在没有节点的时候才刷。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311131934345.png" alt="image.png"  /></p>
-<h2 id="多个-buffer-pool">多个 buffer pool</h2>
-<p>首先内存小于 1GB只能申请一个 buffer pool，并且多线程访问 buffer pool 也是需要加锁的，因此内存大的话就可以申请多个来优化多线程下的并发能力。比如</p>
-<p>［server］
-innodb_buffer_poo_size = 8589934592
-innodb_buffer_poo_instances = 4</p>
-<p>我们给buffer pool设置了8GB的总内存，然后设置了他应该有4个Buffer Pool，此时就是说，每个buffer pool的大小就是2GB。</p>
-<p>这个时候，MySQL在运行的时候就会有4个Buffer Pool了！每个Buffer Pool负责管理一部分的缓存页和描述数据块，有自己独立的free、flush、Iru等链表。
-这个时候，假设多个线程并发过来访问，那么不就可以把压力分散开来了吗？有的线程访问这个buffer pool，有的线程访问那个buffer pool。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132320225.png" alt="image.png"  /></p>
-<h1 id="chunk-机制">chunk 机制</h1>
-<p>因为 buffer pool 是机器启动的时候系统自己划分的一块儿连续的内存，所以并不支持系统运行期间动态修改。因此，就有了更为细化的 chunk。</p>
-<p>怎么动态调整呢？就是 buffer pool 是由一系列的 chunk 组成。那么只有有单个连续空间内存的 chunk 就可以分配给 buffer pool。比如我们buffer pool现在总大小是8GB，现在要动态加到16GB，那么此时只要申请一系列的128MB大小（固定）的chunk就可以了，只要每个chunk是连续的128MB内存就行了。然后把这些申请到的chunk内存分配给buffer pool就行了。</p>
-<p>有个这个chunk机制，此时并不需要额外申请16GB的连续内存空间，然后还要把已有的数据进行拷贝。</p>
-<blockquote>
-<p>MySQL自然会想办法去做一些优化的，他实际上设计了一个chunk机制，也就是说buffer pool是由很多chunk组成的，他的大小是innodb_buffer_pool_chunk_size参数控制的，默认值就是128MB。
-所以实际上我们可以来做一个假设，比如现在我们给buffer pool设置一个总大小是8GB，然后有4个buffer pool，那么每个buffer pool就是2GB，此时每个buffer pool是由一系列的128MB的chunk组成的，也就是说每个buffer pool会有16个chunk。</p>
-</blockquote>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311132326527.png" alt="image.png"  /></p>
-<h2 id="容量调节">容量调节</h2>
-<p>此时要记住，有一个很关键的公式就是：buffer pool总大小=（chunk大小 * buffer pool数量）的倍数。</p>
-<p>比如默认的chunk大小是128MB，那么此时如果你的机器的内存是32GB，你打算给buffer pool总大小在20GB左右，那么你得算一下，此时你的buffer pool的数量应该是多少个呢？
-假设你的buffer pool的数量是16个，这是没问题的，那么此时chunk大小 * buffer pool的数量= 16* 128MB =2048MB，然后buffer pool总大小如果是20GB，此时buffer pool总大小就是2048MB的10倍，这就符合规则了。</p>
-<h1 id="物理结构">物理结构</h1>
-<h2 id="数据页">数据页</h2>
-<p>虽然用户使用的 MySQL 展示为一条条的 数据库记录，但是每次从磁盘读取一行数据再放到内存，频率会很高，不现实。</p>
-<p>所以使用了数据页这个概念，每次加载一个或多个数据页到磁盘上面。</p>
-<h2 id="变长字段存储">变长字段存储</h2>
-<p>一行数据的存储格式大致如下所示。</p>
-<p><u>变长字段的长度列表，null值列表，数据头，column01的值，column02的值，column0n的值&hellip;&hellip;</u></p>
-<p>比如一行数据有VARCHAR(10) VARCHAR(5) VARCHAR(20) CHAR(1) CHAR(1)，一共5个字段，其中三个是变长字段，此时假设一行数据是这样的：</p>
-<p>hello hi hao a a，其中字段设置都可以为 null</p>
-<p>实际存储可能是下面这样的：</p>
-<p>0x03 0x02 0x05 null值列表 头字段 hello hi hao a a</p>
-<p>解释一下，原数据前三个变长字段的长度分别为 5,2,3，但是实际存储是逆序存储。</p>
-<h2 id="null-值存储">null 值存储</h2>
-<p>null 值列表是 8 位 bit 组成，1 是 0 否，针对的是表字段允许为 null 的字段，逆序且不足补 0。</p>
-<h2 id="磁盘数据如何还原">磁盘数据如何还原</h2>
-<p>看上面的磁盘数据存储格式：
-0x09 0x04 00000101 头信息 column1=value1 column2=value2 &hellip; columnN=valueN</p>
-<p>首先MySQL 肯定知道了表结构的组成，再了解变长字段和 null 值列表，这个时候再去遍历表结构和尾部的文本信息，就能够推测出变长字段读几位、null 值列表跳过，剩下的定长字段直接读表结构的长度即可。</p>
-<p>举个例子，比如我们之前说了一个例子，有一行数据是“jack NULL m NULL xx_schooI”，那么他真实存储大致如下所示：
-0x09 0x04 00000101 0000000000000000000010000000000000011001 00000000094C（DB_ROW_ID）
-00000000032D （DB_TRX_ID） EA000010078E （DB_ROL_PTR） 616161 636320 6262626262</p>
-<p>头消息有 40 位，后续还包含了行的唯一标识、事务 ID、回滚指针，然后才是三个文本数值的编码值</p>
-<h2 id="行溢出">行溢出</h2>
-<p>一行如果超出了数据页的范围，那么就会将数据存储在别的数据页上面，使用一个指针指向新数据页的地址，如果一个数据页放不下，那么就会有多个数据页来进行存放。</p>
-<p>这种情况一般是超出了 varchar 的最大范围，以及 blob、text类型字段存储过长。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141559221.png" alt="image.png"  /></p>
-<h2 id="数据页的结构">数据页的结构</h2>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603272.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141603816.png" alt="image.png"  /></p>
-<h2 id="数据区">数据区</h2>
-<p>数据表的物理实体是一个叫做表名.ibd 的文件，其中这么多数据页不可能放在一个表空间里面，因此产生了一个中间概念——数据区。</p>
-<p>一个表空间有 256 个数据区，每个数据区有 64 个数据页，每个数据页有 16kb 的大小。</p>
-<p>从磁盘读取数据页的时候，随机读取一个 extend 里面的一部分数据，指定开始位置和结束位置，取中间的一部分数据，可能这一部分数据就是一个数据页包含的内容，然后再将其刷入内存作为缓存页。</p>
-<h2 id="随机读和顺序写">随机读和顺序写</h2>
-<p>执行 select 语句的时候，一般就是随机读的一个代表。此时磁盘文件散落在各处，所以只能使用这种性能较差的方式。同时，更新数据的时候也需要在内存中更新，在磁盘更新的磁盘更大。</p>
-<p>另一种是顺序写，比如写 redo log。这种写的方式性能几乎同内存操作一样快。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141619129.png" alt="image.png"  /></p>
-<h2 id="linux-读写">Linux 读写</h2>
-<p>Linux的存储系统分为VFS层、文件系统层、Page Cache缓存层、通用Block层、IO调度层、Block设备驱动层、Block设备层，如下图：
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141623678.png" alt="image.png"  /></p>
-<p>简单讲下，vfs层相当于一个接口，接到请求就按照不同的类型分发给不同的文件系统。接着在页缓存找下，找不到就转发给通用 block 层，转化成 IO 请求，io 调度层有两种算法，一种是公平算法，讲究先来后到，可能导致请求过大阻塞后来请求；另一种更推荐，就是 deadline 算法，给定一个到期时间，确保所有请求不至于被阻塞。然后 io 调度决定 IO 顺序，选择不同的驱动，去设备层真正执行存储硬件查询。</p>
-<h2 id="raid">RAID</h2>
-<p>raid ，磁盘阵列技术。就是用来管理多块磁盘之前读写的一种技术，方便磁盘进行拓展，以及决定哪块磁盘进行写入。还有额外的备份技术，如图：
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141629886.png" alt="image.png"  /></p>
-<p>这个比较有意思的是，当服务器断电之后，这里有个磁盘缓存设置来进行继续供电，将缓存中的数据写入到阵列中的磁盘上面。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311141631361.png" alt="image.png"  /></p>
-<h2 id="实战案例">实战案例</h2>
-<ul>
-<li>问题：数据库无法连接故障的定位，Too many connections</li>
-<li>核对：Java 系统连接池两台机器最多 400 个连接，排查 MySQL 最大连接数是 241 个（show variables like &lsquo;max_connections&rsquo;）</li>
-<li>原因：底层的linux操作系统把进程可以打开的文件句柄数限制为了1024了，计算出 214</li>
-<li>解决：ulimit -HSn 65535</li>
-</ul>
-<h1 id="事务">事务</h1>
-<p>接下来介绍解决多个事务并发运行的时候，同时写和同时读写的一些并发冲突的处理机制，包括了MySQL事务的隔离级别、MVCC多版本隔离、锁机制，等等。</p>
-<h2 id="脏写">脏写</h2>
-<p>所谓脏写，就是我刚才明明写了一个数据值，结果过了一会儿却没了！真是莫名其妙。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151606789.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151606669.png" alt="image.png"  /></p>
-<h2 id="脏读">脏读</h2>
-<p>事务B去查询了事务A修改过的数据，但是此时事务A还没提交，所以事务A随时会回滚导致事务B再次查询就读不到刚才事务A修改的数据了！这就是脏读。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151608641.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151559113.png" alt="image.png"  /></p>
-<h2 id="不可重复读">不可重复读</h2>
-<p>假设有三个事务并发执行，事务a执行期间未提交的时候，因为事务b或c的事务提交的关系读到了三次不同的值。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151603780.png" alt="image.png"  /></p>
-<h2 id="幻读">幻读</h2>
-<p>两个事务并发执行，事务a第一次查出来数据有十条，结果因为事务b提交了所以事务a第二次查出来有十二条数据。</p>
-<h2 id="小结">小结</h2>
-<p>脏写和脏读是在两个事务均未提交前写、读。
-不可重复读和幻读是发生在已经提交的事务后。</p>
-<hr>
-<p>在SQL标准中规定了4种事务隔离级别，就是说多个事务并发运行的时候，互相是如何隔离的，从而避免一些事务并发问题。</p>
-<p>这4种级别包括了：read uncommitted（读未提交），read committed（读已提交），repeatable read（可重复读），serializable（串行化）。</p>
-<h2 id="隔离级别修改">隔离级别修改</h2>
-<p>@Transactional（isolation=Isolation.DEFAULT），然后默认的就是DEFAULT值，这个就是MySQL默认支持什么隔离级别就是什么隔离级别。也可以改成Isolation.READ_COMMITTED,Isolation.REPEATABLE_READ, Isolation.SERIALIZABLE几个级别，都是可以的。</p>
-<h2 id="undo-log-版本链">undo log 版本链</h2>
-<p>就是说数据库的每个行记录都会有一个undo log的版本链，同时行记录中会有两个两个隐藏的字段，描述了当前的事务id和回滚指针。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151623928.png" alt="image.png"  /></p>
-<h2 id="mvcc">MVCC</h2>
-<p>这个ReadView呢，简单来说，就是你执行一个事务的时候，就给你生成一个ReadView，里面比较关键的东西有4个。
-• 一个是m_ids，这个就是说此时有哪些事务在MySQL里执行还没提交的；
-• 一个是min_trx_id，就是m_ids里最小的值；
-• 一个是max_trx_jd，这是说mysql下一个要生成的事务id，就是最大事务id；
-•一个是creator_trx_id，就是你这个事务的id</p>
-<p>每个事务访问行数据的时候都会记录当前的事务id和当前活动的事务id，如果行数据事务id小于等于当前的事务id，那么可以查；如果事务大于或者事务id在当前活动id列表里面，说明事务未提交或者大于当前版本，不可以查，需要顺着版本链往下找。</p>
-<p>读已提交的级别每次读数据会生成一个readview，可重复读只会在事务开始的时候生成一个事务，所以读已提交能给读到提交后的数据，而可重复读每次读取的数据都是一样的。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151634199.png" alt="image.png"  /></p>
-<h2 id="小结-1">小结</h2>
-<p>首先我们先要明白，多个事务并发运行的时候，同时读写一个数据，可能会出现脏写、脏读、不可重复读、幻读几个问题。</p>
-<ul>
-<li>
-<p>脏写，就是两个事务都更新一个数据，结果有一个人回滚了把另外一个人更新的数据也回滚没了。</p>
-</li>
-<li>
-<p>脏读，就是一个事务读到了另外一个事务没提交的时候修改的数据，结果另外一个事务回滚了，下次读就读不到了。</p>
-</li>
-<li>
-<p>不可重复读，就是多次读一条数据，别的事务老是修改数据值还提交了，多次读到的值不同。</p>
-</li>
-<li>
-<p>幻读，就是范围查询，每次查到的数据不同，有时候别的事务插入了新的值，就会读到更多的数据。
-针对这些问题，所以才有RU、RC、RR和串行四个隔离级别。</p>
-</li>
-<li>
-<p>RU隔离级别，就是可以读到人家没提交的事务修改的数据，只能避免脏写问题；</p>
-</li>
-<li>
-<p>RC隔离级别，可以读到人家提交的事务修改过的数据，可以避免脏写和脏读问题。</p>
-</li>
-<li>
-<p>RR是不会读到别的已经提交事务修改的数据，可以避免脏读、脏写和不可重复读的问题；</p>
-</li>
-<li>
-<p>串行是让事务都串行执行，可以避免所有问题。</p>
-</li>
-</ul>
-<h1 id="锁机制">锁机制</h1>
-<p>共享锁的语法如下：select * from table <code>lock in share mode</code>。</p>
-<p>查询操作还能加互斥锁：select * from table <code>for update</code>。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">锁类型</th>
-<th style="text-align:left">独占锁</th>
-<th style="text-align:left">共享锁</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">独占锁</td>
-<td style="text-align:left">互斥</td>
-<td style="text-align:left">互斥</td>
-</tr>
-<tr>
-<td style="text-align:left">共享锁</td>
-<td style="text-align:left">互斥</td>
-<td style="text-align:left">不互斥</td>
-</tr>
-<tr>
-<td style="text-align:left">还有就是有另外两个情况会加表级锁。如果有事务在表里执行增删改操作，那在行级会加独占锁，此时其实同时会在表级加一个意向独占锁；如果有事务在表里执行查询操作，那么会在表级加一个意向共享锁。</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>LOCK TABLES xxx READ：这是加表级共享锁</p>
-<p>LOCK TABLES xxx WRITE：这是加表级独占锁</p>
-<p>但是我们接下来就要给大家讲讲，手动加表级共享锁和独占锁，以及更新和查询的时候自动在<strong>表级</strong>加的意向共享锁和意向独占锁，他们之间反而是有一定的互斥关系，关系如下表所示。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151728567.png" alt="image.png"  /></p>
-<h2 id="数据库性能抖动">数据库性能抖动</h2>
-<p>问题：</p>
-<ul>
-<li>缓存页满了，刷入磁盘过慢</li>
-<li>redo log写满去写另一个文件，另一个文件大量变更尚未写入磁盘，于是开始写入
-解决:第一个是尽量减少缓存页flush到磁盘的频率，第二个是尽量提升缓存页flush到磁盘的速度。
-由于频率没法变，因此采用第二种，用固态硬盘+修改最大flush速率innodb_io_capacity.。</li>
-</ul>
-<h1 id="索引">索引</h1>
-<h2 id="页分裂">页分裂</h2>
-<p>页分裂，就是万一你的主键值都是你自己设置的，那么在增加一个新的数据页的时候，实际上会把前一个数据页里主键值较大的，挪动到新的数据页里来，然后把你新插入的主键值较小的数据挪动到上一个数据页里去，保证新数据页里的主键值一定都比上一个数据页里的主键值大。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151741348.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151741719.png" alt="image.png"  /></p>
-<h2 id="主键查询">主键查询</h2>
-<p>每个数据页的页号，还有数据页里最小的主键值放在一起，组成一个索引的目录。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151742144.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151806121.png" alt="image.png"  /></p>
-<h2 id="聚簇索引">聚簇索引</h2>
-<p>如果一颗大的B+树索引数据结构里，叶子节点就是数据页自己本身，那么此时我们就可以称这颗B+树索引为聚簇索引！</p>
-<h2 id="二级索引">二级索引</h2>
-<p>聚簇索引里面的叶子节点存放的是所有字段，而二级索引的索引页里都是页号和最小的索引字段值和主键id。</p>
-<p>根据主键id重新回聚簇索引里面查询数据就叫做回表。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151810220.png" alt="image.png"  /></p>
-<h3 id="二级索引的页分裂">二级索引的页分裂</h3>
-<p>表数据多了，那么二级索引树的数据页就会满，满了就拷贝新的数据页，然后进行主键值的挪动，确保按照主键值排序，此时根页就升级成为了索引页。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311151817023.png" alt="image.png"  /></p>
-<h2 id="优缺点">优缺点</h2>
-<p>好处显而易见了，你可以直接根据某个字段的索引B+树来查找数据，不需要全表搜索，性能提升是很高的。</p>
-<p>但是坏处呢？索引当然有缺点了，主要是两个缺点，一个是空间上的，一个是时间上的。</p>
-<ul>
-<li>空间上而言，你要是给很多字段创建很多的索引，那你必须会有很多棵索引B+树，每一棵B+树都要占用很多的磁盘空间啊！所以你要是搞的索引太多了，是很耗费磁盘空间的。 其次，你要是搞了很多索引，那么你在进行增删改查的时候，每次都需要维护各个索引的数据有序性，因为每个索引B+树都要求页内是按照值大小排序的，页之间也是有序的，下一个页的所有值必须大于上一个页的所有值！所以你不停的增删改查，必然会导致各个数据页之间的值大小可能会没有顺序，比如下一个数据页里插入了一个比较小的值，居然比上一个数据页的值要小！此时就没办法了，只能进行数据页的挪动，维护页之间的顺序。</li>
-<li>或者是你不停的插入数据，各个索引的数据页就要不停的分裂，不停的增加新的索引页，这个过程都是耗费时间的。</li>
-</ul>
-<h2 id="排序">排序</h2>
-<p>MySQL在查询大数据量的时候，是不能用内存来排序的，通常就会基于磁盘文件来排序，filesort，速度很慢，</p>
-<p>因此需要<code>order by 联合索引</code>，才能解决问题。</p>
-<h2 id="分组">分组</h2>
-<p>同上。</p>
-<h2 id="覆盖索引">覆盖索引</h2>
-<p>需要的字段值直接在索引树里就能提取出来，不需要回表到聚簇索引，这种查询方式就是覆盖索引。</p>
-<h2 id="回表">回表</h2>
-<p>有的时候MySQL的执行引擎甚至可能会认为，你要是类似select * from table order by xx1,xx2,xx3的语句，相当于是得把联合索引和聚簇索引，两个索引的所有数据都扫描一遍了，那还不如就不走联合索引了，直接全表扫描得了，这样还就扫描一个索引而已。
-但是你如果要是select * from table order by xx1,xx2,xx3 limit 10这样的语句，那执行引擎就知道了，你先扫描联合索引的索引树拿到10条数据，接着对10条数据在聚簇索引里查找10次就可以了，那么就
-还是会走联合索引的。</p>
-<h2 id="索引设计规则">索引设计规则</h2>
-<ul>
-<li>写完功能后，了解会进行怎样的查询语句，那么这个时候，第一个索引设计原则就来了，针对你的SQL语句里的where条件、order by条件以及group by条件去设计索引。</li>
-<li>一般建立索引，尽量使用那些基数比较大的字段，就是值比较多的字段，那么才能发挥出B+树快速二分查找的优势来。</li>
-<li>为防止索引页分裂过快，性能差，建议两三个索引覆盖全表的查询。</li>
-<li>自增主键不用uuid等手段，否则也会导致频繁页分裂。</li>
-<li>where 和 order by 不可兼得。毕竟大多数场景用不上同一个联合索引。</li>
-<li>联合索引拓展索引字段的时候可以巧妙使用in(枚举值)的方法保证最左匹配原则。</li>
-<li>如果索引字段需要计算，那么就得考虑多冗余一个字段在表里。</li>
-</ul>
-<h1 id="执行计划">执行计划</h1>
-<h2 id="性能罗列">性能罗列</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">性能</th>
-<th style="text-align:left">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">const</td>
-<td style="text-align:left">超高</td>
-<td style="text-align:left">通过聚簇索引或者二级索引(唯一索引)+聚簇索引回源，比如where id = xx 或者 where unique_name = xx</td>
-</tr>
-<tr>
-<td style="text-align:left">ref</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">普通二级索引，比如where name = xx</td>
-</tr>
-<tr>
-<td style="text-align:left">eq_ref</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">针对被驱动表如果基于主键进行等值匹配，那么他的查询方式就是eq_ref</td>
-</tr>
-<tr>
-<td style="text-align:left">ref_or_null</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">普通二级索引回源，比如where name=xx and name is null</td>
-</tr>
-<tr>
-<td style="text-align:left">range</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">普通索引范围查询，where age &gt; 10 and age&lt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">index</td>
-<td style="text-align:left">慢</td>
-<td style="text-align:left">select的数据在二级索引树上面，因此只扫描二级索引树</td>
-</tr>
-<tr>
-<td style="text-align:left">all</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">全表扫</td>
-</tr>
-</tbody>
-</table>
-<h2 id="多表查询">多表查询</h2>
-<ul>
-<li>警惕笛卡尔积的产生，关联条件要写好，避免select * from table1,table2</li>
-<li>警惕嵌套循环关联。</li>
-<li>了解驱动表和被驱动表。</li>
-</ul>
-<p>select * from t1 where x1 in （select x2 from t2 where ×3=xxx）这个语句就会先执行子查询的语句，然后生成一张物化表。</p>
-<p>如果这个时候t1表的数据大于物化表，那么就全表扫物化表，再对每行数据都到x1这个字段的索引进行查找，如果在就符合条件。</p>
-<p>如果这个时候t1表的数据小于物化表，那就全表扫t1，判断每条数据是否都在物化表里面。</p>
-<h2 id="半连接">半连接</h2>
-<p>当然MySQL对子查询还有进行一种优化——半连接。比如：
-select t1.* from t1 semi join t2 on t1.x1=t2.x2 and t2.×3=xxx
-当然，其实并没有提供semi join这种语法，这是MySQL内核里面使用的一种方式，上面就是给大家说那么个意思，其实上面的semi join的语义，是和IN语句+子查询的语义完全一样的，他的意思就是说，对于 1表而言，只要在t2表里有符合t1.×1=t2.×2和t2．×3=xxx两个条件的数据就可以了，就可以把t1表的数据筛选出来了。</p>
-<h1 id="执行计划-1">执行计划</h1>
-<h3 id="案例1">案例1</h3>
-<p>explain select * from t1 joint2</p>
-<p>extra显示 Using join buffffer (Block Nested Loop) ,代表嵌套循环扫描，每一条进行比对，产生了笛卡尔积。</p>
-<h3 id="案例2">案例2</h3>
-<p>EXPLAIN SELECT * FROM t1 WHERE X1 IN （SELECT ×1 FROM t2） OR x3=&lsquo;xxxx；</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152202603.png" alt="image.png"  /></p>
-<p>因为有两个select语句，所以id有两个。其中select_type有两种，区分了主查询和子查询。对于t2表来说using index，也就是说走了二级索引查询x1；然后主查询有使用x3索引的机会，但是分析成本发现几乎跟全表扫描差不多，可能这个字段区分度不够大，因此决定直接全表扫。</p>
-<h2 id="案例-3">案例 3</h2>
-<p>EXPLAIN SELECT * FROM t1 UNION SELECT * FROM t2</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152208059.png" alt="image.png"  /></p>
-<p>第一二行是全表扫描，第三行使用了临时表，说明是因为 union 需要做去重工作。</p>
-<h2 id="案例-4">案例 4</h2>
-<p>EXPLAIN SELECT * FROM t1 WHERE ×1 IN （SELECT ×1 FROM t2 WHERE ×1 = &lsquo;xXx&rsquo; UNION SELECT ×1 FROM t1 WHERE ×1 =&lsquo;xxX）；</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152228466.png" alt="image.png"  /></p>
-<p>这里的 select_type有dependent subquery，就是说这是独立的子查询（子查询中的子查询），另一个 dependent union，子查询中的被 union 连接的表。</p>
-<h2 id="案例-5">案例 5</h2>
-<p>EXPLAIN SELECT * FROM （SELECT X 1, count（ * ） as cnt FROM t1 GROUP BY XI）AS_t1 where knt&gt;10；</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152241604.png" alt="image.png"  /></p>
-<p>上面的执行计划里，我们其实应该先看第二条执行计划，他说的是子查询里的那个语句的执行计划，他的select_type是derived，意思就是说，针对子查询执行后的结果集会物化为一个内部临时表，然后外层查询是针对这个临时的物化表执行的。
-大家可以看到，他这里执行分组聚合的时候，是使用的index_×1这个索引来进行的，type是index，意思就是直接扫描偶了index_x1这个索引树的所有叶子节点，把x1相同值的个数都统计出来就可以了。
-然后外层查询是第一个执行计划，select_type是PRIMARY，针对的table是，就是一个子查询结果集物化形成的临时表，他是直接针对这个物化临时表进行了全表扫描根据where条件进行筛选的。</p>
-<h2 id="select-type">select type</h2>
-<ul>
-<li><code>simple</code> 单表查询</li>
-<li><code>primary</code> 主查询</li>
-<li><code>subquery</code> 子查询</li>
-<li><code>union</code> union操作下被连接的表</li>
-<li><code>union result</code> union 操作的临时表</li>
-<li><code>dependent subquery</code> 子查询中的子查询</li>
-<li><code>dependent union</code> 子查询中的被 union</li>
-<li><code>derived</code> 内部临时表、物化表</li>
-</ul>
-<h1 id="执行计划的ref">执行计划的ref</h1>
-<p>而执行计划里的 ref 也相对会关键一些，当你的查询方式是索引等值匹配的时候，比如const、ref、eq_ref、ref_or_null这这些方式的时候，此时执行计划的ref字段告诉你的就是：你跟索引列等值匹配的是什么？是等值匹配一个常量值？还是等值匹配另外一个字段的值？</p>
-<p>EXPLAIN SELECT * FROM t1 WHERE ×1 =&lsquo;xXX&rsquo;</p>
-<p>这个语句的执行计划是常量 const。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152249298.png" alt="image.png"  /></p>
-<p>EXPLAIN SELECT * FROM t1 INNER JOIN t2 ON t1.id =t2.id；
-这个语句的执行计划是 primary，代表 t2 表的主键，被驱动表基于主键进行等值匹配。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152250787.png" alt="image.png"  /></p>
-<h2 id="extra">extra</h2>
-<p>好，那么我们看看extra的信息，是Using index，这是什么意思呢？其实就是说这次查询，仅仅涉及到了一个二级索引，不需要回表，因为他仅仅是查出来了x1这个字段，直接从index_x1索引里查就行了。
-如果没有回表操作，仅仅在二级索引里执行，那么extra里会告诉in是<strong>Using index</strong>。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152253877.png" alt="image.png"  /></p>
-<p><strong>using where</strong> 表示没用到索引或者除了用到索引还用到别的条件。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152254369.png" alt="image.png"  /></p>
-<p>这个执行计划也是非常的清晰明了，这里针对t1表去查询，先通过ref方式直接在index_×1 索引里查找，是跟const代表的常量值去查找，然后查出来250条数据，接着再用Using where代表的方式，去使用AND x2=&lsquo;xxx&rsquo;条件进行筛选，筛选后的数据比例是18%，最终所以查出来的数据大概应该是45条。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152255192.png" alt="image.png"  /></p>
-<p><strong>内存优化多表关联</strong></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152257050.png" alt="image.png"  /></p>
-<p>这个SQL很明确了，他基于x2字段来排序，是没法直接根据有序的索引去找数据的，只能把所有数据写入一个临时的磁盘文件，基于排序算法在磁盘文件里按照×2字段的值完成排序，然后再按照LIMIT 10的要求取出来头10条数据。
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152259346.png" alt="image.png"  /></p>
-<p>这个SQL里只能对全表数据放到临时表里做大量的磁盘文件操作，然后才能完成对x2字段的不同的值去分组，分组完了以后对不同x2值的分组去做聚合操作，这个过程也是相当的耗时的，性能是极低的。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152300554.png" alt="image.png"  /></p>
-<h2 id="其他字段">其他字段</h2>
-<ul>
-<li>key_len表示这个字段里面长度最大的长度</li>
-<li>rows表示扫描了多少行</li>
-<li>filtered 是个百分比，代表最终过滤的比例，乘以 rows 能算出过滤后查到多少行</li>
-</ul>
-<h2 id="生产案例">生产案例</h2>
-<p>EXPLAIN SELECT COUNT（id） FROM USers WHERE id IN （SELECT user_id FROM users.extentinfo WHERE latest_login_time &lt; xxxxx）</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152302602.png" alt="image.png"  /></p>
-<p>那么这里为什么会跑的这么慢呢？其实很明显了，大家可以想一下，首先他对子查询的结果做了一次物化临时表，落地磁盘了，接着他还全表扫描了users表的所有数据，每一条数据居然跑到一个没有索引的物化临时表里再做一次全表扫描找匹配数据。</p>
-<p>解决：引导着让数据库走 id 的主键聚簇索引。</p>
-<p>在不影响他语义的情况下，尽可能的去改变SQL语句的结构和格式，最终被我们尝试出了一个写法，如下所示：</p>
-<pre tabindex="0"><code>SELECT COUNT（id）
-FROM users
-WHERE （id IN （SELECT user_id FROM users_extent_info WHERE latest_login_time &lt; xxxxx） OR id IN
-（SELECT user_id FROM users_extent_info WHERE latest Jogin_time &lt;-1））
-</code></pre><p>在上述写法下，WHERE语句的OR后面的第二个条件，根本是不可能成立的，因为没有数据的latest_login_time是小于-1的，所以那是不会影响SQL语义的，但是我们发现改变了SQL的写法之后，执行计划也随之改变。</p>
-<hr>
-<p>select * from products where category=&ldquo;xx&rsquo; and sub_category=&lsquo;xx&rsquo; order by id desc limit xx,xx</p>
-<p>这其实是一个很稀松平常的SQL语句，他就是用户在电商网站上根据商品的品类以及子类在进行筛选，然后按id倒序排序，最后是分页，就这么一个语句，KEY index_category（catetory，sub_category）肯定是存在的。</p>
-<p>此时执行计划具体内容就不写了，因为大家之前看了那么多执行计划，基本都很熟悉了，我就说这里最核心的信息，他的possible_keys里是有我们的index_category的，结果实际用的key不是这个索引，而是PRIMARY！！而且Extra里清晰写了Usingwhere。</p>
-<p>为什么呢？它根据了聚簇索引来对一行行的数据进行了过滤，所以是全表扫描。可以推测出 MySQL 计算成本出现了问题。为什么呢？</p>
-<ul>
-<li>即使找到了分类，也会筛出超多的数据，还要考虑回表、排序等问题</li>
-<li>运营加了新品类但是下面无商品，于是查询新品类，直接就全表扫描聚簇索引了</li>
-</ul>
-<pre tabindex="0"><code>重写 SQL：select * from products force index（index_category） where category=&#34;xx&#39; and sub_category=&#34;xx
-order by id desc limit xx,xx
-</code></pre><hr>
-<p>SELECT * FROM comments WHERE product_id =&lsquo;xx&rsquo; and is_good_comment=&lsquo;1&rsquo;ORDER BY id desc
-LIMIT 100000,20</p>
-<p>也就是说，对这个商品的每一条评论，都要进行一次回表操作，回到聚簇索引里，根据id找到那条数据，取出来is_g00d_comment字段的值，接着对is_good_comment=&lsquo;1&rsquo;条件做一个比对，筛选符合条件的数据。
-但是这个时候扫到了几十万的数据，要做几十万次的回表，还要做 基于磁盘临时文件的ID 倒序再取 20 条。</p>
-<p>那么如何对他进行优化呢？其实这个思路，反而就跟我们讲的第二个案例反过来了，第二个案例中基于商品品类去查商品表，是尽量避免对聚簇索引进行扫描，因为有可能找不到你指定的品类下的商品，出现聚簇索引全表扫描的问题。</p>
-<p>因此对于这个案例，我们通常会采取如下方式改造分页查询语句：</p>
-<pre tabindex="0"><code>SELECT * from comments a，
-（SELECT id FROM comments WHERE product_id =&#39;xx&#34; and is_g00d_comment=&#34;1&#39;ORDER BY id
-desc LIMIT 100000,20） b WHERE a.id=b.id
-</code></pre><p>上面那个SQL语句的执行计划就会彻底改变他的执行方式，他通常会先执行括号里的子查询，子查询反而会使用PRIMARY聚簇索引，按照聚簇索引的id值的倒序方向进行扫描，扫描过程中就把符合<code>WHERE product_id ='xx'and is_g00d_comment='1'</code>条件的数据给筛选出来。
-比如这里就筛选出了十万多条的数据，并不需要把符合条件的数据都找到，因为limit后跟的是100000,20，理论上，只要有100000+20条符合条件的数据，而且是按照id有序的，此时就可以执行根据limit 100000,20提取到5001页的这20条数据了。</p>
-<h1 id="主从架构">主从架构</h1>
-<p>然后从库上有一个10线程，这个1O线程会负责跟主库建立一个TCP连接，接着请求主库传输binlog日志给自己，这个时候主库上有一个IO dump线程，就会负责通过这个TCP连接把binlog日志传输给从库的IO线程，如下图所示。</p>
-<p>接着从库的IO线程会把读取到的binlog日志数据写入到自己本地的relay日志文件中去，然后从库上另外有一个SQL线程会读取relay日志里的内容，进行日志重做，把所有在主库执行过的增删改操作，在从库上做一遍，达到一个还原数据的过程，如下图。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311152329826.png" alt="image.png"  /></p>
-<p>到此为止，想必大家对MySQL主从复制的原理也就有一个基本的了解了，简单来说，你只要给主节点挂上一个从节点，从节点的IO线程就会跟主节点建立网络连接，然后请求主节点传输binlog日志，主节点的IO dump线程就负责传输binlog日志给从节点，从节点收到日志后就可以回放增删改操作恢复数据。
-在这个基础之上，就可以实现MySQL主从节点的数据复制以及基本一致，进而可以实现高可用架构以及读写分离架构。</p>]]></content>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536346.GIF" alt="IMG_1810.GIF"  /></p>
+<p>如果需要向你的朋友推荐一部番，那么我强烈推荐的就是《进击的巨人》。</p>
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style type="text/css">.dark-theme .aplayer{background:#212121}.dark-theme .aplayer.aplayer-withlist .aplayer-info{border-bottom-color:#5c5c5c}.dark-theme .aplayer.aplayer-fixed .aplayer-list{border-color:#5c5c5c}.dark-theme .aplayer .aplayer-body{background-color:#212121}.dark-theme .aplayer .aplayer-info{border-top-color:#212121}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-title{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-music .aplayer-author{color:#fff}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time{color:#eee}.dark-theme .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path{fill:#eee}.dark-theme .aplayer .aplayer-list{background-color:#212121}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb{background-color:#999}.dark-theme .aplayer .aplayer-list::-webkit-scrollbar-thumb:hover{background-color:#bbb}.dark-theme .aplayer .aplayer-list li{color:#fff;border-top-color:#666}.dark-theme .aplayer .aplayer-list li:hover{background:#4e4e4e}.dark-theme .aplayer .aplayer-list li.aplayer-list-light{background:#6c6c6c}.dark-theme .aplayer .aplayer-list li .aplayer-list-index{color:#ddd}.dark-theme .aplayer .aplayer-list li .aplayer-list-author{color:#ddd}.dark-theme .aplayer .aplayer-lrc{text-shadow:-1px -1px 0 #666}.dark-theme .aplayer .aplayer-lrc:before{background:-moz-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:-webkit-linear-gradient(top, #212121 0%, rgba(33,33,33,0) 100%);background:linear-gradient(to bottom, #212121 0%, rgba(33,33,33,0) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#00212121',GradientType=0 )}.dark-theme .aplayer .aplayer-lrc:after{background:-moz-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:-webkit-linear-gradient(top, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);background:linear-gradient(to bottom, rgba(33,33,33,0) 0%, rgba(33,33,33,0.8) 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00212121', endColorstr='#cc212121',GradientType=0 )}.dark-theme .aplayer .aplayer-lrc p{color:#fff}.dark-theme .aplayer .aplayer-miniswitcher{background:#484848}.dark-theme .aplayer .aplayer-miniswitcher .aplayer-icon path{fill:#eee}</style>
+<script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script src="https://fastly.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><meting-js auto="https://music.163.com/#/song?id=2096750174" theme="#2980b9"></meting-js>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style type="text/css">
+      .aspect-ratio {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 75%;
+      }
+      .aspect-ratio iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="aspect-ratio">
+      <iframe
+              src="//player.bilibili.com/player.html?bvid=BV1bw411s79q&autoplay=0&page=1&as_wide=1&high_quality=1&danmaku=0"
+              scrolling="no" 
+              border="0" 
+              frameborder="no" 
+              framespacing="0" 
+              allowfullscreen="true"
+              sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+              >
+      </iframe>
+      
+      
+    </div>
+  </body>
+
+</html>]]></content>
             
                  
                     
@@ -1130,11 +789,590 @@ desc LIMIT 100000,20） b WHERE a.id=b.id
                         
                             
                              
-                                <category scheme="https://senup.github.io/tags/tech" term="tech" label="tech" />
+                                <category scheme="https://senup.github.io/tags/movie" term="movie" label="movie" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[🎥《美国恐怖故事集 第一季》]]></title>
+            <link href="https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%80%E5%AD%A3/" rel="alternate" type="text/html" />
+            
+                <id>https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%80%E5%AD%A3/</id>
+            
+            
+            <published>2023-11-06T02:01:03+08:00</published>
+            <updated>2023-11-06T02:01:03+08:00</updated>
+            
+            
+            <content type="html"><![CDATA[<div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/35063924.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/35063924/" class="cute" target="_blank" rel="external nofollow">美国恐怖故事集 第一季</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:64%"></span></span><span class="rating_nums">6.4</span></div>
+                    <div class="db-card-abstract">2021 / 美国 / 剧情 惊悚 恐怖 / 洛尼·佩里斯特里 / 迪伦·伯恩赛德 尼科·格莱瑟姆</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120205454.png" alt="image.png"  /></p>
+<h3 id="观后评">观后评</h3>
+<h2 id="橡皮人">橡皮人</h2>
+<p>同性恋元素过多。领养斯嘉丽的是一对gay，斯嘉丽和橡胶人露比又是一对gay，同时还得出现下美国式霸凌的情结，要素过多。</p>
+<h2 id="驾车进入">驾车进入</h2>
+<p>这个是恐怖的😱。场面十分血腥，让我第一次知道居然还有汽车影院这种东西，未来中国不知道会不会有市场？还有关于制作rabbit rabbit的原理是依靠激发人类内心的恐惧，可能以后真的有办法控制？</p>
+<h2 id="淘气名单">淘气名单</h2>
+<p>bro house真是求仁得仁，我对此的评价是这四个家伙太聒噪了，看的过程中全程像网友一样很生气！最后的圣诞树有点恐怖了。</p>
+<h2 id="神祇qi">神祇（qi）</h2>
+<p>反转集合体。我以为孩子会变成恶魔，结果母亲遇到了恶魔；我以为凶手是摆件，结果凶手是护士。我以为护士是真凶，没想到还有husband才是主谋；我以为女主结局被关起来，结果结局是husband死咯==</p>
+<h2 id="野蛮人">野蛮人</h2>
+<p>前面有多温馨，后面就有多绝望。走失的儿童最终在漫长的岁月中失去了人性。</p>
+<h2 id="游戏结束">游戏结束</h2>
+<p>剧情重归一二集。老实说，有点无聊，最终谋杀屋在大火中燃烧，亡灵们大多走了，只剩下最痴情的露比和斯嘉丽最终留了下来。</p>]]></content>
+            
+                 
+                    
+                 
+                    
+                         
+                        
+                            
                              
-                                <category scheme="https://senup.github.io/tags/mysql" term="mysql" label="mysql" />
-                             
-                                <category scheme="https://senup.github.io/tags/hello" term="hello" label="hello" />
+                                <category scheme="https://senup.github.io/tags/movie" term="movie" label="movie" />
                             
                         
                     

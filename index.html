@@ -182,54 +182,6 @@
   <div class="posts">
     
     
-    <div class="post on-list tech/归档">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/">Hello，Spring</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-20
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/spring/">spring</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/java/">Java</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <h2 id="resource">Resource</h2>
-<p>Resource 是对各种文件资源的一个抽象接口，包含了判断文件是否存在、是否可读、是否属于文件类型、是否可打开等抽象方法。</p>
-<p>resource 还继承了 inputStreamSource，inputStreamSource 接口有一个 getInputStream 的方法，所以理论上所有资源类都能轻松获取对应的输入流。</p>
-<blockquote>
-<p>那么，获得输入流之后会有一个 XML 的 bean factory 去做，怎么才能变成 bean 呢？ 为什么要忽略感知接口？感知接口是什么？构造器第二个参数的 parentBeanFactory 有什么用？指定 bean 工厂？</p>
-</blockquote>
-<h2 id="xmlbeanfactory">xmlBeanFactory</h2>
-<h3 id="父类方法">父类方法</h3>
-<p>拿一个例子来说说 beanNameAware 的用处，就是构造 bean 的时候手动注入 bean 的名称。也就是说感知接口是在自动装配 bean 的时候方便开发者注入需要的内容。</p>
-<p>比如 student 实现了 beanNameAware 的接口，然后重写 setBeanName 方法，在里面打了一行 sout: 当前 beanName 是 $name。现在，在 main 函数 getBean(&ldquo;李四&rdquo;)，得到的结果就是会打印一句「当前 beanName 是李四」。</p>
-<p>但是这里面 spring 做了一个限制。他会把三个感知接口放在一个 set 里面，然后判断当前类是否实现了其中某个接口+类某个属性存在相同的重写方法，如果有，那么自动装配创建 bean 的时候就不会注入值。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311181342195.png" alt="image.png"  /></p>
-        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellospring/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
-    
     <div class="post on-list chat">
     
             <div class="post-meta">
@@ -251,154 +203,6 @@
         <a href="https://senup.github.io/posts/chat/20231119195108/" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src=https://cravatar.cn/avatar/12144323cf2819d1a84df6de36794844 ></a>
           <p>减脂期间忍不住点了猪脚饭，备注了要瘦肉。真给我全瘦肉了，一点白肉都没有，是真不好吃&hellip; 吃了一点就停筷了，确实有减脂的效果。</p>
 
-      </div>
-    
-    </div>
-    
-    
-    <div class="post on-list tech/归档">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/">Hello，Obsidian</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-19
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/odsidian/">odsidian</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <p>开始学习 Obsidian 这个知识管理工具。不过我发现 b 站的教程很多都讲不懂一件事情，反倒是油管的博主玩的很花，说明这个工具在国内还不是特别流行。所以我浅浅记录下学习的内容。</p>
-<h3 id="推荐博主">推荐博主</h3>
-<ul>
-<li>Nicole</li>
-<li>Danny</li>
-<li>简悦课堂</li>
-</ul>
-<h3 id="主题设置">主题设置</h3>
-<p>整体效果：</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191438912.png" alt="image.png"  /></p>
-<p>强烈推荐这个<a href="https://github.com/lxgw/LxgwWenKai/releases" target="_blank" rel="noopener nofollow noreferrer" >霞鹜文楷</a>，阅读起来非常舒服，字体下载完毕之后，在系统里面指定使用此字体即可。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311191440264.png" alt="image.png"  /></p>
-        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/helloobsidian/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
-    
-    <div class="post on-list tech/归档">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/">Hello，Gradle</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-17
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/gradle/">gradle</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <h2 id="下载">下载</h2>
-<p><a href="https://gradle.org/install/#manually" target="_blank" rel="noopener nofollow noreferrer" >gradle官方网站</a></p>
-<p>点击上方连接进入到官方网</p>
-<p>手动安装的话，点击releases page 选择自己想要安装的包下载</p>
-<p>我安装的是6.5，选择binary-only下载，下载好了之后解压放在自己想要放的位置，我这里放在的是/Users/butcher/code/tools/gradle-6.5/bin</p>
-<h2 id="配置环境变量">配置环境变量</h2>
-<p>1.通过命令打开环境编辑文档，输入i进入编辑模式</p>
-<p><code>vim ~/.bash_profile</code></p>
-<p>2.在文档的尾部追加gradle的环境配置</p>
-<p>`export PATH=$PATH:/Users/butcher/code/tools/gradle-6.5/bin</p>
-<p>英文状态下，按esc键，然后输入<code>:wq</code>保存并退出文档</p>
-<p>3.让配置的文档生效</p>
-<p><code>source ~/.bash_profile</code></p>
-<p>4.验证gradle安装成功</p>
-<p><code>gradle -v</code></p>
-<p>出现gradle的版本信息证明安装成功。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311171858040.png" alt="image.png"  /></p>
-        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellogradle/">阅读全文 →</a></div>
-      
-      </div>
-    
-    </div>
-    
-    
-    <div class="post on-list tech/归档">
-    
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/">Hello，MySQL</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2023-11-16
-          </span>
-        
-
-        
-        <span class="">
-          
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/mysql/">mysql</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
-          
-        </span>
-        
-      </div>
-
-      
-
-      <div class="post-content $PostCate">
-      
-        <h1 id="mysql-概述">MySQL 概述</h1>
-<p>在程序员视角看来，用户发送请求到 Java 系统，Java 系统编写 SQL 语句去访问 MySQL 获得数据库的存储数据，进行增删查改。</p>
-<p>接下来讲讲其中的一些部件：</p>
-<ul>
-<li>需要发送网络请求才能进行访问，所以需要引入 <strong>MySQL 驱动</strong>的 jar 包。</li>
-<li>Java 系统部署在 Tomcat 上面，Tomcat 支持多线程请求。Java 线程请求不止一个，不可能等待单个 MySQL 驱动的线程，并且频繁创建会很消耗资源，因此 Java 系统和 MySQL 这两边都引入了<strong>连接池</strong>。</li>
-</ul>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311101415077.png" alt="image.png"  /></p>
-<p>按照上面这个图，MySQL 数据库服务器就会收到网络请求，比如一条 SQL。接下来MySQL 服务器这边就会有对应的部件来执行不同的工作：</p>
-<ul>
-<li>线程：网络请求必须是让线程来处理，所以内部会开启一个工作线程处理。</li>
-<li>SQL 接口：作为接口，负责接收（和处理 SQL）</li>
-<li>SQL 解析器：解析 SQL 语句的含义</li>
-<li>查询优化器：负责计算出最优的查询路径，或着也叫最优的查询计划</li>
-<li>执行器：携带者最优查询计划去访问存储引擎，不断查询或者更新语句，直到得出想要的结果。比如查询到一条数据比对符不符合要求，不符合就接着查询</li>
-<li>存储引擎：真正执行 SQL 语句的地方。这里可以有不同的存储引擎，存储引擎设计了一套先内存后磁盘的机制，确保查询速度足够快并且减轻磁盘访问压力。</li>
-</ul>
-        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/hellomysql/">阅读全文 →</a></div>
-      
       </div>
     
     </div>
@@ -537,26 +341,20 @@
     </div>
     
     
-    <div class="post on-list tech/归档">
+    <div class="post on-list movie">
     
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloshellclash/">Hello，shellclash</a></h1>
+      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">🎥《进击的巨人 最终季 完结篇 后篇》</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
-            2023-11-12
+            2023-11-06
           </span>
         
 
         
         <span class="">
           
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/vpn/">vpn</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/linux/">linux</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
           
         </span>
         
@@ -566,26 +364,1139 @@
 
       <div class="post-content $PostCate">
       
-        <blockquote>
-<p>shellclash刷入路由器后，可以实现节点代理、节点分流等功能，让家中所有联网设备共享代理后的节点，十分方便。</p>
-</blockquote>
-<h1 id="环境配置">环境配置</h1>
-<p>路由器：红米ax6000</p>
-<p>固件：官方固件</p>
-<p>红米ax6000可以直接在官方固件的基础上解锁ssh,然后在termius上连接并下载shellclash。</p>
-<p>其中作者给出的下载链接有三个，如果遇到下载失败的时候可以反复重试，或者尝试切换脚本和核心重试即可。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120120164.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120121640.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120124891.png" alt="image.png"  /></p>
-<h1 id="界面讲解">界面讲解</h1>
-<p>打开<a href="http://192.168.31.1:9999/ui/#/" target="_blank" rel="noopener nofollow noreferrer" >yacd</a>。
-代理界面有selector和URLTest的两种类型。
-selector代表节点组汇总，URLTest代表单个节点组下面的所有节点。</p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120126445.png" alt="image.png"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120127617.png" alt="image.png"  /></p>
-<h1 id="使用场景">使用场景</h1>
-<p>比如spotify free 账号档案使用的是香港地区，那么家里的Apple tv设备就默认要使用代理里面的香港节点，我们从上图连接菜单下可以看到目前spotify使用的是国外媒体这个节点链，那么就在代理菜单下面的国外媒体选择香港节点组。</p>
-<p>同时，iPhone可以平时就挂着Quantumult X+蜂窝流量使用，这样IP地址归属于香港，spotify就能在离开了shellclash后独立使用，不会报14天离开归属地的弹窗从而登录不了。</p>
+        <div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36283000.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36283000/" class="cute" target="_blank" rel="external nofollow">进击的巨人 最终季 完结篇 后篇</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:93%"></span></span><span class="rating_nums">9.3</span></div>
+                    <div class="db-card-abstract">2023 / 日本 / 动作 动画 奇幻 / 林祐一郎 / 梶裕贵 石川由依</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536261.GIF" alt="IMG_1809.GIF"  /></p>
+<h3 id="观后评">观后评</h3>
+<p>这部2013 年的作品，在 2023 年终于完结了。电影的观感非常不错，画面很流畅。后篇从调查兵团搭上法尔科的鸟形颚巨对着进击的巨人进行断头行动讲起，其中比较有感触的点：</p>
+<ul>
+<li>艾伦承认了深爱三笠的心意，希望三笠记得自己十几年，小人物的独白看的我又哭又笑。他承认了自己也只是个普通人，存在着自己的私心。与其结束巨人化死去早早死去，帕拉迪亚岛和同伴们还得承受岛外的炮火，他选择了发动地鸣解决这一切，当然，他的死亡也已经早就预料到了吧。</li>
+<li>吉克在道路的远方参透了存在的意义：如果是和那个人打一场棒球的话，那么自己愿意出在在这个世界上。短短几句话，就把虚无主义化解了，活着只想玩一场棒球⚾️。纵使命运对自己这么残酷，对吉克来说，可能正如奇葩说的那句：内心很苦的人，只需要一丝甜就足够了。</li>
+<li>“我已经不再是铠之巨人了，母亲”，“没关系，这些年你辛苦了”。莱纳失去巨人之力站在矮小的母亲面前，母亲只是轻轻安慰他，这一幕真的很感人。莱纳的铠之巨人以坚固著称，但是让等人还是会调侃道：为什么你的巨人叫铠巨却总是被击碎，其中的心酸只有莱纳能懂吧。但他直到最后一集都是一直在坚持捍卫家人国家的安全，现如今高大的身影在母亲眼里始终是那个长不大的孩子，母亲是了解他的。</li>
+<li>阿尔敏看着艾伦死去的模样痛哭，声优的出色表现让我也为之动容。</li>
+<li>巨人之力消失，让的母亲也能恢复成人类。这一手操作都在艾伦的部署之内，了解了让的心结，也间接完结了之前无垢巨人篇的故事。</li>
+<li>三笠总是对于杀死艾伦犹豫不决，直到她真实了解到如今的艾伦也是痛苦的，终于选择听从艾伦真实的想法。结尾处帕拉迪岛熟悉的树下，艾伦也如小时候喜欢在这里睡午觉，如今也是长眠如此，旁边的三笠回忆起一阵阵苦痛，她深爱着他。一只白鸟飞来，将三笠的红色围巾系好，打破了这份悲伤。此时《给两千年后 亦或是两万年后的你》副歌响起，看的我也饱含热泪。</li>
+</ul>
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311061536346.GIF" alt="IMG_1810.GIF"  /></p>
+<p>如果需要向你的朋友推荐一部番，那么我强烈推荐的就是《进击的巨人》。</p>
+        <div><a class="read-more button" href="/posts/movie/%E8%BF%9B%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA-%E6%9C%80%E7%BB%88%E5%AD%A3-%E5%AE%8C%E7%BB%93%E7%AF%87-%E5%90%8E%E7%AF%87/">阅读全文 →</a></div>
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list movie">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%80%E5%AD%A3/">🎥《美国恐怖故事集 第一季》</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-11-06
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/35063924.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/35063924/" class="cute" target="_blank" rel="external nofollow">美国恐怖故事集 第一季</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:64%"></span></span><span class="rating_nums">6.4</span></div>
+                    <div class="db-card-abstract">2021 / 美国 / 剧情 惊悚 恐怖 / 洛尼·佩里斯特里 / 迪伦·伯恩赛德 尼科·格莱瑟姆</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311120205454.png" alt="image.png"  /></p>
+<h3 id="观后评">观后评</h3>
+<h2 id="橡皮人">橡皮人</h2>
+<p>同性恋元素过多。领养斯嘉丽的是一对gay，斯嘉丽和橡胶人露比又是一对gay，同时还得出现下美国式霸凌的情结，要素过多。</p>
+<h2 id="驾车进入">驾车进入</h2>
+<p>这个是恐怖的😱。场面十分血腥，让我第一次知道居然还有汽车影院这种东西，未来中国不知道会不会有市场？还有关于制作rabbit rabbit的原理是依靠激发人类内心的恐惧，可能以后真的有办法控制？</p>
+<h2 id="淘气名单">淘气名单</h2>
+<p>bro house真是求仁得仁，我对此的评价是这四个家伙太聒噪了，看的过程中全程像网友一样很生气！最后的圣诞树有点恐怖了。</p>
+<h2 id="神祇qi">神祇（qi）</h2>
+<p>反转集合体。我以为孩子会变成恶魔，结果母亲遇到了恶魔；我以为凶手是摆件，结果凶手是护士。我以为护士是真凶，没想到还有husband才是主谋；我以为女主结局被关起来，结果结局是husband死咯==</p>
+<h2 id="野蛮人">野蛮人</h2>
+<p>前面有多温馨，后面就有多绝望。走失的儿童最终在漫长的岁月中失去了人性。</p>
+<h2 id="游戏结束">游戏结束</h2>
+<p>剧情重归一二集。老实说，有点无聊，最终谋杀屋在大火中燃烧，亡灵们大多走了，只剩下最痴情的露比和斯嘉丽最终留了下来。</p>
         
       
       </div>
@@ -593,24 +1504,20 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
     </div>
     
     
-    <div class="post on-list tech/归档">
+    <div class="post on-list movie">
     
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/helloquantumult-x/">Hello，Quantumult X</a></h1>
+      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E4%BD%A9%E5%B0%8F%E5%A7%90%E7%9A%84%E5%A5%87%E5%B9%BB%E5%9F%8E%E5%A0%A1/">🎥《佩小姐的奇幻城堡》</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
-            2023-11-11
+            2023-10-31
           </span>
         
 
         
         <span class="">
           
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/vpn/">vpn</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
           
         </span>
         
@@ -620,51 +1527,570 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
       <div class="post-content $PostCate">
       
-        <blockquote>
-<p>Quantumult X 是一款VPN软件，因为有分流和重写的功能，所以既能翻墙，也能实现广告过滤、VIP伪装等强大功能。</p>
-</blockquote>
-<h1 id="下载配置">下载配置</h1>
-<p>推荐墨鱼配置，常用 APP 去广告都有规则，而且更新也比较勤快。<br>
-<a href="https://github.com/ddgksf2013" target="_blank" rel="noopener nofollow noreferrer" >https://github.com/ddgksf2013</a></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112340370.jpg" alt="IMG_1860.jpg"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112341041.jpg" alt="IMG_1859.jpg"  /></p>
-<h1 id="重写规则">重写规则</h1>
-<p>有些小众 APP 再从这个组里面找需要的 APP 规则：<br>
-<a href="https://t.me/Aa28413761" target="_blank" rel="noopener nofollow noreferrer" >https://t.me/Aa28413761</a></p>
-<p><img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112339518.jpg" alt="IMG_1857.jpg"  />
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112338375.jpg" alt="IMG_1858.jpg"  /></p>
-<h1 id="导入节点订阅">导入节点订阅</h1>
-<p>目前用的是魔戒，按量订阅，缺点是偏慢</p>
-<h1 id="配置证书">配置证书</h1>
-<p>打开设置的MitM开关，生成证书并去设置里面配置证书
-<img loading='lazy' decoding="async" src="https://bestkxt.oss-cn-guangzhou.aliyuncs.com/img/202311112337506.jpg" alt="IMG_1861.jpg"  /></p>
-        <div><a class="read-more button" href="/posts/tech/%E5%BD%92%E6%A1%A3/helloquantumult-x/">阅读全文 →</a></div>
+        <div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/7051830.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/7051830/" class="cute" target="_blank" rel="external nofollow">佩小姐的奇幻城堡</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:72%"></span></span><span class="rating_nums">7.2</span></div>
+                    <div class="db-card-abstract">2016 / 美国 / 剧情 奇幻 冒险 / 蒂姆·波顿 / 阿萨·巴特菲尔德 伊娃·格林</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<h3 id="剧情简介">剧情简介</h3>
+<p>小时候爷爷总给男主讲世界上有些异能者，比如幻化成鸽子的佩小姐、透明人、看到双眼就会石化的双胞胎、脚上不系上重物就会飘走的女孩、赋予木偶心脏即可活动的傀儡师、操控火焰的火女等。
+直到某天夜里，爷爷被谋害，眼球被夺走，于是，男主遵循爷爷临死前的遗嘱开始展开调查。调查过程中进入了奇幻的城堡，正是佩小姐和拥有各种特殊能力的小孩们。此时危机已经来临，反派在男主的引导下成功进入了城堡。在佩小姐那儿了解了真相后，男主发挥自己能够看清怪物的超能力，带领伙伴们灭掉了专吃眼球的反派——巴伦。结尾，男主多次跳跃时间循环去找到了自己的真爱，故事完。</p>
+<h3 id="观后评">观后评</h3>
+<p>主要是娜娜强烈建议看的剧。但是呢这部剧故事显得比较单薄，正反派冲突然后主角获胜的故事，没有一点点悬念，所以看完会有一种“也就这样吧”的感觉。</p>
+        
       
       </div>
     
     </div>
     
     
-    <div class="post on-list tech/归档">
+    <div class="post on-list read">
     
-      <h1 class="post-title"><a href="https://senup.github.io/posts/tech/%E5%BD%92%E6%A1%A3/hellomacos/">Hello，MacOS</a></h1>
+      <h1 class="post-title"><a href="https://senup.github.io/posts/read/%E6%9B%B4%E5%A3%AE-%E6%9B%B4%E7%98%A6-%E6%9B%B4%E5%BC%BA/">📖《更壮 更瘦 更强》</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
-            2023-11-07
+            2023-10-30
           </span>
         
 
         
         <span class="">
           
-            #<a href="https://senup.github.io/tags/tech/">tech</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/mac/">mac</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/finder/">finder</a>&nbsp;
-          
-            #<a href="https://senup.github.io/tags/hello/">hello</a>&nbsp;
+            #<a href="https://senup.github.io/tags/read/">read</a>&nbsp;
           
         </span>
         
@@ -674,30 +2100,676 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
       <div class="post-content $PostCate">
       
-        <h1 id="finder">Finder</h1>
-<p>找出 当前文件夹或子目录下面所有的  pdf 文件并拷贝放到pdf文件夹下面</p>
-<pre tabindex="0"><code>find ./  -name  &#34;*.pdf&#34; -exec mv {} ./pdf \;
-</code></pre><h2 id="剪切">剪切</h2>
-<p>其实访达中也可以实现剪切功能，只不过剪切的行为不是发生在开始，而是发生在粘贴时。</p>
-<p>按下<code>command+C</code>快捷键之后，在目标目录按下<code>option+command+V</code>就可以将刚才复制的文件和目录移动到目标目录，即实现了剪切功能。</p>
-<h2 id="popcliphttpsgithubcomtisfengeasydictblobmainreadmemd"><a href="https://github.com/tisfeng/Easydict/blob/main/README.md" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a></h2>
-<p>开启 easydict。你需要先安装 <a href="https://pilotmoon.com/popclip/" target="_blank" rel="noopener nofollow noreferrer" >PopClip</a>，然后选中以下代码块，<code>PopClip</code> 会显示 &ldquo;安装扩展 Easydict&rdquo;，点击它即可。（By <strong><a href="https://github.com/liziqiang" target="_blank" rel="noopener nofollow noreferrer" >liziqiang</a></strong>）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># popclip</span>
-</span></span><span style="display:flex;"><span>name: Easydict
-</span></span><span style="display:flex;"><span>icon: iconify:ri:translate
-</span></span><span style="display:flex;"><span>interpreter: zsh
-</span></span><span style="display:flex;"><span>shell script: |
-</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>ps aux | grep Easydict.app | wc -l<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $result -lt <span style="color:#ae81ff">2</span> <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    open /Applications/Easydict.app
-</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>  open <span style="color:#e6db74">&#34;easydict://query?text=</span>$POPCLIP_TEXT<span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><blockquote>
-<p>参考：<a href="https://www.popclip.app/dev/shell-script-actions" target="_blank" rel="noopener nofollow noreferrer" >https://www.popclip.app/dev/shell-script-actions</a></p>
-</blockquote>
+        <div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/book/27107200.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://book.douban.com/subject/27107200/" class="cute" target="_blank" rel="external nofollow">更壮 更瘦 更强</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:76%"></span></span><span class="rating_nums">7.6</span></div>
+                    <div class="db-card-abstract">Michael Matthews / 2017 / 机械工业出版社丛</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+
+
+
+<h3 id="观后评">观后评</h3>
+<p>非常系统的一本减脂的书，强烈推荐👍🏻。</p>
         
       
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list movie">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/movie/%E7%BE%8E%E5%9B%BD%E6%81%90%E6%80%96%E6%95%85%E4%BA%8B%E9%9B%86-%E7%AC%AC%E4%B8%89%E5%AD%A3/">🎥《美国恐怖故事集 第三季》</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-29
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/movie/">movie</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <div class="db-card">
+            <div class="db-card-subject">
+                <div class="db-card-post"><img loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://dou.img.lithub.cc/movie/36395330.jpg"></div>
+                <div class="db-card-content">
+                    <div class="db-card-title"><a href="https://movie.douban.com/subject/36395330/" class="cute" target="_blank" rel="external nofollow">美国恐怖故事集 第三季</a></div>
+                    <div class="rating"><span class="allstardark"><span class="allstarlight" style="width:71%"></span></span><span class="rating_nums">7.1</span></div>
+                    <div class="db-card-abstract">2023 / 美国 / 剧情 悬疑 惊悚 恐怖 / 麦克思·温克勒 艾利根斯·布拉顿 亚历克西斯·马丁·伍达尔 / 杰西卡·巴登 格温妮斯·帕特洛</div>
+                    <div class="db-card-comment"></div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+<h1 id="第1集bestie-闺蜜">第1集《Bestie 闺蜜》</h1>
+<ul>
+<li>女主在丑陋的网络闺蜜衬托的格外漂亮</li>
+<li>看了豆瓣评论才发现女主万圣节的装扮是嘲讽老师死去的孩子</li>
+<li>结尾的反转还是让人措不及防，足够恶心👍🏻</li>
+</ul>
+<h2 id="第2集daphne-月桂女神">第2集《Daphne 月桂女神》</h2>
+<p>人工智能达芙妮的复仇。</p>
+<h2 id="第3集tapeworm-绦虫">第3集《Tapeworm 绦虫》</h2>
+<p>本意是揭露不健康的审美，但是华人医生有点太牵强了，要么不说明药物的效果，要么不说明虫子的发育情况。</p>
+<h2 id="第4集organ-器官">第4集《Organ 器官》</h2>
+<p>器官也能成为拍卖的好东西，远离约炮，从我做起（错误）。</p>
+<p>第5集《Backrooms 暗房》
+第6集《The Thing Under the Bed 床底下的东西》
+第7集《Howl 嚎叫》
+第8集《Clone 克隆》
+第9集《Leprechaun 妖精》</p>
+        
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list life">
+    
+      <h1 class="post-title"><a href="https://senup.github.io/posts/life/%E4%BA%8C%E6%89%8B%E6%89%8B%E6%9C%BA%E8%B6%8A%E5%8D%96%E8%B6%8A%E4%BA%8F/">二手手机越卖越亏</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-27
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/life/">life</a>&nbsp;
+          
+        </span>
+        
+      </div>
+
+      
+
+      <div class="post-content $PostCate">
+      
+        <p>之前有一部iPhone 12 Pro一直在闲置的状态，这不双十一到了，终于想起来能换点零花钱买点别的，于是挂在闲鱼上面出手。</p>
+<p>一开始我想快点卖出，省的夜长梦多，所以标注了两千多块的价格。有很多买家过来咨询，价格确实比较实在，但是一聊到屏幕是非原装屏纷纷显得有些犹豫。无奈，我加上了验货宝的附加功能，来打消其他人的顾忌，但还是需要花很多时间和精力给人展示手机内在的详细配置信息和外表细节的磨损情况，甚至细究产地的区别等，这让我觉得非常麻烦。</p>
+<p>最后一个东北的学生非常爽快的拍下了。但好景不长，我自己清除资料的时候发现低亮度的情况下屏幕出现一块亮斑。坏了！估计是自己搬家的时候被其他东西压坏了。没办法，只能谢绝买家，改成回收。</p>
+<p>我简单查阅了小红书的回收平台，选择了讨论度较高的爱回收。爱回收上门速度很快，第二天预约，小哥骑着电瓶车和一堆工具让你下楼来当面验机，对着他的checklist一项项检查，最后表示屏幕比描述的情况更严重些，还有边框的磨损超出预期，因此价格只能一低再低，一千出头，询问我是否考虑进行回收。眼下我没有更好的选择，只能点头答应，钱款在当天就到账了，故事告一段落。</p>
+<p>第二天在v站看到一个网友遇到同样的二手手机买卖情况，底下有条评论表示苹果官网好得多。具体表现在检修更宽松且回收价也高，按我当时的情况可以出到两千到三千多。听罢觉得自己更加后悔了。</p>
+<p>最后，给未来的自己一些教训：</p>
+<ul>
+<li>美版的iPhone只支持单卡，谨慎购买</li>
+<li>不建议尝试单卡改双卡的操作，比如维修小哥可能给你把屏幕搞坏</li>
+<li>iPhone建议使用官网平台进行回收</li>
+<li>闲置的东西请尽快及时止损</li>
+<li>不要买型号为偶数的iPhone</li>
+<li>不要购入二手iPhone，电池等问题就算当面也检查不出来</li>
+<li>赚钱才是花钱的充分必要条件</li>
+</ul>
+        
+      
+      </div>
+    
+    </div>
+    
+    
+    <div class="post on-list chat">
+    
+            <div class="post-meta">
+        
+          <span class="post-date">
+            2023-10-24
+          </span>
+        
+
+        
+        <span class="">
+          
+            #<a href="https://senup.github.io/tags/chat/">chat</a>&nbsp;
+          
+        </span>
+        
+      </div>
+      <div class="post-content $PostCate">
+        <a href="https://senup.github.io/posts/chat/20231024160340/" rel="link"><img loading="lazy" decoding="async" class="post-avatar avatar" src=https://cravatar.cn/avatar/12144323cf2819d1a84df6de36794844 ></a>
+          <p>突然想起年前带爸妈去了一趟海底捞。老爸老妈第一次吃海底捞各种开心聒噪地拍照打卡，两个妹妹期待地吃着东西，而我骂骂咧咧让他们别少大惊小怪&hellip;感觉跟家人在一起的时光好像也不坏，而这些时光变得越来越少越来越可贵，我有点想家了。</p>
+
       </div>
     
     </div>
@@ -779,26 +2851,6 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
 
 
 
@@ -809,7 +2861,7 @@ selector代表节点组汇总，URLTest代表单个节点组下面的所有节�
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
-      <span>共 40562 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
+      <span>共 15118 字 <br/> 还在努力更新中..</br>加油！加油啦！</span>
     </div>
     <a class="dark-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="/wormhole_1.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>
     <a class="light-wormhole" href="https://www.foreverblog.cn/go.html" target="_blank" > <img src="/wormhole_3.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"> </a>

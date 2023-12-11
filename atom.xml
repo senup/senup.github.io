@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <generator uri="https://gohugo.io/" version="0.120.4">Hugo</generator><title type="html"><![CDATA[『高等游民』]]></title>
+    <generator uri="https://gohugo.io/" version="0.121.1">Hugo</generator><title type="html"><![CDATA[『高等游民』]]></title>
     
     
     
             <link href="https://senup.github.io/atom.xml" rel="self" type="application/rss+xml" title="atom" />
             <link href="https://senup.github.io/" rel="alternate" type="text/html" title="html" />
             <link href="https://senup.github.io/index.json" rel="alternate" type="application/json" title="json" />
-    <updated>2023-11-23T10:20:42+00:00</updated>
+    <updated>2023-12-11T06:51:25+00:00</updated>
     
     
     
